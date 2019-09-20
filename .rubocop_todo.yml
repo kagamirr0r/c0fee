@@ -11,7 +11,7 @@
 #Configuration parameters: TreatCommentsAsGroupSeparators, Include.
 #Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
-  Exclude: 
+  Exclude:
     - 'Gemfile'
 
 # Offense count: 2
@@ -213,7 +213,7 @@ Style/StringLiterals:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: single_quotes, double_quotes
-Style/StringLiteralsInInterpolation: 
+Style/StringLiteralsInInterpolation:
   Exclude:
     - 'node_modules/node-sass/src/libsass/extconf.rb'
 

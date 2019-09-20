@@ -1,0 +1,2 @@
+class RecipeLike < ApplicationRecord
+end

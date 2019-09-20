@@ -1,0 +1,2 @@
+class BeanLike < ApplicationRecord
+end
