@@ -22,4 +22,6 @@ class User < ApplicationRecord
       super
     end
   end
+
+  mount_uploader :avatar, AvatarUploader
 end
