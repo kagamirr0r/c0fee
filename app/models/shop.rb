@@ -1,3 +1,3 @@
 class Shop < ApplicationRecord
-	has_many :beans, dependent: :destory
+	has_many :beans, dependent: :destroy
 end

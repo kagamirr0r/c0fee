@@ -51,7 +51,6 @@ create_table "shops", force: :cascade do |t|
 end
 
 create_table "impressions", force: :cascade do |t|
-  t.integer "user_id"
   t.integer "bean_id"
   t.integer "i_sour"
   t.integer "i_sweet"
@@ -91,31 +90,28 @@ create_table "recipe_likes", force: :cascade do |t|
 end
 
 add_index "beans", ["user_id"], name:"user_ind_on_beans", using: :btree
-add_foreign_key "beans", "users", name: "fk_beans_users"
+add_foreign_key "beans", "users", name: "fk_beans_belong_to_user"
 
 add_index "beans", ["shop_id"], name: "shop_ind_on_beans", using: :btree
-add_foreign_key "beans", "shops", name: "fk_beans_recipes"
-
-add_index "impressions", ["user_id"], name: "user_ind_on_impressions", using: :btree
-add_foreign_key "impressions","users", name: "fk_impressions_users"
+add_foreign_key "beans", "shops", name: "fk_beans_belong_to_shop"
 
 add_index "impressions", ["bean_id"], name: "bean_ind_on_impressions", using: :btree
-add_foreign_key "impressions","beans", name: "fk_impresssions_beans"
+add_foreign_key "impressions","beans", name: "fk_impression_belongs_to_bean"
 
 add_index "recipes",["bean_id"], name: "bean_ind_on_recipess", using: :btree
-add_foreign_key "recipes","beans", name: "fk_recipes_beans"
+add_foreign_key "recipes","beans", name: "fk_recipes_belong_to_bean"
 
 add_index "tastes",["recipe_id"], name: "recipe_ind_on_tastes", using: :btree
-add_foreign_key "tastes","recipes",name: "fk_tastes_recipes"
+add_foreign_key "tastes","recipes",name: "fk_taste_belongs_to_recipe"
 
 add_index "bean_likes",["user_id"], name: "user_ind_on_bean_likes", using: :btree
-add_foreign_key "bean_likes","users", name: "fk_bean_like_users"
+add_foreign_key "bean_likes","users", name: "fk_bean_likes_belong_to_user"
 
 add_index "bean_likes",["bean_id"], name: "bean_ind_on_bean_likes", using: :btree
-add_foreign_key "bean_likes","beans",name: "fk_bean_like_beans"
+add_foreign_key "bean_likes","beans",name: "fk_bean_likes_belong_to_bean"
 
 add_index "recipe_likes",["user_id"], name: "user_ind_on_recipe_likes", using: :btree
-add_foreign_key "recipe_likes","users", name: "fk_recipe_like_users"
+add_foreign_key "recipe_likes","users", name: "fk_recipe_likes_belong_to_user"
 
 add_index "recipe_likes",["recipe_id"], name: "recipe_ind_on_recipe_likes", using: :btree
-add_foreign_key "recipe_likes","recipes",name: "fk_recipe_like_recipes"
+add_foreign_key "recipe_likes","recipes",name: "fk_recipe_likes_belong_to_recipe"
