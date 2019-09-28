@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .logo{
+	 text-decoration: none ;
+	 font-family: 'Osaka-Mono';
+	 font-size: 35px;
+ }
+
+ #user_avatar{
+	 display: none;
+ }

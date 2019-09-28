@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>C0FEE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,8 +12,9 @@
   <body>
     <header>
         <nav>
+				 <span><%=link_to "C0FEE",root_url ,class:"logo"%></span>
           <% if user_signed_in? %>
-            <strong><%= link_to current_user.username, toppages_show_path %></strong>
+            <strong><%= link_to current_user.username, users_show_path %></strong>
             <%= link_to 'Edit Profile', edit_user_registration_path %>
             <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
           <% else %>

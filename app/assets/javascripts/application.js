@@ -14,3 +14,12 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+$(document).on('click', '#select_file_button', function() {
+  $("#user_avatar").click();
+ })
+
+ $(document).on('change', '#user_avatar', function() {
+  $('#filename').val($(this).val().replace(/^.*\\/, ""));
+ })
