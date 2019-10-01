@@ -1,2 +1,43 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="recipes">
+<h1>My Recipes</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Bean</th>
+				<th>Grind</th>
+				<th>Amount</th>
+				<th>Extraction</th>
+				<th>Temperature</th>
+				<th>Sour</th>
+				<th>Sweet</th>
+				<th>Bitter</th>
+				<th>Aroma</th>
+				<th>Fullbody</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% Array(@recipe).each do |recipe| %>
+				<tr>
+					<td><%= recipe.name %></td>
+					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+					<td><%= recipe.grind %></td>
+					<td><%= recipe.amount %></td>
+				  <td><%= recipe.extraction %></td>
+					<td><%= recipe.temperature %></td>
+					<td><%= recipe.taste.t_sour%></td>
+					<td><%= recipe.taste.t_sweet%></td>
+					<td><%= recipe.taste.t_bitter%></td>
+					<td><%= recipe.taste.t_aroma%></td>
+					<td><%= recipe.taste.t_fullbody%></td>
+					<% if current_user == recipe.bean.user %>
+					<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+					<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

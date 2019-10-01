@@ -1,6 +1,9 @@
 class MyPagesController < ApplicationController
 	def show
-		@beans = Bean.find_by(user_id: params[:id])
-		@recipes = Recipe.find_by(bean_id: @beans.id)
+		@beans = Bean.where(user_id: current_user.id)
+
+		@beans.each do |bean|
+		 @recipes = Recipe.where(bean_id: bean.id)
+		end
   end
 end

@@ -1,2 +1,40 @@
-<h1>Beans#show</h1>
-<p>Find me in app/views/beans/show.html.erb</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Country</th>
+				<th>Area</th>
+				<th>Variety</th>
+				<th>Farm</th>
+				<th>Process</th>
+				<th>Roast</th>
+				<th>Sour</th>
+				<th>Sweet</th>
+				<th>Bitter</th>
+				<th>Shop</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% Array(@bean).each do |bean| %>
+				<tr>
+					<td><%= bean.country %></td>
+					<td><%= bean.area %></td>
+					<td><%= bean.variety %></td>
+					<td><%= bean.farm %></td>
+					<td><%= bean.process %></td>
+					<td><%= bean.roast %></td>
+					<td><%= bean.impression.i_sour%></td>
+					<td><%= bean.impression.i_sweet%></td>
+					<td><%= bean.impression.i_bitter%></td>
+					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
+					<td><%= bean.price %>$/100g</td>
+					<% if current_user == bean.user %>
+						<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+						<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

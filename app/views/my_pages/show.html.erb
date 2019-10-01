@@ -24,7 +24,7 @@
 		</thead>
 
 		<tbody>
-			<% Array(@beans).each do |bean| %>
+			<% @beans.each do |bean| %>
 				<tr>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
@@ -69,7 +69,7 @@
 		</thead>
 
 		<tbody>
-			<% Array(@recipes).each do |recipe| %>
+			<% @recipes.each do |recipe| %>
 				<tr>
 					<td><%= recipe.name %></td>
 					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
@@ -92,5 +92,3 @@
 		</tbody>
 	</table>
 </div>
-
-

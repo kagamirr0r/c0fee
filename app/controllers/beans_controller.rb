@@ -3,7 +3,8 @@ class BeansController < ApplicationController
 		@beans = Bean.all
   end
 
-  def show
+	def show
+		@bean = Bean.find_by(id: params[:id])
   end
 
   def new
@@ -19,5 +20,9 @@ class BeansController < ApplicationController
   end
 
   def destroy
-  end
+	end
+
+	def bean_params
+		params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast)
+	end
 end

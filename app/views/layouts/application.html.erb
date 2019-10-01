@@ -12,14 +12,14 @@
   <body>
     <header>
         <nav>
-				 <span><%=link_to "C0FEE",root_url ,class:"logo"%></span>
+				 <span><%=link_to　"C0FEE",root_url ,class:"logo"%></span>
           <% if user_signed_in? %>
-            <strong><%= link_to current_user.username, my_pages_show_path(id: current_user.id)%></strong>
-            <%= link_to 'Edit Profile', edit_user_registration_path %>
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+            <strong><%= link_to_unless_current current_user.username, my_pages_show_path(id: current_user.id)%></strong>
+            <%= link_to_unless_current 'Edit Profile', edit_user_registration_path %>
+            <%= link_to_unless_current 'Log out', destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= link_to 'Sign up', new_user_registration_path %>
-            <%= link_to 'Log in', new_user_session_path %>
+            <%= link_to_unless_current 'Sign up', new_user_registration_path %>
+            <%= link_to_unless_current 'Log in', new_user_session_path %>
           <% end %>
         </nav>
     </header>
