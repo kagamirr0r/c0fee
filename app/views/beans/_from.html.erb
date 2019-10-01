@@ -1,0 +1,57 @@
+<%= form_with(model: bean ,local: true) do |form| %>
+  <% if bean.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bean.errors.count, "error") %> prohibited this bean from being saved:</h2>
+
+      <ul>
+      <% bean.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  <%= form.label :user_id %>
+  <%= current_user.username%>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shop %>
+    <%= form.text_field :shop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area %>
+    <%= form.text_field :area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :variety %>
+    <%= form.text_field :variety %>
+  </div>
+
+  <div class="field">
+    <%= form.label :farm %>
+    <%= form.text_field :farm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :process %>
+    <%= form.text_field :process %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
