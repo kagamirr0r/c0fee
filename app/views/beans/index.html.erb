@@ -1,2 +1,76 @@
-<h1>Beans#index</h1>
-<p>Find me in app/views/beans/index.html.erb</p>
+<h1>Beans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Shop</th>
+      <th>Price</th>
+      <th>Area</th>
+      <th>Variety</th>
+      <th>Farm</th>
+      <th>Process</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Array(beans).each do |bean| %>
+      <tr>
+        <td><%= link_to bean.user.username, user_path(id: bean.user.id) %></td>
+        <td><%= bean.name %></td>
+        <td><%= bean.shop %></td>
+        <td><%= bean.price %></td>
+        <td><%= bean.area %></td>
+        <td><%= bean.variety %></td>
+        <td><%= bean.farm %></td>
+        <td><%= bean.process %></td>
+        <td><%= link_to 'Show', bean %></td>
+        <% if current_user == bean.user %>
+         <td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+         <td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Recipes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Bean</th>
+      <th>Name</th>
+      <th>Extraction</th>
+      <th>Temperature</th>
+      <th>Rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Array(recipes).each do |recipe| %>
+      <tr>
+        <td><%= recipe.bean.user.username %></td>
+        <td><%= link_to recipe.bean.name, bean_path(id: recipe.bean.id) %></td>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.extraction %></td>
+        <td><%= recipe.temperature %></td>
+        <td><%= recipe.rate %></td>
+        <td><%= link_to 'Show', recipe%></td>
+        <% if current_user == recipe.bean.user %>
+         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

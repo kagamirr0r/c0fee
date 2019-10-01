@@ -22,3 +22,11 @@
  #user_avatar{
 	 display: none;
  }
+
+.beans{
+	 display: inline-block;
+ }
+
+.recipes{
+	display: inline-block;
+}

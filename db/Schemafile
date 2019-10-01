@@ -33,13 +33,13 @@ end
 create_table "beans", force: :cascade do |t|
   t.integer "user_id"
   t.integer "shop_id"
-  t.string "name", null: false, unique: true
-  t.integer "price"
-  t.string "country"
+	t.string "country", null: false
+  t.string "area"
   t.string "variety"
   t.string "farm"
   t.string "process"
   t.string "roast"
+	t.integer "price"
   t.string "bean_image"
 end
 
@@ -61,7 +61,7 @@ end
 
 create_table "recipes", force: :cascade do |t|
   t.integer "bean_id"
-  t.string "name", null: false
+	t.string "name", null: false
   t.string "grind"
   t.string "temperature"
   t.integer "amount"

@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
 	root 'top_pages#index'
 
+	get 'my_pages/show'
+
 	get 'bean_likes/create'
   get 'bean_likes/destroy'
   get 'recipe_likes/create'
 	get 'recipe_likes/destroy'
 	get 'users/show'
+	get 'users/index'
 
 	resources :beans
 	resources :recipes

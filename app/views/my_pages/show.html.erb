@@ -1,13 +1,16 @@
-<div class="beans">
-<h1>Latest Beans</h1>
+<h2>My Page</h2>
+
+<h1>My Beans</h1>
 
 	<table>
 		<thead>
 			<tr>
-				<th>User</th>
 				<th>Country</th>
 				<th>Area</th>
 				<th>Variety</th>
+				<th>Farm</th>
+				<th>Process</th>
+				<th>Roast</th>
 				<th>Sour</th>
 				<th>Sweet</th>
 				<th>Bitter</th>
@@ -17,57 +20,59 @@
 		</thead>
 
 		<tbody>
-			<% @beans.each do |bean| %>
+			<% Array(@beans).each do |bean| %>
 				<tr>
-					<td><%= link_to bean.user.username, users_show_path(id: bean.user.id) %></td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>
+					<td><%= bean.farm %></td>
+					<td><%= bean.process %></td>
+					<td><%= bean.roast %></td>
 					<td><%= bean.impression.i_sour%></td>
 					<td><%= bean.impression.i_sweet%></td>
 					<td><%= bean.impression.i_bitter%></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= bean.price %>$/100g</td>
-					<td><%= link_to 'Detail', bean %></td>
+					<td><%= link_to 'Detail', bean%></td>
 					<% if current_user == bean.user %>
-					<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
-					<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+						<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<% end %>
-					</tr>
+				</tr>
 			<% end %>
 		</tbody>
 	</table>
- <%= link_to "more" ,beans_path%>
 </div>
 
 <div class="recipes">
-<h1>Latest Recipes</h1>
+<h1>My Recipes</h1>
 
 	<table>
 		<thead>
 			<tr>
-				<th>User</th>
-				<th>Bean</th>
 				<th>Name</th>
+				<th>Bean</th>
 				<th>Grind</th>
+				<th>Amount</th>
 				<th>Extraction</th>
+				<th>Temperature</th>
 				<th>Sour</th>
 				<th>Sweet</th>
 				<th>Bitter</th>
 				<th>Aroma</th>
 				<th>Fullbody</th>
-
 			</tr>
 		</thead>
 
 		<tbody>
-			<% @recipes.each do |recipe| %>
+			<% Array(@recipes).each do |recipe| %>
 				<tr>
-					<td><%= recipe.bean.user.username %></td>
-					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 					<td><%= recipe.name %></td>
+					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 					<td><%= recipe.grind %></td>
-					<td><%= recipe.extraction %></td>
+					<td><%= recipe.amount %></td>
+				  <td><%= recipe.extraction %></td>
+					<td><%= recipe.temperature %></td>
 					<td><%= recipe.taste.t_sour%></td>
 					<td><%= recipe.taste.t_sweet%></td>
 					<td><%= recipe.taste.t_bitter%></td>
@@ -82,5 +87,6 @@
 			<% end %>
 		</tbody>
 	</table>
- <%= link_to "more" ,recipes_path%>
 </div>
+
+

@@ -26,12 +26,14 @@ Shop.create!(
 end
 
 [
-	[1,1,'Brasil',800,'brasil','bourbon','tomio fukuda','washed','city'],
-	[2,2,'Ethiopia',850,'ethiopia','','Yirgacheffe','natural','high'],
-	[3,3,'Guatemala',700,'guatemala','pacamara','Esperanza','washed','fullcity']
-].each do |user_id,shop_id,name,price,country,variety,farm,process,roast|
+	[1,1,'Tanazania','kilimanjaro','Arabica','','','city',800],
+	[2,2,'Ethiopia','Yirgacheffe','','','natural','high',850],
+	[3,3,'Brazil','Minas Gerais','bourbon','tomio fukuda','washed','fullcity',800]
+].each do |user_id,shop_id,country,area,variety,farm,process,roast,price|
 Bean.create!(
-	{ user_id: user_id, shop_id: shop_id, name: name, price: price, variety: variety, farm: farm, process: process, roast: roast}
+	{ user_id: user_id, shop_id: shop_id, country: country, area: area,
+		variety: variety,farm: farm, process: process, roast: roast,
+		price: price }
 )
 end
 
@@ -51,7 +53,8 @@ end
 	[3,'Guatemala Iced Coffee','Fine',85,20,'franchpress']
 ].each do |bean_id,name,grind,temperature,amount,extraction|
 Recipe.create!(
-	{ bean_id: bean_id, name: name, grind: grind, temperature: temperature, amount: amount, extraction: extraction }
+	{ bean_id: bean_id, name: name, grind: grind, temperature: temperature,
+		amount: amount, extraction: extraction }
 )
 end
 
@@ -61,7 +64,8 @@ end
 	[3,3,5,3,4,4,'Awesome!!']
 ].each do |recipe_id,t_sour,t_sweet,t_bitter,t_aroma,t_fullbody,t_comment|
 Taste.create!(
-	{ recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter, t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment }
+	{ recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
+		t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment }
 )
 end
 

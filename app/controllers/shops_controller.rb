@@ -2,7 +2,8 @@ class ShopsController < ApplicationController
   def index
   end
 
-  def show
+	def show
+		@shop = Shop.find_by(id: params[:id])
   end
 
   def new
