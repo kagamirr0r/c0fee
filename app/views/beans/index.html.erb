@@ -32,10 +32,11 @@
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= bean.price %>$/100g</td>
 					<td><%= link_to 'Detail', bean%></td>
-					<% if current_user == bean.user %>
-						<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
-						<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					<% end %>
+					<td><%= link_to "Create Recipe", new_recipe_path(id: bean.id)%></td>
+					 <% if current_user == bean.user %>
+						 <td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+						 <td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					 <% end %>
 				</tr>
 			<% end %>
 		</tbody>

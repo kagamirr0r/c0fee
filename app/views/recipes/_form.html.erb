@@ -1,0 +1,74 @@
+<%= form_with(model: recipe, local: true) do |form| %>
+		<div class="field">
+			<%= form.label :bean_id %>
+			<%= bean.country %>
+			<%= form.hidden_field :bean_id, value: bean.id %>
+		</div>
+
+		<div class="field">
+			<%= form.label :name %>
+			<%= form.text_field :name%>
+		</div>
+
+		<div class="field">
+			<%= form.label :grind %>
+			<%= form.select :grind, [["Coarse", "Coarse"],["Medium-Coarse", "Medium-Coarse"],
+			["Medium", "Medium"],["Medium-Fine", "Medium-Fine"],["Fine", "Fine"]]%>
+		</div>
+
+		<div class="field">
+			<%= form.label :amount %>
+			<%= form.number_field :amount, value: 10%> <span>g</span>
+		</div>
+
+		<div class="field">
+			<%= form.label :extraction %>
+			<%= form.select :extraction, [["Paper_Filter", "Paper_Filter"],["Metal_Filter", "Metal_Filter"],
+			["Flannel", "Flannel"],["French_Press", "French_Press"],["Espresso", "Espresso"],
+			["Aero_Press", "Aero_Press"],["Water_Drip","Water_Drip"],["Cofee_Maker", "Cofee_Maker"]] %>
+		</div>
+
+		<div class="field">
+			<%= form.label :temperature %> <span>(°C)</span>
+			<%= form.number_field :temperature, value: 90, step: 5%>
+		</div>
+
+	<%= form.fields_for :taste do |t| %>
+
+		<div class="field">
+			<%= t.label :sour%>
+			<%= t.number_field :t_sour, max: 5 %>
+		</div>
+
+		<div class="field">
+			<%= t.label :sweet %>
+			<%= t.number_field :t_sweet, max: 5%>
+		</div>
+
+		<div class="field">
+			<%= t.label :bitter %>
+			<%= t.number_field :t_bitter, max: 5%>
+		</div>
+
+		<div class="field">
+			<%= t.label :aroma %>
+			<%= t.number_field :t_aroma, max: 5 %>
+		</div>
+
+		<div class="field">
+			<%= t.label :fullbody %>
+			<%= t.number_field :t_fullbody, max: 5 %>
+		</div>
+
+		<div class="field">
+			<%= t.label :comment %>
+			<%= t.text_area :t_comment %>
+		</div>
+
+	<% end %>
+
+		<div class="actions">
+			<%= form.submit %>
+		</div>
+
+<% end %>

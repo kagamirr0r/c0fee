@@ -17,3 +17,5 @@ module App
     # the framework and any gems in your application.
   end
 end
+
+Rails.configuration.action_controller.per_form_csrf_tokens = true
