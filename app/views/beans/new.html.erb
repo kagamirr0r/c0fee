@@ -1,2 +1,5 @@
-<h1>Beans#new</h1>
-<p>Find me in app/views/beans/new.html.erb</p>
+<h1>New Bean</h1>
+
+<%= render 'form', bean: @bean%>
+
+<%= link_to 'Back', beans_path %>

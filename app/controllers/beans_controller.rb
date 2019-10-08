@@ -7,13 +7,22 @@ class BeansController < ApplicationController
 		@bean = Bean.find_by(id: params[:id])
   end
 
-  def new
+	def new
+		@shop = Shop.new
+		@shop.beans.build
+		@bean = current_user.beans.build
+		@bean.build_impression
   end
 
   def edit
   end
 
-  def create
+	def create
+		@bean = current_user.beans.build(bean_params)
+		@bean.save!
+		redirect_to beans_path, notice: '新規作成しました'
+	rescue
+   	render :new
   end
 
   def update

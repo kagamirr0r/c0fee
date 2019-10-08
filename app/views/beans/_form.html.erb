@@ -1,0 +1,95 @@
+<%= form_with(model: bean ,local: true) do |form| %>
+
+	<div class="field">
+		<%= form.label :user_id %>
+		<%= current_user.username%>
+	</div>
+
+	<%= form.fields_for :shop do |s| %>
+
+		<div class="field">
+			<%= s.label :shop %>
+			<%= s.text_field :name %>
+		</div>
+
+		<div class="field">
+			<%= s.label :address %>
+			<%= s.text_field :address %>
+		</div>
+
+		<div class="field">
+			<%= s.label :url %>
+			<%= s.text_field :url %>
+		</div>
+
+		<div class="field">
+			<%= s.label :shop_image %>
+			<%= s.file_field :shop_image %>
+		</div>
+
+	<% end %>
+
+	<div class="field">
+    <%= form.label :bean_image %>
+    <%= form.file_field :bean_image %>
+  </div>
+
+	<div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+	<div class="field">
+    <%= form.label :area %>
+    <%= form.text_field :area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :variety %>
+    <%= form.text_field :variety %>
+  </div>
+
+  <div class="field">
+    <%= form.label :farm %>
+    <%= form.text_field :farm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :process %>
+    <%= form.text_field :process %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>/100g
+  </div>
+
+	<%= form.fields_for :impression do |i| %>
+
+		<div class="field">
+			<%= i.label :sour%>
+			<%= i.number_field :i_sour, max: 5 %>
+		</div>
+
+		<div class="field">
+			<%= i.label :sweet %>
+			<%= i.number_field :i_sweet, max: 5%>
+		</div>
+
+		<div class="field">
+			<%= i.label :bitter %>
+			<%= i.number_field :i_bitter, max: 5%>
+		</div>
+
+		<div class="field">
+			<%= i.label :comment %>
+			<%= i.text_area :i_comment %>
+		</div>
+
+	<% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

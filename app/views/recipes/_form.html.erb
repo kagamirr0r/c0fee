@@ -1,4 +1,10 @@
 <%= form_with(model: recipe, local: true) do |form| %>
+
+		<div class="field">
+			<%= form.label :image%>
+			<%= form.file_field :r_image%>
+		</div>
+
 		<div class="field">
 			<%= form.label :bean_id %>
 			<%= bean.country %>
