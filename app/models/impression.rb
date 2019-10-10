@@ -1,3 +1,3 @@
 class Impression < ApplicationRecord
-	belongs_to :bean
+  belongs_to :bean
 end

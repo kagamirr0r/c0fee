@@ -8,9 +8,8 @@ class BeansController < ApplicationController
   end
 
 	def new
-		@shop = Shop.new
-		@shop.beans.build
-		@bean = current_user.beans.build
+		@shop = Shop.find_by(id: params[:id])
+		@bean = @shop.beans.build
 		@bean.build_impression
   end
 
@@ -32,6 +31,8 @@ class BeansController < ApplicationController
 	end
 
 	def bean_params
-		params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast)
+		params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast,:bean_url,
+		impression_attributes:[:id,:bean_id,:i_sour,:i_sweet,:i_bitter,:i_comment,:i_image]
+		)
 	end
 end

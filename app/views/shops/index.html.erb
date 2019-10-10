@@ -1,2 +1,23 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<%= flash[:choice] %>
+<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Url</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% Array(@shops).each do |shop| %>
+				<tr>
+					<td><%= shop.name %></td>
+					<td><%= shop.address %></td>
+					<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
+					<td><%= link_to "ADD Bean", new_bean_path(id: shop.id) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= link_to "Create Shop", new_shop_path %>
+</div>

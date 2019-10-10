@@ -1,0 +1,27 @@
+<%= form_with(model: shop, local: true) do |s| %>
+
+	<div class="field">
+		<%= s.label :name	 %>
+		<%= s.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= s.label :address %>
+		<%= s.text_field :address %>
+	</div>
+
+	<div class="field">
+		<%= s.label :url %>
+		<%= s.text_field :url %>
+	</div>
+
+	<div class="field">
+		<%= s.label :shop_image %>
+		<%= s.file_field :shop_image %>
+	</div>
+
+  <div class="actions">
+    <%= s.submit %>
+  </div>
+
+<% end %>
