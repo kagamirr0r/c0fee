@@ -21,9 +21,9 @@ class User < ApplicationRecord
     else
       super
     end
-  end
+	end
 
-  has_many :beans, dependent: :destroy
+	has_many :beans, dependent: :destroy
   has_many :bean_likes, dependent: :destroy
   has_many :recipe_likes, dependent: :destroy
 

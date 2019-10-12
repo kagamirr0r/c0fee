@@ -1,4 +1,6 @@
 class Shop < ApplicationRecord
+	include StringNormalize
+
 	validates :url, presence: true, uniqueness: true
 
 	has_many :beans, dependent: :destroy

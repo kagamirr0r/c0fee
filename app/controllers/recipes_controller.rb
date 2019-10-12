@@ -13,7 +13,8 @@ class RecipesController < ApplicationController
     @recipe.build_taste
   end
 
-  def edit; end
+	def edit
+	end
 
   def create
     @bean = Bean.find_by(id: params[:recipe][:bean_id])

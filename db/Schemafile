@@ -31,7 +31,7 @@ create_table "users", force: :cascade do |t|
 end
 
 create_table "beans", force: :cascade do |t|
-  t.integer "user_id"
+	t.integer "user_id"
   t.integer "shop_id"
 	t.string "country", null: false
   t.string "area"
@@ -90,7 +90,7 @@ create_table "recipe_likes", force: :cascade do |t|
   t.integer "recipe_id"
 end
 
-add_index "beans", ["user_id"], name:"user_ind_on_beans", using: :btree
+add_index "beans", ["user_id"], name: "user_ind_on_beans", using: :btree
 add_foreign_key "beans", "users", name: "fk_beans_belong_to_user"
 
 add_index "beans", ["shop_id"], name: "shop_ind_on_beans", using: :btree

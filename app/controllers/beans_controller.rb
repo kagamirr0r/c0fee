@@ -17,7 +17,8 @@ class BeansController < ApplicationController
   end
 
 	def create
-		@bean = current_user.beans.build(bean_params)
+		@shop = Shop.find_by(id: params[:bean][:shop_id])
+		@bean = @shop.beans.build(bean_params)
 		@bean.save!
 		redirect_to beans_path, notice: '新規作成しました'
 	rescue

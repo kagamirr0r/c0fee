@@ -19,16 +19,16 @@ end
   ['KALDI', '東京都豊島区西池袋1-11-1ルミネ池袋 7F', 'https://www.kaldi.co.jp/'],
   ['COFFEE VALLEY', '東京都豊島区南池袋2-26-3', 'https://coffeevalley.jp/'],
   ['雨の日の珈琲', '千葉県柏市あけぼの４丁目４−２', 'https://www.amenohi-coffee.jp/']
-].each do |name, adress, url|
+].each do |name, address, url|
   Shop.create!(
-    name: name, adress: adress, url: url
+    name: name, address: address, url: url
   )
 end
 
 [
-  [1, 1, 'Tanazania', 'kilimanjaro', 'Arabica', '', '', 'city', 800],
-  [2, 2, 'Ethiopia', 'Yirgacheffe', '', '', 'natural', 'high', 850],
-  [3, 3, 'Brazil', 'Minas Gerais', 'bourbon', 'tomio fukuda', 'washed', 'fullcity', 800]
+  [1,1,'Tanazania', 'Kilimanjaro', 'arabica', '', '', 'city', 800],
+  [2,2,'Ethiopia', 'Yirgacheffe', '', '', 'natural', 'high', 850],
+  [3,3,'Brazil', 'Minasgerais', 'bourbon', 'tomiofukuda', 'washed', 'fullcity', 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,

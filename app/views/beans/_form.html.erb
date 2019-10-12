@@ -1,7 +1,15 @@
 <%= form_with(model: bean ,local: true) do |b| %>
+
 	<div class="field">
-		<%= b.label :user_id %>
-		<%= current_user.username%>
+		<%= b.label :user %>
+		<%= b.hidden_field :user_id, value: current_user.id %>
+		<%= current_user.username %>
+	</div>
+
+	<div class="field">
+		<%= b.label :shop %>
+		<%= b.hidden_field :shop_id, value: shop.id %>
+		<%= shop.name %>
 	</div>
 
 	<div class="field">
@@ -32,14 +40,14 @@
 	<div class="field">
 		<%= b.label :process %>
 		<%= b.select :process,[["Washed", "washed"],["Natural", "natural"],
-			["Semi-Washed", "semi_washed"],["White-Washed","white-washed"],["Golden-Washed","golden-washed"],
-			["Yellow-Washed","yellow-washed"],["Red-Washed","red-washed"],["Black-Washed","black-washed"],
+			["Semi-Washed", "semiwashed"],["White-Washed","whitewashed"],["Golden-Washed","goldenwashed"],
+			["Yellow-Washed","yellowwashed"],["Red-Washed","redwashed"],["Black-Washed","blackwashed"],
 			["Sumatran","sumatran"]]%>
 	</div>
 
 	<div class="field">
 		<%= b.label :price %>
-		<%= b.number_field :price %>/100g
+		<%= b.number_field :price, step: 10 %>/100g
 	</div>
 
 	<div class="field">
@@ -47,29 +55,29 @@
 		<%= b.text_field :bean_url %>
 	</div>
 
-	<%= b.fields_for :impression do |i| %>
+		<%= b.fields_for :impression do |i| %>
 
-		<div class="field">
-			<%= i.label :sour%>
-			<%= i.number_field :i_sour,min: 1, max: 5 %>
-		</div>
+			<div class="field">
+				<%= i.label :sour%>
+				<%= i.number_field :i_sour,min: 1, max: 5 %>
+			</div>
 
-		<div class="field">
-			<%= i.label :sweet %>
-			<%= i.number_field :i_sweet,min: 1, max: 5%>
-		</div>
+			<div class="field">
+				<%= i.label :sweet %>
+				<%= i.number_field :i_sweet,min: 1, max: 5%>
+			</div>
 
-		<div class="field">
-			<%= i.label :bitter %>
-			<%= i.number_field :i_bitter,min: 1, max: 5%>
-		</div>
+			<div class="field">
+				<%= i.label :bitter %>
+				<%= i.number_field :i_bitter,min: 1, max: 5%>
+			</div>
 
-		<div class="field">
-			<%= i.label :comment %>
-			<%= i.text_area :i_comment %>
-		</div>
+			<div class="field">
+				<%= i.label :comment %>
+				<%= i.text_area :i_comment %>
+			</div>
 
-	<% end %>
+		<% end %>
 
   <div class="actions">
     <%= b.submit %>
