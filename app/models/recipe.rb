@@ -5,5 +5,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_likes, dependent: :destroy
 
   has_one :taste, dependent: :destroy
-  accepts_nested_attributes_for :taste
+	accepts_nested_attributes_for :taste
+
+	mount_uploader :r_image, ImageUploader
 end

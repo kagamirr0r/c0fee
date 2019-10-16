@@ -1,51 +1,53 @@
-<%= form_with(model: recipe, local: true) do |form| %>
+<%= form_with(model: recipe, local: true) do |r| %>
 
 		<div class="field">
-			<%= form.label :image%>
-			<%= form.file_field :r_image%>
-		</div>
-
-		<div class="field">
-			<%= form.label :user %>
+			<%= r.label :user %>
 			<%= current_user.username %>
-			<%= form.hidden_field :user_id, value: current_user.id %>
+			<%= r.hidden_field :user_id, value: current_user.id %>
 		</div>
 
 		<div class="field">
-			<%= form.label :bean_id %>
+			<%= r.label :bean_id %>
 			<%= bean.country %>
-			<%= form.hidden_field :bean_id, value: bean.id %>
+			<%= r.hidden_field :bean_id, value: bean.id %>
 		</div>
 
 		<div class="field">
-			<%= form.label :name %>
-			<%= form.text_field :name%>
+			<%= r.label :recipe_image %><br />
+			<%= r.file_field :r_image %>
+			<input id="recipe_filename" readonly type="text" value="" >
+			<button type="button" id="recipe_select_file_button">Select</button>
+  	</div>
+
+		<div class="field">
+			<%= r.label :name %>
+			<%= r.text_field :name%>
 		</div>
 
 		<div class="field">
-			<%= form.label :grind %>
-			<%= form.select :grind, [["Coarse", "Coarse"],["Medium-Coarse", "Medium-Coarse"],
+			<%= r.label :grind %>
+			<%= r.select :grind, [["Coarse", "Coarse"],["Medium-Coarse", "Medium-Coarse"],
 			["Medium", "Medium"],["Medium-Fine", "Medium-Fine"],["Fine", "Fine"]], value: ''%>
 		</div>
 
 		<div class="field">
-			<%= form.label :amount %>
-			<%= form.number_field :amount, value: 10%> <span>g</span>
+			<%= r.label :amount %>
+			<%= r.number_field :amount, value: 10%> <span>g</span>
 		</div>
 
 		<div class="field">
-			<%= form.label :extraction %>
-			<%= form.select :extraction, [["Paper-Filter", "paperfilter"],["Metal-Filter", "metalfilter"],
+			<%= r.label :extraction %>
+			<%= r.select :extraction, [["Paper-Filter", "paperfilter"],["Metal-Filter", "metalfilter"],
 			["Flannel", "flannel"],["French-Press", "frenchpress"],["Espresso", "espresso"],
 			["Aero-Press", "aeropress"],["Water-Drip","waterdrip"],["Cofee-Maker", "cofeemaker"]] %>
 		</div>
 
 		<div class="field">
-			<%= form.label :temperature %> <span>(°C)</span>
-			<%= form.number_field :temperature, value: 90, step: 5%>
+			<%= r.label :temperature %> <span>(°C)</span>
+			<%= r.number_field :temperature, value: 90, step: 5%>
 		</div>
 
-	<%= form.fields_for :taste do |t| %>
+	<%= r.fields_for :taste do |t| %>
 
 		<div class="field">
 			<%= t.label :sour%>
@@ -80,7 +82,7 @@
 	<% end %>
 
 		<div class="actions">
-			<%= form.submit %>
+			<%= r.submit %>
 		</div>
 
 <% end %>

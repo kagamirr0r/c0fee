@@ -3,6 +3,7 @@ class BeansController < ApplicationController
 
 	def index
 		@beans = Bean.all
+		flash[:choose_bean] = "Which Bean did you use?"
   end
 
 	def show

@@ -14,8 +14,8 @@ ENV APP_HOME /app
  
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-ADD Gemfile $APP_HOME/Gemfile
-ADD Gemfile.lock $APP_HOME/Gemfile.lock
+COPY Gemfile $APP_HOME/Gemfile
+COPY Gemfile.lock $APP_HOME/Gemfile.lock
 RUN bundle install
 RUN yarn install
-ADD . $APP_HOME
+COPY . $APP_HOME

@@ -31,3 +31,11 @@ $(document).on('click', '#bean_select_file_button', function() {
 $(document).on('change', '#bean_bean_image', function() {
   $('#bean_filename').val($(this).val().replace(/^.*\\/, ""));
  })
+
+$(document).on('click', '#recipe_select_file_button', function() {
+$("#recipe_r_image").click();
+})
+
+$(document).on('change', '#recipe_r_image', function() {
+$('#recipe_filename').val($(this).val().replace(/^.*\\/, ""));
+})

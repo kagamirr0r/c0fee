@@ -18,7 +18,7 @@ class ShopsController < ApplicationController
 	def create
 		@shop = Shop.new(shop_params)
 		@shop.save!
-		redirect_to shops_path, notice: '新規作成しました'
+		redirect_to shops_path, notice: 'Created Shop!'
 	rescue
 		render :new
 	end

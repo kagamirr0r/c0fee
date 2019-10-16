@@ -48,6 +48,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>Bean</th>
 				<th>Name</th>
 				<th>Grind</th>
@@ -64,6 +65,7 @@
 		<tbody>
 			<% Array(@recipes).each do |recipe| %>
 				<tr>
+					<td><%= image_tag recipe.r_image.to_s,:id => 'recipe_image'  if recipe.r_image? %></td>
 					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 					<td><%= recipe.name %></td>
 					<td><%= recipe.grind %></td>

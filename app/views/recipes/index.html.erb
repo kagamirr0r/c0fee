@@ -4,6 +4,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>User</th>
 				<th>Bean</th>
 				<th>Name</th>
@@ -20,25 +21,24 @@
 
 		<tbody>
 			<% Array(@recipes).each do |recipe| %>
-				<% Array(recipe.taste).each do |taste| %>
 					<tr>
+						<td><%= image_tag recipe.r_image.to_s, :id => "recipe_image" if recipe.r_image? %></td>
 						<td><%= recipe.bean.user.username %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.name %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.extraction %></td>
-						<td><%= taste.t_sour%></td>
-						<td><%= taste.t_sweet%></td>
-						<td><%= taste.t_bitter%></td>
-						<td><%= taste.t_aroma%></td>
-						<td><%= taste.t_fullbody%></td>
+						<td><%= recipe.taste.t_sour%></td>
+						<td><%= recipe.taste.t_sweet%></td>
+						<td><%= recipe.taste.t_bitter%></td>
+						<td><%= recipe.taste.t_aroma%></td>
+						<td><%= recipe.taste.t_fullbody%></td>
 						<td><%= link_to 'Detail', recipe%></td>
 						<% if current_user == recipe.bean.user %>
 							<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
 							<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						<% end %>
 					</tr>
-				<% end %>
 			<% end %>
 		</tbody>
 	</table>
