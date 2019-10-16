@@ -3,6 +3,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>Country</th>
 				<th>Area</th>
 				<th>Variety</th>
@@ -20,6 +21,7 @@
 		<tbody>
 			<% @beans.each do |bean| %>
 				<tr>
+					<td id="bean_image_td"><%= image_tag bean.bean_image.to_s, :id => 'bean_image' if bean.bean_image?%></td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>

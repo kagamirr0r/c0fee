@@ -16,9 +16,9 @@
 end
 
 [
-  ['KALDI', '東京都豊島区西池袋1-11-1ルミネ池袋 7F', 'https://www.kaldi.co.jp/'],
-  ['COFFEE VALLEY', '東京都豊島区南池袋2-26-3', 'https://coffeevalley.jp/'],
-  ['雨の日の珈琲', '千葉県柏市あけぼの４丁目４−２', 'https://www.amenohi-coffee.jp/']
+  ['KALDI', 'Tokyo Itabashi-ku Narimasu 2-17-15 HatsuneBldg.1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&adr=13104&bpref=13119&bid=185&pgret=2'],
+  ['COFFEE VALLEY', 'Tokyo Toshima-ku 2-26-3', 'https://coffeevalley.jp/'],
+  ['Amenohino-Coffee', 'Chiba Kashiwa-City Akebono 4-4-2', 'https://www.amenohi-coffee.jp/']
 ].each do |name, address, url|
   Shop.create!(
     name: name, address: address, url: url
@@ -26,7 +26,7 @@ end
 end
 
 [
-  [1,1,'Tanazania', 'Kilimanjaro', 'arabica', '', '', 'city', 800],
+  [1,1,'Tanazania', 'Kilimanjaro', 'arabica', '', '', 'city', 340],
   [2,2,'Ethiopia', 'Yirgacheffe', '', '', 'natural', 'high', 850],
   [3,3,'Brazil', 'Minasgerais', 'bourbon', 'tomiofukuda', 'washed', 'fullcity', 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
@@ -38,9 +38,9 @@ end
 end
 
 [
-  [1, 3, 3, 5, '美味しい'],
-  [2, 5, 3, 3, '酸っぱくて美味しい'],
-  [3, 3, 5, 3, 'この店はなんでもうまい']
+  [1, 3, 3, 5, 'Delicious!'],
+  [2, 5, 3, 3, 'Sour and Delicious!'],
+  [3, 3, 5, 3, 'All beans sold in this shop are great!!']
 ].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
   Impression.create!(
     bean_id: bean_id, i_sour: i_sour, i_sweet: i_sweet, i_bitter: i_bitter, i_comment: i_comment
@@ -48,12 +48,12 @@ end
 end
 
 [
-  [1, 'Brasil Hot Coffee', 'Coarse', 90, 15, 'nel'],
-  [2, 'Ethiopia Hot Coffee', 'Medium', 95, 10, 'paper'],
-  [3, 'Guatemala Iced Coffee', 'Fine', 85, 20, 'franchpress']
-].each do |bean_id, name, grind, temperature, amount, extraction|
+  [1,1, 'Brasil Hot Coffee', 'Coarse', 90, 15, 'nel'],
+  [2,2, 'Ethiopia Hot Coffee', 'Medium', 95, 10, 'paper'],
+  [3,3, 'Guatemala Iced Coffee', 'Fine', 85, 20, 'franchpress']
+].each do |user_id, bean_id, name, grind, temperature, amount, extraction|
   Recipe.create!(
-    bean_id: bean_id, name: name, grind: grind, temperature: temperature,
+    user_id: user_id, bean_id: bean_id, name: name, grind: grind, temperature: temperature,
     amount: amount, extraction: extraction
   )
 end

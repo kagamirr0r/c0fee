@@ -2,7 +2,7 @@
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Adress</th>
+				<th>Address</th>
 				<th>Url</th>
 			</tr>
 		</thead>
@@ -11,7 +11,7 @@
 			<% Array(@shop).each do |shop| %>
 				<tr>
 					<td><%= shop.name %></td>
-					<td><%= shop.adress %></td>
+					<td><%= shop.address %></td>
 					<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
 					<% if current_user == @bean.user %>
 						<td><%= link_to 'Edit', edit_shop_path(shop) %></td>

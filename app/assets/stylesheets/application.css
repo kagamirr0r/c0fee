@@ -16,17 +16,32 @@
  .logo{
 	 text-decoration: none ;
 	 font-family: 'Osaka-Mono';
-	 font-size: 35px;
+	 font-size: 45px;
  }
 
- #user_avatar{
+#no_avatar_image,#avatar_image{
+	display: inline-block;
+  position: relative;
+  top: 5px;
+ }
+
+#user_plofile{
+	margin-left: 5px;
+}
+
+#bean_image{
+	display: inline-block;
+	width: 100px;
+}
+
+#bean_image_td{
+	width: 10px;
+}
+
+ #user_avatar, #bean_bean_image{
 	 display: none;
  }
 
-.beans{
+.beans,.recipes{
 	 display: inline-block;
  }
-
-.recipes{
-	display: inline-block;
-}

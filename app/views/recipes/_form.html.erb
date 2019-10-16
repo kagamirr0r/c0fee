@@ -6,6 +6,12 @@
 		</div>
 
 		<div class="field">
+			<%= form.label :user %>
+			<%= current_user.username %>
+			<%= form.hidden_field :user_id, value: current_user.id %>
+		</div>
+
+		<div class="field">
 			<%= form.label :bean_id %>
 			<%= bean.country %>
 			<%= form.hidden_field :bean_id, value: bean.id %>
@@ -19,7 +25,7 @@
 		<div class="field">
 			<%= form.label :grind %>
 			<%= form.select :grind, [["Coarse", "Coarse"],["Medium-Coarse", "Medium-Coarse"],
-			["Medium", "Medium"],["Medium-Fine", "Medium-Fine"],["Fine", "Fine"]]%>
+			["Medium", "Medium"],["Medium-Fine", "Medium-Fine"],["Fine", "Fine"]], value: ''%>
 		</div>
 
 		<div class="field">

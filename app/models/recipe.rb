@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
 	include StringNormalize
-
+	belongs_to :user
   belongs_to :bean
   has_many :recipe_likes, dependent: :destroy
 

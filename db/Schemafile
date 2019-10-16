@@ -61,6 +61,7 @@ create_table "impressions", force: :cascade do |t|
 end
 
 create_table "recipes", force: :cascade do |t|
+	t.integer "user_id"
   t.integer "bean_id"
 	t.string "name", null: false
   t.string "grind"
@@ -98,6 +99,9 @@ add_foreign_key "beans", "shops", name: "fk_beans_belong_to_shop"
 
 add_index "impressions", ["bean_id"], name: "bean_ind_on_impressions", using: :btree
 add_foreign_key "impressions","beans", name: "fk_impression_belongs_to_bean"
+
+add_index "recipes",["user_id"], name: "user_ind_on_recipes", using: :btree
+add_foreign_key "recipes","users", name: "fk_recipes_belong_to_user"
 
 add_index "recipes",["bean_id"], name: "bean_ind_on_recipess", using: :btree
 add_foreign_key "recipes","beans", name: "fk_recipes_belong_to_bean"

@@ -4,6 +4,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>image</th>
 				<th>User</th>
 				<th>Country</th>
 				<th>Area</th>
@@ -17,9 +18,10 @@
 		</thead>
 
 		<tbody>
-			<% @beans.each do |bean| %>
+			<% Array(@beans).each do |bean| %>
 				<tr>
-					<td><%= link_to bean.user.username, users_show_path(id: bean.user.id) %></td>
+					<td id="bean_image_td"><%= image_tag bean.bean_image.to_s, :id => 'bean_image' if bean.bean_image? %></td>
+					<td><%= bean.user.username%></td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>
@@ -61,24 +63,22 @@
 
 		<tbody>
 			<% Array(@recipes).each do |recipe| %>
-				<% Array(recipe.taste).each do |taste|%>
 				<tr>
 					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 					<td><%= recipe.name %></td>
 					<td><%= recipe.grind %></td>
 					<td><%= recipe.extraction %></td>
-					<td><%= taste.t_sour%></td>
-					<td><%= taste.t_sweet%></td>
-					<td><%= taste.t_bitter%></td>
-					<td><%= taste.t_aroma%></td>
-					<td><%= taste.t_fullbody%></td>
+					<td><%= recipe.taste.t_sour%></td>
+					<td><%= recipe.taste.t_sweet%></td>
+					<td><%= recipe.taste.t_bitter%></td>
+					<td><%= recipe.taste.t_aroma%></td>
+					<td><%= recipe.taste.t_fullbody%></td>
 					<td><%= link_to 'Detail', recipe%></td>
-					<% if current_user == recipe.bean.user %>
-					<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-					<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					<% end %>
+						<% if current_user == recipe.bean.user %>
+							<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+							<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<% end %>
 				</tr>
-			 <% end %>
 			<% end %>
 		</tbody>
 	</table>

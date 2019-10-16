@@ -13,6 +13,13 @@
 	</div>
 
 	<div class="field">
+    <%= b.label :bean_image %><br />
+    <%= b.file_field :bean_image %>
+		<input id="bean_filename" readonly type="text" value="" >
+		<button type="button" id="bean_select_file_button">Select</button>
+  </div>
+
+	<div class="field">
 		<%= b.label :bean_image %>
 		<%= b.file_field :bean_image %>
 	</div>
@@ -39,10 +46,16 @@
 
 	<div class="field">
 		<%= b.label :process %>
-		<%= b.select :process,[["Washed", "washed"],["Natural", "natural"],
-			["Semi-Washed", "semiwashed"],["White-Washed","whitewashed"],["Golden-Washed","goldenwashed"],
-			["Yellow-Washed","yellowwashed"],["Red-Washed","redwashed"],["Black-Washed","blackwashed"],
-			["Sumatran","sumatran"]]%>
+		<%= b.select :process,[["Washed", "Washed"],["Natural", "Natural"],
+			["Semi-Washed", "Semi-Washed"],["White-Washed","White-Washed"],["Golden-Washed","Golden-Washed"],
+			["Yellow-Washed","Yellow-Washed"],["Red-Washed","Red-Washed"],["Black-Washed","Black-Washed"],
+			["Sumatran","Sumatran"]]%>
+	</div>
+
+	<div class="field">
+		<%= b.label :roast %>
+		<%= b.select :roast,[["Light","Light"],["Cinnamon","Cinnamon"],["Mediam","Mediam"],
+			["High","High"],["City","City"],["Fullcity","Fullcity"],["French","French"],["Italian","Italian"]] %>
 	</div>
 
 	<div class="field">

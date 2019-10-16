@@ -1,14 +1,9 @@
-<h2>My Page</h2>
-
-<%= link_to "ADD BEAN", shops_path %>
-<%= link_to "ADD RECIPE", beans_path %>
-
-
 <h1>My Beans</h1>
 
 	<table>
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>Country</th>
 				<th>Area</th>
 				<th>Variety</th>
@@ -26,6 +21,7 @@
 		<tbody>
 			<% @beans.each do |bean| %>
 				<tr>
+					<td id="bean_image_td"><%= image_tag bean.bean_image.to_s, :id => 'bean_image' if bean.bean_image?%></td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>
@@ -37,11 +33,10 @@
 					<td><%= bean.impression.i_bitter%></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= bean.price %>$/100g</td>
-					<td><%= link_to 'Detail', bean%></td>
-					<% if current_user == bean.user %>
-						<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
-						<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					<% end %>
+						<% if current_user == bean.user %>
+							<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+							<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<% end %>
 				</tr>
 			<% end %>
 		</tbody>
@@ -82,7 +77,6 @@
 					<td><%= recipe.taste.t_bitter%></td>
 					<td><%= recipe.taste.t_aroma%></td>
 					<td><%= recipe.taste.t_fullbody%></td>
-					<td><%= link_to 'Detail', recipe%></td>
 					<% if current_user == recipe.bean.user %>
 					<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
 					<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

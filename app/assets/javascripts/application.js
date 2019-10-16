@@ -16,10 +16,18 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
-$(document).on('click', '#select_file_button', function() {
+$(document).on('click', '#avatar_select_file_button', function() {
   $("#user_avatar").click();
  })
 
- $(document).on('change', '#user_avatar', function() {
-  $('#filename').val($(this).val().replace(/^.*\\/, ""));
+$(document).on('change', '#user_avatar', function() {
+	$('#avatar_filename').val($(this).val().replace(/^.*\\/, ""));
+})
+
+$(document).on('click', '#bean_select_file_button', function() {
+  $("#bean_bean_image").click();
+ })
+
+$(document).on('change', '#bean_bean_image', function() {
+  $('#bean_filename').val($(this).val().replace(/^.*\\/, ""));
  })
