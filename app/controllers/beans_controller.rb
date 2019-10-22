@@ -35,7 +35,9 @@ class BeansController < ApplicationController
 		render action: 'edit'
   end
 
-  def destroy
+	def destroy
+		@bean.destroy
+		redirect_to beans_path, notice: 'Deleted Bean!'
 	end
 
 	private
@@ -46,7 +48,7 @@ class BeansController < ApplicationController
 
 	def bean_params
 		params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast,:bean_url,:bean_image,
-		impression_attributes:[:id,:bean_id,:i_sour,:i_sweet,:i_bitter,:i_comment,:i_image]
+		impression_attributes:[:id,:bean_id,:i_sour,:i_sweet,:i_bitter,:i_comment]
 		)
 	end
 end

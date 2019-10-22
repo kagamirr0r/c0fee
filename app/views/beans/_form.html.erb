@@ -1,13 +1,10 @@
 <%= form_with(model: bean ,local: true) do |b| %>
 
 	<div class="field">
-		<%= b.label :user %>
 		<%= b.hidden_field :user_id, value: current_user.id %>
-		<%= current_user.username %>
 	</div>
 
 	<div class="field">
-		<%= b.label :shop %>
 		<%= b.hidden_field :shop_id, value: shop.id %>
 		<%= shop.name %>
 	</div>
@@ -18,11 +15,6 @@
 		<input id="bean_filename" readonly type="text" value="" >
 		<button type="button" id="bean_select_file_button">Select</button>
   </div>
-
-	<div class="field">
-		<%= b.label :bean_image %>
-		<%= b.file_field :bean_image %>
-	</div>
 
 	<div class="field">
 		<%= b.label :country %>

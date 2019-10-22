@@ -33,9 +33,23 @@ $(document).on('change', '#bean_bean_image', function() {
  })
 
 $(document).on('click', '#recipe_select_file_button', function() {
-$("#recipe_r_image").click();
+$("#recipe_recipe_image").click();
 })
 
-$(document).on('change', '#recipe_r_image', function() {
+$(document).on('change', '#recipe_recipe_image', function() {
 $('#recipe_filename').val($(this).val().replace(/^.*\\/, ""));
 })
+
+$(document).on('click', '#shop_select_file_button', function() {
+	$("#shop_shop_image").click();
+	})
+
+$(document).on('change', '#shop_shop_image', function() {
+$('#shop_filename').val($(this).val().replace(/^.*\\/, ""));
+})
+
+var luminousTrigger = document.querySelector('.luminous');
+if( luminousTrigger !== null ) {
+  new Luminous(luminousTrigger);
+}
+

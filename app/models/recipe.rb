@@ -7,5 +7,5 @@ class Recipe < ApplicationRecord
   has_one :taste, dependent: :destroy
 	accepts_nested_attributes_for :taste
 
-	mount_uploader :r_image, ImageUploader
+	mount_uploader :recipe_image, ImageUploader
 end

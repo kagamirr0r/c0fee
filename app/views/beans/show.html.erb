@@ -1,6 +1,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Image</th>
 				<th>Country</th>
 				<th>Area</th>
 				<th>Variety</th>
@@ -12,12 +13,20 @@
 				<th>Bitter</th>
 				<th>Shop</th>
 				<th>Price</th>
+				<th>Comment</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<% Array(@bean).each do |bean| %>
 				<tr>
+					<td id="bean_image_td">
+						<% if bean.bean_image? %>
+							<%= image_tag bean.bean_image.to_s, :id => 'bean_image' %>
+						<% else%>
+							<%= image_tag 'C0FEE.png', :id => 'no_bean_image' %>
+						<% end %>
+					</td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>
@@ -29,6 +38,7 @@
 					<td><%= bean.impression.i_bitter%></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= bean.price %>$/100g</td>
+					<td><%= bean.impression.i_comment%></td>
 					<td><%= link_to "Create Recipe", new_recipe_path(id: bean.id)%></td>
 					<% if current_user == bean.user %>
 						<td><%= link_to 'Edit', edit_bean_path(bean) %></td>

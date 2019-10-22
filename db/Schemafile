@@ -57,7 +57,6 @@ create_table "impressions", force: :cascade do |t|
   t.integer "i_sweet"
   t.integer "i_bitter"
   t.text "i_comment"
-  t.string "i_image"
 end
 
 create_table "recipes", force: :cascade do |t|
@@ -68,7 +67,7 @@ create_table "recipes", force: :cascade do |t|
   t.string "temperature"
   t.integer "amount"
   t.string "extraction"
-  t.string "r_image"
+  t.string "recipe_image"
 end
 
 create_table "tastes", force: :cascade do |t|

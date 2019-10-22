@@ -33,7 +33,10 @@ class RecipesController < ApplicationController
     render action: 'edit'
   end
 
-  def destroy; end
+	def destroy
+		@recipe.destroy
+		redirect_to recipes_path, notice: 'Deleted Recipe!'
+	end
 
 	private
 
@@ -42,7 +45,7 @@ class RecipesController < ApplicationController
 	end
 
   def recipe_params
-    params.require(:recipe).permit(:user_id,:bean_id, :name, :grind, :temperature, :amount, :extraction, :r_image,
+    params.require(:recipe).permit(:user_id,:bean_id, :name, :grind, :temperature, :amount, :extraction, :recipe_image,
 		taste_attributes: [:id, :recipe_id, :t_sour, :t_sweet, :t_bitter, :t_aroma, :t_fullbody, :t_comment])
   end
 end

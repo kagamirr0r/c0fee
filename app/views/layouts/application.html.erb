@@ -4,7 +4,6 @@
     <title>C0FEE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,7 +14,7 @@
 				 <span><%= link_to "C0FEE",root_url ,class:"logo"%></span>
           <% if user_signed_in? %>
 							<% if current_user.avatar?%>
-								<%= link_to image_tag(current_user.avatar_url(:thumb).to_s,:size => '38x38',:id => 'avatar_image'), my_pages_show_path(current_user) %>
+								<%= link_to image_tag(current_user.avatar_url(:thumb).to_s,:size => '38x38',:id => 'avata'), my_pages_show_path(current_user) %>
 							<% else %>
 								<%= link_to image_tag('no_avatar.png', :size => '38x38', :id => 'no_avatar_image'), my_pages_show_path(current_user) %>
 							<% end %>
