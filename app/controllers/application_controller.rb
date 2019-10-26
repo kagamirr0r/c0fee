@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
       my_pages_show_path
   end
 
+  def bean_liked_counts(bean)
+    @count_bean_likes = bean.bean_liked_users.count
+  end
+
+  def recipe_liked_counts(recipe)
+    @count_recipe_likes = recipe.recipe_liked_users.count
+  end
+
   private
   def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?

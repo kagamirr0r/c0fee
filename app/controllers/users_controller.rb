@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @beans = Bean.where(user_id: @user.id)
-		@recipes = Recipe.where(user_id: @user.id)
-	end
+    @recipes = Recipe.where(user_id: @user.id)
+  end
 end

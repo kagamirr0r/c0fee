@@ -26,9 +26,9 @@ end
 end
 
 [
-  [1,1,'Tanazania', 'Kilimanjaro', 'arabica', '', '', 'city', 340],
-  [2,2,'Ethiopia', 'Yirgacheffe', '', '', 'natural', 'high', 850],
-  [3,3,'Brazil', 'Minasgerais', 'bourbon', 'tomiofukuda', 'washed', 'fullcity', 800]
+  [1, 1, 'Tanazania', 'Kilimanjaro', 'arabica', '', '', 'city', 340],
+  [2, 2, 'Ethiopia', 'Yirgacheffe', '', '', 'natural', 'high', 850],
+  [3, 3, 'Brazil', 'Minasgerais', 'bourbon', 'tomiofukuda', 'washed', 'fullcity', 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,
@@ -48,9 +48,9 @@ end
 end
 
 [
-  [1,1, 'Brasil Hot Coffee', 'Coarse', 90, 15, 'nel'],
-  [2,2, 'Ethiopia Hot Coffee', 'Medium', 95, 10, 'paper'],
-  [3,3, 'Guatemala Iced Coffee', 'Fine', 85, 20, 'franchpress']
+  [1, 1, 'Brazil Hot Coffee', 'Coarse', 90, 15, 'nel'],
+  [2, 2, 'Ethiopia Hot Coffee', 'Medium', 95, 10, 'paper'],
+  [3, 3, 'Guatemala Iced Coffee', 'Fine', 85, 20, 'franchpress']
 ].each do |user_id, bean_id, name, grind, temperature, amount, extraction|
   Recipe.create!(
     user_id: user_id, bean_id: bean_id, name: name, grind: grind, temperature: temperature,

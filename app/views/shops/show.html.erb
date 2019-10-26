@@ -1,29 +1,4 @@
-<table>
-		<thead>
-			<tr>
-				<th>Image</th>
-				<th>Name</th>
-				<th>Address</th>
-				<th>Url</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<% Array(@shop).each do |shop| %>
-				<tr>
-					<td id="shop_image_td">
-						<% if shop.shop_image? %>
-							<%= image_tag shop.shop_image.to_s,:id => 'shop_image' %>
-						<% else%>
-							<%= image_tag'C0FEE.png', :id => 'no_shop_image' %>
-						<% end %>
-					</td>
-					<td><%= shop.name %></td>
-					<td><%= shop.address %></td>
-					<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
-					<td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
+<h1><%= @shop.name %></h1>
+<%= render 'shops', shops: @shop%>
+<h2>Beans</h2>
+<%= render 'beans/bean', bean: @shop.beans%>

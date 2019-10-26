@@ -1,0 +1,29 @@
+<% if shops.present? %>
+			<table>
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>Url</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr>
+								<% Array(shops).each do |shop| %>
+								<td>
+								<% if shop.shop_image? %>
+									<%=link_to image_tag(shop.shop_image.to_s, :id => 'shop_image'), shop_path(shop)%>
+								<% else%>
+									<%=link_to image_tag('C0FEE.png', :id => 'no_shop_image'), shop_path(shop)%>
+								<% end %>
+								</td>
+								<td><%= shop.name %></td>
+								<td><%= shop.address %></td>
+								<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
+								<td><%= link_to "ADD Bean", new_bean_path(id: shop.id) %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+	<% end %>

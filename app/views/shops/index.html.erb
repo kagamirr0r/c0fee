@@ -1,29 +1,6 @@
 <strong><%= flash[:choice] %></strong>
 <div class="shops">
 	<h1>ALL Recipes</h1>
-		<% if @recipes.present? %>
-			<table>
-					<thead>
-						<tr>
-							<th>Image</th>
-							<th>Name</th>
-							<th>Address</th>
-							<th>Url</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<% Array(@shops).each do |shop| %>
-							<tr>
-								<td><%= image_tag shop.shop_image.to_s %></td>
-								<td><%= shop.name %></td>
-								<td><%= shop.address %></td>
-								<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
-								<td><%= link_to "ADD Bean", new_bean_path(id: shop.id) %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			<%= link_to "Create Shop", new_shop_path %>
-		<% end %>
+	<%= render 'shops', shops: @shops%>
+	<%= link_to "Create Shop", new_shop_path %>
 </div>

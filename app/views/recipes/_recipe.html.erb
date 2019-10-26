@@ -1,0 +1,64 @@
+<% if recipe.present? %>
+		<table>
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Bean</th>
+					<th>Grind</th>
+					<th>Amount</th>
+					<th>Extraction</th>
+					<th>Temperature</th>
+					<th>Sour</th>
+					<th>Sweet</th>
+					<th>Bitter</th>
+					<th>Aroma</th>
+					<th>Fullbody</th>
+					<th>Comment</th>
+					<% Array(recipe).each do |recipe| %>
+						<% unless current_user == recipe.user%>
+							<th>User</th>
+						<% end %>
+					<% end %>
+					<th>Like</th>
+				</tr>
+			</thead>
+
+		<div class='bean_information'>
+			<tbody>
+				<% Array(recipe).each do |recipe| %>
+					<tr>
+						<td id="recipe_image_td">
+								<% if recipe.recipe_image? %>
+									<%= image_tag recipe.recipe_image.to_s, :id => 'recipe_image'%>
+								<% else%>
+									<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
+								<% end %>
+							</td>
+						<td><%= recipe.name %></td>
+						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+						<td><%= recipe.grind %></td>
+						<td><%= recipe.amount %></td>
+						<td><%= recipe.extraction %></td>
+						<td><%= recipe.temperature %></td>
+						<td><%= recipe.taste.t_sour%></td>
+						<td><%= recipe.taste.t_sweet%></td>
+						<td><%= recipe.taste.t_bitter%></td>
+						<td><%= recipe.taste.t_aroma%></td>
+						<td><%= recipe.taste.t_fullbody%></td>
+						<td><%= recipe.taste.t_comment%></td>
+						<% unless current_user == recipe.user %>
+							<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
+						<% end %>
+						<td><%= @count_recipe_likes %></td>
+						<td><%= render 'recipe_likes/like_recipe_button', recipe: recipe unless current_user == recipe.user %></td>
+						</tr>
+					</tbody>
+					</table>
+				<% if current_user == recipe.user%>
+			<td><span><%= link_to 'Edit', edit_recipe_path(recipe) %></span></td>
+			<td><span><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>

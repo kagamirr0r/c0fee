@@ -81,13 +81,13 @@ create_table "tastes", force: :cascade do |t|
 end
 
 create_table "bean_likes", force: :cascade do |t|
-  t.integer "user_id"
-  t.integer "bean_id"
+  t.integer "user_id", null: false
+  t.integer "bean_id", null: false
 end
 
 create_table "recipe_likes", force: :cascade do |t|
-  t.integer "user_id"
-  t.integer "recipe_id"
+  t.integer "user_id", null: false
+  t.integer "recipe_id", null: false
 end
 
 add_index "beans", ["user_id"], name: "user_ind_on_beans", using: :btree

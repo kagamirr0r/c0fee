@@ -1,0 +1,11 @@
+	<% if current_user.like_recipe?(recipe) %>
+		<%= form_for(current_user.recipe_likes.find_by(recipe_id: recipe.id), html: { method: :delete }) do |f|  %>
+			<%= hidden_field_tag :recipe_id, recipe.id%>
+			<%= f.submit 'Cancel Like' %>
+		<% end %>
+	<% else %>
+		<%= form_for(current_user.recipe_likes.build) do |f| %>
+			<%= hidden_field_tag :recipe_id, recipe.id%>
+			<%= f.submit 'Like Recipe'%>
+		<% end %>
+	<% end%>

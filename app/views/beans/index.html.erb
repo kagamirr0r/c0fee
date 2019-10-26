@@ -1,54 +1,5 @@
-<strong><%= flash[:choose_bean] %></strong>
+<div><strong><%= flash[:choose_bean] %></strong></div>
 <div class="beans">
 	<h1>All Beans</h1>
-	　<% if @beans.present? %>
-			<table>
-				<thead>
-					<tr>
-						<th>Image</th>
-						<th>Country</th>
-						<th>Area</th>
-						<th>Variety</th>
-						<th>Farm</th>
-						<th>Process</th>
-						<th>Roast</th>
-						<th>Sour</th>
-						<th>Sweet</th>
-						<th>Bitter</th>
-						<th>Shop</th>
-						<th>Price</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% @beans.each do |bean| %>
-						<tr>
-							<td id="bean_image_td">
-							<% if bean.bean_image? %>
-								<%=link_to image_tag(bean.bean_image.to_s, :id => 'bean_image'), bean_path(bean)%>
-							<% else%>
-								<%=link_to image_tag('C0FEE.png', :id => 'no_bean_image'), bean_path(bean)%>
-							<% end %>
-							</td>
-							<td><%= bean.country %></td>
-							<td><%= bean.area %></td>
-							<td><%= bean.variety %></td>
-							<td><%= bean.farm %></td>
-							<td><%= bean.process %></td>
-							<td><%= bean.roast %></td>
-							<td><%= bean.impression.i_sour%></td>
-							<td><%= bean.impression.i_sweet%></td>
-							<td><%= bean.impression.i_bitter%></td>
-							<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-							<td><%= bean.price %>$/100g</td>
-							<td><%= link_to "Create Recipe", new_recipe_path(id: bean.id)%></td>
-							<% if current_user == bean.user %>
-								<td><%= link_to 'Edit', edit_bean_path(bean) %></td>
-								<td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-							<% end %>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		<% end %>
+	　<%= render 'beans', beans: @beans %>
 </div>
