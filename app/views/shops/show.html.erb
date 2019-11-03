@@ -1,4 +1,4 @@
 <h1><%= @shop.name %></h1>
 <%= render 'shops', shops: @shop%>
-<h2>Beans</h2>
+<h2><%= t('.registered_bean')%></h2>
 <%= render 'beans/bean', bean: @shop.beans%>

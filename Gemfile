@@ -52,6 +52,13 @@ gem 'ridgepole'
 gem 'jquery-rails'
 
 gem 'cocoon'
+
+gem 'rails-i18n','~> 5.1'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

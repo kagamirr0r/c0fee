@@ -16,6 +16,7 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require materialize
 $(document).on('click', '#avatar_select_file_button', function() {
   $("#user_avatar").click();
  })

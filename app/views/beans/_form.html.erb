@@ -38,21 +38,21 @@
 
 	<div class="field">
 		<%= b.label :process %>
-		<%= b.select :process,[["Washed", "Washed"],["Natural", "Natural"],
-			["Semi-Washed", "Semi-Washed"],["White-Washed","White-Washed"],["Golden-Washed","Golden-Washed"],
-			["Yellow-Washed","Yellow-Washed"],["Red-Washed","Red-Washed"],["Black-Washed","Black-Washed"],
-			["Sumatran","Sumatran"]]%>
+		<%= b.select :process,[["ウォッシュド", "ウォッシュド"],["ナチュラル", "ナチュラル"],
+			["パルプドナチュラル", "パルプドナチュラル"],["ホワイトハニー","ホワイトハニー"],["ゴールデンハニー","ゴールデンハニー"],
+			["イエローハニー","イエローハニー"],["レッドハニー","レッドハニー"],["ブラックハニー","ブラックハニー"],
+			["スマトラ方式","スマトラ方式"]]%>
 	</div>
 
 	<div class="field">
 		<%= b.label :roast %>
-		<%= b.select :roast,[["Light","Light"],["Cinnamon","Cinnamon"],["Mediam","Mediam"],
-			["High","High"],["City","City"],["Fullcity","Fullcity"],["French","French"],["Italian","Italian"]] %>
+		<%= b.select :roast,[["ライト","ライト"],["シナモン","シナモン"],["ミディアム","ミディアム"],
+			["ハイ","ハイ"],["シティ","シティ"],["フルシティ","フルシティ"],["フレンチ","フレンチ"],["イタリアン","イタリアン"]]%>
 	</div>
 
 	<div class="field">
 		<%= b.label :price %>
-		<%= b.number_field :price, step: 10 %>/100g
+		<%= b.number_field :price, step: 10 %>円/100g
 	</div>
 
 	<div class="field">
@@ -63,22 +63,22 @@
 		<%= b.fields_for :impression do |i| %>
 
 			<div class="field">
-				<%= i.label :sour%>
+				<%= i.label :i_sour%>
 				<%= i.number_field :i_sour,min: 1, max: 5 %>
 			</div>
 
 			<div class="field">
-				<%= i.label :sweet %>
+				<%= i.label :i_sweet %>
 				<%= i.number_field :i_sweet,min: 1, max: 5%>
 			</div>
 
 			<div class="field">
-				<%= i.label :bitter %>
+				<%= i.label :i_bitter %>
 				<%= i.number_field :i_bitter,min: 1, max: 5%>
 			</div>
 
 			<div class="field">
-				<%= i.label :comment %>
+				<%= i.label :i_comment %>
 				<%= i.text_area :i_comment %>
 			</div>
 

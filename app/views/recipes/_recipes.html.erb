@@ -2,16 +2,16 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Image</th>
-					<th>Bean</th>
-					<th>Name</th>
-					<th>Grind</th>
-					<th>Extraction</th>
-					<th>Sour</th>
-					<th>Sweet</th>
-					<th>Bitter</th>
-					<th>Aroma</th>
-					<th>Fullbody</th>
+					<th>&nbsp;</th>
+					<th><%= Recipe.human_attribute_name(:name)%></th>
+					<th><%= Recipe.human_attribute_name(:bean)%></th>
+					<th><%= Recipe.human_attribute_name(:grind)%></th>
+					<th><%= Recipe.human_attribute_name(:extraction)%></th>
+					<th><%= Taste.human_attribute_name(:t_sour)%></th>
+					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
+					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
+					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
+					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
 				</tr>
 			</thead>
 
@@ -35,8 +35,8 @@
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
 							<% if current_user == recipe.user %>
-								<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-								<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 							<% end %>
 					</tr>
 				<% end %>

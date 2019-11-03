@@ -1,5 +1,5 @@
-<h1>Edit Recipe</h1>
+<h1><%= t('.title')%></h1>
 
 <%= render 'form', bean: @bean, recipe: @recipe%>
 
-<%= link_to 'Back', :back %>
+<%= link_to t('.back'), :back %>

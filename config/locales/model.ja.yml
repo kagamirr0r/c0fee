@@ -1,0 +1,52 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      bean: コーヒー豆
+      recipe: レシピ
+      shop: 店/ロースター
+    attributes:
+      user:
+        username: 名前
+        email: メールアドレス
+        avatar: ユーザーアバター
+      bean:
+        country: 生産国
+        area: 地域
+        variety: 品種
+        farm: 農園
+        process: 精製
+        roast: 焙煎
+        price: 価格
+        bean_url: URL
+        shop: 店/ロースター
+        bean_image: コーヒー豆画像
+      impression:
+        i_sour: 酸味
+        i_sweet: 甘味
+        i_bitter: 苦味
+        i_comment: コメント
+      recipe:
+        user_id: ユーザー
+        bean_id: コーヒー豆
+        bean: コーヒー豆
+        name: 名前
+        grind: グラインド
+        temperature: お湯の温度
+        amount: 豆の量
+        extraction: 抽出方法
+        recipe_image: レシピ画像
+      taste:
+        t_sour: 酸味
+        t_sweet: 甘味
+        t_bitter: 苦味
+        t_aroma: 香り
+        t_fullbody: コク
+        t_comment: 感想
+      shop:
+        name: 名前
+        address: 住所
+        url: URL
+        shop_image: 店/ロースターのイメージ
+
+

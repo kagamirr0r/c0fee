@@ -1,0 +1,21 @@
+ja:
+  shops:
+    shops:
+      register_bean: 豆を登録
+    new: &new
+      back: 戻る
+    edit:
+      title: 店/ロースターの編集
+      <<: *new
+    index:
+      title: 店/ロースター一覧
+      register_shop: 店/ロースターを登録
+    new:
+      title: 店/ロースターの登録
+    show:
+      registered_bean: この店に登録されているコーヒー豆
+    flash:
+      choose_shop: どの店/ロースターでコーヒー豆を買いましたか?
+      registered_shop: 店/ロースターを登録しました!
+      edited_shop: 店/ロースターを更新しました！
+      deleted_shop: 店/ロースターを削除しました！

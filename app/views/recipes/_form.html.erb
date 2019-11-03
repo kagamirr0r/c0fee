@@ -1,7 +1,7 @@
 <%= form_with(model: recipe, local: true) do |r| %>
 
 		<div class="field">
-			<%= r.label :user %>
+			<%= r.label :user_id %>
 			<%= current_user.username %>
 			<%= r.hidden_field :user_id, value: current_user.id %>
 		</div>
@@ -26,8 +26,8 @@
 
 		<div class="field">
 			<%= r.label :grind %>
-			<%= r.select :grind, [["Coarse", "Coarse"],["Medium-Coarse", "Medium-Coarse"],
-			["Medium", "Medium"],["Medium-Fine", "Medium-Fine"],["Fine", "Fine"]], value: ''%>
+			<%= r.select :grind, [["粗挽き", "粗挽き"],["中挽き", "中挽き"],
+			["中細挽き", "中細挽き"],["細挽き", "細挽き"],["極細挽き", "極細挽き"]]%>
 		</div>
 
 		<div class="field">
@@ -37,9 +37,9 @@
 
 		<div class="field">
 			<%= r.label :extraction %>
-			<%= r.select :extraction, [["Paper-Filter", "paperfilter"],["Metal-Filter", "metalfilter"],
-			["Flannel", "flannel"],["French-Press", "frenchpress"],["Espresso", "espresso"],
-			["Aero-Press", "aeropress"],["Water-Drip","waterdrip"],["Cofee-Maker", "cofeemaker"]] %>
+			<%= r.select :extraction, [["ペーパーフィルター", "ペーパーフィルター"],["金属フィルター", "金属フィルター"],
+			["ネル", "ネル"],["フレンチプレス", "フレンチプレス"],["エスプレッソ", "エスプレッソ"],
+			["ユーロプレス", "ユーロプレス"],["水出し","水出し"],["急冷","急冷"],["コーヒーメーカー", "コーヒーメーカー"]] %>
 		</div>
 
 		<div class="field">

@@ -1,6 +1,9 @@
-<strong><%= flash[:choice] %></strong>
 <div class="shops">
-	<h1>ALL Recipes</h1>
+	<%=flash[:choose_shop]%>
+
+	<h1><%= t('.title')%></h1>
+
 	<%= render 'shops', shops: @shops%>
-	<%= link_to "Create Shop", new_shop_path %>
+
+	<%= link_to t('.register_shop'), new_shop_path %>
 </div>

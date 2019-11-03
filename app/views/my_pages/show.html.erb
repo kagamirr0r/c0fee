@@ -1,19 +1,19 @@
 <div class="beans">
-	<h1>My Beans</h1>
+	<h1><%=t('.registered_beans')%></h1>
 	<%= render 'beans/bean', bean: @beans%>
 </div>
 
 <div class="recipes">
-	<h1>My Recipes</h1>
+	<h1><%=t('.created_recipes')%></h1>
 	<%= render 'recipes/recipe', recipe: @recipes%>
 </div>
 
 <div class="liked_beans">
-	<h1>Liked Beans</h1>
+	<h1><%=t('.liked_beans')%></h1>
 	<%= render 'beans/bean', bean: @liked_beans%>
 </div>
 
 <div class="liked_recipes">
-	<h1>Liked Recipes</h1>
+	<h1><%=t('.liked_recipes')%></h1>
 	<%= render 'recipes/recipe', recipe: @liked_recipes%>
 </div>

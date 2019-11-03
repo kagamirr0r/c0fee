@@ -2,22 +2,22 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Image</th>
-					<th>Country</th>
-					<th>Area</th>
-					<th>Variety</th>
-					<th>Farm</th>
-					<th>Process</th>
-					<th>Roast</th>
-					<th>Sour</th>
-					<th>Sweet</th>
-					<th>Bitter</th>
-					<th>Shop</th>
-					<th>Price</th>
-					<th>Comment</th>
+					<th>&nbsp;</th>
+					<th><%= Bean.human_attribute_name(:country)%></th>
+					<th><%= Bean.human_attribute_name(:area)%></th>
+					<th><%= Bean.human_attribute_name(:variety)%></th>
+					<th><%= Bean.human_attribute_name(:farm)%></th>
+					<th><%= Bean.human_attribute_name(:process)%></th>
+					<th><%= Bean.human_attribute_name(:roast)%></th>
+					<th><%= Impression.human_attribute_name(:i_sour)%></th>
+					<th><%= Impression.human_attribute_name(:i_sweet)%></th>
+					<th><%= Impression.human_attribute_name(:i_bitter) %></th>
+					<th><%= Bean.human_attribute_name(:shop)%></th>
+					<th><%= Bean.human_attribute_name(:price)%></th>
+					<th><%= Impression.human_attribute_name(:i_comment)%></th>
 					<% Array(bean).each do |bean| %>
 						<% unless current_user == bean.user %>
-							<th>User</th>
+							<th><%= User.model_name.human%></th>
 						<% end %>
 					<% end%>
 					<th>Like</th>
@@ -44,20 +44,20 @@
 						<td><%= bean.impression.i_sweet%></td>
 						<td><%= bean.impression.i_bitter%></td>
 						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-						<td><%= bean.price %>$/100g</td>
+						<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
 						<td><%= bean.impression.i_comment%></td>
 						<% unless current_user == bean.user %>
 							<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
 						<% end %>
 						<td><%= @count_bean_likes %></td>
-						</tr>
-				</tbody>
-			</table>
-		<span><%= link_to "Create Recipe", new_recipe_path(id: bean.id)%></span>
-		<span><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></span>
+		<td><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></td>
 		<% if bean.user == current_user %>
-			<span><%= link_to 'Edit', edit_bean_path(bean) %></span>
-			<span><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+			<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+			<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
-	<% end %>
+	<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
 <% end %>

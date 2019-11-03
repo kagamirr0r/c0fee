@@ -1,0 +1,22 @@
+ja:
+  recipes:
+    recipe: &recipe
+      edit: 編集
+      delete: 削除
+    recipes:
+      <<: *recipe
+    new: &new
+      back: 戻る
+    edit:
+      title: レシピの編集
+      <<: *new
+    index:
+      title: レシピ一覧
+    new:
+      title: レシピの登録
+    flash:
+      created_recipe: レシピを作成しました!
+      edited_recipe: レシピを編集しました！
+      deleted_bean: コーヒー豆を削除しました！
+
+

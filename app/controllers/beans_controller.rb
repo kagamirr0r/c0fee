@@ -2,8 +2,8 @@ class BeansController < ApplicationController
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
   def index
-    @beans = Bean.all
-    flash[:choose_bean] = 'Which Bean did you use?'
+		@beans = Bean.all
+		flash[:choose_bean] = t('beans.flash.choose_bean')
   end
 
   def show
@@ -12,7 +12,7 @@ class BeansController < ApplicationController
 
   def new
     @shop = Shop.find_by(id: params[:id])
-    @bean = @shop.beans.build
+    @bean = Bean.new
     @bean.build_impression
   end
 
@@ -21,24 +21,23 @@ class BeansController < ApplicationController
   end
 
   def create
-    @shop = Shop.find_by(id: params[:bean][:shop_id])
-    @bean = @shop.beans.build(bean_params)
+    @bean = Bean.new(bean_params)
     @bean.save!
-    redirect_to beans_path, notice: 'Added new Bean!'
+    redirect_to beans_path, notice: t('beans.flash.registered_bean')
   rescue StandardError
     render :new
   end
 
   def update
     @bean.update!(bean_params)
-    redirect_to beans_path, notice: 'Edited Bean!'
+    redirect_to beans_path, notice: t('beans.flash.edited_bean')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @bean.destroy
-    redirect_to beans_path, notice: 'Deleted Bean!'
+    redirect_to beans_path, notice: t('beans.flash.deleted_bean')
   end
 
   private

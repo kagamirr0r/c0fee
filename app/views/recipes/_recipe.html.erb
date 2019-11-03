@@ -2,22 +2,22 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Image</th>
-					<th>Name</th>
-					<th>Bean</th>
-					<th>Grind</th>
-					<th>Amount</th>
-					<th>Extraction</th>
-					<th>Temperature</th>
-					<th>Sour</th>
-					<th>Sweet</th>
-					<th>Bitter</th>
-					<th>Aroma</th>
-					<th>Fullbody</th>
-					<th>Comment</th>
+					<th>&nbsp;</th>
+					<th><%= Recipe.human_attribute_name(:name)%></th>
+					<th><%= Recipe.human_attribute_name(:bean)%></th>
+					<th><%= Recipe.human_attribute_name(:grind)%></th>
+					<th><%= Recipe.human_attribute_name(:amount)%></th>
+					<th><%= Recipe.human_attribute_name(:extraction)%></th>
+					<th><%= Recipe.human_attribute_name(:temperature)%></th>
+					<th><%= Taste.human_attribute_name(:t_sour)%></th>
+					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
+					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
+					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
+					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<th><%= Taste.human_attribute_name(:t_comment)%></th>
 					<% Array(recipe).each do |recipe| %>
 						<% unless current_user == recipe.user%>
-							<th>User</th>
+							<th><%=User.model_name.human%></th>
 						<% end %>
 					<% end %>
 					<th>Like</th>
@@ -38,9 +38,9 @@
 						<td><%= recipe.name %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.grind %></td>
-						<td><%= recipe.amount %></td>
+						<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
 						<td><%= recipe.extraction %></td>
-						<td><%= recipe.temperature %></td>
+						<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<% end %></td>
 						<td><%= recipe.taste.t_sour%></td>
 						<td><%= recipe.taste.t_sweet%></td>
 						<td><%= recipe.taste.t_bitter%></td>
@@ -56,8 +56,8 @@
 					</tbody>
 					</table>
 				<% if current_user == recipe.user%>
-			<td><span><%= link_to 'Edit', edit_recipe_path(recipe) %></span></td>
-			<td><span><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
+			<td><span><%= link_to t('.edit'), edit_recipe_path(recipe) %></span></td>
+			<td><span><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
 		<% end %>
 	<% end %>
 	</div>

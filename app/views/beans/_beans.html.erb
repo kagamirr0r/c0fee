@@ -2,15 +2,15 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Image</th>
-					<th>Country</th>
-					<th>Area</th>
-					<th>Roast</th>
-					<th>Sour</th>
-					<th>Sweet</th>
-					<th>Bitter</th>
-					<th>Shop</th>
-					<th>User</th>
+				  <th>&nbsp;</th>
+					<th><%= Bean.human_attribute_name(:country)%></th>
+					<th><%= Bean.human_attribute_name(:area)%></th>
+					<th><%= Bean.human_attribute_name(:roast)%></th>
+					<th><%= Impression.human_attribute_name(:i_sour)%></th>
+					<th><%= Impression.human_attribute_name(:i_sweet)%></th>
+					<th><%= Impression.human_attribute_name(:i_bitter)%></th>
+					<th><%= Bean.human_attribute_name(:shop)%></th>
+					<th><%= User.model_name.human %></th>
 				</tr>
 			</thead>
 
@@ -32,6 +32,14 @@
 						<td><%= bean.impression.i_bitter%></td>
 						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+							<% if current_user == bean.user %>
+								<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+								<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<% else %>
+								<% if user_signed_in? %>
+									<td><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+								<% end %>
+						  <% end %>
 						</tr>
 				<% end %>
 			</tbody>

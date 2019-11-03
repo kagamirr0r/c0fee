@@ -22,21 +22,21 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.save!
-    redirect_to recipes_path, notice: 'Created new Recipe!'
+    redirect_to recipes_path, notice: t('recipes.flash.created_recipe')
   rescue StandardError
     render :new
   end
 
   def update
     @recipe.update!(recipe_params)
-    redirect_to my_pages_show_path, notice: 'Edited Recipe!'
+    redirect_to my_pages_show_path, notice: t('recipes.flash.edited_recipe')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_path, notice: 'Deleted Recipe!'
+    redirect_to recipes_path, notice: t('recipes.flash.deleted_bean')
   end
 
   private

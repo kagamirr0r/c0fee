@@ -2,10 +2,10 @@
 			<table>
 					<thead>
 						<tr>
-							<th>Image</th>
-							<th>Name</th>
-							<th>Address</th>
-							<th>Url</th>
+							<th>&nbsp;</th>
+							<th><%= Shop.human_attribute_name(:name)%></th>
+							<th><%= Shop.human_attribute_name(:address)%></th>
+							<th><%= Shop.human_attribute_name(:url)%></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -20,8 +20,8 @@
 								</td>
 								<td><%= shop.name %></td>
 								<td><%= shop.address %></td>
-								<td><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
-								<td><%= link_to "ADD Bean", new_bean_path(id: shop.id) %></td>
+								<td id="shop_url_td"><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
+								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id) %></td>
 							</tr>
 						<% end %>
 					</tbody>

@@ -1,5 +1,5 @@
-<div><strong><%= flash[:choose_bean] %></strong></div>
 <div class="beans">
-	<h1>All Beans</h1>
+ <%=flash[:choose_bean]%>
+	<h1><%= t('.title')%></h1>
 	　<%= render 'beans', beans: @beans %>
 </div>

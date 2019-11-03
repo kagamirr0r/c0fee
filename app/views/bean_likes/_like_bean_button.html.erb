@@ -1,11 +1,11 @@
-	<% if current_user.like_bean?(bean) %>
+	<% if current_user.liked_bean?(bean) %>
 		<%= form_for(current_user.bean_likes.find_by(bean_id: bean.id), html: { method: :delete }) do |f|  %>
 			<%= hidden_field_tag :bean_id, bean.id%>
-			<%= f.submit 'Cancel Like' %>
+			<%= f.submit t '.cancel_like_bean'%>
 		<% end %>
 	<% else %>
 		<%= form_for(current_user.bean_likes.build) do |f| %>
 			<%= hidden_field_tag :bean_id, bean.id%>
-			<%= f.submit 'Like Bean'%>
+			<%= f.submit t '.like_bean'%>
 		<% end %>
 	<% end%>
