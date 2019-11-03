@@ -75,7 +75,7 @@ ja:
         delete_account: "アカウント削除"
         back: "戻る"
       new:
-        sign_up: "アカウント登録"
+        sign_in: "アカウント登録"
     sessions:
       new:
         sign_in: "ログイン"

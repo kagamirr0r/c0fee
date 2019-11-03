@@ -33,7 +33,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('.new_password')"新しいパスワード" %> <i>(<%= @minimum_password_length %>字以上)</i><br />
+    <%= f.label t('.new_password')%> <i>(<%= @minimum_password_length %>字以上)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
       <br />
   </div>

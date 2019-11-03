@@ -15,49 +15,53 @@
 					<th><%= Bean.human_attribute_name(:shop)%></th>
 					<th><%= Bean.human_attribute_name(:price)%></th>
 					<th><%= Impression.human_attribute_name(:i_comment)%></th>
-					<% Array(bean).each do |bean| %>
+					<% Array(bean).reverse_each do |bean| %>
 						<% unless current_user == bean.user %>
 							<th><%= User.model_name.human%></th>
 						<% end %>
-					<% end%>
 					<th>Like</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
 			<tbody>
-					<% Array(bean).each do |bean| %>
-					<tr>
-						<td id="bean_image_td">
-							<% if bean.bean_image? %>
-								<%= image_tag bean.bean_image.to_s, :id => 'bean_image' %>
-							<% else%>
-								<%= image_tag 'C0FEE.png', :id => 'no_bean_image' %>
-							<% end %>
-						</td>
-						<td><%= bean.country %></td>
-						<td><%= bean.area %></td>
-						<td><%= bean.variety %></td>
-						<td><%= bean.farm %></td>
-						<td><%= bean.process %></td>
-						<td><%= bean.roast %></td>
-						<td><%= bean.impression.i_sour%></td>
-						<td><%= bean.impression.i_sweet%></td>
-						<td><%= bean.impression.i_bitter%></td>
-						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-						<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
-						<td><%= bean.impression.i_comment%></td>
-						<% unless current_user == bean.user %>
-							<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+				<% Array(bean).reverse_each do |bean| %>
+				<tr>
+					<td id="bean_image_td">
+						<% if bean.bean_image? %>
+							<%= image_tag bean.bean_image.to_s, :id => 'bean_image' %>
+						<% else%>
+							<%= image_tag 'C0FEE.png', :id => 'no_bean_image' %>
 						<% end %>
-						<td><%= @count_bean_likes %></td>
-		<td><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></td>
-		<% if bean.user == current_user %>
-			<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-			<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>
-	<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
-				<% end %>
-			</tr>
+					</td>
+					<td><%= bean.country %></td>
+					<td><%= bean.area %></td>
+					<td><%= bean.variety %></td>
+					<td><%= bean.farm %></td>
+					<td><%= bean.process %></td>
+					<td><%= bean.roast %></td>
+					<td><%= bean.impression.i_sour%></td>
+					<td><%= bean.impression.i_sweet%></td>
+					<td><%= bean.impression.i_bitter%></td>
+					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
+					<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
+					<td><%= bean.impression.i_comment%></td>
+
+					<% unless current_user == bean.user %>
+						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+					<% end %>
+
+					<td><%= @count_bean_likes %></td>
+					<td><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></td>
+						<% if current_user == bean.user %>
+							<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+							<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<% else %>
+							<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+							<td style="text-align: center">&nbsp;</td>
+						<% end %>
+				</tr>
 		</tbody>
 	</table>
 <% end %>

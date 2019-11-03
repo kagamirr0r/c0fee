@@ -21,6 +21,8 @@
 						<% end %>
 					<% end %>
 					<th>Like</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
@@ -35,8 +37,8 @@
 									<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
 								<% end %>
 							</td>
-						<td><%= recipe.name %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+						<td><%= recipe.name %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
 						<td><%= recipe.extraction %></td>
@@ -56,9 +58,12 @@
 					</tbody>
 					</table>
 				<% if current_user == recipe.user%>
-			<td><span><%= link_to t('.edit'), edit_recipe_path(recipe) %></span></td>
-			<td><span><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></span></td>
-		<% end %>
+					<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+					<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% else %>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				<% end %>
 	<% end %>
 	</div>
 <% end %>

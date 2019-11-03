@@ -11,6 +11,8 @@
 					<th><%= Impression.human_attribute_name(:i_bitter)%></th>
 					<th><%= Bean.human_attribute_name(:shop)%></th>
 					<th><%= User.model_name.human %></th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
@@ -32,14 +34,17 @@
 						<td><%= bean.impression.i_bitter%></td>
 						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+						<div>
 							<% if current_user == bean.user %>
-								<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-								<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+								<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 							<% else %>
 								<% if user_signed_in? %>
-									<td><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+									<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+									<td style="text-align: center">&nbsp;</td>
 								<% end %>
 						  <% end %>
+						</div>
 						</tr>
 				<% end %>
 			</tbody>

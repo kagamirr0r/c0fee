@@ -12,6 +12,8 @@
 					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
 					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
 					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
@@ -25,8 +27,8 @@
 								<%=link_to image_tag('C0FEE.png', :id => 'no_recipe_image'), recipe_path(recipe) %>
 							<% end %>
 						</td>
-						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.name %></td>
+						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.extraction %></td>
 						<td><%= recipe.taste.t_sour%></td>
@@ -35,8 +37,11 @@
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
 							<% if current_user == recipe.user %>
-								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<% else %>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							<% end %>
 					</tr>
 				<% end %>

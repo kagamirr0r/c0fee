@@ -1,0 +1,22 @@
+ja:
+  beans:
+    bean: &bean
+      create_recipe: この豆でレシピを作成する
+      edit: 編集
+      delete: 削除
+    beans:
+      <<: *bean
+    new: &new
+      back: 戻る
+    edit:
+      title: コーヒー豆の編集
+      <<: *new
+    index:
+      title: コーヒー豆一覧
+    new:
+      title: コーヒー豆の登録
+    flash:
+      choose_bean: 以下の豆でコーヒーを淹れましたか?
+      registered_bean: コーヒー豆を登録しました！
+      edited_bean: コーヒー豆を編集しました！
+      deleted_bean: コーヒー豆を削除しました！
