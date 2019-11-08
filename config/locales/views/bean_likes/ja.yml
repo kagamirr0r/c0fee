@@ -2,7 +2,7 @@ ja:
   bean_likes:
     like_bean_button:
       cancel_like_bean: お気に入りから外す
-      like_bean: 豆をお気に入りする
+      like_bean: お気に入りする
     flash:
       liked_bean: 豆がお気に入りされました！
-      canceled_bean_like: 豆をお気に入りから外しました！
+      canceled_like_bean: 豆をお気に入りから外しました！

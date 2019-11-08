@@ -8,6 +8,6 @@ class RecipeLikesController < ApplicationController
   def destroy
     recipe = Recipe.find(params[:recipe_id])
     current_user.cancel_like_recipe(recipe)
-    redirect_to my_pages_show_path, notice: t('recipe_likes.flash_canceled.recipe_like')
+    redirect_to my_pages_show_path, notice: t('recipe_likes.flash.canceled_recipe_like')
   end
 end

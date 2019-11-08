@@ -55,7 +55,22 @@ class User < ApplicationRecord
 
   def like_recipe?(recipe)
     self.like_recipes.include?(recipe)
-  end
+	end
 
+	has_many :shop_likes, dependent: :destroy
+	has_many :like_shops, through: :shop_likes, source: :shop
+
+	def like_shop(shop)
+		self.shop_likes.find_or_create_by(shop_id: shop.id)
+	end
+
+	def cancel_like_shop(shop)
+		shop_like = self.shop_likes.find_by(shop_id: shop.id)
+		shop_like.destroy
+	end
+
+	def liked_shop?(shop)
+		self.like_shops.include?(shop)
+	end
   mount_uploader :avatar, AvatarUploader
 end

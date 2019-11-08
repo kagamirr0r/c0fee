@@ -1,17 +1,17 @@
 <div class="beans">
-	<h1><%= t('.recent_beans')%></h1>
+	<h3><%= t('.recent_beans')%></h3>
 		<%= render 'beans/beans', beans: @beans%>
 		<%= link_to "more" ,beans_url%>
 </div>
 
 <div class="recipes">
-	<h1><%= t('.recent_recipes')%></h1>
+	<h3><%= t('.recent_recipes')%></h3>
  	 <%= render 'recipes/recipes', recipes: @recipes%>
    <%= link_to "more" ,recipes_path%>
 </div>
 
 <div class="shops">
-<h1><%= t('.recent_shop')%></h1>
+<h3><%= t('.recent_shop')%></h3>
 	<%= render 'shops/shops', shops: @shops %>
 	<%= link_to "more" ,shops_path%>
 </div>

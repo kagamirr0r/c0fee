@@ -3,7 +3,7 @@
 			<thead>
 				<tr>
 					<th>&nbsp;</th>
-					<th><%= Recipe.human_attribute_name(:name)%></th>
+					<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
 					<th><%= Recipe.human_attribute_name(:bean)%></th>
 					<th><%= Recipe.human_attribute_name(:grind)%></th>
 					<th><%= Recipe.human_attribute_name(:extraction)%></th>
@@ -27,7 +27,7 @@
 								<%=link_to image_tag('C0FEE.png', :id => 'no_recipe_image'), recipe_path(recipe) %>
 							<% end %>
 						</td>
-						<td><%= recipe.name %></td>
+						<td><%= recipe.hot_ice %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.extraction %></td>

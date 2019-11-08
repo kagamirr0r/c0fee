@@ -48,12 +48,12 @@ end
 end
 
 [
-  [1, 1, 'ブラジリアンコーヒー', '粗挽き', 90, 15, 'フレンチプレス'],
-  [2, 2, 'エチオピア珈琲', '中挽き', 95, 10, 'ペーパーフィルター'],
-  [3, 3, 'グアテマラの香り', '中細挽き', 85, 20, 'ネル']
-].each do |user_id, bean_id, name, grind, temperature, amount, extraction|
+  [1, 1, 'ホット', '粗挽き', 90, 15, 'フレンチプレス'],
+  [2, 2, 'ホット', '中挽き', 95, 10, 'ペーパーフィルター'],
+  [3, 3, 'アイス', '中細挽き', 85, 20, '急冷']
+].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
   Recipe.create!(
-    user_id: user_id, bean_id: bean_id, name: name, grind: grind, temperature: temperature,
+    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
     amount: amount, extraction: extraction
   )
 end
@@ -86,5 +86,15 @@ end
 ].each do |user_id, recipe_id|
   RecipeLike.create!(
     user_id: user_id, recipe_id: recipe_id
+  )
+end
+
+[
+  [1, 2],
+  [2, 3],
+  [3, 1]
+].each do |user_id, shop_id|
+  ShopLike.create!(
+    user_id: user_id, shop_id: shop_id
   )
 end

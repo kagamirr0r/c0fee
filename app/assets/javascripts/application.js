@@ -17,6 +17,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize
+
+$(document).ready(function(){
+	$('.tabs').tabs();
+});
+
 $(document).on('click', '#avatar_select_file_button', function() {
   $("#user_avatar").click();
  })
@@ -48,9 +53,3 @@ $(document).on('click', '#shop_select_file_button', function() {
 $(document).on('change', '#shop_shop_image', function() {
 $('#shop_filename').val($(this).val().replace(/^.*\\/, ""));
 })
-
-var luminousTrigger = document.querySelector('.luminous');
-if( luminousTrigger !== null ) {
-  new Luminous(luminousTrigger);
-}
-
