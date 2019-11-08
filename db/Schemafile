@@ -62,7 +62,7 @@ end
 create_table "recipes", force: :cascade do |t|
 	t.integer "user_id"
   t.integer "bean_id"
-	t.string "name", null: false
+	t.string "hot_ice",null: false
   t.string "grind"
   t.string "temperature"
   t.integer "amount"
@@ -88,6 +88,11 @@ end
 create_table "recipe_likes", force: :cascade do |t|
   t.integer "user_id", null: false
   t.integer "recipe_id", null: false
+end
+
+create_table "shop_likes", force: :cascade do |t|
+	t.integer "user_id", null: false
+	t.integer "shop_id", null: false
 end
 
 add_index "beans", ["user_id"], name: "user_ind_on_beans", using: :btree
@@ -119,3 +124,9 @@ add_foreign_key "recipe_likes","users", name: "fk_recipe_likes_belong_to_user"
 
 add_index "recipe_likes",["recipe_id"], name: "recipe_ind_on_recipe_likes", using: :btree
 add_foreign_key "recipe_likes","recipes",name: "fk_recipe_likes_belong_to_recipe"
+
+add_index "shop_likes",["user_id"], name: "user_ind_on_shop_likes", using: :btree
+add_foreign_key "shop_likes","users", name: "fk_shop_likes_belong_to_user"
+
+add_index "shop_likes",["shop_id"], name: "shop_ind_on_shop_likes", using: :btree
+add_foreign_key "shop_likes","shops",name: "fk_shop_likes_belong_to_shop"

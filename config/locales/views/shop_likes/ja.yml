@@ -1,0 +1,11 @@
+ja:
+  shop_likes:
+    like_shop_button:
+      cancel_like_shop: お気に入りから外す
+      like_shop: お気に入りする
+    shops:
+      edit_shop: 店/ロースターを編集する
+      register_bean: 豆を登録する
+    flash:
+      liked_shop: 店/ロースターをお気に入りしました！
+      canceled_shop_like: 店/ロースターをお気に入りから外しました！

@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :bean_id, :name, :grind, :temperature, :amount, :extraction, :recipe_image,
+    params.require(:recipe).permit(:user_id, :bean_id, :hot_ice, :grind, :temperature, :amount, :extraction, :recipe_image,
                                    taste_attributes: [:id, :recipe_id, :t_sour, :t_sweet, :t_bitter, :t_aroma, :t_fullbody, :t_comment])
   end
 end

@@ -1,7 +1,9 @@
 ja:
   beans:
+    form:
+      bought_shop: 購入した店/
     bean: &bean
-      create_recipe: この豆でレシピを作成する
+      create_recipe: レシピを作成
       edit: 編集
       delete: 削除
     beans:

@@ -16,12 +16,13 @@
 			<%= r.label :recipe_image %><br />
 			<%= r.file_field :recipe_image %>
 			<input id="recipe_filename" readonly type="text" value="" >
-			<button type="button" id="recipe_select_file_button">Select</button>
+			<button type="button" id="recipe_select_file_button" class="waves-effect waves-light btn">
+			<i class="material-icons right">collections</i>画像を選ぶ</button>
   	</div>
 
 		<div class="field">
-			<%= r.label :name %>
-			<%= r.text_field :name%>
+			<%= r.label :hot_ice %>
+			<%= r.select :hot_ice,[["ホット","ホット"],["アイス","アイス"]]]%>
 		</div>
 
 		<div class="field">

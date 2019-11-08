@@ -30,7 +30,7 @@ ja:
         user_id: ユーザー
         bean_id: コーヒー豆
         bean: コーヒー豆
-        name: 名前
+        hot_ice: ホット/アイス
         grind: グラインド
         temperature: お湯の温度
         amount: 豆の量

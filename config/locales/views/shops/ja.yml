@@ -2,6 +2,7 @@ ja:
   shops:
     shops:
       register_bean: 豆を登録
+      edit_shop: 店/ロースターの編集
     new: &new
       back: 戻る
     edit:

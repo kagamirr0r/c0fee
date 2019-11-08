@@ -6,14 +6,15 @@
 
 	<div class="field">
 		<%= b.hidden_field :shop_id, value: shop.id %>
-		<%= shop.name %>
+		<%= t('.bought_shop')+shop.name %>
 	</div>
 
 	<div class="field">
     <%= b.label :bean_image %><br />
     <%= b.file_field :bean_image %>
 		<input id="bean_filename" readonly type="text" value="" >
-		<button type="button" id="bean_select_file_button">Select</button>
+		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn">
+		<i class="material-icons right">collections</i>画像を選ぶ</button>
   </div>
 
 	<div class="field">

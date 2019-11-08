@@ -3,7 +3,7 @@
 			<thead>
 				<tr>
 					<th>&nbsp;</th>
-					<th><%= Recipe.human_attribute_name(:name)%></th>
+					<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
 					<th><%= Recipe.human_attribute_name(:bean)%></th>
 					<th><%= Recipe.human_attribute_name(:grind)%></th>
 					<th><%= Recipe.human_attribute_name(:amount)%></th>
@@ -26,44 +26,53 @@
 				</tr>
 			</thead>
 
-		<div class='bean_information'>
 			<tbody>
-				<% Array(recipe).each do |recipe| %>
+				<% Array(recipe).reverse_each do |recipe| %>
 					<tr>
 						<td id="recipe_image_td">
-								<% if recipe.recipe_image? %>
-									<%= image_tag recipe.recipe_image.to_s, :id => 'recipe_image'%>
-								<% else%>
-									<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
-								<% end %>
-							</td>
+							<% if recipe.recipe_image? %>
+								<%= image_tag recipe.recipe_image.to_s, :id => 'recipe_image'%>
+							<% else%>
+								<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
+							<% end %>
+						</td>
+						<td><%= recipe.hot_ice %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.name %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
 						<td><%= recipe.extraction %></td>
-						<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<% end %></td>
+						<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
 						<td><%= recipe.taste.t_sour%></td>
 						<td><%= recipe.taste.t_sweet%></td>
 						<td><%= recipe.taste.t_bitter%></td>
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
 						<td><%= recipe.taste.t_comment%></td>
-						<% unless current_user == recipe.user %>
-							<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
-						<% end %>
-						<td><%= @count_recipe_likes %></td>
+							<% unless current_user == recipe.user %>
+								<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
+							<% end %>
+
+							<% if @count_liked_recipes_likes.present?%>
+								<% Array(@count_liked_recipes_likes).reverse_each do |count_liked_recipe_likes|%>
+									<td><%= count_liked_recipe_likes %></td>
+								<% end %>
+							<% elsif @count_recipes_likes.present?%>
+								<% Array(@count_recipes_likes).reverse_each do |count_recipe_likes|%>
+									<td><%= count_recipe_likes %></td>
+								<% end %>
+							<% else %>
+									<td><%= @count_recipe_likes %></td>
+							<% end %>
 						<td><%= render 'recipe_likes/like_recipe_button', recipe: recipe unless current_user == recipe.user %></td>
-						</tr>
-					</tbody>
-					</table>
-				<% if current_user == recipe.user%>
-					<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-					<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				<% else %>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				<% end %>
-	<% end %>
-	</div>
+							<% if current_user == recipe.user%>
+								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<% else %>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
 <% end %>

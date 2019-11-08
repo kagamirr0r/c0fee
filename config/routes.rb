@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :tastes
 
   resources :bean_likes, only: [:create, :destroy]
-  resources :recipe_likes, only: [:create, :destroy]
+	resources :recipe_likes, only: [:create, :destroy]
+	resources :shop_likes, only: [:create, :destroy]
 end

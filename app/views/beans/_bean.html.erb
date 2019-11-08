@@ -23,6 +23,7 @@
 					<th>Like</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
@@ -53,7 +54,17 @@
 						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
 					<% end %>
 
-					<td><%= @count_bean_likes %></td>
+					<% if @count_liked_beans_likes.present?%>
+						<% Array(@count_liked_beans_likes).reverse_each do |count_liked_bean_likes| %>
+							<td><%= count_liked_bean_likes %></td>
+						<% end %>
+					<% elsif @count_beans_likes.present?%>
+						<% Array(@count_beans_likes).reverse_each do |count_bean_likes| %>
+							<td><%= count_bean_likes %></td>
+						<% end %>
+					<% else %>
+						<td><%= @count_bean_likes %></td>
+					<% end %>
 					<td><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></td>
 						<% if current_user == bean.user %>
 							<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
@@ -64,5 +75,6 @@
 						<% end %>
 				</tr>
 		</tbody>
+		<% end %>
 	</table>
 <% end %>

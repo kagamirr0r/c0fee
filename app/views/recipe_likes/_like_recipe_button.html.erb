@@ -1,11 +1,11 @@
 	<% if current_user.like_recipe?(recipe) %>
 		<%= form_for(current_user.recipe_likes.find_by(recipe_id: recipe.id), html: { method: :delete }) do |f|  %>
 			<%= hidden_field_tag :recipe_id, recipe.id%>
-			<%= f.submit t('.cancel_like') %>
+			<%= button_tag class: "waves-effect waves-light btn-small" do %><%= content_tag :i, "favorite", class: "material-icons right" %>Liked<% end %>
 		<% end %>
 	<% else %>
 		<%= form_for(current_user.recipe_likes.build) do |f| %>
 			<%= hidden_field_tag :recipe_id, recipe.id%>
-			<%= f.submit t('.like_recipe')%>
+			<%= button_tag class: "waves-effect waves-light btn-small red accent-3" do %><%= content_tag :i, "favorite_border", class: "material-icons right red accent-3" %>Like!<% end %>
 		<% end %>
 	<% end%>

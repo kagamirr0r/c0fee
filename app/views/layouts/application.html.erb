@@ -10,9 +10,10 @@
   </head>
 
   <body>
+		<div class="navbar-fixed">
     <header>
         <nav>
-				<div class='nav-wrapper'>
+				<div class='nav-wrapper red accent-3'>
 					<ul id="nav-mobile" class="left hide-on-med-and-down">
 						<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
 							<% if user_signed_in? %>
@@ -36,10 +37,10 @@
 					</div>
         </nav>
     </header>
+		</div>
 
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    	<%= yield %>
   </body>
 </html>
