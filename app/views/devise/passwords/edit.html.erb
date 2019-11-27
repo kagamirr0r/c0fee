@@ -4,21 +4,23 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
+  <div class="input-field col s12">
+		<i class="material-icons prefix">lock_outline</i>
     <%= f.label :password, t('.new_password') %><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "autocomplete"%>
   </div>
 
-  <div class="field">
+  <div class="input-field col s12">
+		<i class="material-icons prefix">lock_outline</i>
     <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "autocomplete" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('.change_my_password') %>
+    <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.change_my_password') %><% end %>
   </div>
 <% end %>
 

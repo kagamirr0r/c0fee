@@ -3,13 +3,14 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="input-field col s12">
+		<i class="material-icons prefix">email</i>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  </div><br />
 
   <div class="actions">
-    <%= f.submit t('.resend_unlock_instructions') %>
+    <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.resend_unlock_instructions') %><% end %>
   </div>
 <% end %>
 

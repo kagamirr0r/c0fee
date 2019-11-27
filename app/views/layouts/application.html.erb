@@ -23,8 +23,8 @@
 										<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), my_pages_show_path(current_user) %></li>
 									<% end %>
 								<li><%= link_to t('.register_bean'), shops_path %></li>
-								<li><%= link_to t('.register_shop'), new_shop_path %></li>
 								<li><%= link_to t('.create_recipe'), beans_path %></li>
+								<li><%= link_to t('.register_shop'), new_shop_path %></li>
 					</ul>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 							<li><%= link_to_unless_current t('.edit_profile'), edit_user_registration_path %></li>
@@ -38,9 +38,16 @@
         </nav>
     </header>
 		</div>
-
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
     	<%= yield %>
+			<script>
+			$(document).ready(function(){
+    		$('.tabs').tabs();
+			});
+			$(document).ready(function(){
+    	$('select').formSelect();
+  		});
+			</script>
   </body>
 </html>

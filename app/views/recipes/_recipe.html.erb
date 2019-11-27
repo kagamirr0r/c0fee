@@ -15,12 +15,8 @@
 					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
 					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
 					<th><%= Taste.human_attribute_name(:t_comment)%></th>
-					<% Array(recipe).each do |recipe| %>
-						<% unless current_user == recipe.user%>
-							<th><%=User.model_name.human%></th>
-						<% end %>
-					<% end %>
-					<th>Like</th>
+					<th><%= User.model_name.human%></th>
+					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -48,22 +44,8 @@
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
 						<td><%= recipe.taste.t_comment%></td>
-							<% unless current_user == recipe.user %>
-								<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
-							<% end %>
-
-							<% if @count_liked_recipes_likes.present?%>
-								<% Array(@count_liked_recipes_likes).reverse_each do |count_liked_recipe_likes|%>
-									<td><%= count_liked_recipe_likes %></td>
-								<% end %>
-							<% elsif @count_recipes_likes.present?%>
-								<% Array(@count_recipes_likes).reverse_each do |count_recipe_likes|%>
-									<td><%= count_recipe_likes %></td>
-								<% end %>
-							<% else %>
-									<td><%= @count_recipe_likes %></td>
-							<% end %>
-						<td><%= render 'recipe_likes/like_recipe_button', recipe: recipe unless current_user == recipe.user %></td>
+						<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
+						<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 							<% if current_user == recipe.user%>
 								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
 								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

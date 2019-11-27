@@ -6,7 +6,11 @@
 							<th><%= Shop.human_attribute_name(:name)%></th>
 							<th><%= Shop.human_attribute_name(:address)%></th>
 							<th><%= Shop.human_attribute_name(:url)%></th>
-							<th>Like</th>
+							<% if user_signed_in?%>
+								<th>&nbsp;</th>
+							<% else %>
+								<th>Like</th>
+							<% end %>
 							<th>&nbsp;</th>
 							<th>&nbsp;</th>
 						</tr>
@@ -24,16 +28,13 @@
 								<td><%= shop.name %></td>
 								<td><%= shop.address %></td>
 								<td id="shop_url_td"><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
-								<% if @count_liked_shops_likes.present?%>
-									<% @count_liked_shops_likes.each do |count_liked_shop_likes|%>
-										<td><%= count_liked_shop_likes %></td>
-									<% end %>
+								<% if user_signed_in? %>
+									<td style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop%></td>
+									<td style="text-align: center"><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+									<td style="text-align: center"><%= link_to t('.register_bean'), new_bean_path(id: shop.id) %></td>
 								<% else %>
-										<td><%= @count_shop_likes %></td>
+									<td><%= shop_liked_counts(shop) %></td>
 								<% end %>
-								<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
-								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id) %></td>
-								<td><%= render 'shop_likes/like_shop_button', shop: shop if user_signed_in? %></td>
 							</tr>
 						<% end %>
 					</tbody>

@@ -1,15 +1,17 @@
 <h3><%=t('.sign_in')%></h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="input-field col s12">
+		<i class="material-icons prefix">email</i>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  </div><br />
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="input-field col s12">
+		<i class="material-icons prefix">lock_outline</i>
+		<%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+    <%= f.label t('.password', password_length: @minimum_password_length) %><br />
+  </div><br />
 
     <%# <div class="field">
 			<%= f.label :remember_me %>
@@ -17,7 +19,7 @@
     <%# </div> %>
 
   <div class="actions">
-    <%= f.submit t('.sign_in') %>
+    <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.sign_in') %><% end %>
   </div>
 <% end %>
 

@@ -3,11 +3,10 @@ class BeansController < ApplicationController
 
   def index
 		@beans = Bean.all
-		flash[:choose_bean] = t('beans.flash.choose_bean')
+		# flash[:choose_bean] = t('beans.flash.choose_bean')
   end
 
   def show
-    bean_liked_counts(@bean)
   end
 
   def new
@@ -23,21 +22,21 @@ class BeansController < ApplicationController
   def create
     @bean = Bean.new(bean_params)
     @bean.save!
-    redirect_to beans_path, notice: t('beans.flash.registered_bean')
+    redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
   rescue StandardError
     render :new
   end
 
   def update
     @bean.update!(bean_params)
-    redirect_to beans_path, notice: t('beans.flash.edited_bean')
+    redirect_to my_pages_show_path, notice: t('beans.flash.edited_bean')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @bean.destroy
-    redirect_to beans_path, notice: t('beans.flash.deleted_bean')
+    redirect_to my_pages_show_path, notice: t('beans.flash.deleted_bean')
   end
 
   private

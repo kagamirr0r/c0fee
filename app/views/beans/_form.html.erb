@@ -6,87 +6,100 @@
 
 	<div class="field">
 		<%= b.hidden_field :shop_id, value: shop.id %>
-		<%= t('.bought_shop')+shop.name %>
 	</div>
 
-	<div class="field">
-    <%= b.label :bean_image %><br />
-    <%= b.file_field :bean_image %>
-		<input id="bean_filename" readonly type="text" value="" >
-		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn">
-		<i class="material-icons right">collections</i>画像を選ぶ</button>
-  </div>
+	<div class="file-field input-field col s12">
+		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">
+		<%=t('.select_bean_image')%><i class="material-icons right">photo</i></button>
+    <%= b.file_field :bean_image, class: "autocomplete" %>
+		<div class="file-path-wrapper">
+			<input id="bean_filename" readonly type="text" value="" class="file-path validate">
+    </div>
+  </div><br />
 
-	<div class="field">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">public</i>
+		<%= b.text_field :country, class: "autocomplete" %>
 		<%= b.label :country %>
-		<%= b.text_field :country %>
-	</div>
+	</div><br />
 
-	<div class="field">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">place</i>
+		<%= b.text_field :area, class: "autocomplete" %>
 		<%= b.label :area %>
-		<%= b.text_field :area %>
-	</div>
+	</div><br />
 
-	<div class="field">
-		<%= b.label :variety %>
-		<%= b.text_field :variety %>
-	</div>
+	<div class="input-field col s12">
+		<i class="material-icons prefix">home</i>
+		<%= b.text_field :farm ,class: "autocomplete"%>
+		<%= b.label :farm %><br />
+	</div><br />
 
-	<div class="field">
-		<%= b.label :farm %>
-		<%= b.text_field :farm %>
-	</div>
+	<div class="input-field col s12">
+		<i class="material-icons prefix">local_florist</i>
+		<%= b.text_field :variety, class: "autocomplete"%>
+		<%= b.label :variety %><br />
+	</div><br />
 
-	<div class="field">
-		<%= b.label :process %>
-		<%= b.select :process,[["ウォッシュド", "ウォッシュド"],["ナチュラル", "ナチュラル"],
+	<div class="input-field col s12">
+		<i class="material-icons prefix">loop</i>
+		<%= b.select :process,[["精製方法は？",""],["ウォッシュド", "ウォッシュド"],["ナチュラル", "ナチュラル"],
 			["パルプドナチュラル", "パルプドナチュラル"],["ホワイトハニー","ホワイトハニー"],["ゴールデンハニー","ゴールデンハニー"],
 			["イエローハニー","イエローハニー"],["レッドハニー","レッドハニー"],["ブラックハニー","ブラックハニー"],
 			["スマトラ方式","スマトラ方式"]]%>
-	</div>
+		<%= b.label :process %><br />
+	</div><br />
 
-	<div class="field">
-		<%= b.label :roast %>
-		<%= b.select :roast,[["ライト","ライト"],["シナモン","シナモン"],["ミディアム","ミディアム"],
+	<div class="input-field col s12">
+		<i class="material-icons prefix">invert_colors</i>
+		<%= b.select :roast,[["焙煎は？",""],["ライト","ライト"],["シナモン","シナモン"],["ミディアム","ミディアム"],
 			["ハイ","ハイ"],["シティ","シティ"],["フルシティ","フルシティ"],["フレンチ","フレンチ"],["イタリアン","イタリアン"]]%>
-	</div>
+		<%= b.label :roast %>
+	</div><br />
 
-	<div class="field">
-		<%= b.label :price %>
-		<%= b.number_field :price, step: 10 %>円/100g
-	</div>
+	<div class="input-field col s12">
+		<i class="material-icons prefix">attach_money</i>
+		<%= b.number_field :price, step: 10, class: "autocomplete"%>
+		<%= b.label t('.price')%>
+	</div><br />
 
-	<div class="field">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">web</i>
+		<%= b.text_field :bean_url, class: "autocomplete" %>
 		<%= b.label :url %>
-		<%= b.text_field :bean_url %>
-	</div>
+	</div><br />
 
 		<%= b.fields_for :impression do |i| %>
 
-			<div class="field">
-				<%= i.label :i_sour%>
-				<%= i.number_field :i_sour,min: 1, max: 5 %>
-			</div>
+			<div class="input-field col s12">
+				<i class="material-icons prefix">change_history</i>
+				<%= i.number_field :i_sour,min: 1, max: 5, class: "autocomplete"%>
+				<%= i.label t('.sour')%>
+			</div><br />
 
-			<div class="field">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">panorama_fish_eye</i>
+				<%= i.number_field :i_sweet,min: 1, max: 5, class: "autocomplete"%>
 				<%= i.label :i_sweet %>
-				<%= i.number_field :i_sweet,min: 1, max: 5%>
-			</div>
+			</div><br />
 
-			<div class="field">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">crop_square</i>
+				<%= i.number_field :i_bitter,min: 1, max: 5, class: "autocomplete"%>
 				<%= i.label :i_bitter %>
-				<%= i.number_field :i_bitter,min: 1, max: 5%>
-			</div>
+			</div><br />
 
-			<div class="field">
-				<%= i.label :i_comment %>
-				<%= i.text_area :i_comment %>
-			</div>
+			<div class="input-field col s12">
+				<i class="material-icons prefix">message</i>
+				<%= i.text_area :i_comment, class: "autocomplete" %>
+				<%= i.label :i_comment %><br />
+			</div><br />
 
 		<% end %>
 
   <div class="actions">
-    <%= b.submit %>
+    <%= button_tag class: "waves-effect waves-light btn", data: { confirm: t('.confirm') } do %><%=t('.register')%><% end %>
   </div>
 
 <% end %>
+<br />

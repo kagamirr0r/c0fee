@@ -1,4 +1,4 @@
-<% if @recipes.present? %>
+<% if recipes.present? %>
 		<table>
 			<thead>
 				<tr>
@@ -12,13 +12,18 @@
 					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
 					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
 					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<% if user_signed_in?%>
+						<th>&nbsp;</th>
+					<% else %>
+						<th>Like</th>
+					<% end %>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<% Array(@recipes).reverse_each do |recipe| %>
+				<% Array(recipes).reverse_each do |recipe| %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>
@@ -36,6 +41,11 @@
 						<td><%= recipe.taste.t_bitter%></td>
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
+						<% if user_signed_in? %>
+							<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						<% else %>
+							<td><%= recipe_liked_counts(recipe) %></td>
+						<% end %>
 							<% if current_user == recipe.user %>
 								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
 								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

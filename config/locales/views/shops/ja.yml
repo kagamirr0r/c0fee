@@ -1,8 +1,11 @@
 ja:
   shops:
+    form:
+      register: 登録する
+      select_shop_image: 画像を選ぶ
     shops:
       register_bean: 豆を登録
-      edit_shop: 店/ロースターの編集
+      edit_shop: 編集
     new: &new
       back: 戻る
     edit:
@@ -14,9 +17,12 @@ ja:
     new:
       title: 店/ロースターの登録
     show:
-      registered_bean: この店に登録されているコーヒー豆
+      registered_bean: 登録されているコーヒー豆
+      back: 戻る
     flash:
       choose_shop: どの店/ロースターでコーヒー豆を買いましたか?
       registered_shop: 店/ロースターを登録しました!
       edited_shop: 店/ロースターを更新しました！
       deleted_shop: 店/ロースターを削除しました！
+      liked_shop: 店/ロースターをお気に入りしました！
+      canceled_shop_like: 店/ロースターをお気に入りから外しました！

@@ -7,8 +7,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find_by(id: params[:id])
-		@bean = Bean.find_by(shop_id: params[:id])
-		shop_liked_counts(@shop)
+		@beans = Bean.where(shop_id: params[:id])
   end
 
   def new

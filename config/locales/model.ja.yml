@@ -28,13 +28,13 @@ ja:
         i_comment: コメント
       recipe:
         user_id: ユーザー
-        bean_id: コーヒー豆
-        bean: コーヒー豆
+        bean_id: 豆
+        bean: 豆
         hot_ice: ホット/アイス
-        grind: グラインド
-        temperature: お湯の温度
-        amount: 豆の量
-        extraction: 抽出方法
+        grind: 挽き方
+        temperature: 湯温
+        amount: 豆量
+        extraction: 抽出
         recipe_image: レシピ画像
       taste:
         t_sour: 酸味

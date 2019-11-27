@@ -2,10 +2,16 @@ ja:
   beans:
     form:
       bought_shop: 購入した店/
+      select_bean_image: 画像を選ぶ
+      price: 価格 (円/100g)
+      register: 登録する
+      confirm: 登録していいですか？
+      sour: 酸味
     bean: &bean
       create_recipe: レシピを作成
       edit: 編集
       delete: 削除
+      confirm: この豆を削除していいですか？
     beans:
       <<: *bean
     new: &new
@@ -15,8 +21,11 @@ ja:
       <<: *new
     index:
       title: コーヒー豆一覧
+      register_bean: コーヒー豆を登録する
     new:
       title: コーヒー豆の登録
+    show:
+      <<: *new
     flash:
       choose_bean: 以下の豆でコーヒーを淹れましたか?
       registered_bean: コーヒー豆を登録しました！

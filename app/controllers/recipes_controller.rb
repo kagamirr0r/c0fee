@@ -6,7 +6,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    recipe_liked_counts(@recipe)
   end
 
   def new
@@ -36,7 +35,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    redirect_to recipes_path, notice: t('recipes.flash.deleted_bean')
+    redirect_to my_pages_show_path, notice: t('recipes.flash.deleted_recipe')
   end
 
   private

@@ -1,89 +1,101 @@
 <%= form_with(model: recipe, local: true) do |r| %>
 
 		<div class="field">
-			<%= r.label :user_id %>
-			<%= current_user.username %>
+			<%# <%= r.label :user_id %>
+			<%# <%= current_user.username %>
 			<%= r.hidden_field :user_id, value: current_user.id %>
 		</div>
 
 		<div class="field">
-			<%= r.label :bean_id %>
-			<%= bean.country %>
+			<%# <%= r.label :bean_id %>
+			<%# <%= bean.country %>
 			<%= r.hidden_field :bean_id, value: bean.id %>
 		</div>
 
-		<div class="field">
-			<%= r.label :recipe_image %><br />
-			<%= r.file_field :recipe_image %>
-			<input id="recipe_filename" readonly type="text" value="" >
+		<div class="file-field input-field col s12">
 			<button type="button" id="recipe_select_file_button" class="waves-effect waves-light btn">
-			<i class="material-icons right">collections</i>画像を選ぶ</button>
-  	</div>
+			<%= t('.select_recipe_image')%><i class="material-icons right">photo</i></button>
+			<%= r.file_field :recipe_image, class: "autocomplete" %>
+			<div class="file-path-wrapper">
+				<input id="recipe_filename" readonly type="text" value="" class="file-path validate">
+			</div>
+  	</div><br />
 
-		<div class="field">
+		<div class="input-field col s12">
+			<i class="material-icons prefix">swap_vert</i>
+			<%= r.select :hot_ice,[["ホット","ホット"],["アイス","アイス"]]%>
 			<%= r.label :hot_ice %>
-			<%= r.select :hot_ice,[["ホット","ホット"],["アイス","アイス"]]]%>
-		</div>
+		</div><br />
 
-		<div class="field">
-			<%= r.label :grind %>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">grain</i>
 			<%= r.select :grind, [["粗挽き", "粗挽き"],["中挽き", "中挽き"],
 			["中細挽き", "中細挽き"],["細挽き", "細挽き"],["極細挽き", "極細挽き"]]%>
-		</div>
+			<%= r.label :grind %>
+		</div><br />
 
-		<div class="field">
-			<%= r.label :amount %>
-			<%= r.number_field :amount, value: 10%> <span>g</span>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">opacity</i>
+			<%= r.label t('.amount') %>
+			<%= r.number_field :amount, value: 10, class: "autocomplete"%>
+		</div><br />
 
-		<div class="field">
-			<%= r.label :extraction %>
+		<div class="input-field col s12">
+		<i class="material-icons prefix">local_drink</i>
 			<%= r.select :extraction, [["ペーパーフィルター", "ペーパーフィルター"],["金属フィルター", "金属フィルター"],
 			["ネル", "ネル"],["フレンチプレス", "フレンチプレス"],["エスプレッソ", "エスプレッソ"],
 			["ユーロプレス", "ユーロプレス"],["水出し","水出し"],["急冷","急冷"],["コーヒーメーカー", "コーヒーメーカー"]] %>
-		</div>
+			<%= r.label :extraction %>
+		</div><br />
 
-		<div class="field">
-			<%= r.label :temperature %> <span>(°C)</span>
-			<%= r.number_field :temperature, value: 90, step: 5%>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">whatshot</i>
+			<%= r.label t('.temperature') %>
+			<%= r.number_field :temperature, value: 90, step: 5, class: "autocomplete"%>
+		</div><br />
 
 	<%= r.fields_for :taste do |t| %>
 
-		<div class="field">
-			<%= t.label :sour%>
-			<%= t.number_field :t_sour,min: 1, max: 5 %>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">change_history</i>
+			<%= t.number_field :t_sour,min: 1, max: 5, class: "autocomplete" %>
+			<%= t.label :t_sour%>
+		</div><br />
 
-		<div class="field">
-			<%= t.label :sweet %>
-			<%= t.number_field :t_sweet,min: 1, max: 5%>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">panorama_fish_eye</i>
+			<%= t.number_field :t_sweet,min: 1, max: 5, class: "autocomplete"%>
+			<%= t.label :t_sweet %>
+		</div><br />
 
-		<div class="field">
-			<%= t.label :bitter %>
-			<%= t.number_field :t_bitter,min: 1, max: 5%>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">crop_square</i>
+			<%= t.number_field :t_bitter,min: 1, max: 5, class: "autocomplete"%>
+			<%= t.label :t_bitter %>
+		</div><br />
 
-		<div class="field">
-			<%= t.label :aroma %>
-			<%= t.number_field :t_aroma,min: 1, max: 5 %>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">filter_list</i>
+			<%= t.number_field :t_aroma,min: 1, max: 5, class: "autocomplete" %>
+			<%= t.label :t_aroma %>
+		</div><br />
 
-		<div class="field">
-			<%= t.label :fullbody %>
-			<%= t.number_field :t_fullbody,min: 1, max: 5 %>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">brightness_medium</i>
+			<%= t.number_field :t_fullbody,min: 1, max: 5, class: "autocomplete" %>
+			<%= t.label :t_fullbody %>
+		</div><br />
 
-		<div class="field">
-			<%= t.label :comment %>
-			<%= t.text_area :t_comment %>
-		</div>
+		<div class="input-field col s12">
+			<i class="material-icons prefix">message</i>
+			<%= t.label :t_comment %>
+			<%= t.text_area :t_comment, class: "autocomplete"  %>
+		</div><br />
 
 	<% end %>
 
 		<div class="actions">
-			<%= r.submit %>
+			<%= button_tag class: "waves-effect waves-light btn" do %><%= t('.register') %><% end %>
 		</div>
 
 <% end %>

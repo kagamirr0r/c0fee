@@ -66,7 +66,7 @@ class User < ApplicationRecord
 
 	def cancel_like_shop(shop)
 		shop_like = self.shop_likes.find_by(shop_id: shop.id)
-		shop_like.destroy
+		shop_like&.destroy
 	end
 
 	def liked_shop?(shop)

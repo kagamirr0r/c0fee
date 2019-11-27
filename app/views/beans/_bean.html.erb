@@ -15,12 +15,7 @@
 					<th><%= Bean.human_attribute_name(:shop)%></th>
 					<th><%= Bean.human_attribute_name(:price)%></th>
 					<th><%= Impression.human_attribute_name(:i_comment)%></th>
-					<% Array(bean).reverse_each do |bean| %>
-						<% unless current_user == bean.user %>
-							<th><%= User.model_name.human%></th>
-						<% end %>
-					<% end %>
-					<th>Like</th>
+					<th><%= User.model_name.human%></th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -49,30 +44,16 @@
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
 					<td><%= bean.impression.i_comment%></td>
-
-					<% unless current_user == bean.user %>
-						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
-					<% end %>
-
-					<% if @count_liked_beans_likes.present?%>
-						<% Array(@count_liked_beans_likes).reverse_each do |count_liked_bean_likes| %>
-							<td><%= count_liked_bean_likes %></td>
-						<% end %>
-					<% elsif @count_beans_likes.present?%>
-						<% Array(@count_beans_likes).reverse_each do |count_bean_likes| %>
-							<td><%= count_bean_likes %></td>
-						<% end %>
+					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+					<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+					<% if current_user == bean.user %>
+						<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+						<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
 					<% else %>
-						<td><%= @count_bean_likes %></td>
+						<td style="text-align: center">&nbsp;</td>
+						<td style="text-align: center">&nbsp;</td>
 					<% end %>
-					<td><%= render 'bean_likes/like_bean_button', bean: bean unless current_user == bean.user%></td>
-						<% if current_user == bean.user %>
-							<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-							<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-						<% else %>
-							<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
-							<td style="text-align: center">&nbsp;</td>
-						<% end %>
 				</tr>
 		</tbody>
 		<% end %>

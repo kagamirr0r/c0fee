@@ -1,11 +1,12 @@
+<% shop_liked_counts(shop)%>
 	<% if current_user.liked_shop?(shop) %>
 		<%= form_for(current_user.shop_likes.find_by(shop_id: shop.id), html: { method: :delete }) do |f|  %>
 			<%= hidden_field_tag :shop_id, shop.id%>
-			<%= button_tag class: "waves-effect waves-light btn-small" do %><%= content_tag :i, "favorite", class: "material-icons right" %>Liked<% end %>
+			<%= button_tag class: "waves-effect waves-light btn-small" do %><%= content_tag :i, "favorite", class: "material-icons right" %>Liked  <%= @count_shop_likes%><% end %>
 		<% end %>
 	<% else %>
 		<%= form_for(current_user.shop_likes.build) do |f| %>
 			<%= hidden_field_tag :shop_id, shop.id%>
-			<%= button_tag class: "waves-effect waves-light btn-small red accent-3" do %><%= content_tag :i, "favorite_border", class: "material-icons right red accent-3" %>Like!<% end %>
+			<%= button_tag class: "waves-effect waves-light btn-small red accent-3" do %><%= content_tag :i, "favorite_border", class: "material-icons right red accent-3" %>Like!  <%= @count_shop_likes%><% end %>
 		<% end %>
 	<% end%>
