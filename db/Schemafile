@@ -47,15 +47,15 @@ end
 create_table "shops", force: :cascade do |t|
   t.string "name", null: false
   t.string "address"
-  t.string "url"
+  t.string "url", null: false, unique: true
   t.string "shop_image"
 end
 
 create_table "impressions", force: :cascade do |t|
   t.integer "bean_id"
-  t.integer "i_sour"
-  t.integer "i_sweet"
-  t.integer "i_bitter"
+  t.integer "i_sour",null: false
+  t.integer "i_sweet",null: false
+  t.integer "i_bitter",null: false
   t.text "i_comment"
 end
 
@@ -72,11 +72,11 @@ end
 
 create_table "tastes", force: :cascade do |t|
   t.integer "recipe_id"
-  t.integer "t_sour"
-  t.integer "t_sweet"
-  t.integer "t_bitter"
-  t.integer "t_aroma"
-  t.integer "t_fullbody"
+  t.integer "t_sour",null: false
+  t.integer "t_sweet",null: false
+  t.integer "t_bitter",null: false
+  t.integer "t_aroma",null: false
+  t.integer "t_fullbody",null: false
   t.text "t_comment"
 end
 

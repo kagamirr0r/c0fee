@@ -1,5 +1,7 @@
 class Recipe < ApplicationRecord
-  include StringNormalize
+	include StringNormalize
+	validates :hot_ice, presence: true
+	validates :amount, length:{minimum:1, maximum:1000}
 
   belongs_to :bean
   belongs_to :user

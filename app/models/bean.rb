@@ -1,5 +1,6 @@
 class Bean < ApplicationRecord
-  include StringNormalize
+	include StringNormalize
+	validates :country, presence: true
 
   belongs_to :user
   belongs_to :shop
