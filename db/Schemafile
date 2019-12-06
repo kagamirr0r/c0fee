@@ -52,7 +52,7 @@ create_table "shops", force: :cascade do |t|
 end
 
 create_table "impressions", force: :cascade do |t|
-  t.integer "bean_id"
+  t.integer "bean_id",null: false
   t.integer "i_sour",null: false
   t.integer "i_sweet",null: false
   t.integer "i_bitter",null: false

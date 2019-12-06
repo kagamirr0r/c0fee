@@ -1,5 +1,5 @@
 class Taste < ApplicationRecord
-	validates :t_sour,:t_sweet,:t_bitter,:t_aroma,:t_fullbody, length: { minimum: 1, maximum: 5}
 	validates :t_sour,:t_sweet,:t_bitter,:t_aroma,:t_fullbody, presence: true
-  belongs_to :recipe, optional: true
+	validates :t_comment, length:{maximum: 50}
+	belongs_to :recipe
 end
