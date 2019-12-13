@@ -31,7 +31,7 @@
 								<% if user_signed_in? %>
 									<td style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop%></td>
 									<td style="text-align: center"><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
-									<td style="text-align: center"><%= link_to t('.register_bean'), new_bean_path(id: shop.id) %></td>
+									<td style="text-align: center"><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
 								<% else %>
 									<td><%= shop_liked_counts(shop) %></td>
 								<% end %>

@@ -47,12 +47,12 @@
 						<% end %>
 						<% if current_user == bean.user %>
 							<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-							<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
+							<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') }, class: 'delete_bean' %></td>
 						<% else %>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						<% end %>
-						<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+						<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
 						</tr>
 				<% end %>
 			</tbody>

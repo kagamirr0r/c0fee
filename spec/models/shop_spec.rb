@@ -1,37 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Shop, type: :model do
-	before do
-		@shop = build(:shop)
-	end
+	let(:shop) {build(:shop)}
 
 	describe "validation" do
 		describe "presence" do
 			it"is invalid without a name" do
-				@shop.name = ""
-				expect(@shop.valid?).to eq(false)
+				shop.name = ""
+				expect(shop.valid?).to eq(false)
 			end
 
 			it"is invalid without a url" do
-				@shop.url = ""
-				expect(@shop.valid?).to eq(false)
+				shop.url = ""
+				expect(shop.valid?).to eq(false)
 			end
 		end
 
 		describe "uniqueness" do
 			it"ununique url is invalid" do
-				@shop1 = Shop.create(
+				shop1 = Shop.create(
 					name: "coffeeshop1",
 					address: "Tokyo",
-					url: "shop@exmple.com"
+					url: "shopexmple.com"
 				)
 
-				@shop2 = Shop.new(
+				shop2 = Shop.new(
 					name: "coffeeshop2",
 					address: "Sendai",
-					url: "shop@exmple.com"
+					url: "shopexmple.com"
 				)
-				expect(@shop2.valid?).to eq(false)
+				expect(shop2.valid?).to eq(false)
 			end
 		end
 	end

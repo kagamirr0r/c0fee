@@ -10,21 +10,23 @@ class BeansController < ApplicationController
   end
 
   def new
-    @shop = Shop.find_by(id: params[:id])
+    @shop = Shop.find(params[:id])
     @bean = Bean.new
     @bean.build_impression
   end
 
   def edit
-    @shop = Shop.find_by(id: @bean.shop_id)
+    @shop = Shop.find(@bean.shop.id)
   end
 
-  def create
-    @bean = Bean.new(bean_params)
-    @bean.save!
-    redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
-  rescue StandardError
-    render :new
+	def create
+		@shop = Shop.find(params[:bean][:shop_id])
+		@bean = @shop.beans.build(bean_params)
+     if @bean.save
+			redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
+		 else
+			render :new
+		 end
   end
 
   def update
@@ -42,7 +44,7 @@ class BeansController < ApplicationController
   private
 
   def set_bean
-    @bean = Bean.find_by(id: params[:id])
+    @bean = Bean.find(params[:id])
   end
 
   def bean_params

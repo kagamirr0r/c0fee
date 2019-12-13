@@ -1,8 +1,8 @@
 class ShopsController < ApplicationController
 	before_action :set_shop, only: [:show,:edit,:update,:destroy]
   def index
-    @shops = Shop.all
-    flash[:choose_shop] = t('shops.flash.choose_shop')
+		@shops = Shop.all
+		flash[:choose_shop] = t('shops.flash.choose_shop')
   end
 
   def show

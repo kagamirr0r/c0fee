@@ -38,16 +38,10 @@
         </nav>
     </header>
 		</div>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+
+		<div class="notice card light-blue lighten-4 blue-text col s12 m6"><p><%= notice %></p></div>
+		<div class="alert card red accent-3 white-text col s12 m6"><p><%= alert %></p></div>
+
     	<%= yield %>
-			<script>
-			$(document).ready(function(){
-    		$('.tabs').tabs();
-			});
-			$(document).ready(function(){
-    	$('select').formSelect();
-  		});
-			</script>
   </body>
 </html>

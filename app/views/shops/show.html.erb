@@ -1,5 +1,5 @@
 <h3><%= @shop.name %></h3>
 <%= render 'shops', shops: @shop%>
 <h4><%= t('.registered_bean')%></h4>
-<%= render 'beans/bean', bean: @shop.beans%>
+<%= render 'beans/beans', beans: @shop.beans%>
 <%= link_to t('.back'), :back %>

@@ -55,3 +55,35 @@
 #user_avatar, #bean_bean_image,#recipe_recipe_image,#shop_shop_image{
 	 display: none;
  }
+
+// .alert {
+//   display: block;
+//   overflow: hidden;
+//   margin: 10px 0px;
+//   padding: 15px;
+//   border-radius: 0 0 2px 2px;
+// }
+
+// .alert-success {
+//   @extend .green !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .green-text !optional;
+// }
+
+// .alert-info {
+//   @extend .light-blue !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .light-blue-text !optional;
+// }
+
+// .alert-warning {
+//   @extend .orange !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .orange-text !optional;
+// }
+
+// .alert-danger {
+//   @extend .red !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .red-text !optional;
+// }

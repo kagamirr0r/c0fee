@@ -1,12 +1,8 @@
 <%= form_with(model: bean ,local: true) do |b| %>
+	<%= render 'layouts/error_messages', model: b.object %>
 
-	<div class="field">
 		<%= b.hidden_field :user_id, value: current_user.id %>
-	</div>
-
-	<div class="field">
-		<%= b.hidden_field :shop_id, value: shop.id %>
-	</div>
+		<%= b.hidden_field :shop_id, value: shop.id%>
 
 	<div class="file-field input-field col s12">
 		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">
@@ -98,7 +94,7 @@
 		<% end %>
 
   <div class="actions">
-    <%= button_tag class: "waves-effect waves-light btn", data: { confirm: t('.confirm') } do %><%=t('.register')%><% end %>
+    <%= button_tag class: "waves-effect waves-light btn register_bean" do %><%=t('.register')%><% end %>
   </div>
 
 <% end %>

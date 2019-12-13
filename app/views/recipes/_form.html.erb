@@ -1,4 +1,5 @@
 <%= form_with(model: recipe, local: true) do |r| %>
+	<%= render 'layouts/error_messages', model: r.object %>
 
 		<div class="field">
 			<%# <%= r.label :user_id %>

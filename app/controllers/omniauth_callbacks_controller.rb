@@ -6,7 +6,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           sign_in_and_redirect @user
       else
           session["devise.user_attributes"] = @user_attributes
-          redirect_to new_user_registaration_url
+          redirect_to new_user_registration_url
       end
   end
 

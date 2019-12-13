@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do
-    @user = build(:user)
-  end
+  let(:user) {build(:user)}
 
   describe "validation" do
     it"is invalid without an email address" do
-      @user.email = ''
-      expect(@user.valid?).to eq(false)
+      user.email = ''
+      expect(user.valid?).to eq(false)
     end
   end
 end

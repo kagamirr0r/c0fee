@@ -9,6 +9,7 @@ ja:
       edit: 編集
       delete: 削除
       back: 戻る
+      are_you_sure: 削除してよろしいですか？
     recipes:
       <<: *recipe
     new: &new

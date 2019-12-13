@@ -9,17 +9,18 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @bean = Bean.find_by(id: params[:id])
+    @bean = Bean.find(params[:id])
     @recipe = Recipe.new
     @recipe.build_taste
   end
 
   def edit
-    @bean = Bean.find_by(id: @recipe.bean_id)
+    @bean = Bean.find(@recipe.bean.id)
   end
 
-  def create
-    @recipe = Recipe.new(recipe_params)
+	def create
+		@bean = Bean.find(params[:recipe][:bean_id])
+    @recipe = @bean.recipes.build(recipe_params)
     @recipe.save!
     redirect_to recipes_path, notice: t('recipes.flash.created_recipe')
   rescue StandardError
@@ -41,7 +42,7 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find_by(id: params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def recipe_params
