@@ -1,0 +1,31 @@
+ja:
+  recipes:
+    form:
+      register: 登録
+      select_recipe_image: 画層を選ぶ
+      amount: 豆の量/g
+      temperature: 湯温(°C)
+    recipe: &recipe
+      edit: 編集
+      delete: 削除
+      back: 戻る
+      are_you_sure: 削除してよろしいですか？
+    recipes:
+      <<: *recipe
+    new: &new
+      back: 戻る
+    edit:
+      title: レシピの編集
+      <<: *new
+    index:
+      title: レシピ一覧
+    new:
+      title: レシピの登録
+    show:
+      back: 戻る
+    flash:
+      created_recipe: レシピを作成しました!
+      edited_recipe: レシピを編集しました！
+      deleted_recipe: コーヒー豆を削除しました！
+
+

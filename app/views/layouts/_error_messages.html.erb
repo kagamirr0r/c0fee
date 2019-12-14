@@ -1,0 +1,11 @@
+<% if model.errors.any? %>
+	<% model.errors.full_messages.each do |message| %>
+		<div class="col s12 m6">
+      <div class="card red accent-3">
+        <div class="card-content white-text">
+          <p><%= message %></p>
+        </div>
+      </div>
+    </div>
+	<% end %>
+<% end %>

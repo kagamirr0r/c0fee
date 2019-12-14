@@ -1,0 +1,35 @@
+<%= form_with(model: shop, local: true) do |s| %>
+	<%= render 'layouts/error_messages', model: s.object %>
+
+	<div class="file-field input-field col s12">
+		<button type="button" id="shop_select_file_button"class="waves-effect waves-light btn">
+		<%= t('.select_shop_image')%><i class="material-icons right">photo</i></button>
+		<%= s.file_field :shop_image, class: "autocomplete" %>
+		<div class="file-path-wrapper">
+			<input id="shop_filename" readonly type="text" value="" class="file-path validate">
+		</div>
+	</div><br />
+
+	<div class="input-field col s12">
+		<i class="material-icons prefix">mode_edit</i>
+		<%= s.label :name	 %>
+		<%= s.text_field :name, class: "autocomplete"%>
+	</div><br />
+
+	<div class="input-field col s12">
+		<i class="material-icons prefix">location_on</i>
+		<%= s.label :address %>
+		<%= s.text_field :address, class: "autocomplete"%>
+	</div><br />
+
+	<div class="input-field col s12">
+		<i class="material-icons prefix">web</i>
+		<%= s.label :url %>
+		<%= s.text_field :url, class: "autocomplete" %>
+	</div><br />
+
+  <div class="actions">
+    <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.register') %><% end %>
+  </div>
+
+<% end %>

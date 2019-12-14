@@ -1,0 +1,60 @@
+<% if recipes.present? %>
+		<table>
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
+					<th><%= Recipe.human_attribute_name(:bean)%></th>
+					<th><%= Recipe.human_attribute_name(:grind)%></th>
+					<th><%= Recipe.human_attribute_name(:extraction)%></th>
+					<th><%= Taste.human_attribute_name(:t_sour)%></th>
+					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
+					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
+					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
+					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<% if user_signed_in?%>
+						<th>&nbsp;</th>
+					<% else %>
+						<th>Like</th>
+					<% end %>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% Array(recipes).reverse_each do |recipe| %>
+					<tr>
+						<td id="recipe_image_td">
+							<% if recipe.recipe_image? %>
+								<%=link_to image_tag(recipe.recipe_image.to_s, :id => 'recipe_image'), recipe_path(recipe) %>
+							<% else%>
+								<%=link_to image_tag('C0FEE.png', :id => 'no_recipe_image'), recipe_path(recipe) %>
+							<% end %>
+						</td>
+						<td><%= recipe.hot_ice %></td>
+						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+						<td><%= recipe.grind %></td>
+						<td><%= recipe.extraction %></td>
+						<td><%= recipe.taste.t_sour%></td>
+						<td><%= recipe.taste.t_sweet%></td>
+						<td><%= recipe.taste.t_bitter%></td>
+						<td><%= recipe.taste.t_aroma%></td>
+						<td><%= recipe.taste.t_fullbody%></td>
+						<% if user_signed_in? %>
+							<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						<% else %>
+							<td><%= recipe_liked_counts(recipe) %></td>
+						<% end %>
+							<% if current_user == recipe.user %>
+								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('are_you_sure') },class: 'delete_recipe' %></td>
+							<% else %>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							<% end %>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>

@@ -11,11 +11,11 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt-get update && apt-get install -y yarn
 
 ENV APP_HOME /app
- 
+
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
-ADD Gemfile $APP_HOME/Gemfile
-ADD Gemfile.lock $APP_HOME/Gemfile.lock
+COPY Gemfile $APP_HOME/Gemfile
+COPY Gemfile.lock $APP_HOME/Gemfile.lock
 RUN bundle install
 RUN yarn install
-ADD . $APP_HOME
+COPY . $APP_HOME

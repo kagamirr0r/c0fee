@@ -1,2 +1,8 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<div class="shops">
+
+	<h3><%= t('.title')%></h3>
+
+	<%= render 'shops', shops: @shops%>
+
+	<%= link_to t('.register_shop'), new_shop_path %>
+</div>

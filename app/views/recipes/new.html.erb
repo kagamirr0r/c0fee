@@ -1,2 +1,5 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<h3><%= t('.title')%></h3>
+
+<%= render 'form', bean: @bean, recipe: @recipe %>
+
+<%= link_to t('.back'), :back%>

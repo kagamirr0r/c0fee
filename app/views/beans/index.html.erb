@@ -1,2 +1,5 @@
-<h1>Beans#index</h1>
-<p>Find me in app/views/beans/index.html.erb</p>
+<div class="beans">
+	<h3><%= t('.title')%></h3>
+		<%= render 'beans', beans: @beans %>
+		<%= link_to t('.register_bean'), shops_path %>
+</div>

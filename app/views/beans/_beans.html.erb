@@ -1,0 +1,60 @@
+	<% if beans.present? %>
+		<table>
+			<thead>
+				<tr>
+				  <th>&nbsp;</th>
+					<th><%= Bean.human_attribute_name(:country)%></th>
+					<th><%= Bean.human_attribute_name(:area)%></th>
+					<th><%= Bean.human_attribute_name(:roast)%></th>
+					<th><%= Impression.human_attribute_name(:i_sour)%></th>
+					<th><%= Impression.human_attribute_name(:i_sweet)%></th>
+					<th><%= Impression.human_attribute_name(:i_bitter)%></th>
+					<th><%= Bean.human_attribute_name(:shop)%></th>
+					<th><%= User.model_name.human %></th>
+					<% if user_signed_in?%>
+						<th>&nbsp;</th>
+					<% else %>
+						<th>Like</th>
+					<% end %>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% Array(beans).reverse_each do |bean| %>
+					<tr>
+						<td id="bean_image_td">
+						<% if bean.bean_image? %>
+							<%=link_to image_tag(bean.bean_image.to_s, :id => 'bean_image'), bean_path(bean)%>
+						<% else%>
+							<%=link_to image_tag('C0FEE.png', :id => 'no_bean_image'), bean_path(bean)%>
+						<% end %>
+						</td>
+						<td><%= bean.country %></td>
+						<td><%= bean.area %></td>
+						<td><%= bean.roast %></td>
+						<td><%= bean.impression.i_sour%></td>
+						<td><%= bean.impression.i_sweet%></td>
+						<td><%= bean.impression.i_bitter%></td>
+						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
+						<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+						<% if user_signed_in? %>
+							<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+						<% else %>
+							<td><%= bean_liked_counts(bean) %></td>
+						<% end %>
+						<% if current_user == bean.user %>
+							<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+							<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') }, class: 'delete_bean' %></td>
+						<% else %>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						<% end %>
+						<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
+						</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% end %>

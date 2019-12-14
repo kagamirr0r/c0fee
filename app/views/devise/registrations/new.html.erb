@@ -1,40 +1,34 @@
-<h2>Sign up</h2>
+<h3><%=t('.sign_up')%></h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-		<input id="filename" readonly type="text" value="" >
-		<button type="button" id="select_file_button">Select</button>
-　</div>
+  <div class="input-field col s12">
+		<i class="material-icons prefix">create</i>
+    <%= f.text_field :username, class: "autocomplete"%>
+		<%= f.label :username %><br />
+  </div><br />
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
+  <div class="input-field col s12">
+		<i class="material-icons prefix">email</i>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div><br />
+
+  <div class="input-field col s12">
+		<i class="material-icons prefix">lock_outline</i>
+    <%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.label t('.password', password_length: @minimum_password_length) %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="input-field col s12">
+		<i class="material-icons prefix">lock_outline</i>
+		<%= f.password_field :password_confirmation, autocomplete: "new-password",class: "autocomplete" %>
+    <%= f.label t('.confirm_new_password') %><br />
+  </div><br />
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.sign_up') %><% end %>
   </div>
 <% end %>
 

@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+	* files in this directory. Styles in this file should be added after the last require_* statement.
+	* It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "materialize";
+@import "material_icons";
+
+#logo{
+	 text-decoration: none ;
+	 font-family: 'Osaka-Mono';
+	 font-size: 50px;
+ }
+
+#no_avatar_image,#avatar_image{
+	display: inline-block;
+  position: relative;
+  top: 13px;
+ }
+
+#user_plofile{
+	margin-left: 5px;
+}
+
+#bean_image,#recipe_image{
+	display: inline-block;
+	width: 100px;
+}
+
+#no_bean_image,#no_recipe_image,#no_shop_image{
+	width: 60px;
+}
+
+
+#bean_image_td,#recipe_image_td,#shop_image_td{
+	text-align: center;
+	width: 10px;
+}
+
+#shop_url_td{
+	width: 10px;
+}
+
+#user_avatar, #bean_bean_image,#recipe_recipe_image,#shop_shop_image{
+	 display: none;
+ }
+
+// .alert {
+//   display: block;
+//   overflow: hidden;
+//   margin: 10px 0px;
+//   padding: 15px;
+//   border-radius: 0 0 2px 2px;
+// }
+
+// .alert-success {
+//   @extend .green !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .green-text !optional;
+// }
+
+// .alert-info {
+//   @extend .light-blue !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .light-blue-text !optional;
+// }
+
+// .alert-warning {
+//   @extend .orange !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .orange-text !optional;
+// }
+
+// .alert-danger {
+//   @extend .red !optional;
+//   @extend .lighten-5 !optional;
+//   @extend .red-text !optional;
+// }

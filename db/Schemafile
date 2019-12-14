@@ -31,65 +31,71 @@ create_table "users", force: :cascade do |t|
 end
 
 create_table "beans", force: :cascade do |t|
-  t.integer "user_id"
+	t.integer "user_id"
   t.integer "shop_id"
-  t.string "name", null: false, unique: true
-  t.integer "price"
-  t.string "country"
+	t.string "country", null: false
+  t.string "area"
   t.string "variety"
   t.string "farm"
   t.string "process"
   t.string "roast"
+	t.integer "price"
   t.string "bean_image"
+	t.string "bean_url"
 end
 
 create_table "shops", force: :cascade do |t|
   t.string "name", null: false
-  t.string "adress"
-  t.string "url"
+  t.string "address"
+  t.string "url", null: false, unique: true
   t.string "shop_image"
 end
 
 create_table "impressions", force: :cascade do |t|
-  t.integer "bean_id"
-  t.integer "i_sour"
-  t.integer "i_sweet"
-  t.integer "i_bitter"
+  t.integer "bean_id",null: false
+  t.integer "i_sour",null: false
+  t.integer "i_sweet",null: false
+  t.integer "i_bitter",null: false
   t.text "i_comment"
-  t.string "i_image"
 end
 
 create_table "recipes", force: :cascade do |t|
+	t.integer "user_id"
   t.integer "bean_id"
-  t.string "name", null: false
+	t.string "hot_ice",null: false
   t.string "grind"
   t.string "temperature"
   t.integer "amount"
   t.string "extraction"
-  t.string "r_image"
+  t.string "recipe_image"
 end
 
 create_table "tastes", force: :cascade do |t|
   t.integer "recipe_id"
-  t.integer "t_sour"
-  t.integer "t_sweet"
-  t.integer "t_bitter"
-  t.integer "t_aroma"
-  t.integer "t_fullbody"
+  t.integer "t_sour",null: false
+  t.integer "t_sweet",null: false
+  t.integer "t_bitter",null: false
+  t.integer "t_aroma",null: false
+  t.integer "t_fullbody",null: false
   t.text "t_comment"
 end
 
 create_table "bean_likes", force: :cascade do |t|
-  t.integer "user_id"
-  t.integer "bean_id"
+  t.integer "user_id", null: false
+  t.integer "bean_id", null: false
 end
 
 create_table "recipe_likes", force: :cascade do |t|
-  t.integer "user_id"
-  t.integer "recipe_id"
+  t.integer "user_id", null: false
+  t.integer "recipe_id", null: false
 end
 
-add_index "beans", ["user_id"], name:"user_ind_on_beans", using: :btree
+create_table "shop_likes", force: :cascade do |t|
+	t.integer "user_id", null: false
+	t.integer "shop_id", null: false
+end
+
+add_index "beans", ["user_id"], name: "user_ind_on_beans", using: :btree
 add_foreign_key "beans", "users", name: "fk_beans_belong_to_user"
 
 add_index "beans", ["shop_id"], name: "shop_ind_on_beans", using: :btree
@@ -97,6 +103,9 @@ add_foreign_key "beans", "shops", name: "fk_beans_belong_to_shop"
 
 add_index "impressions", ["bean_id"], name: "bean_ind_on_impressions", using: :btree
 add_foreign_key "impressions","beans", name: "fk_impression_belongs_to_bean"
+
+add_index "recipes",["user_id"], name: "user_ind_on_recipes", using: :btree
+add_foreign_key "recipes","users", name: "fk_recipes_belong_to_user"
 
 add_index "recipes",["bean_id"], name: "bean_ind_on_recipess", using: :btree
 add_foreign_key "recipes","beans", name: "fk_recipes_belong_to_bean"
@@ -115,3 +124,9 @@ add_foreign_key "recipe_likes","users", name: "fk_recipe_likes_belong_to_user"
 
 add_index "recipe_likes",["recipe_id"], name: "recipe_ind_on_recipe_likes", using: :btree
 add_foreign_key "recipe_likes","recipes",name: "fk_recipe_likes_belong_to_recipe"
+
+add_index "shop_likes",["user_id"], name: "user_ind_on_shop_likes", using: :btree
+add_foreign_key "shop_likes","users", name: "fk_shop_likes_belong_to_user"
+
+add_index "shop_likes",["shop_id"], name: "shop_ind_on_shop_likes", using: :btree
+add_foreign_key "shop_likes","shops",name: "fk_shop_likes_belong_to_shop"
