@@ -17,15 +17,15 @@ jobs:
       - run:
           name: create db
           command: docker-compose run web rails db:create
-      - run:
-          name: create tables
-          command: docker-compose run web bundle exec ridgepole --apply -c config/database.yml -f db/Schemafile
-      - run:
-          name: rubocop-faker
-          command: docker-compose run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
-      - run:
-          name: test
-          command: docker-compose run web bin/rspec
-      - run:
-          name: docker-compose kill
-          command: docker-compose kill
+      # - run:
+      #     name: create tables
+      #     command: docker-compose run web bundle exec ridgepole --apply -c config/database.yml -f db/Schemafile
+      # - run:
+      #     name: rubocop-faker
+      #     command: docker-compose run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
+      # - run:
+      #     name: test
+      #     command: docker-compose run web bin/rspec
+      # - run:
+      #     name: docker-compose kill
+      #     command: docker-compose kill
