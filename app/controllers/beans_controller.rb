@@ -2,12 +2,11 @@ class BeansController < ApplicationController
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
   def index
-		@beans = Bean.all
-		# flash[:choose_bean] = t('beans.flash.choose_bean')
+    @beans = Bean.all
+    # flash[:choose_bean] = t('beans.flash.choose_bean')
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @shop = Shop.find(params[:id])
@@ -19,14 +18,14 @@ class BeansController < ApplicationController
     @shop = Shop.find(@bean.shop.id)
   end
 
-	def create
-		@shop = Shop.find(params[:bean][:shop_id])
-		@bean = @shop.beans.build(bean_params)
-     if @bean.save
-			redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
-		 else
-			render :new
-		 end
+  def create
+    @shop = Shop.find(params[:bean][:shop_id])
+    @bean = @shop.beans.build(bean_params)
+    if @bean.save
+      redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
+    else
+      render :new
+    end
   end
 
   def update

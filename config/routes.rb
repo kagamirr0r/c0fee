@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-	devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks",
-																		:sessions => 'sessions' }
+  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks",
+                                    :sessions => 'sessions' }
   root 'top_pages#index'
   get 'my_pages/show'
 
@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :tastes
 
   resources :bean_likes, only: [:create, :destroy]
-	resources :recipe_likes, only: [:create, :destroy]
-	resources :shop_likes, only: [:create, :destroy]
+  resources :recipe_likes, only: [:create, :destroy]
+  resources :shop_likes, only: [:create, :destroy]
 end

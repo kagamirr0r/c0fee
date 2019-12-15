@@ -5,8 +5,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @bean = Bean.find(params[:id])
@@ -18,8 +17,8 @@ class RecipesController < ApplicationController
     @bean = Bean.find(@recipe.bean.id)
   end
 
-	def create
-		@bean = Bean.find(params[:recipe][:bean_id])
+  def create
+    @bean = Bean.find(params[:recipe][:bean_id])
     @recipe = @bean.recipes.build(recipe_params)
     @recipe.save!
     redirect_to recipes_path, notice: t('recipes.flash.created_recipe')

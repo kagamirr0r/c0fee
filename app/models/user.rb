@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
-	validates :email, presence: true
+  validates :email, presence: true
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
@@ -28,16 +28,16 @@ class User < ApplicationRecord
   has_many :like_beans, through: :bean_likes, source: :bean
 
   def like_bean(bean)
-    self.bean_likes.find_or_create_by(bean_id: bean.id)
+    bean_likes.find_or_create_by(bean_id: bean.id)
   end
 
   def cancel_like_bean(bean)
-    bean_like = self.bean_likes.find_by(bean_id: bean.id)
+    bean_like = bean_likes.find_by(bean_id: bean.id)
     bean_like&.destroy
   end
 
   def liked_bean?(bean)
-    self.like_beans.include?(bean)
+    like_beans.include?(bean)
   end
 
   has_many :recipes, dependent: :destroy
@@ -45,32 +45,32 @@ class User < ApplicationRecord
   has_many :like_recipes, through: :recipe_likes, source: :recipe
 
   def like_recipe(recipe)
-    self.recipe_likes.find_or_create_by(recipe_id: recipe.id)
+    recipe_likes.find_or_create_by(recipe_id: recipe.id)
   end
 
   def cancel_like_recipe(recipe)
-    recipe_like = self.recipe_likes.find_by(recipe_id: recipe.id)
+    recipe_like = recipe_likes.find_by(recipe_id: recipe.id)
     recipe_like&.destroy
   end
 
   def like_recipe?(recipe)
-    self.like_recipes.include?(recipe)
-	end
+    like_recipes.include?(recipe)
+  end
 
-	has_many :shop_likes, dependent: :destroy
-	has_many :like_shops, through: :shop_likes, source: :shop
+  has_many :shop_likes, dependent: :destroy
+  has_many :like_shops, through: :shop_likes, source: :shop
 
-	def like_shop(shop)
-		self.shop_likes.find_or_create_by(shop_id: shop.id)
-	end
+  def like_shop(shop)
+    shop_likes.find_or_create_by(shop_id: shop.id)
+  end
 
-	def cancel_like_shop(shop)
-		shop_like = self.shop_likes.find_by(shop_id: shop.id)
-		shop_like&.destroy
-	end
+  def cancel_like_shop(shop)
+    shop_like = shop_likes.find_by(shop_id: shop.id)
+    shop_like&.destroy
+  end
 
-	def liked_shop?(shop)
-		self.like_shops.include?(shop)
-	end
+  def liked_shop?(shop)
+    like_shops.include?(shop)
+  end
   mount_uploader :avatar, AvatarUploader
 end

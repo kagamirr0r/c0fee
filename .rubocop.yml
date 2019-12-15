@@ -19,12 +19,22 @@ Documentation:
 AndOr:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - config/environments/*
+
+Lint/UselessAssignment:
+  Exclude:
+    - spec/**/*
+
 AllCops:
   Exclude:
     - db/**/*
+    - config/initializers/*
     - config/unicorn.rb
     - config/unicorn_staging.rb
     - tmp/**/*
     - node_modules/**/*
     - vendor/**/*
-    - spec/**/*
+    - "bin/*"

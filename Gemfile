@@ -53,7 +53,7 @@ gem 'jquery-rails'
 
 gem 'cocoon'
 
-gem 'rails-i18n','~> 5.1'
+gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
@@ -65,8 +65,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
-	gem 'faker'
-	gem 'rails-controller-testing'
+  gem 'faker'
+  gem 'rails-controller-testing'
   gem 'rubocop-faker'
 end
 
@@ -79,7 +79,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
-  gem 'solargraph',group: :development
+  gem 'solargraph', group: :development
 end
 
 group :test do
