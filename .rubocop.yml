@@ -21,9 +21,10 @@ AndOr:
 
 AllCops:
   Exclude:
-    - db/schema.rb
+    - db/**/*
     - config/unicorn.rb
     - config/unicorn_staging.rb
     - tmp/**/*
     - node_modules/**/*
     - vendor/**/*
+    - spec/**/*
