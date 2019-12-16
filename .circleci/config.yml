@@ -19,7 +19,7 @@ jobs:
           command: docker-compose run web rails db:create
       - run:
           name: create tables
-          command: docker-compose run web bundle exec ridgepole --apply -f db/Schemafile -c config/database.yml
+          command: docker-compose run web bundle exec ridgepole --apply -E test -f db/Schemafile -c config/database.yml
       - run:
           name: rubocop
           command: docker-compose run web bundle exec rubocop --auto-correct
