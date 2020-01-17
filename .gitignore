@@ -72,3 +72,10 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# Local .terraform directories
+terraform/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*

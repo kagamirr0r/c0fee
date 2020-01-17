@@ -1,0 +1,36 @@
+[{
+		"name": "c0fee_web",
+		"image": "918660925070.dkr.ecr.ap-northeast-1.amazonaws.com/c0fee:web",
+		"essential": true,
+		"logConfiguration": {
+			"logDriver": "awslogs",
+			"options": {
+				"awslogs-region": "ap-northeast-1",
+				"awslogs-stream-prefix": "nginx",
+				"awslogs-group": "/ecs/c0fee"
+			}
+		},
+		"portMappings": [{
+			"protocol": "tcp",
+			"containerPort": 80
+		}]
+	},
+	{
+		"name": "c0fee_app",
+		"image": "918660925070.dkr.ecr.ap-northeast-1.amazonaws.com/c0fee:app",
+		"essential": true,
+		"logConfiguration": {
+			"logDriver": "awslogs",
+			"options": {
+				"awslogs-region": "ap-northeast-1",
+				"awslogs-stream-prefix": "rails",
+				"awslogs-group": "/ecs/c0fee"
+			}
+		},
+		"portMappings": [{
+			"protocol": "http",
+			"containerPort": 80
+		}]
+
+	}
+]
