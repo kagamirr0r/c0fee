@@ -1,0 +1,17 @@
+[{
+	"name": "c0fee",
+	"image": "rails:latest",
+	"essential": true,
+	"logConfiguration": {
+		"logDriver": "aws_logs",
+		"options": {
+			"awslogs-region": "ap-northeasst-1",
+			"awslogs-stream-prefix": "rails",
+			"awslogs-group": "/ecs/c0fee"
+		}
+	},
+	"portMappings": [{
+		"protocol": "tcp",
+		"containerPort": 3000
+	}]
+}]
