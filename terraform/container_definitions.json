@@ -3,7 +3,7 @@
 	"image": "rails:latest",
 	"essential": true,
 	"logConfiguration": {
-		"logDriver": "aws_logs",
+		"logDriver": "awslogs",
 		"options": {
 			"awslogs-region": "ap-northeasst-1",
 			"awslogs-stream-prefix": "rails",

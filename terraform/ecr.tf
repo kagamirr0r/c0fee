@@ -14,7 +14,7 @@ resource "aws_ecr_lifecycle_policy" "c0fee" {
 				"selection":{
 					"tagStatus":"tagged",
 					"tagPrefixList":["release"],
-					"countType": "imageConutMoreThan",
+					"countType": "imageCountMoreThan",
 					"countNumber":30
 				},
 				"action":{

@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build-and-test:
+  build:
     machine:
       image: circleci/classic:edge
     steps:
