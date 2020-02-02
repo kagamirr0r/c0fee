@@ -7,7 +7,8 @@ resource "aws_lb" "c0fee" {
   enable_deletion_protection = true
 
   subnets = [
-    aws_subnet.public.id
+    aws_subnet.public_1.id,
+    aws_subnet.public_2.id
   ]
 
   access_logs {
@@ -52,22 +53,37 @@ module "http_redirect_sg" {
 }
 
 #___Listener_______________________________________________________________________________________________________
-resource "aws_lb_listener" "http" {
+# resource "aws_lb_listener" "http" {
+#   load_balancer_arn = aws_lb.c0fee.arn
+#   port              = "80"
+#   protocol          = "HTTP"
+
+#   default_action {
+#     type = "fixed-response"
+
+#     fixed_response {
+#       content_type = "text/plain"
+#       message_body = "This is HTTP"
+#       status_code  = "200"
+#     }
+#   }
+# }
+
+resource "aws_lb_listener" "redirect_http_to_https" {
   load_balancer_arn = aws_lb.c0fee.arn
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
-    type = "fixed-response"
+    type = "redirect"
 
-    fixed_response {
-      content_type = "text/plain"
-      message_body = "This is HTTP"
-      status_code  = "200"
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
     }
   }
 }
-
 
 resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.c0fee.arn
@@ -87,21 +103,7 @@ resource "aws_lb_listener" "https" {
   }
 }
 
-resource "aws_lb_listener" "redirect_http_to_https" {
-  load_balancer_arn = aws_lb.c0fee.arn
-  port              = "8080"
-  protocol          = "HTTP"
 
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
 
 #___Listener Rule_______________________________________________________________________________________________________
 resource "aws_lb_listener_rule" "c0fee" {

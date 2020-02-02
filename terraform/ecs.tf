@@ -48,7 +48,10 @@ resource "aws_ecs_service" "c0fee" {
   network_configuration {
     assign_public_ip = false
     security_groups  = [module.rails_sg.security_group_id]
-    subnets          = [aws_subnet.private.id]
+    subnets = [
+      aws_subnet.private_1.id,
+      aws_subnet.private_2.id
+    ]
   }
 
   load_balancer {
@@ -76,7 +79,21 @@ resource "aws_cloudwatch_log_group" "for_ecs" {
   retention_in_days = 180
 }
 
-# For log Persistence
+resource "aws_cloudwatch_log_subscription_filter" "c0fee" {
+  name            = "c0fee"
+  log_group_name  = aws_cloudwatch_log_group.for_ecs.name
+  destination_arn = aws_kinesis_firehose_delivery_stream.c0fee.arn
+  filter_pattern  = "[]"
+  role_arn        = module.cloudwatch_logs_role.iam_role_arn
+}
+
+# IAM Role for CloudWatch to use Kinesis FireHose
+module "cloudwatch_logs_role" {
+  source     = "./modules/iam_role/"
+  name       = "cloudwatch-logs"
+  identifier = "logs.ap-northeast-1.amazonaws.com"
+  policy     = data.aws_iam_policy_document.cloudwatch_logs.json
+}
 data "aws_iam_policy_document" "cloudwatch_logs" {
   statement {
     effect    = "Allow"
@@ -91,35 +108,24 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
   }
 }
 
-module "cloudwatch_logs_role" {
-  source     = "./modules/iam_role/"
-  name       = "cloudwatch-logs"
-  identifier = "logs.ap-northeast-1.amazonaws.com"
-  policy     = data.aws_iam_policy_document.cloudwatch_logs.json
-}
-
-resource "aws_cloudwatch_log_subscription_filter" "c0fee" {
-  name            = "c0fee"
-  log_group_name  = aws_cloudwatch_log_group.for_ecs.name
-  destination_arn = aws_kinesis_firehose_delivery_stream.c0fee.arn
-  filter_pattern  = "[]"
-  role_arn        = module.cloudwatch_logs_role.iam_role_arn
-}
-
-#___ECS Log Bucket___________________________________________________________________________________________
-resource "aws_s3_bucket" "ecs_logs" {
-  bucket = "ecs-logs-c0fee"
-
-  lifecycle_rule {
-    enabled = true
-
-    expiration {
-      days = "180"
-    }
+#___Kinesis Fire Hose___________________________________________________________________________________________
+resource "aws_kinesis_firehose_delivery_stream" "c0fee" {
+  name        = "c0fee"
+  destination = "s3"
+  s3_configuration {
+    role_arn   = module.kinesis_data_firehose_role.iam_role_arn
+    bucket_arn = aws_s3_bucket.ecs_logs.arn
+    prefix     = "ecs-logs/c0fee/"
   }
 }
 
-#___Kinesis Fire Hose___________________________________________________________________________________________
+module "kinesis_data_firehose_role" {
+  source     = "./modules/iam_role/"
+  name       = "kinesis-data-firehose"
+  identifier = "firehose.amazonaws.com"
+  policy     = data.aws_iam_policy_document.kinesis_data_firehose.json
+}
+
 data "aws_iam_policy_document" "kinesis_data_firehose" {
   statement {
     effect = "Allow"
@@ -136,19 +142,18 @@ data "aws_iam_policy_document" "kinesis_data_firehose" {
   }
 }
 
-module "kinesis_data_firehose_role" {
-  source     = "./modules/iam_role/"
-  name       = "kinesis-data-firehose"
-  identifier = "firehose.amazonaws.com"
-  policy     = data.aws_iam_policy_document.kinesis_data_firehose.json
-}
+#___ECS Log Bucket___________________________________________________________________________________________
+resource "aws_s3_bucket" "ecs_logs" {
+  bucket = "ecs-logs-c0fee"
 
-resource "aws_kinesis_firehose_delivery_stream" "c0fee" {
-  name        = "c0fee"
-  destination = "s3"
-  s3_configuration {
-    role_arn   = module.kinesis_data_firehose_role.iam_role_arn
-    bucket_arn = aws_s3_bucket.ecs_logs.arn
-    prefix     = "ecs-logs/c0fee/"
+  lifecycle_rule {
+    enabled = true
+
+    expiration {
+      days = "180"
+    }
   }
 }
+
+
+

@@ -1,24 +1,27 @@
 resource "aws_db_parameter_group" "c0fee" {
   name   = "c0fee"
-  family = "postgres9.6"
+  family = "postgres11"
 }
 resource "aws_db_subnet_group" "c0fee" {
-  name       = "c0fee"
-  subnet_ids = [aws_subnet.private.id]
+  name = "c0fee"
+  subnet_ids = [
+    aws_subnet.private_1.id,
+    aws_subnet.private_2.id
+  ]
 }
 
 resource "aws_db_instance" "c0fee" {
   identifier                 = "c0fee"
-  engine                     = "postres"
+  engine                     = "postgres"
   engine_version             = "11.5"
-  instance_class             = "db.t2.micro"
+  instance_class             = "db.t3.micro"
   allocated_storage          = 20
   storage_type               = "gp2"
   storage_encrypted          = true
   kms_key_id                 = aws_kms_key.c0fee.arn
   username                   = "kagamirror"
   password                   = "VeryStrongPassword"
-  multi_az                   = false
+  multi_az                   = true
   publicly_accessible        = false
   backup_window              = "09:10-09:40"
   backup_retention_period    = 30

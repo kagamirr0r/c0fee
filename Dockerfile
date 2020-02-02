@@ -1,4 +1,7 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.5
+
+ARG RAILS_ENV
+ARG RAILS_MASTER_KEY
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -12,12 +15,18 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 
 RUN apt-get install -y vim
 
-ENV APP_HOME /app
+ENV RAILS_ENV ${RAILS_ENV}
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
-RUN mkdir -p $APP_HOME
-WORKDIR $APP_HOME
-COPY Gemfile $APP_HOME/Gemfile
-COPY Gemfile.lock $APP_HOME/Gemfile.lock
+ENV APP_ROOT /app
+RUN mkdir -p $APP_ROOT
+WORKDIR $APP_ROOT
+
+COPY Gemfile $APP_ROOT/Gemfile
+COPY Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 RUN yarn install
-COPY . $APP_HOME
+COPY . $APP_ROOT
+
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
