@@ -50,7 +50,7 @@ workflows:
           filters:
             branches:
               only: master
-      - aws_ecs/deploy-service-update:
+      - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
           aws-region: ${AWS_DEFAULT_REGION}
