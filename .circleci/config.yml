@@ -40,27 +40,25 @@ workflows:
   build_and_deploy:
     jobs:
       - test
-      - aws_ecr/build_and_push_image:
+      - aws-ecr/build-and-push-image:
           requires:
             - test
-          filters:
-            branches:
-              only: master
           account-url: AWS_ECR_ACCOUNT_URL
           repo: "C0FEE"
           region: AWS_REGION
           tag: "latest"
-          extra_build_arg: RAILS_ENV="${RAILS_ENV}"
-          extra_build_arg: RAILS_MASTER_KEY="${RAILS_MASTER_KEY}"
-      - aws_ecs/deploy-service-update:
-          requires:
-            - aws_ecr/build_and_push_image:
+          extra_build_arg: RAILS_ENV="${RAILS_ENV}" RAILS_MASTER_KEY="${RAILS_MASTER_KEY}"
           filters:
             branches:
               only: master
+      - aws_ecs/deploy-service-update:
+          requires:
+            - aws_ecr/build_and_push_image
           aws-region: ${AWS_DEFAULT_REGION}
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"
           container-image-name-updates: "container=c0fee,tag=latest"
-
+          filters:
+            branches:
+              only: master
