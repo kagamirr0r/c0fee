@@ -52,7 +52,7 @@ workflows:
               only: master
       - aws_ecs/deploy-service-update:
           requires:
-            - aws_ecr/build-and-push-image
+            - aws-ecr/build-and-push-image
           aws-region: ${AWS_DEFAULT_REGION}
           family: "c0fee"
           cluster-name: "c0fee"
