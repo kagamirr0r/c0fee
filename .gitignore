@@ -80,6 +80,3 @@ terraform/.terraform/*
 *.tfstate
 *.tfstate.*
 
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
