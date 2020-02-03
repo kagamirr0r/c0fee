@@ -47,9 +47,9 @@ workflows:
           region: AWS_REGION
           tag: "latest"
           extra-build-args: RAILS_ENV="${RAILS_ENV}" RAILS_MASTER_KEY="${RAILS_MASTER_KEY}"
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
@@ -58,6 +58,6 @@ workflows:
           cluster-name: "c0fee"
           service-name: "c0fee"
           container-image-name-updates: "container=c0fee,tag=latest"
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
