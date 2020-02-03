@@ -72,5 +72,6 @@ class User < ApplicationRecord
   def liked_shop?(shop)
     like_shops.include?(shop)
   end
+
   mount_uploader :avatar, AvatarUploader
 end

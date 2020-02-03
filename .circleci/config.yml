@@ -1,6 +1,9 @@
-version: 2
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecs: circleci/aws-ecs@1.1.0
 jobs:
-  build:
+  test:
     machine:
       image: circleci/classic:edge
     steps:
@@ -32,4 +35,29 @@ jobs:
       - run:
           name: docker-compose down
           command: docker-compose down
-
+workflows:
+  build_and_deploy:
+    jobs:
+      - test
+      - aws-ecr/build-and-push-image:
+          requires:
+            - test
+          account-url: AWS_ECR_ACCOUNT_URL
+          repo: "C0FEE"
+          region: AWS_REGION
+          tag: "latest"
+          extra-build-args: RAILS_ENV="${RAILS_ENV}" RAILS_MASTER_KEY="${RAILS_MASTER_KEY}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          aws-region: ${AWS_DEFAULT_REGION}
+          family: "c0fee"
+          cluster-name: "c0fee"
+          service-name: "c0fee"
+          container-image-name-updates: "container=c0fee,tag=latest"
+          filters:
+            branches:
+              only: master
