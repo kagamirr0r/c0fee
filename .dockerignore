@@ -1,5 +1,4 @@
 .bundle
-.dockerignore
 .env
 .env.*
 .git
