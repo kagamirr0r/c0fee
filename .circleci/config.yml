@@ -46,7 +46,7 @@ workflows:
           repo: "c0fee"
           region: AWS_REGION
           tag: "latest"
-          extra-build-args: RAILS_ENV="${RAILS_ENV}"
+          extra-build-args: RAILS_ENV=production
           filters:
             branches:
               only: master
