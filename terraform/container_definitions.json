@@ -10,8 +10,13 @@
 			"awslogs-group": "/ecs/c0fee"
 		}
 	},
+	"secrets": [{
+		"name": "RAILS_MASTER_KEY",
+		"valueFrom": "/rails/master_key"
+	}],
 	"portMappings": [{
-		"protocol": "http",
+		"protocol": "tcp",
+		"hostPort": 3000,
 		"containerPort": 3000
 	}]
 }]

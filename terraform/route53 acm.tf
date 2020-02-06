@@ -1,6 +1,6 @@
 #___Route 53___________________________________________________________________________________________________
 data "aws_route53_zone" "c0fee" {
-  name = "c0fee.com"
+  name = "c0fee.com."
 }
 
 resource "aws_route53_record" "c0fee" {

@@ -27,10 +27,6 @@ resource "aws_security_group" "vpc" {
   }
 }
 
-output "security_group_id" {
-  value = aws_security_group.vpc.id
-}
-
 #___Internet Gateway_____________________________________________________________________________________________________
 resource "aws_internet_gateway" "c0fee" {
   vpc_id = aws_vpc.c0fee.id

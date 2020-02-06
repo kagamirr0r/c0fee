@@ -2,39 +2,6 @@
 resource "aws_ecs_cluster" "c0fee" {
   name = "c0fee"
 }
-#___Task Definition__________________________________________________________________________________________________
-resource "aws_ecs_task_definition" "c0fee" {
-  family                   = "c0fee"
-  cpu                      = "256"
-  memory                   = "512"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  container_definitions    = file("./container_definitions.json")
-  execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
-}
-
-#___IAM Role for loging____________________________________________________________________________________________
-data "aws_iam_policy" "ecs_task_execution_role_policy" {
-  arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-}
-
-data "aws_iam_policy_document" "ecs_task_execution" {
-  source_json = data.aws_iam_policy.ecs_task_execution_role_policy.policy
-
-  statement {
-    effect    = "Allow"
-    actions   = ["kms:Decrypt"]
-    resources = ["*"]
-  }
-}
-
-module "ecs_task_execution_role" {
-  source     = "./modules/iam_role"
-  name       = "ecs-task-execution"
-  identifier = "ecs-tasks.amazonaws.com"
-  policy     = data.aws_iam_policy_document.ecs_task_execution.json
-}
-
 #___ECS Service__________________________________________________________________________________________________
 resource "aws_ecs_service" "c0fee" {
   name                              = "c0fee"
@@ -64,7 +31,6 @@ resource "aws_ecs_service" "c0fee" {
     ignore_changes = [task_definition]
   }
 }
-
 module "rails_sg" {
   source      = "./modules/security_group/"
   name        = "rails-sg"
@@ -72,8 +38,40 @@ module "rails_sg" {
   port        = 3000
   cidr_blocks = [aws_vpc.c0fee.cidr_block]
 }
+#___Task Definition__________________________________________________________________________________________________
+resource "aws_ecs_task_definition" "c0fee" {
+  family                   = "c0fee"
+  cpu                      = "256"
+  memory                   = "512"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = file("./container_definitions.json")
+  execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
+}
 
-#___Cloud Watch Log___________________________________________________________________________________________
+#___IAM Role for ECS container to send logs to CloudWatchLogs____________________________________________________________________________________________
+data "aws_iam_policy" "ecs_task_execution_role_policy" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+data "aws_iam_policy_document" "ecs_task_execution" {
+  source_json = data.aws_iam_policy.ecs_task_execution_role_policy.policy
+
+  statement {
+    effect    = "Allow"
+    actions   = ["kms:Decrypt", "ssm:GetParameters"]
+    resources = ["*"]
+  }
+}
+
+module "ecs_task_execution_role" {
+  source     = "./modules/iam_role"
+  name       = "ecs-task-execution"
+  identifier = "ecs-tasks.amazonaws.com"
+  policy     = data.aws_iam_policy_document.ecs_task_execution.json
+}
+
+#___Cloud Watch Logs___________________________________________________________________________________________
 resource "aws_cloudwatch_log_group" "for_ecs" {
   name              = "/ecs/c0fee"
   retention_in_days = 180
@@ -107,6 +105,7 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
     resources = ["arn:aws:iam::*:role/cloudwatch-logs"]
   }
 }
+
 
 #___Kinesis Fire Hose___________________________________________________________________________________________
 resource "aws_kinesis_firehose_delivery_stream" "c0fee" {
