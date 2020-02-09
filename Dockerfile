@@ -1,7 +1,7 @@
 FROM ruby:2.6.3
 
 ARG RAILS_ENV
-# ARG RAILS_MASTER_KEY
+ARG RAILS_MASTER_KEY
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 	apt-get update && apt-get install -y yarn
 
 ENV RAILS_ENV ${RAILS_ENV}
-# ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 RUN apt-get install -y vim
 
