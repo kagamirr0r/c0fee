@@ -8,8 +8,9 @@ services:
       POSTGRES_USER: kagamirror
       POSTGRES_PASSWORD: secret
   web:
-    build: .
-    dockerfile: Dockerfile.production
+    build:
+      context: .
+      dockerfile: Dockerfile.production
     volumes:
       - .:/app
     ports:
