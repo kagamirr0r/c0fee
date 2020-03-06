@@ -6,6 +6,8 @@ jobs:
   test:
     machine:
       image: circleci/classic:edge
+    environment:
+      RAILS_ENV: test
     steps:
       - checkout
       - run:
@@ -47,7 +49,8 @@ workflows:
           repo: "c0fee"
           region: AWS_REGION
           tag: "latest"
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}"
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}\
+            --build-arg RAILS_ENV=production"
           filters:
             branches:
               only: master
