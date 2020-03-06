@@ -19,7 +19,6 @@ RUN bundle install
 
 COPY . $APP_ROOT
 
-RUN bin/yarn install
 RUN bin/rails assets:precompile
 
 EXPOSE 3000
