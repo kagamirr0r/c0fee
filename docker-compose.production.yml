@@ -5,8 +5,8 @@ services:
     volumes:
       - datavol:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: kagamirror
-      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   web:
     build:
       context: .
