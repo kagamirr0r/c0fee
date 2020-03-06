@@ -1,34 +1,26 @@
 FROM ruby:2.6.3
 
-ENV RAILS_ENV production
+ENV RAILS_ENV=production
 
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 ENV APP_ROOT /app
+RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 
-RUN apk add --no-cache alpine-sdk \
-    nodejs-current \
-    nodejs-npm \
-    yarn \
-		postgresql-dev \
-    postgresql-client \
-    python2 \
-    tzdata
+RUN echo "deb http://security.debian.org jessie/updates main" >> /etc/apt/sources.list &&\
+	curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update -qq \
+	&& apt-get install -y build-essential libpq-dev nodejs postgresql-client
 
-COPY Gemfile $APP_ROOT
-COPY Gemfile.lock $APP_ROOT
-
+COPY Gemfile $APP_ROOT/Gemfile
+COPY Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 
 COPY . $APP_ROOT
 
 RUN bin/yarn install
 RUN bin/rails assets:precompile
-
-VOLUME $APP_ROOT/public
-VOLUME $APP_ROOT/tmp
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]

@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecr: circleci/aws-ecr@6.7.1
   aws-ecs: circleci/aws-ecs@1.1.0
 jobs:
   test:
@@ -10,10 +10,10 @@ jobs:
       - checkout
       - run:
           name: docker-compose build
-          command: docker-compose build
+          command: docker-compose build -f docker-compose.pruduction.yml
       - run:
           name: docker-compose up
-          command: docker-compose up -d
+          command: docker-compose up -d -f docker-compose.pruduction.yml
       - run:
           name: sleep for waiting launch db
           command: sleep 1
@@ -42,19 +42,19 @@ workflows:
       - aws-ecr/build-and-push-image:
           requires:
             - test
+          dockerfile: Dockerfile.production
           account-url: AWS_ECR_ACCOUNT_URL
           repo: "c0fee"
           region: AWS_REGION
           tag: "latest"
-          extra-build-args: "--build-arg RAILS_ENV=${RAILS_ENV}/
-            --build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}"
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}"
           filters:
             branches:
               only: master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          aws-region: ${AWS_DEFAULT_REGION}
+          aws-region: AWS_DEFAULT_REGION
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"

@@ -9,13 +9,12 @@ services:
       POSTGRES_PASSWORD: secret
   web:
     build: .
+    dockerfile: Dockerfile.production
     volumes:
       - .:/app
     ports:
       - "3000:3000"
     depends_on:
       - db
-    tty: true
-    stdin_open: true
 volumes:
   datavol:
