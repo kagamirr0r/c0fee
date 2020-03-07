@@ -26,22 +26,22 @@ jobs:
           command: sleep 1
       - run:
           name: create db
-          command: docker-compose run web rails db:create
+          command: docker-compose -f docker-compose.test.yml run web rails db:create
       - run:
           name: create tables
-          command: docker-compose run web bundle exec ridgepole --apply -E test -f db/Schemafile -c config/database.yml
+          command: docker-compose -f docker-compose.test.yml run web bundle exec ridgepole --apply -E test -f db/Schemafile -c config/database.yml
       - run:
           name: rubocop
-          command: docker-compose run web bundle exec rubocop --auto-correct
+          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --auto-correct
       - run:
           name: rubocop-faker
-          command: docker-compose run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
+          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
       - run:
           name: test
-          command: docker-compose run web bin/rspec
+          command: docker-compose -f docker-compose.test.yml run web bin/rspec
       - run:
           name: docker-compose down
-          command: docker-compose down
+          command: docker-compose -f docker-compose.test.yml down
 workflows:
   build_and_deploy:
     jobs:
