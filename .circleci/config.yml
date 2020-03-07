@@ -12,9 +12,7 @@ jobs:
       - checkout
       - run:
           name: set environment variable
-          command: |
-            echo RAILS_ENV=${RAILS_ENV} > ~/.env
-            echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} > ~/.env
+          command: env > ~/project/.env
       - run:
           name: docker-compose build
           command: docker-compose -f docker-compose.test.yml build
