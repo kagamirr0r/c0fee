@@ -63,10 +63,9 @@ workflows:
           dockerfile: Dockerfile.production
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}\
-            --build-arg RAILS_ENV=production"
           repo: "c0fee"
           tag: latest
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY} --build-arg RAILS_ENV=production"
           filters:
             branches:
               only: master
