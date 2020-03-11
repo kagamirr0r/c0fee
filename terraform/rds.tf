@@ -27,8 +27,8 @@ resource "aws_db_instance" "c0fee" {
   backup_retention_period    = 30
   maintenance_window         = "mon:10:10-mon:10:40"
   auto_minor_version_upgrade = false
-  deletion_protection        = true
-  skip_final_snapshot        = false
+  deletion_protection        = false
+  skip_final_snapshot        = true
   port                       = 5432
   apply_immediately          = false
   vpc_security_group_ids     = [module.postgres_sg.security_group_id]
