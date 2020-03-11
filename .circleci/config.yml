@@ -1,40 +1,58 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecr: circleci/aws-ecr@6.7.1
   aws-ecs: circleci/aws-ecs@1.1.0
 jobs:
   test:
     machine:
       image: circleci/classic:edge
+    environment:
+      RAILS_ENV: test
     steps:
       - checkout
       - run:
+          name: touch .env.test
+          command: touch ~/project/.env.test
+      - run:
+          name: set environment variable
+          command: |
+            echo RAILS_ENV=${RAILS_ENV} > ~/project/.env.test
+            echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> ~/project/.env.test
+            echo POSTGRES_USER=${POSTGRES_USER} >> ~/project/.env.test
+            echo POSTGRES_PASSWORD=${POSTGRES_PASSWORD} >> ~/project/.env.test
+            echo DB_USERNAME=${DB_USERNAME} >> ~/project/.env.test
+            echo DB_PASSWORD=${DB_PASSWORD} >> ~/project/.env.test
+            echo RDS_HOST=${RDS_HOST} >> ~/project/.env.test
+            echo RDS_DATABASE=${RDS_DATABASE} >> ~/project/.env.test
+            echo RDS_USERNAME=${RDS_USERNAME} >> ~/project/.env.test
+            echo RDS_PASSWORD=${RDS_PASSWORD} >> ~/project/.env.test
+      - run:
           name: docker-compose build
-          command: docker-compose build
+          command: docker-compose -f docker-compose.test.yml build
       - run:
           name: docker-compose up
-          command: docker-compose up -d
+          command: docker-compose -f docker-compose.test.yml up -d
       - run:
           name: sleep for waiting launch db
           command: sleep 1
       - run:
           name: create db
-          command: docker-compose run web rails db:create
+          command: docker-compose -f docker-compose.test.yml run web rails db:create
       - run:
           name: create tables
-          command: docker-compose run web bundle exec ridgepole --apply -E test -f db/Schemafile -c config/database.yml
+          command: docker-compose -f docker-compose.test.yml run web bundle exec dotenv -f ".env.test" ridgepole --apply -E test -f db/Schemafile -c config/database.yml
       - run:
           name: rubocop
-          command: docker-compose run web bundle exec rubocop --auto-correct
+          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --auto-correct
       - run:
           name: rubocop-faker
-          command: docker-compose run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
+          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
       - run:
           name: test
-          command: docker-compose run web bin/rspec
+          command: docker-compose -f docker-compose.test.yml run web bin/rspec
       - run:
           name: docker-compose down
-          command: docker-compose down
+          command: docker-compose -f docker-compose.test.yml down
 workflows:
   build_and_deploy:
     jobs:
@@ -42,19 +60,20 @@ workflows:
       - aws-ecr/build-and-push-image:
           requires:
             - test
+          dockerfile: Dockerfile.production
           account-url: AWS_ECR_ACCOUNT_URL
-          repo: "c0fee"
           region: AWS_REGION
-          tag: "latest"
-          extra-build-args: "--build-arg RAILS_ENV=${RAILS_ENV}/
-            --build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}"
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY}\
+            --build-arg RAILS_ENV=production"
+          repo: "c0fee"
+          tag: latest
           filters:
             branches:
               only: master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          aws-region: ${AWS_DEFAULT_REGION}
+          aws-region: AWS_DEFAULT_REGION
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"
