@@ -11,6 +11,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: touch .env.test
+          command: touch ~/project/.env.test
+      - run:
           name: set environment variable
           command: |
             echo RAILS_ENV=${RAILS_ENV} > ~/project/.env.test
