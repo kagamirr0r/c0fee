@@ -100,7 +100,7 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
-    excon (0.66.0)
+    excon (0.72.0)
     execjs (2.7.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -207,8 +207,6 @@ GEM
     puma (3.12.1)
     puma (3.12.1-java)
     rack (2.0.8)
-    rack-proxy (0.6.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
