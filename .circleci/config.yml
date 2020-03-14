@@ -75,7 +75,6 @@ workflows:
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          aws-region: AWS_DEFAULT_REGION
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"
