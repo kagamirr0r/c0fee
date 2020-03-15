@@ -11,9 +11,42 @@
 		}
 	},
 	"secrets": [{
-		"name": "RAILS_MASTER_KEY",
-		"valueFrom": "/rails/master_key"
-	}],
+			"name": "RAILS_MASTER_KEY",
+			"valueFrom": "/rails/master_key"
+		},
+		{
+			"name": "POSTGRES_USER",
+			"valueFrom": "/rails/postgres_user"
+		},
+		{
+			"name": "POSTGRES_PASSWORD",
+			"valueFrom": "/rails/postgres_password"
+		},
+		{
+			"name": "DB_USERNAME",
+			"valueFrom": "/rails/db_username"
+		},
+		{
+			"name": "DB_PASSWORD",
+			"valueFrom": "/rails/db_password"
+		},
+		{
+			"name": "RDS_HOST",
+			"valueFrom": "/rails/rds_host"
+		},
+		{
+			"name": "RDS_DATABASE",
+			"valueFrom": "/rails/rds_database"
+		},
+		{
+			"name": "RDS_USERNAME",
+			"valueFrom": "/rails/rds_username"
+		},
+		{
+			"name": "RDS_PASSWORD",
+			"valueFrom": "/rails/rds_password"
+		}
+	],
 	"portMappings": [{
 		"protocol": "tcp",
 		"hostPort": 3000,
