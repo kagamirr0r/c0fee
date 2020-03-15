@@ -71,7 +71,9 @@ workflows:
           --build-arg RDS_USERNAME=${RDS_USERNAME} --build-arg RDS_PASSWORD=${RDS_PASSWORD}"
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - deploy
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
@@ -81,4 +83,6 @@ workflows:
           container-image-name-updates: "container=c0fee,tag=latest"
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - deploy
