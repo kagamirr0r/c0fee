@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ec2_for_ssm_role","Source":"../modules/iam_role","Dir":"../modules/iam_role"}]}

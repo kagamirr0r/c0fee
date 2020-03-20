@@ -58,14 +58,17 @@ gem 'material_icons'
 
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.1'
 
+gem 'faker'
+gem 'rubocop-faker'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'
-  gem 'faker'
+
   gem 'rails-controller-testing'
-  gem 'rubocop-faker'
+
 end
 
 group :development do

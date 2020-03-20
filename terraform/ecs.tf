@@ -69,7 +69,6 @@ data "aws_iam_policy_document" "ecs_task_execution" {
       "logs:PutLogEvents",
       "logs:DescribeLogStreams",
       "logs:DescribeLogGroups",
-      "logs:CreateLogStream",
       "logs:CreateLogGroup"
     ]
     resources = ["*"]
