@@ -66,7 +66,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'
-
   gem 'rails-controller-testing'
 
 end

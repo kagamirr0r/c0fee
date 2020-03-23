@@ -7,12 +7,16 @@ data "terraform_remote_state" "c0fee" {
     region = "ap-northeast-1"
   }
 }
+#IAM Role for instance profile(ECR and SSM)
 
-data "aws_iam_policy" "ec2_for_ssm" {
-  arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+module "role_of_ssm_and_ecr" {
+  source     = "../modules/iam_role"
+  name       = "role-of-ssm-and-ecr"
+  identifier = "ec2.amazonaws.com"
+  policy     = data.aws_iam_policy_document.ecr_ssm.json
 }
 
-data "aws_iam_policy_document" "ec2_for_ssm" {
+data "aws_iam_policy_document" "ecr_ssm" {
   source_json = data.aws_iam_policy.ec2_for_ssm.policy
 
   statement {
@@ -28,33 +32,31 @@ data "aws_iam_policy_document" "ec2_for_ssm" {
       "ssm:GetParameters",
       "ssm:GetParametersByPath",
       "kms:Decrypt",
+      "rds:*",
+      "s3:*",
     ]
   }
 }
 
-
-module "ec2_for_ssm_role" {
-  source     = "../modules/iam_role"
-  name       = "ec2-for-ssm"
-  identifier = "ec2.amazonaws.com"
-  policy     = data.aws_iam_policy_document.ec2_for_ssm.json
+data "aws_iam_policy" "ec2_for_ssm" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
 
-resource "aws_iam_instance_profile" "ec2_for_ssm" {
-  name = "ec2-for-ssm"
-  role = module.ec2_for_ssm_role.iam_role_name
+resource "aws_iam_instance_profile" "operation" {
+  name = "operation"
+  role = module.role_of_ssm_and_ecr.iam_role_name
 }
 
-resource "aws_instance" "c0fee_for_operation" {
+resource "aws_instance" "operation" {
   ami                  = "ami-052652af12b58691f"
   instance_type        = "t2.micro"
-  iam_instance_profile = aws_iam_instance_profile.ec2_for_ssm.name
+  iam_instance_profile = aws_iam_instance_profile.operation.name
   subnet_id            = data.terraform_remote_state.c0fee.outputs.subnet_private_1_id
   user_data            = file("./user_data.sh")
 }
 
 output "operation_instance_id" {
-  value = aws_instance.c0fee_for_operation.id
+  value = aws_instance.operation.id
 }
 
 resource "aws_s3_bucket" "operation" {

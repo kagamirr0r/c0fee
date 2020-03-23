@@ -46,9 +46,33 @@ resource "aws_ecs_task_definition" "c0fee" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   container_definitions    = file("./container_definitions.json")
+  task_role_arn            = module.ecs_task_role.iam_role_arn
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
+# IAM Role for task_role (RDS and S3)
+module "ecs_task_role" {
+  source     = "./modules/iam_role"
+  name       = "ecs-task-role"
+  identifier = "ecs-tasks.amazonaws.com"
+  policy     = data.aws_iam_policy_document.ecs_task.json
+}
+
+data "aws_iam_policy_document" "ecs_task" {
+  source_json = data.aws_iam_policy.rds_full_access_policy.policy
+
+  statement {
+    effect    = "Allow"
+    actions   = ["s3:*"]
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy" "rds_full_access_policy" {
+  arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+}
+
+#IAM Role for execution_role (ECSTaskExecutionRolePolicy + SSM + KMS)
 module "ecs_task_execution_role" {
   source     = "./modules/iam_role"
   name       = "ecs-task-execution"

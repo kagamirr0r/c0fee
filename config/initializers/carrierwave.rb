@@ -8,6 +8,7 @@ if Rails.env.production?
 		}
 
 		config.fog_directory = 'c0fee-private'
-		config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
+		config.cache_storage = :fog
+		# config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 	end
 end
