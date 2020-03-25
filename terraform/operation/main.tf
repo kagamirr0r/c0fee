@@ -7,11 +7,10 @@ data "terraform_remote_state" "c0fee" {
     region = "ap-northeast-1"
   }
 }
-#IAM Role for instance profile(ECR and SSM)
 
-module "role_of_ssm_and_ecr" {
+module "ssm_ecr_role" {
   source     = "../modules/iam_role"
-  name       = "role-of-ssm-and-ecr"
+  name       = "ssm-ecr-role"
   identifier = "ec2.amazonaws.com"
   policy     = data.aws_iam_policy_document.ecr_ssm.json
 }
@@ -44,7 +43,7 @@ data "aws_iam_policy" "ec2_for_ssm" {
 
 resource "aws_iam_instance_profile" "operation" {
   name = "operation"
-  role = module.role_of_ssm_and_ecr.iam_role_name
+  role = module.ssm_ecr_role.iam_role_name
 }
 
 resource "aws_instance" "operation" {

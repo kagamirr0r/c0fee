@@ -41,9 +41,9 @@ gem 'bootsnap', require: false
 gem 'devise'
 gem 'omniauth-twitter'
 
-gem 'carrierwave'
 gem 'mini_magick'
-gem 'fog-aws'
+gem 'carrierwave'
+gem 'fog'
 
 gem 'ridgepole'
 

@@ -18,6 +18,8 @@ COPY Gemfile $APP_ROOT/Gemfile
 COPY Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 
+RUN apt-get install -y vim
+
 COPY . $APP_ROOT
 
 RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets precompile; fi
