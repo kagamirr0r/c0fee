@@ -17,44 +17,58 @@
 @import "materialize";
 @import "material_icons";
 
-#logo{
-	 text-decoration: none ;
-	 font-family: 'Osaka-Mono';
-	 font-size: 50px;
- }
+#logo {
+	text-decoration: none;
+	font-family: 'Osaka-Mono';
+	font-size: 50px;
+}
 
-#no_avatar_image,#avatar_image{
+#no_avatar_image,
+#avatar_image {
 	display: inline-block;
-  position: relative;
-  top: 13px;
- }
+	position: relative;
+	top: 13px;
+}
 
-#user_plofile{
+#user_plofile {
 	margin-left: 5px;
 }
 
-#bean_image,#recipe_image{
+#bean_image,
+#recipe_image {
 	display: inline-block;
 	width: 100px;
 }
 
-#no_bean_image,#no_recipe_image,#no_shop_image{
+#no_bean_image,
+#no_recipe_image,
+#no_shop_image {
 	width: 60px;
 }
 
 
-#bean_image_td,#recipe_image_td,#shop_image_td{
+#bean_image_td,
+#recipe_image_td,
+#shop_image_td {
 	text-align: center;
 	width: 10px;
 }
 
-#shop_url_td{
+#shop_url_td {
 	width: 10px;
 }
 
-#user_avatar, #bean_bean_image,#recipe_recipe_image,#shop_shop_image{
-	 display: none;
- }
+#user_avatar,
+#bean_bean_image,
+#recipe_recipe_image,
+#shop_shop_image {
+	display: none;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
 
 // .alert {
 //   display: block;
