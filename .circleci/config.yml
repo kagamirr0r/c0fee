@@ -2,6 +2,10 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.1
   aws-ecs: circleci/aws-ecs@1.1.0
+executors:
+  deploy:
+    docker:
+      - image: circleci/ruby:2.6.3
 jobs:
   test:
     machine:
@@ -53,6 +57,11 @@ jobs:
       - run:
           name: docker-compose down
           command: docker-compose -f docker-compose.test.yml down
+      # run-task:
+      # steps:
+      # command: |
+      #   aws ecs run-task --region $AWS_REGION --cluster c0fee \
+      #   --task-definition c0fee --overrides file://run_task/ridgepole.json
 workflows:
   build_and_deploy:
     jobs:
@@ -78,6 +87,19 @@ workflows:
           cluster-name: "c0fee"
           service-name: "c0fee"
           container-image-name-updates: "container=c0fee,tag=latest"
+          filters:
+            branches:
+              only:
+                - master
+                - deploy
+      - aws-ecs/run-task:
+          requires:
+            - aws-ecs/deploy-service-update
+          cluster: "c0fee"
+          task-definition: "c0fee"
+          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
+          security-group-ids: $SECURITY_GROUP_IDS
+          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"ridgepole\\\", \\\"--apply\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\"]}]}"
           filters:
             branches:
               only:

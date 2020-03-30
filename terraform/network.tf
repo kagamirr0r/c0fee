@@ -10,7 +10,7 @@ resource "aws_vpc" "c0fee" {
 }
 
 resource "aws_security_group" "vpc" {
-  name   = "vps-sg"
+  name   = "vpc-sg"
   vpc_id = aws_vpc.c0fee.id
   ingress {
     from_port   = 80
