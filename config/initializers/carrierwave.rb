@@ -8,6 +8,6 @@ unless Rails.env.development? || Rails.env.test?
 		}
 		config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 		config.fog_directory = "c0fee-private"
-		config.cache_storage = :fog
+		# config.cache_storage = :fog
 	end
 end

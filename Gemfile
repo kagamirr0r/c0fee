@@ -43,7 +43,7 @@ gem 'omniauth-twitter'
 
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 
 gem 'ridgepole'
 
