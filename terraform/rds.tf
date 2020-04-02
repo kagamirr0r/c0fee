@@ -11,6 +11,7 @@ resource "aws_db_subnet_group" "c0fee" {
 }
 
 resource "aws_db_instance" "c0fee" {
+  name                       = "c0fee"
   identifier                 = "c0fee"
   engine                     = "postgres"
   engine_version             = "11.5"

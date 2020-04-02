@@ -8,14 +8,14 @@ data "terraform_remote_state" "c0fee" {
   }
 }
 
-module "ssm_ecr_role" {
+module "operation_role" {
   source     = "../modules/iam_role"
-  name       = "ssm-ecr-role"
+  name       = "operation"
   identifier = "ec2.amazonaws.com"
-  policy     = data.aws_iam_policy_document.ecr_ssm.json
+  policy     = data.aws_iam_policy_document.operation_policy.json
 }
 
-data "aws_iam_policy_document" "ecr_ssm" {
+data "aws_iam_policy_document" "operation_policy" {
   source_json = data.aws_iam_policy.ec2_for_ssm.policy
 
   statement {
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "ecr_ssm" {
       "ssm:GetParametersByPath",
       "kms:Decrypt",
       "rds:*",
-      "s3:*",
+      "s3:*"
     ]
   }
 }
@@ -43,7 +43,7 @@ data "aws_iam_policy" "ec2_for_ssm" {
 
 resource "aws_iam_instance_profile" "operation" {
   name = "operation"
-  role = module.ssm_ecr_role.iam_role_name
+  role = module.operation_role.iam_role_name
 }
 
 resource "aws_instance" "operation" {

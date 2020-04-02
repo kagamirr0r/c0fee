@@ -71,6 +71,7 @@ yarn-debug.log*
 
 # Local .terraform directories
 terraform/.terraform/*
+terraform/operation/.terraform/*
 
 # .tfstate files
 *.tfstate
