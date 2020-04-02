@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.7.1
+  aws-ecr: circleci/aws-ecr@6.8.1
   aws-ecs: circleci/aws-ecs@1.1.0
 executors:
   deploy:
@@ -70,11 +70,8 @@ workflows:
           requires:
             - test
           dockerfile: Dockerfile.production
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
           repo: "c0fee"
-          tag: latest
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY} --build-arg RAILS_ENV=production"
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production"
           filters:
             branches:
               only:
