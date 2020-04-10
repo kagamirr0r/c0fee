@@ -10,12 +10,12 @@ resource "aws_ecr_lifecycle_policy" "c0fee" {
 		"rules":[
 			{
 				"rulePriority":1,
-				"description": "Keep last 30 release tagged images",
+				"description": "Keep last 10 release tagged images",
 				"selection":{
 					"tagStatus":"tagged",
 					"tagPrefixList":["release"],
 					"countType": "imageCountMoreThan",
-					"countNumber":30
+					"countNumber":10
 				},
 				"action":{
 					"type":"expire"

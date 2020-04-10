@@ -27,9 +27,9 @@ resource "aws_ecs_service" "c0fee" {
     container_port   = 3000
   }
 
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
+  # lifecycle {
+  #   ignore_changes = [task_definition]
+  # }
 }
 module "rails_sg" {
   source      = "./modules/security_group/"
@@ -45,7 +45,7 @@ resource "aws_ecs_task_definition" "c0fee" {
   memory                   = "512"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  container_definitions    = file("./container_definitions.json")
+  container_definitions    = file("./app_container.json")
   task_role_arn            = module.ecs_task_role.iam_role_arn
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
@@ -85,15 +85,17 @@ data "aws_iam_policy_document" "ecs_task_execution" {
 
   statement {
     effect = "Allow"
-    actions = ["kms:Decrypt",
+    actions = [
+      "kms:Decrypt",
       "ssm:GetParameters",
+      "secretsmanager:GetSecretValue",
       "cloudwatch:PutMetricData",
       "ec2:DescribeVolumes",
       "ec2:DescribeTags",
       "logs:PutLogEvents",
       "logs:DescribeLogStreams",
       "logs:DescribeLogGroups",
-      "logs:CreateLogGroup"
+      "logs:CreateLogGroup",
     ]
     resources = ["*"]
   }

@@ -72,6 +72,7 @@ yarn-debug.log*
 # Local .terraform directories
 terraform/.terraform/*
 terraform/operation/.terraform/*
+terraform/session-to-Fargate/.terraform/*
 
 # .tfstate files
 *.tfstate
@@ -87,3 +88,6 @@ terraform/operation/.terraform/*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+Dockerfile.ssm
+run.sh

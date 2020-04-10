@@ -1,9 +1,5 @@
 FROM ruby:2.6.3
 
-ENV APP_ROOT /app
-RUN mkdir -p $APP_ROOT
-WORKDIR $APP_ROOT
-
 RUN echo "deb http://security.debian.org jessie/updates main" >> /etc/apt/sources.list &&\
 	curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update -qq \
 	&& apt-get install -y build-essential libpq-dev nodejs postgresql-client
@@ -13,6 +9,10 @@ RUN apt-get install -y vim
 COPY Gemfile $APP_ROOT/Gemfile
 COPY Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
+
+ENV APP_ROOT /app
+RUN mkdir -p $APP_ROOT
+WORKDIR $APP_ROOT
 
 COPY . $APP_ROOT
 
