@@ -27,9 +27,9 @@ resource "aws_ecs_service" "c0fee" {
     container_port   = 3000
   }
 
-  # lifecycle {
-  #   ignore_changes = [task_definition]
-  # }
+  lifecycle {
+    ignore_changes = [task_definition]
+  }
 }
 module "rails_sg" {
   source      = "./modules/security_group/"

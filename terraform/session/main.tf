@@ -58,21 +58,30 @@ resource "aws_ecs_cluster" "session" {
 #     ]
 #   }
 
-#   lifecycle {
-#     ignore_changes = [task_definition]
-#   }
+# lifecycle {
+#   ignore_changes = [task_definition]
+# }
 # }
 
-data "aws_iam_role" "ec2_role" {
+data "aws_iam_role" "task_execution_role" {
   name = data.terraform_remote_state.c0fee.outputs.ecs_task_execution_role_name
+}
+
+data "aws_iam_role" "task_role" {
+  name = data.terraform_remote_state.c0fee.outputs.ecs_task_role_iam_role_name
 }
 
 data "aws_iam_policy" "ec2_role_for_SSM" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
 
-resource "aws_iam_role_policy_attachment" "ssm_role" {
-  role       = data.aws_iam_role.ec2_role.name
+resource "aws_iam_role_policy_attachment" "ssm_task_execution" {
+  role       = data.aws_iam_role.task_execution_role.name
+  policy_arn = data.aws_iam_policy.ec2_role_for_SSM.arn
+}
+
+resource "aws_iam_role_policy_attachment" "ssm_task_role" {
+  role       = data.aws_iam_role.task_role.name
   policy_arn = data.aws_iam_policy.ec2_role_for_SSM.arn
 }
 
@@ -83,6 +92,6 @@ resource "aws_ecs_task_definition" "session" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   container_definitions    = file("./session_container.json")
-  task_role_arn            = data.terraform_remote_state.c0fee.outputs.ecs_task_role_iam_role_arn
-  execution_role_arn       = data.aws_iam_role.ec2_role.arn
+  task_role_arn            = data.aws_iam_role.task_role.arn
+  execution_role_arn       = data.aws_iam_role.task_execution_role.arn
 }

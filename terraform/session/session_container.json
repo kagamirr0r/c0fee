@@ -55,11 +55,15 @@
 		},
 		{
 			"name": "SSM_AGENT_CODE",
-			"valueFrom": "ops-activation-code"
+			"valueFrom": "activation-code"
 		},
 		{
 			"name": "SSM_AGENT_ID",
-			"valueFrom": "ops-activation-id"
+			"valueFrom": "activation-id"
+		},
+		{
+			"name": "AWS_DEFAULT_REGION",
+			"valueFrom": "default_region"
 		}
 	]
 }]
