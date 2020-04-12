@@ -97,16 +97,16 @@ workflows:
               only:
                 - master
                 - deploy
-      # - aws-ecs/run-task:
-      #     requires:
-      #       - aws-ecs/deploy-service-update
-      #     cluster: "c0fee"
-      #     task-definition: "c0fee"
-      #     subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
-      #     security-group-ids: $SECURITY_GROUP_IDS
-      #     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"rails\\\", \\\"assets:precompile\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\", \\\"-E\\\", \\\"production\\\"]}]}"
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
-      #           - deploy
+      - aws-ecs/run-task:
+          requires:
+            - aws-ecs/deploy-service-update
+          cluster: "c0fee"
+          task-definition: "c0fee"
+          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
+          security-group-ids: $SECURITY_GROUP_IDS
+          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"rails\\\", \\\"assets:precompile\\\"]}]}"
+          filters:
+            branches:
+              only:
+                - master
+                - deploy
