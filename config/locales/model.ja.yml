@@ -4,7 +4,7 @@ ja:
       user: ユーザー
       bean: コーヒー豆
       recipe: レシピ
-      shop: 店/ロースター
+      shop: 店/
     attributes:
       user:
         username: 名前
@@ -19,7 +19,7 @@ ja:
         roast: 焙煎
         price: 価格
         bean_url: URL
-        shop: 店/ロースター
+        shop: 店
         bean_image: コーヒー豆画像
       impression:
         i_sour: 酸味
@@ -47,6 +47,4 @@ ja:
         name: 名前
         address: 住所
         url: URL
-        shop_image: 店/ロースターのイメージ
-
-
+        shop_image: 店のイメージ

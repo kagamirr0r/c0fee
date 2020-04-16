@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s4"><a href="#recent_beans"><%= t('.recent_beans')%></a></li>
-        <li class="tab col s4"><a href="#recent_recipes"><%= t('.recent_recipes')%></a></li>
-        <li class="tab col s4"><a href="#recent_shops"><%= t('.recent_shops')%></a></li>
-      </ul>
-    </div>
-    <div id="recent_beans" class="col s12"><%= render 'beans/beans', beans: @beans %><%= link_to "more" ,beans_url%></div>
-    <div id="recent_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @recipes%><%= link_to "more" ,recipes_path%></div>
-    <div id="recent_shops" class="col s12"><%= render 'shops/shops', shops: @shops %><%= link_to "more" ,shops_path%></div>
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s12 l4"><a href="#recent_beans"><%= t('.recent_beans')%></a></li>
+			<li class="tab col s12 l4"><a href="#recent_shops"><%= t('.recent_shops')%></a></li>
+      <li class="tab col s12 l4"><a href="#recent_recipes"><%= t('.recent_recipes')%></a></li>
+    </ul>
+  </div>
+  <div id="recent_beans" class="col s12"><%= render 'beans/beans', beans: @beans %><%= link_to t('.bean_index') ,beans_url%></div>
+	<div id="recent_shops" class="col s12"><%= render 'shops/shops', shops: @shops %><%= link_to t('.shop_index'),shops_path%></div>
+  <div id="recent_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @recipes%><%= link_to t('.recipe_index'),recipes_path%></div>
 </div>
