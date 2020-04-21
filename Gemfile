@@ -67,7 +67,6 @@ group :development, :test do
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'
   gem 'rails-controller-testing'
-
 end
 
 group :development do
@@ -80,6 +79,8 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'solargraph', group: :development
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
