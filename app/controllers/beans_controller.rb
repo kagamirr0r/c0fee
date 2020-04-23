@@ -1,10 +1,16 @@
 class BeansController < ApplicationController
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @beans = Bean.all
+	def index
 		@search_params = bean_search_params
-		@beans = Bean.search(@search_params).includes(:user).includes(:shop)
+
+		if @search_params.present?
+			searched_params = Impression.search_impression(@search_params)
+			@beans = Bean.search_bean(searched_params)
+		else
+			@beans = Bean.all
+		end
+
   end
 
   def show; end
@@ -53,6 +59,6 @@ class BeansController < ApplicationController
 	end
 
 	def	bean_search_params
-		params.fetch(:search, {}).permit(:country, :roast)
+		params.fetch(:search, {}).permit(:country, :roast, :i_sour, :i_sweet, :i_bitter)
 	end
 end

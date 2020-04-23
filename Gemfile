@@ -67,6 +67,11 @@ group :development, :test do
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'
   gem 'rails-controller-testing'
+	gem "pry-rails"
+	gem "pry-byebug"
+	gem 'rb-readline'
+	gem 'hirb'
+  gem 'hirb-unicode-steakknife'
 end
 
 group :development do

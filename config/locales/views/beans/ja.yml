@@ -26,6 +26,8 @@ ja:
       title: コーヒー豆の登録
     show:
       <<: *new
+    search_form:
+      submit_search: 検索
     flash:
       choose_bean: 以下の豆でコーヒーを淹れましたか?
       registered_bean: コーヒー豆を登録しました！
