@@ -1,8 +1,13 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  def index
-    @shops = Shop.all
-    flash[:choose_shop] = t('shops.flash.choose_shop')
+	def index
+		@shop_search_params = shop_search_params
+
+		if @shop_search_params.present?
+			@shops = Shop.search_shop(@shop_search_params)
+		else
+			@shops = Shop.all
+		end
   end
 
   def show
@@ -44,5 +49,9 @@ class ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(:name, :address, :url, :shop_image)
-  end
+	end
+
+	def shop_search_params
+		params.fetch(:search_shop, {}).permit(:name,:address)
+	end
 end

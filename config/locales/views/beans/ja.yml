@@ -17,19 +17,20 @@ ja:
     new: &new
       back: 戻る
     edit:
-      title: コーヒー豆の編集
+      title: 豆の編集
       <<: *new
     index:
-      title: コーヒー豆一覧
-      register_bean: コーヒー豆を登録する
+      title: 豆一覧
+      register_bean: 豆を登録する
     new:
-      title: コーヒー豆の登録
+      title: 豆の登録
     show:
       <<: *new
     search_form:
+      <<: *new
       submit_search: 検索
     flash:
-      choose_bean: 以下の豆でコーヒーを淹れましたか?
-      registered_bean: コーヒー豆を登録しました！
-      edited_bean: コーヒー豆を編集しました！
-      deleted_bean: コーヒー豆を削除しました！
+      choose_bean: 以下の豆でを淹れましたか?
+      registered_bean: 豆を登録しました！
+      edited_bean: 豆を編集しました！
+      deleted_bean: 豆を削除しました！

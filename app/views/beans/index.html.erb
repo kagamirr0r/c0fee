@@ -1,6 +1,6 @@
 <div class="beans">
-	<h3><%= t('.title')%></h3>
-		<%= render 'search_form'%>
+	<h4><%= t('.title')%></h4>
+		<%= render 'search_form', back: @back%>
 		<%= render 'beans', beans: @beans %>
 		<%= link_to t('.register_bean'), shops_path %>
 </div>

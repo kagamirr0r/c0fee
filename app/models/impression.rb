@@ -4,11 +4,11 @@ class Impression < ApplicationRecord
 
 	belongs_to :bean
 
-	scope :search_impression, -> (search_params) do
-		return if search_params.blank?
-		sour_search(search_params[:i_sour])
-		.sweet_search(search_params[:i_sweet])
-		.bitter_search(search_params[:i_bitter])
+	scope :search_impression, -> (bean_search_params) do
+		return if bean_search_params.blank?
+		sour_search(bean_search_params[:i_sour])
+		.sweet_search(bean_search_params[:i_sweet])
+		.bitter_search(bean_search_params[:i_bitter])
 	end
 
 	scope :sour_search, -> (i_sour) { where(i_sour: i_sour) if i_sour.present? }

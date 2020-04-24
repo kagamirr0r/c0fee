@@ -14,10 +14,12 @@ class Bean < ApplicationRecord
   has_many :bean_liked_users, through: :bean_likes, source: :user, dependent: :destroy
 
 
-	scope :search_bean, -> (searched_params) do
-		return if searched_params.blank?
-		country_search(searched_params[:country])
-			.roast_search(searched_params[:roast])
+	scope :search_bean, -> (bean_search_params) do
+		return if bean_search_params.blank?
+		joins(:impression)
+			.country_search(bean_search_params[:country])
+			.roast_search(bean_search_params[:roast])
+			.merge(Impression.search_impression(bean_search_params))
 	end
 
 	scope :country_search, -> (country) { where('country LIKE ?', "%#{country}%") if country.present? }

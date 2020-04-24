@@ -19,6 +19,9 @@ ja:
     show:
       registered_bean: 登録されているコーヒー豆
       back: 戻る
+    search_form:
+      <<: *new
+      submit_search: 検索
     flash:
       choose_shop: どの店でコーヒー豆を買いましたか?
       registered_shop: 店を登録しました!
