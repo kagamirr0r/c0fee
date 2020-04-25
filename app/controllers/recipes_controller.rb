@@ -1,8 +1,15 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @recipes = Recipe.all
+	def index
+		@recipe_search_params = recipe_search_params
+
+		if recipe_search_params.present?
+			@recipes = Recipe.search_recipe(@recipe_search_params)
+		else
+			@recipes = Recipe.all
+		end
+
   end
 
   def show; end
@@ -47,5 +54,9 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:user_id, :bean_id, :hot_ice, :grind, :temperature, :amount, :extraction, :recipe_image,
                                    taste_attributes: [:id, :recipe_id, :t_sour, :t_sweet, :t_bitter, :t_aroma, :t_fullbody, :t_comment])
-  end
+	end
+
+	def recipe_search_params
+		params.fetch(:search_recipe,{}).permit(:hot_ice, :extraction, :t_sour,	:t_sweet, :t_bitter, :t_aroma, :t_fullbody)
+	end
 end
