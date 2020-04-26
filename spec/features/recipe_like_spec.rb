@@ -5,11 +5,13 @@ RSpec.feature 'RecipeLikes', type: :feature do
 	let(:shop) { build :shop }
 	let(:bean) { build :bean}
 	let(:impression) { build :impression}
+	let(:recipe) { build :recipe }
+	let(:taste) { build :taste }
   before do
     log_in(user)
     register_shop(shop)
     register_bean(bean,impression)
-    register_recipe
+    register_recipe(recipe,taste)
   end
 
   scenario 'recipe_like_button' do
