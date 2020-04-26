@@ -2,49 +2,55 @@ require 'rails_helper'
 
 RSpec.feature 'Recipes', type: :feature do
   let(:user) { create :user }
-  let(:shop) { create :shop }
+	let(:shop) { create :shop }
+	let(:bean) { build :bean }
+	let(:impression) { build :impression }
+	let(:recipe) { build :recipe }
+	let(:taste) { build :taste}
+	let(:another_recipe) { build :another_recipe }
+	let(:another_taste) { build :another_taste }
   before do
     log_in(user)
     register_shop(shop)
-    register_bean
+    register_bean(bean,impression)
   end
 
   scenario 'CRUD of recipe' do
     # create
     visit beans_path
     find('.create_recipe').click
-    select 'ホット', from: 'recipe_hot_ice'
-    select '中細挽き', from: 'recipe_grind'
-    fill_in 'recipe_amount', with: 15
-    select 'ペーパーフィルター', from: 'recipe_extraction'
-    fill_in 'recipe_temperature', with: 95
-    fill_in 'recipe_taste_attributes_t_sour', with: 3
-    fill_in 'recipe_taste_attributes_t_sweet', with: 3
-    fill_in 'recipe_taste_attributes_t_bitter', with: 3
-    fill_in 'recipe_taste_attributes_t_aroma', with: 3
-    fill_in 'recipe_taste_attributes_t_fullbody', with: 3
-    fill_in 'recipe_taste_attributes_t_comment', with: '美味しい！'
+    select recipe.hot_ice, from: 'recipe_hot_ice'
+    select recipe.grind, from: 'recipe_grind'
+    fill_in 'recipe_amount', with: recipe.amount
+    select recipe.extraction, from: 'recipe_extraction'
+    fill_in 'recipe_temperature', with: recipe.temperature
+    fill_in 'recipe_taste_attributes_t_sour', with: taste.t_sour
+    fill_in 'recipe_taste_attributes_t_sweet', with: taste.t_sweet
+    fill_in 'recipe_taste_attributes_t_bitter', with: taste.t_bitter
+    fill_in 'recipe_taste_attributes_t_aroma', with: taste.t_aroma
+    fill_in 'recipe_taste_attributes_t_fullbody', with: taste._t_fullbody
+    fill_in 'recipe_taste_attributes_t_comment', with: taste.t_comment
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.created_recipe')
 
     # show
     recipe = Recipe.last
     visit recipe_path(recipe.id)
-    expect(page).to have_content '豆量'
+    expect(page).to have_content Recipe.human_attribute_name(:amount)
 
     # edit
     click_link I18n.t('recipes.recipe.edit')
-    select 'アイス', from: 'recipe_hot_ice'
-    select '細挽き', from: 'recipe_grind'
-    fill_in 'recipe_amount', with: 20
-    select '急冷', from: 'recipe_extraction'
-    fill_in 'recipe_temperature', with: 90
-    fill_in 'recipe_taste_attributes_t_sour', with: 2
-    fill_in 'recipe_taste_attributes_t_sweet', with: 2
-    fill_in 'recipe_taste_attributes_t_bitter', with: 5
-    fill_in 'recipe_taste_attributes_t_aroma', with: 2
-    fill_in 'recipe_taste_attributes_t_fullbody', with: 4
-    fill_in 'recipe_taste_attributes_t_comment', with: '冷たい！'
+    select another_recipe.hot_ice, from: 'recipe_hot_ice'
+    select another_recipe.grind, from: 'recipe_grind'
+    fill_in 'recipe_amount', with: another_recipe.amount
+    select another_recipe.extraction, from: 'recipe_extraction'
+    fill_in 'recipe_temperature', with: another_recipe.temperature
+    fill_in 'recipe_taste_attributes_t_sour', with: another_taste.t_sour
+    fill_in 'recipe_taste_attributes_t_sweet', with: another_taste.t_sweet
+    fill_in 'recipe_taste_attributes_t_bitter', with: another_taste.t_bitter
+    fill_in 'recipe_taste_attributes_t_aroma', with: another_taste.t_aroma
+    fill_in 'recipe_taste_attributes_t_fullbody', with: another_taste.t_fullbody
+    fill_in 'recipe_taste_attributes_t_comment', with: another_taste.t_comment
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 

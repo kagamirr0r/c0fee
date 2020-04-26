@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :taste do
+  factory :taste, class: Taste do
     recipe_id { Faker::Number.number(digits: 1) }
     t_sour { Faker::Number.within(range: 1..5) }
     t_sweet { Faker::Number.within(range: 1..5) }
@@ -7,7 +7,15 @@ FactoryBot.define do
     t_aroma { Faker::Number.within(range: 1..5) }
     t_fullbody { Faker::Number.within(range: 1..5) }
     t_comment { Faker::Coffee.notes }
+	end
 
-    association :recipe
+	factory :another_taste,class: Taste do
+    recipe_id { Faker::Number.number(digits: 1) }
+    t_sour { Faker::Number.within(range: 1..5) }
+    t_sweet { Faker::Number.within(range: 1..5) }
+    t_bitter { Faker::Number.within(range: 1..5) }
+    t_aroma { Faker::Number.within(range: 1..5) }
+    t_fullbody { Faker::Number.within(range: 1..5) }
+    t_comment { Faker::Coffee.notes }
   end
 end
