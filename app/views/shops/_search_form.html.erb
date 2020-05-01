@@ -1,0 +1,26 @@
+<%= form_with(scope: :search_shop, url: shops_path, method: :get, local: true) do |s|%>
+	<div class="row">
+
+	<div class="input-field col s12 l5">
+	<i class="material-icons prefix">mode_edit</i>
+		<%= s.label(:name, Shop.human_attribute_name(:name)) %>
+		<%= s.text_field :name,value: @shop_search_params[:name], class: "autocomplete"%>
+	</div>
+
+	<div class="input-field col s12 l5">
+		<i class="material-icons prefix">location_on</i>
+		<%= s.label(:address, Shop.human_attribute_name(:address)) %>
+		<%= s.text_field :address,value: @shop_search_params[:address], class: "autocomplete"%>
+	</div>
+
+	<div class="actions col s1 l1">
+		<%= s.submit t('.submit_search'),class:"btn waves-effect waves-light white"%>
+	</div>
+
+	<% if @shop_search_params.present? %>
+		<div class="actions col s1 l1">
+			<%= link_to t('.back'), shops_path, class:"btn waves-effect waves-light"%>
+		</div>
+	<% end %>
+	</div>
+<% end %>

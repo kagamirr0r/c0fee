@@ -33,8 +33,8 @@ RSpec.describe Taste, type: :model do
 
     describe 'length' do
       context 't_comment' do
-        it 't_comment not be over 50' do
-          taste.t_comment = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        it 't_comment not be over 100' do
+          taste.t_comment = 'a' * 101
           expect(taste.valid?).to eq(false)
         end
       end

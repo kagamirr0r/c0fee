@@ -19,8 +19,8 @@ RSpec.describe Impression, type: :model do
       expect(impression.valid?).to eq(false)
     end
 
-    it 'i_comment not be over 50' do
-      impression.i_comment = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    it 'i_comment not be over 100' do
+      impression.i_comment = 'a' * 101
       expect(impression.valid?).to eq(false)
     end
   end

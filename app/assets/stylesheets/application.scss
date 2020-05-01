@@ -19,7 +19,7 @@
 
 #logo {
 	text-decoration: none;
-	font-family: 'Osaka-Mono';
+	font-family: "Osaka-Mono";
 	font-size: 50px;
 }
 
@@ -46,7 +46,6 @@
 	width: 60px;
 }
 
-
 #bean_image_td,
 #recipe_image_td,
 #shop_image_td {
@@ -65,6 +64,16 @@
 	display: none;
 }
 
+#dropdown_nav {
+	width: 170px;
+}
+
+#bean_icon,
+#recipe_icon,
+#shop_icon {
+	width: 35px;
+	height: 35px;
+}
 .grid {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);

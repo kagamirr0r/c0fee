@@ -1,6 +1,0 @@
-{
-	"container0verdrives": [{
-		"name": "rails",
-		"command": ["bundle", "exe", "ridgepole", "--apply", "-c", "config/database.yml", "-f", "db/Schemafile"]
-	}]
-}

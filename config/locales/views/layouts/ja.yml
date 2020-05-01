@@ -1,12 +1,11 @@
 ja:
   layouts:
     application:
-      register_bean: 豆を登録
-      register_shop: 店/ロースターを登録
-      create_recipe: レシピを作成
+      bean: 豆
+      shop: 店
+      recipe: レシピ
       edit_profile: プロフィール変更
       log_out: ログアウト
       create_account: アカウント作成
       log_in: ログイン
-
-
+      my_page: マイページ
