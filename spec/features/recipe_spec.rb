@@ -2,17 +2,13 @@ require 'rails_helper'
 
 RSpec.feature 'Recipes', type: :feature do
   let(:user) { create :user }
-	let(:shop) { create :shop }
-	let(:bean) { build :bean }
-	let(:impression) { build :impression }
 	let(:recipe) { build :recipe }
-	let(:taste) { build :taste}
+	let(:taste) { build :taste }
 	let(:another_recipe) { build :another_recipe }
 	let(:another_taste) { build :another_taste }
-  before do
-    log_in(user)
-    register_shop(shop)
-    register_bean(bean,impression)
+	before do
+		create(:impression)
+		log_in(user)
   end
 
   scenario 'CRUD of recipe' do
@@ -28,7 +24,7 @@ RSpec.feature 'Recipes', type: :feature do
     fill_in 'recipe_taste_attributes_t_sweet', with: taste.t_sweet
     fill_in 'recipe_taste_attributes_t_bitter', with: taste.t_bitter
     fill_in 'recipe_taste_attributes_t_aroma', with: taste.t_aroma
-    fill_in 'recipe_taste_attributes_t_fullbody', with: taste._t_fullbody
+    fill_in 'recipe_taste_attributes_t_fullbody', with: taste.t_fullbody
     fill_in 'recipe_taste_attributes_t_comment', with: taste.t_comment
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.created_recipe')
@@ -55,7 +51,7 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
     # delete
-    find('.delete_recipe').click
+    click_link I18n.t('recipes.recipes.delete')
     expect(page).to have_content I18n.t('recipes.flash.deleted_recipe')
   end
 end

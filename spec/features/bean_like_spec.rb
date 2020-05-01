@@ -1,14 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'BeanLikes', type: :feature do
-  let(:user) { create :user }
-	let(:shop) { create :shop }
-	let(:bean) { build :bean }
-	let(:impression) { build :impression }
+	let(:impression) { create :impression }
   before do
-    log_in(user)
-    register_shop(shop)
-    register_bean(bean,impression)
+    log_in(impression.bean.user)
   end
 
   scenario 'bean_like_button' do

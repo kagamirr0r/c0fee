@@ -2,20 +2,19 @@ require 'rails_helper'
 
 RSpec.feature 'Beans', type: :feature do
   let(:user) { create :user }
-	let(:shop) { create :shop }
 	let(:bean) { build :bean }
 	let(:impression) { build :impression }
-	let(:anoter_bean) { build :anoter_bean}
-	let(:anoter_impression) { build :anoter_impression}
+	let(:another_bean) { build :another_bean }
+	let(:another_impression) { build :another_impression }
   before do
     log_in(user)
-    register_shop(shop)
+    create(:shop)
   end
 
   scenario 'CRUD of bean' do
     # create
     visit shops_path
-    find('.register_bean').click
+    click_link I18n.t('shops.shops.register_bean')
     fill_in 'bean_country', with: bean.country
     fill_in 'bean_area', with: bean.area
     fill_in 'bean_farm', with: bean.farm
@@ -51,11 +50,10 @@ RSpec.feature 'Beans', type: :feature do
     fill_in 'bean_impression_attributes_i_bitter', with: another_impression.i_bitter
     fill_in 'bean_impression_attributes_i_comment', with: another_impression.i_comment
     click_button I18n.t('beans.form.register')
-    # find('.register_bean').click
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
     # delete
-    find('.delete_bean').click
+		click_link I18n.t('beans.beans.delete')
     expect(page).to have_content I18n.t('beans.flash.deleted_bean')
   end
 end

@@ -3,13 +3,13 @@
 
 		<div class="input-field col s12 l2 ">
 			<i class="material-icons prefix">swap_vert</i>
-			<%= r.select :hot_ice,[["ホット","ホット"],["アイス","アイス"]]%>
+			<%= r.select :hot_ice,[["",""],["ホット","ホット"],["アイス","アイス"]]%>
 			<%= r.label(:hot_ice,Recipe.human_attribute_name(:hot_ice))%>
 		</div>
 
 		<div class="input-field col s12 l2 ">
 		<i class="material-icons prefix">local_drink</i>
-			<%= r.select :extraction, [["ペーパーフィルター", "ペーパーフィルター"],["金属フィルター", "金属フィルター"],
+			<%= r.select :extraction, [["",""],["ペーパーフィルター", "ペーパーフィルター"],["金属フィルター", "金属フィルター"],
 			["ネル", "ネル"],["フレンチプレス", "フレンチプレス"],["エスプレッソ", "エスプレッソ"],
 			["ユーロプレス", "ユーロプレス"],["水出し","水出し"],["急冷","急冷"],["コーヒーメーカー", "コーヒーメーカー"]] %>
 			<%= r.label(:extraction,Recipe.human_attribute_name(:extraction))%>

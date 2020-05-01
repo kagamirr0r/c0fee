@@ -11,7 +11,8 @@ RSpec.feature 'Shops', type: :feature do
   scenario 'CRUD of shop wihtout delete' do
     # create
     visit root_path
-    click_link I18n.t('layouts.application.register_shop')
+		click_link I18n.t('layouts.application.shop')
+		click_link I18n.t('shops.index.register_shop')
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address
     fill_in 'shop_url', with: shop.url

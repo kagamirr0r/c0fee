@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'ShopLikes', type: :feature do
   let(:user) { create :user }
-  let(:shop) { build :shop }
 
-  before do
+	before do
+		create(:shop)
     log_in(user)
-    register_shop(shop)
   end
 
   scenario 'shop_like_button' do

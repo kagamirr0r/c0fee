@@ -15,7 +15,7 @@ FactoryBot.define do
     association :shop
 	end
 
-	factory :anoter_bean, class: Bean do
+	factory :another_bean, class: Bean do
     # user_id { Faker::Number.number(digits: 1) }
     # shop_id { Faker::Number.number(digits: 1) }
     country { Faker::Nation.nationality }
@@ -27,7 +27,6 @@ FactoryBot.define do
     price { Faker::Number.within(range: 100..10000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
     bean_url { Faker::Internet.url }
-    association :user
     association :shop
 	end
 end
