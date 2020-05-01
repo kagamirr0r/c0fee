@@ -27,6 +27,6 @@ FactoryBot.define do
     price { Faker::Number.within(range: 100..10000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
     bean_url { Faker::Internet.url }
-    association :shop
+		association :shop
 	end
 end

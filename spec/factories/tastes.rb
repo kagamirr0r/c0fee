@@ -18,5 +18,6 @@ FactoryBot.define do
     t_aroma { Faker::Number.within(range: 1..5) }
     t_fullbody { Faker::Number.within(range: 1..5) }
 		t_comment { Faker::Coffee.notes }
+		association :recipe
 	end
 end

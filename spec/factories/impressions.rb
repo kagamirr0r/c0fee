@@ -14,5 +14,6 @@ FactoryBot.define do
     i_sweet { Faker::Number.within(range: 1..5) }
     i_bitter { Faker::Number.within(range: 1..5) }
 		i_comment { Faker::Coffee.notes }
+		association :bean
 	end
 end
