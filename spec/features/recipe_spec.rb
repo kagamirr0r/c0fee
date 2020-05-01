@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.feature 'Recipes', type: :feature do
   let(:user) { create :user }
-	let(:taste) { build :taste }
-	let(:another_taste) { build :another_taste }
-	before do
-		create(:impression)
-		log_in(user)
+  let(:taste) { build :taste }
+  let(:another_taste) { build :another_taste }
+  before do
+    create(:impression)
+    log_in(user)
   end
 
   scenario 'CRUD of recipe' do

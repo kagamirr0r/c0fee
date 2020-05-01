@@ -58,26 +58,25 @@ gem 'material_icons'
 
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.1'
 
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'
   gem 'rails-controller-testing'
-	gem 'capybara'
+  gem 'capybara'
   gem 'webdrivers'
   gem 'database_rewinder'
-	gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
-	gem "pry-rails"
-	gem "pry-byebug"
-	gem 'rb-readline'
-	gem 'hirb'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'rb-readline'
+  gem 'hirb'
   gem 'hirb-unicode-steakknife'
-	gem 'faker'
-	gem 'rubocop-faker'
-	gem 'spring'
+  gem 'faker'
+  gem 'rubocop-faker'
+  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails'

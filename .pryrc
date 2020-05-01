@@ -3,7 +3,7 @@ begin
   require 'unicode/display_width/string_ext'
   require 'hirb-unicode'
 rescue LoadError
-  puts "no hirb :("
+  puts 'no hirb :('
 end
 
 if defined? Hirb
@@ -27,7 +27,7 @@ end
 
 if defined?(RbReadline)
   readline_so = "readline.#{RbConfig::CONFIG['DLEXT']}"
-  if $LOAD_PATH.detect { |d| File.exists?("#{d}/#{readline_so}") }
+  if $LOAD_PATH.detect { |d| File.exist?("#{d}/#{readline_so}") }
     class Object
       remove_const :Readline
     end
@@ -37,11 +37,11 @@ end
 
 Pry.config.color = true
 
-Pry.config.prompt = proc do |obj, nest_level, _pry_|
-version = ''
-version << "\001\e[0;31m\002"
-version << "#{RUBY_VERSION}"
-version << "\001\e[0m\002"
+Pry.config.prompt = proc do |obj, _nest_level, _pry_|
+  version = ''
+  version << "\001\e[0;31m\002"
+  version << RUBY_VERSION.to_s
+  version << "\001\e[0m\002"
 
-"#{version} #{Pry.config.prompt_name}(#{Pry.view_clip(obj)})> "
+  "#{version} #{Pry.config.prompt_name}(#{Pry.view_clip(obj)})> "
 end

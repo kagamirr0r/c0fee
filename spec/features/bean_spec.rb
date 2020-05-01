@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Beans', type: :feature do
   let(:user) { create :user }
-	let(:impression) { build :impression }
-	let(:another_impression) { build :another_impression }
-	before do
-		create(:shop)
+  let(:impression) { build :impression }
+  let(:another_impression) { build :another_impression }
+  before do
+    create(:shop)
     log_in(user)
   end
 
@@ -34,7 +34,7 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content Bean.human_attribute_name(:farm)
 
     # edit
-		click_link I18n.t('beans.bean.edit')
+    click_link I18n.t('beans.bean.edit')
     fill_in 'bean_country', with: another_impression.bean.country
     fill_in 'bean_area', with: another_impression.bean.area
     fill_in 'bean_farm', with: another_impression.bean.farm
@@ -51,7 +51,7 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
     # delete
-		click_link I18n.t('beans.beans.delete')
+    click_link I18n.t('beans.beans.delete')
     expect(page).to have_content I18n.t('beans.flash.deleted_bean')
   end
 end

@@ -3,9 +3,9 @@ FactoryBot.define do
     name { Faker::Restaurant.name }
     address { Faker::Address.full_address }
     url { Faker::Internet.url }
-	end
+  end
 
-	factory :another_shop, class: Shop do
+  factory :another_shop, class: Shop do
     name { Faker::Restaurant.name }
     address { Faker::Address.full_address }
     url { Faker::Internet.url }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'BeanLikes', type: :feature do
-	let(:impression) { create :impression }
+  let(:impression) { create :impression }
   before do
     log_in(impression.bean.user)
   end
