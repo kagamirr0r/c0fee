@@ -5,18 +5,53 @@
 	"logConfiguration": {
 		"logDriver": "awslogs",
 		"options": {
-			"awslogs-region": "ap-northeasst-1",
-			"awslogs-stream-prefix": "rails",
-			"awslogs-group": "/ecs/c0fee"
+			"awslogs-create-group": "true",
+			"awslogs-group": "/ecs/c0fee",
+			"awslogs-region": "ap-northeast-1",
+			"awslogs-stream-prefix": "rails"
 		}
 	},
-	"secrets": [{
-		"name": "RAILS_MASTER_KEY",
-		"valueFrom": "/rails/master_key"
-	}],
 	"portMappings": [{
 		"protocol": "tcp",
 		"hostPort": 3000,
 		"containerPort": 3000
-	}]
+	}],
+	"command": ["rails", "server", "-b", "0.0.0.0"],
+	"secrets": [{
+			"name": "RAILS_MASTER_KEY",
+			"valueFrom": "/rails/master_key"
+		},
+		{
+			"name": "POSTGRES_USER",
+			"valueFrom": "/rails/postgres_user"
+		},
+		{
+			"name": "POSTGRES_PASSWORD",
+			"valueFrom": "/rails/postgres_password"
+		},
+		{
+			"name": "DB_USERNAME",
+			"valueFrom": "/rails/db_username"
+		},
+		{
+			"name": "DB_PASSWORD",
+			"valueFrom": "/rails/db_password"
+		},
+		{
+			"name": "RDS_HOST",
+			"valueFrom": "/rails/rds_host"
+		},
+		{
+			"name": "RDS_DATABASE",
+			"valueFrom": "/rails/rds_database"
+		},
+		{
+			"name": "RDS_USERNAME",
+			"valueFrom": "/rails/rds_username"
+		},
+		{
+			"name": "RDS_PASSWORD",
+			"valueFrom": "/rails/rds_password"
+		}
+	]
 }]

@@ -7,7 +7,7 @@ resource "aws_ecs_service" "c0fee" {
   name                              = "c0fee"
   cluster                           = aws_ecs_cluster.c0fee.arn
   task_definition                   = aws_ecs_task_definition.c0fee.arn
-  desired_count                     = 2
+  desired_count                     = 0
   launch_type                       = "FARGATE"
   platform_version                  = "1.3.0"
   health_check_grace_period_seconds = 60
@@ -46,9 +46,33 @@ resource "aws_ecs_task_definition" "c0fee" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   container_definitions    = file("./container_definitions.json")
+  task_role_arn            = module.ecs_task_role.iam_role_arn
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
+# IAM Role for task_role (RDS and S3)
+module "ecs_task_role" {
+  source     = "./modules/iam_role"
+  name       = "ecs-task-role"
+  identifier = "ecs-tasks.amazonaws.com"
+  policy     = data.aws_iam_policy_document.ecs_task.json
+}
+
+data "aws_iam_policy_document" "ecs_task" {
+  source_json = data.aws_iam_policy.rds_full_access_policy.policy
+
+  statement {
+    effect    = "Allow"
+    actions   = ["s3:*"]
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy" "rds_full_access_policy" {
+  arn = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+}
+
+#IAM Role for execution_role (ECSTaskExecutionRolePolicy + SSM + KMS)
 module "ecs_task_execution_role" {
   source     = "./modules/iam_role"
   name       = "ecs-task-execution"
@@ -60,8 +84,17 @@ data "aws_iam_policy_document" "ecs_task_execution" {
   source_json = data.aws_iam_policy.ecs_task_execution_role_policy.policy
 
   statement {
-    effect    = "Allow"
-    actions   = ["kms:Decrypt", "ssm:GetParameters"]
+    effect = "Allow"
+    actions = ["kms:Decrypt",
+      "ssm:GetParameters",
+      "cloudwatch:PutMetricData",
+      "ec2:DescribeVolumes",
+      "ec2:DescribeTags",
+      "logs:PutLogEvents",
+      "logs:DescribeLogStreams",
+      "logs:DescribeLogGroups",
+      "logs:CreateLogGroup"
+    ]
     resources = ["*"]
   }
 }

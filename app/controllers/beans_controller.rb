@@ -2,8 +2,13 @@ class BeansController < ApplicationController
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
   def index
-    @beans = Bean.all
-    # flash[:choose_bean] = t('beans.flash.choose_bean')
+    @bean_search_params = bean_search_params
+
+    @beans = if @bean_search_params.present?
+               Bean.search_bean(@bean_search_params)
+             else
+               Bean.all
+             end
   end
 
   def show; end
@@ -49,5 +54,9 @@ class BeansController < ApplicationController
   def bean_params
     params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast, :bean_url, :bean_image,
                                  impression_attributes: [:id, :bean_id, :i_sour, :i_sweet, :i_bitter, :i_comment])
+  end
+
+  def	bean_search_params
+    params.fetch(:search_bean, {}).permit(:country, :roast, :i_sour, :i_sweet, :i_bitter)
   end
 end

@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.7.1
+  aws-ecr: circleci/aws-ecr@6.8.1
   aws-ecs: circleci/aws-ecs@1.1.0
 jobs:
   test:
@@ -61,17 +61,13 @@ workflows:
           requires:
             - test
           dockerfile: Dockerfile.production
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
           repo: "c0fee"
-          tag: latest
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASYER_KEY} --build-arg RAILS_ENV=production
-          --build-arg POSTGRES_USER=${POSTGRES_USER} --build-arg POSTGRES_PASSWORD=${POSTGRES_PASSWORD} --build-arg DB_USERNAME=${DB_USERNAME}
-          --build-arg DB_PASSWORD=${DB_PASSWORD} --build-arg RDS_HOST=${RDS_HOST} --build-arg RDS_DATABASE=${RDS_DATABASE}
-          --build-arg RDS_USERNAME=${RDS_USERNAME} --build-arg RDS_PASSWORD=${RDS_PASSWORD}"
+          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production"
           filters:
             branches:
-              only: master
+              only:
+                # - master
+                - deploy
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
@@ -81,4 +77,19 @@ workflows:
           container-image-name-updates: "container=c0fee,tag=latest"
           filters:
             branches:
-              only: master
+              only:
+                # - master
+                - deploy
+      - aws-ecs/run-task:
+          requires:
+            - aws-ecs/deploy-service-update
+          cluster: "c0fee"
+          task-definition: "c0fee"
+          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
+          security-group-ids: $SECURITY_GROUP_IDS
+          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"ridgepole\\\", \\\"--apply\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\", \\\"-E\\\", \\\"production\\\"]}]}"
+          filters:
+            branches:
+              only:
+                # - master
+                - deploy

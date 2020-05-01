@@ -12,22 +12,22 @@
 #Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: with_first_argument, with_fixed_indentation
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Exclude:
-    - 'bin/webpack'
-    - 'bin/webpack-dev-server'
+    - "bin/webpack"
+    - "bin/webpack-dev-server"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'db/migrate/20190913100701_devise_create_users.rb'
+    - "db/migrate/20190913100701_devise_create_users.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -35,7 +35,7 @@ Layout/EmptyLines:
 # SupportedStyles: around, only_before
 Layout/EmptyLinesAroundAccessModifier:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+    - "app/controllers/application_controller.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -43,7 +43,7 @@ Layout/EmptyLinesAroundAccessModifier:
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'config/initializers/carrierwave.rb'
+    - "config/initializers/carrierwave.rb"
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -51,17 +51,17 @@ Layout/EmptyLinesAroundBlockBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
 Layout/EmptyLinesAroundClassBody:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/omniauth_callbacks_controller.rb'
-    - 'test/controllers/toppages_controller_test.rb'
+    - "app/controllers/application_controller.rb"
+    - "app/controllers/omniauth_callbacks_controller.rb"
+    - "test/controllers/toppages_controller_test.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_braces
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Exclude:
-    - 'config/initializers/carrierwave.rb'
+    - "config/initializers/carrierwave.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -69,22 +69,22 @@ Layout/IndentFirstHashElement:
 # SupportedStyles: normal, indented_internal_methods
 Layout/IndentationConsistency:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+    - "app/controllers/application_controller.rb"
 
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
 Layout/IndentationWidth:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/omniauth_callbacks_controller.rb'
+    - "app/controllers/application_controller.rb"
+    - "app/controllers/omniauth_callbacks_controller.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle.
 Layout/LeadingCommentSpace:
   Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
+    - "node_modules/node-sass/src/libsass/extconf.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -93,22 +93,22 @@ Layout/LeadingCommentSpace:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'config/initializers/carrierwave.rb'
+    - "app/controllers/application_controller.rb"
+    - "config/initializers/carrierwave.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
 Lint/UnusedMethodArgument:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+    - "app/controllers/application_controller.rb"
 
 # Offense count: 1
 Metrics/AbcSize:
@@ -131,14 +131,14 @@ Metrics/MethodLength:
 # SupportedStyles: compact, expanded
 Style/EmptyMethod:
   Exclude:
-    - 'app/controllers/toppages_controller.rb'
+    - "app/controllers/toppages_controller.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
-    - 'bin/rails'
-    - 'bin/rake'
+    - "bin/rails"
+    - "bin/rake"
 
 # Offense count: 53
 # Cop supports --auto-correct.
@@ -151,7 +151,7 @@ Style/FrozenStringLiteralComment:
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:
   Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
+    - "node_modules/node-sass/src/libsass/extconf.rb"
 
 # Offense count: 7
 # Cop supports --auto-correct.
@@ -159,33 +159,33 @@ Style/GlobalVars:
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
 Style/HashSyntax:
   Exclude:
-    - 'config/environments/development.rb'
-    - 'config/routes.rb'
+    - "config/environments/development.rb"
+    - "config/routes.rb"
 
 # Offense count: 2
 Style/MixinUsage:
   Exclude:
-    - 'bin/setup'
-    - 'bin/update'
+    - "bin/setup"
+    - "bin/update"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'app/uploaders/avatar_uploader.rb'
+    - "app/uploaders/avatar_uploader.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/RedundantBegin:
   Exclude:
-    - 'bin/yarn'
+    - "bin/yarn"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/StderrPuts:
   Exclude:
-    - 'bin/yarn'
+    - "bin/yarn"
 
 # Offense count: 58
 # Cop supports --auto-correct.
@@ -193,21 +193,21 @@ Style/StderrPuts:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'app/controllers/omniauth_callbacks_controller.rb'
-    - 'app/models/user.rb'
-    - 'app/uploaders/avatar_uploader.rb'
-    - 'bin/webpack'
-    - 'bin/webpack-dev-server'
-    - 'bin/yarn'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/initializers/devise.rb'
-    - 'config/puma.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20190913100701_devise_create_users.rb'
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
-    - 'test/application_system_test_case.rb'
-    - 'test/controllers/toppages_controller_test.rb'
+    - "app/controllers/omniauth_callbacks_controller.rb"
+    - "app/models/user.rb"
+    - "app/uploaders/avatar_uploader.rb"
+    - "bin/webpack"
+    - "bin/webpack-dev-server"
+    - "bin/yarn"
+    - "config/environments/development.rb"
+    - "config/environments/production.rb"
+    - "config/initializers/devise.rb"
+    - "config/puma.rb"
+    - "config/routes.rb"
+    - "db/migrate/20190913100701_devise_create_users.rb"
+    - "node_modules/node-sass/src/libsass/extconf.rb"
+    - "test/application_system_test_case.rb"
+    - "test/controllers/toppages_controller_test.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -215,7 +215,7 @@ Style/StringLiterals:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiteralsInInterpolation:
   Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
+    - "node_modules/node-sass/src/libsass/extconf.rb"
 
 # Offense count: 3
 # Cop supports --auto-correct.

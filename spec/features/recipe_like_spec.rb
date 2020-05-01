@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'RecipeLikes', type: :feature do
-  let(:user) { create :user }
-  let(:shop) { build :shop }
+  let(:impression) { create :impression }
   before do
-    log_in(user)
-    register_shop(shop)
-    register_bean
-    register_recipe
+    log_in(impression.bean.user)
+    create(:taste)
   end
 
   scenario 'recipe_like_button' do

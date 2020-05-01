@@ -1,10 +1,10 @@
 #___Load Balancer____________________________________________________________________________________________
 resource "aws_lb" "c0fee" {
-  name               = "c0fee"
-  load_balancer_type = "application"
-  internal           = false
-  # idle_timeout               = 60
-  # enable_deletion_protection = false
+  name                       = "c0fee"
+  load_balancer_type         = "application"
+  internal                   = false
+  idle_timeout               = 60
+  enable_deletion_protection = false
 
   subnets = [
     aws_subnet.public_1.id,

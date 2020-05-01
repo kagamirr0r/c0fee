@@ -30,7 +30,7 @@ config/initializers/secret_token.rb
 # config/secrets.yml
 
 # dotenv, dotenv-rails
-.env.development
+.env.*
 ## Environment normalization:
 /.bundle
 /vendor/bundle
@@ -71,6 +71,7 @@ yarn-debug.log*
 
 # Local .terraform directories
 terraform/.terraform/*
+terraform/operation/.terraform/*
 
 # .tfstate files
 *.tfstate

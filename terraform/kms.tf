@@ -1,5 +1,5 @@
 resource "aws_kms_key" "c0fee" {
-  description             = "Custermer Master Key"
+  description             = "Master Key"
   enable_key_rotation     = true
   is_enabled              = true
   deletion_window_in_days = 30

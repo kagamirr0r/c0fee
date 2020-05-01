@@ -10,7 +10,7 @@ resource "aws_vpc" "c0fee" {
 }
 
 resource "aws_security_group" "vpc" {
-  name   = "vps-sg"
+  name   = "vpc-sg"
   vpc_id = aws_vpc.c0fee.id
   ingress {
     from_port   = 80
@@ -36,6 +36,8 @@ resource "aws_internet_gateway" "c0fee" {
 }
 
 #___Subnet (Multi-AZ)_____________________________________________________________________________________________________
+
+#Public
 resource "aws_subnet" "public_1" {
   vpc_id                  = aws_vpc.c0fee.id
   cidr_block              = "10.0.0.0/24"
@@ -58,6 +60,7 @@ resource "aws_subnet" "public_2" {
   }
 }
 
+#Private
 resource "aws_subnet" "private_1" {
   vpc_id                  = aws_vpc.c0fee.id
   cidr_block              = "10.0.32.0/24"
@@ -185,4 +188,24 @@ resource "aws_eip" "eip_2" {
   }
 }
 
+#___VPC_ENDPOINT_____________________________________________________________________________________________________
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id       = aws_vpc.c0fee.id
+  service_name = "com.amazonaws.ap-northeast-1.s3"
+
+  tags = {
+    Name = "C0FEE_EP"
+  }
+}
+
+resource "aws_vpc_endpoint_route_table_association" "private_1_s3" {
+  vpc_endpoint_id = aws_vpc_endpoint.s3.id
+  route_table_id  = aws_route_table.private_1.id
+}
+
+resource "aws_vpc_endpoint_route_table_association" "private_2_s3" {
+  vpc_endpoint_id = aws_vpc_endpoint.s3.id
+  route_table_id  = aws_route_table.private_2.id
+}
 
