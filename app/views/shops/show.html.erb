@@ -1,5 +1,5 @@
 <h3><%= @shop.name %></h3>
-<%= render 'shop', shops: @shop%>
+<%= render 'shop', shop: @shop%>
 <h4><%= t('.registered_bean')%></h4>
 <%= render 'beans/beans', beans: @shop.beans.page(params[:page]).order(created_at: :desc)%>
 <%= link_to t('.back'), :back %>

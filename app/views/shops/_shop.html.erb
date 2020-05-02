@@ -1,4 +1,4 @@
-<% if shops.present? %>
+<% if shop.present? %>
 			<table>
 					<thead>
 						<tr>
@@ -17,7 +17,7 @@
 					</thead>
 					<tbody>
 							<tr>
-								<% Array(shops).each do |shop| %>
+								<% Array(shop).each do |shop| %>
 								<td>
 								<% if shop.shop_image? %>
 									<%=link_to image_tag(shop.shop_image.to_s, :id => 'shop_image'), shop_path(shop)%>
