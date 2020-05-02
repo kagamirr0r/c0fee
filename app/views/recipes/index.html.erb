@@ -2,5 +2,6 @@
  <h4><%= t('.title')%></h4>
 	<%= render 'search_form'%>
 	<%= render 'recipes/recipes', recipes: @recipes%>
+	<%= paginate @recipes %>
 	<%= link_to t('.make_recipe'), beans_path %>
 </div>

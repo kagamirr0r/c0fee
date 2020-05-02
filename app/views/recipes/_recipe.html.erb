@@ -23,7 +23,7 @@
 			</thead>
 
 			<tbody>
-				<% Array(recipe).reverse_each do |recipe| %>
+				<% Array(recipe).each do |recipe| %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>

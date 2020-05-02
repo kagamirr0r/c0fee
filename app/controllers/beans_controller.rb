@@ -5,9 +5,9 @@ class BeansController < ApplicationController
     @bean_search_params = bean_search_params
 
     @beans = if @bean_search_params.present?
-               Bean.search_bean(@bean_search_params)
+               Bean.search_bean(@bean_search_params).page(params[:page]).per(10).order(created_at: :desc)
              else
-               Bean.all
+               Bean.all.page(params[:page]).per(1).order(created_at: :desc)
              end
   end
 
