@@ -11,7 +11,7 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find_by(id: params[:id])
+    @shop = Shop.find(params[:id])
     @beans = Bean.where(shop_id: params[:id])
   end
 
