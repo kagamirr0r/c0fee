@@ -3,9 +3,11 @@ ja:
     form:
       register: 登録する
       select_shop_image: 画像を選ぶ
-    shops:
+    shops: &shops
       register_bean: 豆を登録
       edit_shop: 編集
+    shop:
+      <<: *shops
     new: &new
       back: 戻る
     edit:

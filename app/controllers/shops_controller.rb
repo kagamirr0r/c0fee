@@ -4,14 +4,14 @@ class ShopsController < ApplicationController
     @shop_search_params = shop_search_params
 
     @shops = if @shop_search_params.present?
-               Shop.search_shop(@shop_search_params)
+               Shop.search_shop(@shop_search_params).page(params[:page]).order(created_at: :desc)
              else
-               Shop.all
+               Shop.all.page(params[:page]).order(created_at: :desc)
              end
   end
 
   def show
-    @shop = Shop.find_by(id: params[:id])
+    @shop = Shop.find(params[:id])
     @beans = Bean.where(shop_id: params[:id])
   end
 
