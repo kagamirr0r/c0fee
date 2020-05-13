@@ -2,7 +2,6 @@ class RecipeLikesController < ApplicationController
   def create
     @recipe = Recipe.find(params[:id])
     current_user.like_recipe(@recipe)
-
   end
 
   def destroy
