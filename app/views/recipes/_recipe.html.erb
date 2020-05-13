@@ -45,7 +45,7 @@
 						<td><%= recipe.taste.t_fullbody%></td>
 						<td><%= recipe.taste.t_comment%></td>
 						<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
-						<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 							<% if current_user == recipe.user%>
 								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
 								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('.are_you_sure') } %></td>

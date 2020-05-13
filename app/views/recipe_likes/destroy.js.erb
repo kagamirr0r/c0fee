@@ -1,0 +1,1 @@
+$("#recipe_like_button_<%= @recipe.id %>").html("<%= j(render partial: 'recipe_likes/like_recipe_button',locals: {recipe: @recipe}) %>");

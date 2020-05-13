@@ -42,7 +42,7 @@
 						<td><%= recipe.taste.t_aroma%></td>
 						<td><%= recipe.taste.t_fullbody%></td>
 						<% if user_signed_in? %>
-							<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
 							<td><%= recipe_liked_counts(recipe) %></td>
 						<% end %>

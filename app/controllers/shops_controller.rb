@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
     @shops = if @shop_search_params.present?
                Shop.search_shop(@shop_search_params).page(params[:page]).order(created_at: :desc)
              else
-               Shop.all.page(params[:page]).order(created_at: :desc)
+               Shop.page(params[:page]).order(created_at: :desc)
              end
   end
 

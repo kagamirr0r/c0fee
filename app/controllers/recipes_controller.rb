@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     @recipes = if recipe_search_params.present?
                  Recipe.search_recipe(@recipe_search_params).page(params[:page]).order(created_at: :desc)
                else
-                 Recipe.all.page(params[:page]).order(created_at: :desc)
+                 Recipe.page(params[:page]).order(created_at: :desc)
                end
   end
 

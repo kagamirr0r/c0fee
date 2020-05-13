@@ -41,7 +41,7 @@
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
 					<% if user_signed_in? %>
-						<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+						<td style="text-align: center" id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<% else %>
 						<td><%= bean_liked_counts(bean) %></td>
 					<% end %>
