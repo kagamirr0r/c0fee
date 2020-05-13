@@ -9,11 +9,11 @@ RSpec.feature 'RecipeLikes', type: :feature do
 
   scenario 'recipe_like_button' do
     visit recipes_path
-    click_button 'Like!'
-    expect(page).to have_content I18n.t('recipe_likes.flash.liked_recipe')
+    click_button 'Like!', match: :first
+    expect(page).to have_content 'Liked'
 
     visit recipes_path
-    click_button 'Liked'
-    expect(page).to have_content I18n.t('recipe_likes.flash.canceled_recipe_like')
+    click_button 'Liked', match: :first
+    expect(page).to have_content 'Like!'
   end
 end

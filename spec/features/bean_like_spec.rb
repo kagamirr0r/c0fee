@@ -8,11 +8,11 @@ RSpec.feature 'BeanLikes', type: :feature do
 
   scenario 'bean_like_button' do
     visit beans_path
-    click_button 'Like!'
-    expect(page).to have_content I18n.t('bean_likes.flash.liked_bean')
+    click_button 'Like!', match: :first
+    expect(page).to have_content 'Liked'
 
     visit beans_path
-    click_button 'Liked'
-    expect(page).to have_content I18n.t('bean_likes.flash.canceled_like_bean')
+    click_button 'Liked', match: :first
+    expect(page).to have_content 'Like!'
   end
 end

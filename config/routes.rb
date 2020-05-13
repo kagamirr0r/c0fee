@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   get 'my_pages/show'
 
   resources :users, only: [:show, :index]
-  resources :shops
+
   resources :beans
+  resources :bean_likes, only: [:create, :destroy]
+
   resources :recipes
+  resources :recipe_likes, only: [:create, :destroy]
+
+  resources :shops
+  resources :shop_likes, only: [:create, :destroy]
 
   resources :impressions
   resources :tastes
-
-  resources :bean_likes, only: [:create, :destroy]
-  resources :recipe_likes, only: [:create, :destroy]
-  resources :shop_likes, only: [:create, :destroy]
 end
