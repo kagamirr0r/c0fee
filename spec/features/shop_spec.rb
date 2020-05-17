@@ -22,7 +22,7 @@ RSpec.feature 'Shops', type: :feature do
     # show
     shop = Shop.last
     visit shop_path(shop.id)
-    expect(page).to have_content I18n.t('shops.show.registered_bean')
+    expect(page).to have_content shop.name
 
     # edit
     click_link I18n.t('shops.shops.edit_shop')
