@@ -60,6 +60,8 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.1'
 
 gem 'kaminari'
 
+gem "geocoder"
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'

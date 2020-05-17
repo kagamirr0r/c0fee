@@ -1,5 +1,23 @@
 <h3><%= @shop.name %></h3>
+<div id="map" style="width:100%; height: 500px;"></div>
 <%= render 'shop', shops: @shop%>
-<h4><%= t('.registered_bean')%></h4>
+<h4><%= t('.registered_bean') if @beans.present?%></h4>
 <%= render 'beans/beans', beans: @shop.beans.page(params[:page]).order(created_at: :desc)%>
 <%= link_to t('.back'), :back %>
+
+<script>
+var map;
+var latlng;
+var marker;
+
+function initMap() {
+	latlng = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude %>);
+
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: <%= @shop.latitude%>, lng:<%= @shop.longitude %>)}
+		zoom: 18
+	});
+}
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.gcp[:gmap_api_key]%>&callback=initMap" async defer></script>
