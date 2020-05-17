@@ -13,9 +13,10 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require materialize
 //= require materialize-sprockets
+//= require_tree .
+
 
 $(document).on("click", "#avatar_select_file_button", function () {
 	$("#user_avatar").click();
@@ -96,3 +97,5 @@ $(document).ready(function () {
 		},
 	});
 });
+
+

@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @beans = Bean.where(shop_id: params[:id])
+		@beans = Bean.where(shop_id: params[:id])
   end
 
   def new
@@ -48,7 +48,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :url, :shop_image)
+    params.require(:shop).permit(:name, :address, :url, :shop_image, :latitude, :longitude)
   end
 
   def shop_search_params

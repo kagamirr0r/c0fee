@@ -16,10 +16,10 @@
 end
 
 [
-  ['カルディ', '東京都葛飾区亀有3-49-3　アリオ亀有 1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&arg=&adr=13&bid=083&pgret=2'],
-  ['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/'],
-  ['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/']
-].each do |name, address, url|
+  ['カルディ', '東京都葛飾区亀有3-49-3　アリオ亀有 1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&arg=&adr=13&bid=083&pgret=2',35.7644551,139.8525919],
+  ['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/',35.7277996,139.7132372],
+  ['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/',35.8663161,139.9699134]
+].each do |name, address, url, latitude, longitude|
   Shop.create!(
     name: name, address: address, url: url
   )

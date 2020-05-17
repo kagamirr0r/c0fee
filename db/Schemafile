@@ -50,6 +50,8 @@ create_table "shops", force: :cascade do |t|
   t.string "address"
   t.string "url", null: false, unique: true
   t.string "shop_image"
+	t.float "latitude"
+	t.float "longitude"
 	t.timestamps
 end
 
