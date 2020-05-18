@@ -16,6 +16,7 @@
 					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
 					<th><%= Taste.human_attribute_name(:t_comment)%></th>
 					<th><%= User.model_name.human%></th>
+					<th><%= Recipe.human_attribute_name(:updated_at)%></th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -45,6 +46,7 @@
 						<td><%= recipe.taste.t_fullbody%></td>
 						<td><%= recipe.taste.t_comment%></td>
 						<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
+						<td><%= l recipe.updated_at %></td>
 						<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 							<% if current_user == recipe.user%>
 								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>

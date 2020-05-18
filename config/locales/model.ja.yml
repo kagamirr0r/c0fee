@@ -21,6 +21,7 @@ ja:
         bean_url: URL
         shop: 店
         bean_image: 豆画像
+        updated_at: 最終更新
       impression:
         i_sour: 酸味
         i_sweet: 甘味
@@ -36,6 +37,7 @@ ja:
         amount: 豆量
         extraction: 抽出
         recipe_image: レシピ画像
+        updated_at: 最終更新
       taste:
         t_sour: 酸味
         t_sweet: 甘味
