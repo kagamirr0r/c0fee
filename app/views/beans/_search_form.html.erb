@@ -7,8 +7,9 @@
 		</div>
 		<div class="input-field col s12 l2 ">
 		<i class="material-icons prefix">invert_colors</i>
+			<%= b.select :roast,[["",""],["ライト","ライト"],["シナモン","シナモン"],["ミディアム","ミディアム"],
+			["ハイ","ハイ"],["シティ","シティ"],["フルシティ","フルシティ"],["フレンチ","フレンチ"],["イタリアン","イタリアン"]]%>
 			<%= b.label(:roast,Bean.human_attribute_name(:roast))%>
-			<%= b.text_field :roast, value: @bean_search_params[:roast],class: "autocomplete"%>
 		</div>
 
 		<div class="input-field col s12 l2 ">

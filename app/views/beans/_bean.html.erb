@@ -16,6 +16,7 @@
 					<th><%= Bean.human_attribute_name(:price)%></th>
 					<th><%= Impression.human_attribute_name(:i_comment)%></th>
 					<th><%= User.model_name.human%></th>
+					<th><%= Bean.human_attribute_name(:updated_at)%></th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -38,13 +39,14 @@
 					<td><%= bean.farm %></td>
 					<td><%= bean.process %></td>
 					<td><%= bean.roast %></td>
-					<td><%= bean.impression.i_sour%></td>
-					<td><%= bean.impression.i_sweet%></td>
-					<td><%= bean.impression.i_bitter%></td>
+					<td><%= bean.impression.i_sour %></td>
+					<td><%= bean.impression.i_sweet %></td>
+					<td><%= bean.impression.i_bitter %></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-					<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
-					<td><%= bean.impression.i_comment%></td>
+					<td><%= bean.price %><% if bean.price.present? %>/100g<%end%></td>
+					<td><%= bean.impression.i_comment %></td>
 					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+					<td><%= l bean.updated_at %></td>
 					<td style="text-align: center" id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
 					<% if current_user == bean.user %>

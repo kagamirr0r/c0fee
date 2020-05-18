@@ -7,11 +7,7 @@
 					<th><%= Recipe.human_attribute_name(:bean)%></th>
 					<th><%= Recipe.human_attribute_name(:grind)%></th>
 					<th><%= Recipe.human_attribute_name(:extraction)%></th>
-					<th><%= Taste.human_attribute_name(:t_sour)%></th>
-					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
-					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
-					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
-					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<th><%= Taste.human_attribute_name(:t_comment)%></th>
 					<% if user_signed_in?%>
 						<th>&nbsp;</th>
 					<% else %>
@@ -36,11 +32,7 @@
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
 						<td><%= recipe.grind %></td>
 						<td><%= recipe.extraction %></td>
-						<td><%= recipe.taste.t_sour%></td>
-						<td><%= recipe.taste.t_sweet%></td>
-						<td><%= recipe.taste.t_bitter%></td>
-						<td><%= recipe.taste.t_aroma%></td>
-						<td><%= recipe.taste.t_fullbody%></td>
+						<td><%= recipe.taste.t_comment%></td>
 						<% if user_signed_in? %>
 							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
