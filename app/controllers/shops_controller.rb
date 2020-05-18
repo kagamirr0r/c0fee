@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-		@beans = Bean.where(shop_id: params[:id])
+    @beans = Bean.where(shop_id: params[:id])
   end
 
   def new
