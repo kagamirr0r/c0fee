@@ -12,9 +12,9 @@ class Recipe < ApplicationRecord
   has_many :recipe_likes, dependent: :destroy
   has_many :recipe_liked_users, through: :recipe_likes, source: :recipe
 
-	enum hot_ice: [:ホット, :アイス]
-	enum grind: { 粗挽き: 0, 中挽き: 1, 中細挽き: 2, 細挽き: 3, 極細挽き: 4 }
-	enum extraction: { ペーパーフィルター: 0, ネル: 1, 金属フィルター: 2, フレンチプレス: 3, ユーロプレス: 4, サイフォン: 5, コーヒーメーカー: 6, マキネッタ: 7, エスプレッソマシン: 8, 水出し: 9, 急冷: 10 }
+	enum hot_ice: [:hot, :ice]
+	enum grind: { coarse: 0, medium_coarse: 1, medium: 2, medium_fine: 3, fine: 4, turkish: 5 }
+	enum extraction: { paper_filter: 0, cloth_filter: 1, metal_filter: 2, french_press: 3, aero_press: 4, siphon: 5, coffee_maker: 6, macchinetta: 7, espresso_machine: 8, cold_brew: 9, iced: 10 }
 
   scope :search_recipe, ->(recipe_search_params) do
     joins(:taste)

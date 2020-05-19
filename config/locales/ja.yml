@@ -3,7 +3,45 @@ ja:
     formats:
       default: "%Y/%m/%d"
   enums:
+    bean:
+      process:
+        washed: ウォッシュド
+        natural: ナチュラル
+        pulped_natural: パルプドナチュラル
+        white_honey: ホワイトハニー
+        yellow_honey: イエローハニー
+        red_honey: レッドハニー
+        black_honey: ブラックハニー
+        sumatera: スマトラ
+      roast:
+        light: ライト
+        cinnamon: シナモン
+        medium: ミディアム
+        high: ハイ
+        city: シティ
+        fullcity: フルシティ
+        french: フレンチ
+        italian: イタリアン
     recipe:
       hot_ice:
         hot: ホット
         ice: アイス
+      grind:
+        coarse: 粗挽き
+        medium_coarse: 中粗挽き
+        medium: 中挽き
+        medium_fine: 中細挽き
+        fine: 細挽き
+        turkish: 極細挽き
+      extraction:
+        paper_filter: ペーパーフィルター
+        cloth_filter: 布フィルター
+        metal_filter: 金属フィルター
+        french_press: フレンチプレス
+        aero_press: エアロプレス
+        siphon: サイフォン
+        coffee_maker: コーヒーメーカー
+        macchinetta: マキネッタ
+        espresso_machine: エスプレッソマシン
+        cold_brew: 水出し
+        iced: 急冷

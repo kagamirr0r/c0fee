@@ -39,13 +39,13 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">loop</i>
-		<%= b.select :process, Bean.processes.keys, include_blank: true %>
+		<%= b.select :process, Bean.processes.keys.map {|k| [I18n.t("enums.bean.process.#{k}"),k]}, include_blank: true %>
 		<%= b.label :process %><br />
 	</div><br />
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">invert_colors</i>
-		<%= b.select :roast, Bean.roasts.keys, include_blank: true %>
+		<%= b.select :roast, Bean.roasts.keys.map {|k| [I18n.t("enums.bean.roast.#{k}"),k]}, include_blank: true %>
 		<%= b.label :roast %>
 	</div><br />
 
