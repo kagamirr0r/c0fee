@@ -2,3 +2,8 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  enums:
+    recipe:
+      hot_ice:
+        hot: ホット
+        ice: アイス
