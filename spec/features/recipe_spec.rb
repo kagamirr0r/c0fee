@@ -13,10 +13,10 @@ RSpec.feature 'Recipes', type: :feature do
     # create
     visit beans_path
     find('.create_recipe').click
-    select taste.recipe.hot_ice, from: 'recipe_hot_ice'
-    select taste.recipe.grind, from: 'recipe_grind'
+    select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
+    select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount
-    select taste.recipe.extraction, from: 'recipe_extraction'
+    select taste.recipe.extraction_i18n, from: 'recipe_extraction'
     fill_in 'recipe_temperature', with: taste.recipe.temperature
     fill_in 'recipe_taste_attributes_t_sour', with: taste.t_sour
     fill_in 'recipe_taste_attributes_t_sweet', with: taste.t_sweet

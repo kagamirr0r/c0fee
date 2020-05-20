@@ -10,12 +10,12 @@ RSpec.feature 'SearchRecipes', type: :feature do
     visit recipes_path
 
     # hot_ice
-    select taste.recipe.hot_ice, from: Recipe.human_attribute_name(:hot_ice)
+    select taste.recipe.hot_ice_i18n, from: Recipe.human_attribute_name(:hot_ice)
     click_button I18n.t('recipes.search_form.submit_search')
     expect(page).to have_content taste.recipe.hot_ice
 
     # extraction
-    select taste.recipe.extraction, from: Recipe.human_attribute_name(:extraction)
+    select taste.recipe.extraction_i18n, from: Recipe.human_attribute_name(:extraction)
     click_button I18n.t('recipes.search_form.submit_search')
     expect(page).to have_content taste.recipe.extraction
 
