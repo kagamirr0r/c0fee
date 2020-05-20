@@ -28,10 +28,10 @@
 								<%=link_to image_tag('C0FEE.png', :id => 'no_recipe_image'), recipe_path(recipe) %>
 							<% end %>
 						</td>
-						<td><%= recipe.hot_ice %></td>
+						<td><%= recipe.hot_ice_i18n %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.grind %></td>
-						<td><%= recipe.extraction %></td>
+						<td><%= recipe.grind_i18n %></td>
+						<td><%= recipe.extraction_i18n %></td>
 						<td><%= recipe.taste.t_comment%></td>
 						<% if user_signed_in? %>
 							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>

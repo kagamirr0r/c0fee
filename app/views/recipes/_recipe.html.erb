@@ -33,11 +33,11 @@
 								<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
 							<% end %>
 						</td>
-						<td><%= recipe.hot_ice %></td>
+						<td><%= recipe.hot_ice_i18n %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.grind %></td>
+						<td><%= recipe.grind_i18n %></td>
 						<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
-						<td><%= recipe.extraction %></td>
+						<td><%= recipe.extraction_i18n %></td>
 						<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
 						<td><%= recipe.taste.t_sour%></td>
 						<td><%= recipe.taste.t_sweet%></td>

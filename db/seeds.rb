@@ -26,9 +26,9 @@ end
 end
 
 [
-  [1, 1, 'タンザニア', 'キリマンジャロ', 'アラビカ', '', '', 'シティ', 340],
-  [2, 2, 'エチオピア', 'イェルガチェフェ', '', '', 'ナチュラル', 'ハイ', 850],
-  [3, 3, 'ブラジル', 'ミナスジェライス', 'ブルボン', 'トミオフクダ', 'ウォッシュド', 'フルシティ', 800]
+  [1, 1, 'タンザニア', 'キリマンジャロ', 'アラビカ', '', 6, 4, 340],
+  [2, 2, 'エチオピア', 'イェルガチェフェ', '', '', 1, 3, 850],
+  [3, 3, 'ブラジル', 'ミナスジェライス', 'ブルボン', 'トミオフクダ', 0, 5, 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,
@@ -48,9 +48,9 @@ end
 end
 
 [
-  [1, 1, 'ホット', '粗挽き', 90, 15, 'フレンチプレス'],
-  [2, 2, 'ホット', '中挽き', 95, 10, 'ペーパーフィルター'],
-  [3, 3, 'アイス', '中細挽き', 85, 20, '急冷']
+  [1, 1, 0, 0, 90, 15, 3],
+  [2, 2, 0, 1, 95, 10, 0],
+  [3, 3, 1, 2, 85, 20, 10]
 ].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
   Recipe.create!(
     user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,

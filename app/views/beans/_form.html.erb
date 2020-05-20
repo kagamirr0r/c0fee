@@ -39,17 +39,13 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">loop</i>
-		<%= b.select :process,[["精製方法は？",""],["ウォッシュド", "ウォッシュド"],["ナチュラル", "ナチュラル"],
-			["パルプドナチュラル", "パルプドナチュラル"],["ホワイトハニー","ホワイトハニー"],["ゴールデンハニー","ゴールデンハニー"],
-			["イエローハニー","イエローハニー"],["レッドハニー","レッドハニー"],["ブラックハニー","ブラックハニー"],
-			["スマトラ方式","スマトラ方式"]]%>
+		<%= b.select :process, Bean.processes.keys.map {|k| [I18n.t("enums.bean.process.#{k}"),k]}, include_blank: true %>
 		<%= b.label :process %><br />
 	</div><br />
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">invert_colors</i>
-		<%= b.select :roast,[["焙煎は？",""],["ライト","ライト"],["シナモン","シナモン"],["ミディアム","ミディアム"],
-			["ハイ","ハイ"],["シティ","シティ"],["フルシティ","フルシティ"],["フレンチ","フレンチ"],["イタリアン","イタリアン"]]%>
+		<%= b.select :roast, Bean.roasts.keys.map {|k| [I18n.t("enums.bean.roast.#{k}"),k]}, include_blank: true %>
 		<%= b.label :roast %>
 	</div><br />
 

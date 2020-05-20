@@ -107,6 +107,8 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.8.0)
     excon (0.73.0)
     execjs (2.7.0)
@@ -141,7 +143,6 @@ GEM
     geocoder (1.6.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    gmaps4rails (2.1.2)
     hashie (3.6.0)
     hirb (0.7.3)
     hirb-unicode-steakknife (0.0.9)
@@ -416,11 +417,11 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   dotenv-rails (~> 2.7, >= 2.7.1)
+  enum_help
   factory_bot_rails
   faker
   fog-aws
   geocoder
-  gmaps4rails
   hirb
   hirb-unicode-steakknife
   jbuilder (~> 2.5)

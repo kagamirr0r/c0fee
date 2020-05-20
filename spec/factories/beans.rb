@@ -6,8 +6,8 @@ FactoryBot.define do
     area { Faker::Nation.capital_city }
     variety { Faker::Coffee.variety }
     farm { Faker::Name.first_name }
-    process { 'ナチュラル' }
-    roast { 'フルシティ' }
+    process { Faker::Number.within(range: 0..7) }
+    roast { Faker::Number.within(range: 0..7) }
     price { Faker::Number.within(range: 100..10_000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
     bean_url { Faker::Internet.url }
@@ -22,8 +22,8 @@ FactoryBot.define do
     area { Faker::Nation.capital_city }
     variety { Faker::Coffee.variety }
     farm { Faker::Name.first_name }
-    process { 'ウォッシュド' }
-    roast { 'シティ' }
+    process { Faker::Number.within(range: 0..7) }
+    roast { Faker::Number.within(range: 0..7) }
     price { Faker::Number.within(range: 100..10_000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
     bean_url { Faker::Internet.url }
