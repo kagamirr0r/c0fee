@@ -14,8 +14,8 @@ class Recipe < ApplicationRecord
 
   enum hot_ice: [:hot, :ice]
   enum grind: { coarse: 0, medium_coarse: 1, medium: 2, medium_fine: 3, fine: 4, turkish: 5 }
-	enum extraction: { paper_filter: 0, cloth_filter: 1, metal_filter: 2, french_press: 3,aero_press: 4,
-										 siphon: 5, coffee_maker: 6, macchinetta: 7, espresso_machine: 8, cold_brew: 9, iced: 10 }
+  enum extraction: { paper_filter: 0, cloth_filter: 1, metal_filter: 2, french_press: 3, aero_press: 4,
+                     siphon: 5, coffee_maker: 6, macchinetta: 7, espresso_machine: 8, cold_brew: 9, iced: 10 }
 
   scope :search_recipe, ->(recipe_search_params) do
     joins(:taste)
