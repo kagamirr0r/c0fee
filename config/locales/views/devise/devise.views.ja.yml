@@ -66,7 +66,7 @@ ja:
         cancel_my_account: "アカウント削除"
         currently_waiting_confirmation_for_email: "%{email} の確認待ち"
         leave_blank_if_you_don_t_want_to_change_it: "空欄のままなら変更しません"
-        new_password: 新しいパスワード(%{password_length}字以上)
+        new_password: "新しいパスワード(%{password_length}字以上)"
         confirm_new_password: "新しいパスワード(確認用)"
         title: "プロフィール編集"
         unhappy: "気に入りません"
@@ -76,12 +76,13 @@ ja:
         back: "戻る"
       new:
         sign_up: "アカウント登録"
-        password: パスワード(%{password_length}字以上)
+        password: "パスワード(%{password_length}字以上)"
         confirm_new_password: "パスワード(確認用)"
     sessions:
       new:
         sign_in: "ログイン"
         password: "パスワード"
+        simple_login: "簡単ログイン"
     shared:
       links:
         back: "戻る"

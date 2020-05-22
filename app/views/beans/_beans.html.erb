@@ -11,7 +11,7 @@
 				<th><%= Impression.human_attribute_name(:i_bitter)%></th>
 				<th><%= Bean.human_attribute_name(:shop)%></th>
 				<th><%= User.model_name.human %></th>
-				<% if user_signed_in?%>
+				<% if user_signed_in? && @liked_beans.nil? %>
 					<th>&nbsp;</th>
 				<% else %>
 					<th>Like</th>
@@ -40,7 +40,7 @@
 					<td><%= bean.impression.i_bitter%></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
-					<% if user_signed_in? %>
+					<% if user_signed_in? && @liked_beans.nil? %>
 						<td style="text-align: center" id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<% else %>
 						<td><%= bean_liked_counts(bean) %></td>

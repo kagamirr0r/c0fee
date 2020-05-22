@@ -23,6 +23,13 @@ class User < ApplicationRecord
     end
   end
 
+  def self.guest
+    find_or_create_by!(email: 'example1@example.com') do |user|
+      user.password = 'example'
+      user.confirmed_at = Time.now
+    end
+  end
+
   has_many :beans, dependent: :destroy
   has_many :bean_likes, dependent: :destroy
   has_many :like_beans, through: :bean_likes, source: :bean

@@ -20,7 +20,9 @@
 
   <div class="actions">
     <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.sign_in') %><% end %>
+		<%= link_to t('.simple_login'), users_guest_sign_in_path, method: :post, class: "waves-effect waves-light white-text btn red" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
