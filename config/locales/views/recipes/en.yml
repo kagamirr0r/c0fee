@@ -1,0 +1,33 @@
+en:
+  recipes:
+    form:
+      register: Register
+      select_recipe_image: Select recipe image
+      amount: Amount/g
+      temperature: Temperature(°C)
+    recipe: &recipe
+      edit: Edit
+      delete: Delete
+      back: Back
+      are_you_sure: Are you sure
+    recipes:
+      <<: *recipe
+    new: &new
+      back: Back
+    edit:
+      title: Edit
+      <<: *new
+    index:
+      title: Index
+      make_recipe: Make a recipe
+    new:
+      title: Register
+    show:
+      <<: *new
+    search_form:
+      <<: *new
+      submit_search: Search
+    flash:
+      created_recipe: Created recipe!
+      edited_recipe: Edited recipe
+      deleted_recipe: Deleted recipe

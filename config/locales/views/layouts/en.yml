@@ -1,0 +1,11 @@
+en:
+  layouts:
+    application:
+      bean: Bean
+      shop: Shop
+      recipe: Recipe
+      edit_profile: Edit profile
+      log_out: Log out
+      create_account: Create account
+      log_in: Log in
+      my_page: My page

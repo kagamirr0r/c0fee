@@ -1,0 +1,8 @@
+en:
+  recipe_likes:
+    like_recipe_button:
+      cancel_like: Cancel Like
+      like_recipe: Like Recipe
+    flash:
+      liked_recipe: Liked Recipe
+      canceled_recipe_like: Canceled Recipe Like

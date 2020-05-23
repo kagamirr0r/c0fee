@@ -1,0 +1,43 @@
+enums:
+  bean:
+    process:
+      washed: Washed
+      natural: Natural
+      pulped_natural: Pulped_natural
+      white_honey: White_honey
+      yellow_honey: Yellow_honey
+      red_honey: Red_honey
+      black_honey: Black_honey
+      sumatera: Sumatera
+    roast:
+      light: Light
+      cinnamon: Cinnamon
+      medium: Medium
+      high: High
+      city: City
+      fullcity: Fullcity
+      french: French
+      italian: Italian
+  recipe:
+    hot_ice:
+      hot: Hot
+      ice: Ice
+    grind:
+      coarse: Coarse
+      medium_coarse: Medium_coarse
+      medium: Medium
+      medium_fine: Medium_fine
+      fine: Fine
+      turkish: Turkish
+    extraction:
+      paper_filter: Paper_filter
+      cloth_filter: Cloth_filter
+      metal_filter: Metal_filter
+      french_press: French_press
+      aero_press: Aero_press
+      siphon: Siphon
+      coffee_maker: Coffee_maker
+      macchinetta: Macchinetta
+      espresso_machine: Espresso_machine
+      cold_brew: Cold_brew
+      iced: Iced
