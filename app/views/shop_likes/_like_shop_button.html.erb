@@ -7,7 +7,7 @@
 		<% end %>
 	<% else %>
 		<%= button_to shop_likes_path(id: shop.id),remote: true,class: "waves-effect waves-light btn-small red accent-3" do%>
-			Like!!
+			Like!
 			<%= content_tag :i, "favorite_border", class: "material-icons red accent-3 right" %>
 			<%= @count_shop_likes %>
 		<% end %>
