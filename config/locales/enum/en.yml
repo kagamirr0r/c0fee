@@ -1,43 +1,44 @@
-enums:
-  bean:
-    process:
-      washed: Washed
-      natural: Natural
-      pulped_natural: Pulped_natural
-      white_honey: White_honey
-      yellow_honey: Yellow_honey
-      red_honey: Red_honey
-      black_honey: Black_honey
-      sumatera: Sumatera
-    roast:
-      light: Light
-      cinnamon: Cinnamon
-      medium: Medium
-      high: High
-      city: City
-      fullcity: Fullcity
-      french: French
-      italian: Italian
-  recipe:
-    hot_ice:
-      hot: Hot
-      ice: Ice
-    grind:
-      coarse: Coarse
-      medium_coarse: Medium_coarse
-      medium: Medium
-      medium_fine: Medium_fine
-      fine: Fine
-      turkish: Turkish
-    extraction:
-      paper_filter: Paper_filter
-      cloth_filter: Cloth_filter
-      metal_filter: Metal_filter
-      french_press: French_press
-      aero_press: Aero_press
-      siphon: Siphon
-      coffee_maker: Coffee_maker
-      macchinetta: Macchinetta
-      espresso_machine: Espresso_machine
-      cold_brew: Cold_brew
-      iced: Iced
+en:
+  enums:
+    bean:
+      process:
+        washed: Washed
+        natural: Natural
+        pulped_natural: Pulped Natural
+        white_honey: White Honey
+        yellow_honey: Yellow Honey
+        red_honey: Red Honey
+        black_honey: Black Honey
+        sumatera: Sumatera
+      roast:
+        light: Light
+        cinnamon: Cinnamon
+        medium: Medium
+        high: High
+        city: City
+        fullcity: Fullcity
+        french: French
+        italian: Italian
+    recipe:
+      hot_ice:
+        hot: Hot
+        ice: Ice
+      grind:
+        coarse: Coarse
+        medium_coarse: Medium Coarse
+        medium: Medium
+        medium_fine: Medium Fine
+        fine: Fine
+        turkish: Turkish
+      extraction:
+        paper_filter: Paper Filter
+        cloth_filter: Cloth Filter
+        metal_filter: Metal Filter
+        french_press: French Press
+        aero_press: Aero Press
+        siphon: Siphon
+        coffee_maker: Coffee Maker
+        macchinetta: Macchinetta
+        espresso_machine: Espresso Machine
+        cold_brew: Cold Brew
+        iced: Iced

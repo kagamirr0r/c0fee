@@ -21,15 +21,15 @@ en:
       <<: *new
     index:
       title: Beans Index
-      register_bean: Register Bean
+      register_bean: Register bean
     new:
-      title: Register Bean
+      title: Register bean
     show:
       <<: *new
     search_form:
       <<: *new
       submit_search: Search
     flash:
-      registered_bean: Registered Bean
-      edited_bean: Edited Bean
-      deleted_bean: Deleted Bean
+      registered_bean: Registered bean
+      edited_bean: Edited bean
+      deleted_bean: Deleted bean

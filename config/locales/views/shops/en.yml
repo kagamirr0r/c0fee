@@ -23,7 +23,7 @@ en:
       back: Back
     search_form:
       <<: *new
-      submit_search: Submit search
+      submit_search: Search
     flash:
       choose_shop: Choose shop?
       registered_shop: Registered shop!

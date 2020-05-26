@@ -9,5 +9,12 @@ module ApplicationHelper
 
   def shop_liked_counts(shop)
     @count_shop_likes = shop.shop_liked_users.count
+	end
+
+	def i18n_url_for(options)
+    if options[:locale] == I18n.default_locale
+      options[:locale] = nil
+    end
+    url_for(options)
   end
 end

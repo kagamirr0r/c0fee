@@ -34,14 +34,14 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update!(recipe_params)
-    redirect_to my_pages_show_path, notice: t('recipes.flash.edited_recipe')
+    redirect_to my_page_path, notice: t('recipes.flash.edited_recipe')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @recipe.destroy
-    redirect_to my_pages_show_path, notice: t('recipes.flash.deleted_recipe')
+    redirect_to my_page_path, notice: t('recipes.flash.deleted_recipe')
   end
 
   private
