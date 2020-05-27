@@ -10,11 +10,11 @@ RSpec.feature 'ShopLikes', type: :feature do
 
   scenario 'shop_like_button' do
     visit shops_path
-    click_button 'Like!', match: :first
-    expect(page).to have_content 'Liked'
+    click_button 'LIKE!'
+    expect(page).to have_content 'LIKED'
 
     visit shops_path
-    click_button 'Liked', match: :first
-    expect(page).to have_content 'Like!'
+    click_button 'LIKED'
+    expect(page).to have_content 'LIKE!'
   end
 end

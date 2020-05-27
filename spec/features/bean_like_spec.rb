@@ -8,11 +8,11 @@ RSpec.feature 'BeanLikes', type: :feature do
 
   scenario 'bean_like_button' do
     visit beans_path
-    click_button 'Like!'
-    expect(page).to have_content 'Liked'
+    click_button 'LIKE!'
+    expect(page).to have_content 'LIKED'
 
     visit beans_path
-    click_button 'Liked'
-    expect(page).to have_content 'Like!'
+    click_button 'LIKED'
+    expect(page).to have_content 'LIKE!'
   end
 end
