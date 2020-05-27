@@ -43,7 +43,7 @@
 					<td><%= bean.impression.i_sweet %></td>
 					<td><%= bean.impression.i_bitter %></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-					<td><%= bean.price %><% if bean.price.present? %>/100g<%end%></td>
+					<td><%= bean.price %><% if bean.price.present? %>/100g<% end %></td>
 					<td><%= bean.impression.i_comment %></td>
 					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
 					<td><%= l bean.updated_at %></td>
