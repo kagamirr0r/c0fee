@@ -1,8 +1,8 @@
 en:
   bean_likes:
     like_bean_button:
-      cancel_like_bean: Cancel Like
-      like_bean: Like
+      cancel_like_bean: Liked
+      like_bean: Like!
     flash:
       liked_bean: You Liked Bean!
       canceled_like_bean: You cancel Like！
