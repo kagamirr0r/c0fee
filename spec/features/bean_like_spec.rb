@@ -7,7 +7,8 @@ RSpec.feature 'BeanLikes', type: :feature do
   end
 
   scenario 'bean_like_button' do
-    visit beans_path
+		visit beans_path
+		expect(page).to have_content impression.bean.country
     click_button I18n.t('bean_likes.like_bean_button.like_bean')
     expect(page).to have_content t('.cancel_like_bean')
 
