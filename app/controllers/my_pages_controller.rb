@@ -5,5 +5,5 @@ class MyPagesController < ApplicationController
     @liked_beans = current_user.like_beans.page(params[:page]).order(created_at: :desc)
     @liked_recipes = current_user.like_recipes.page(params[:page]).order(created_at: :desc)
     @liked_shops = current_user.like_shops.page(params[:page]).order(created_at: :desc)
-	end
+  end
 end
