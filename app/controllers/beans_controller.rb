@@ -27,7 +27,7 @@ class BeansController < ApplicationController
     @shop = Shop.find(params[:bean][:shop_id])
     @bean = @shop.beans.build(bean_params)
     if @bean.save
-      redirect_to my_page_path, notice: t('beans.flash.registered_bean')
+      redirect_to my_page_path(current_user), notice: t('beans.flash.registered_bean')
     else
       render :new
     end
@@ -35,14 +35,14 @@ class BeansController < ApplicationController
 
   def update
     @bean.update!(bean_params)
-    redirect_to my_page_path, notice: t('beans.flash.edited_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.edited_bean')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @bean.destroy
-    redirect_to my_page_path, notice: t('beans.flash.deleted_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.deleted_bean')
   end
 
   private

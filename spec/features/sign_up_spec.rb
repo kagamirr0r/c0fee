@@ -27,7 +27,7 @@ RSpec.feature 'SignUps', type: :feature do
     user = User.last
     token = user.confirmation_token
     visit user_confirmation_path(confirmation_token: token)
-    expect(page).to have_content I18n.t('devise.registrations.signed_up')
+    expect(page).to have_content I18n.t('devise.confirmations.confirmed')
 
     click_button I18n.t('devise.sessions.new.sign_in')
     expect(page).to have_content I18n.t('devise.failure.not_found_in_database')
