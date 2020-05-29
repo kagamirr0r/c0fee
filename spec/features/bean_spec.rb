@@ -30,7 +30,7 @@ RSpec.feature 'Beans', type: :feature do
 
     # show
     bean = Bean.last
-    visit bean_path(bean.id)
+    visit "/ja/beans/#{bean.id}"
     expect(page).to have_content Bean.human_attribute_name(:farm)
 
     # edit
@@ -52,6 +52,6 @@ RSpec.feature 'Beans', type: :feature do
 
     # delete
     click_link I18n.t('beans.beans.delete')
-    expect(page).to have_content I18n.t('beans.flash.deleted_bean')
-  end
+		expect(page).to have_content I18n.t('beans.flash.deleted_bean')
+	end
 end
