@@ -55,8 +55,8 @@ jobs:
           name: docker-compose down
           command: docker-compose -f docker-compose.test.yml down
       - slack/status:
-          success_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のデプロイが完了したぞ"
-          failure_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のデプロイが失敗したぞ"
+          success_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のテストが完了したぞ"
+          failure_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のテストが失敗したぞ"
           webhook: "${SLACK_WEBHOOK}"
 workflows:
   build_and_deploy:

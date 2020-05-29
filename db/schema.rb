@@ -10,10 +10,120 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_011540) do
+ActiveRecord::Schema.define(version: 2020_05_29_154148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bean_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "bean_id", null: false
+    t.index ["bean_id"], name: "bean_ind_on_bean_likes"
+    t.index ["user_id"], name: "user_ind_on_bean_likes"
+  end
+
+  create_table "beans", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.string "country", null: false
+    t.string "area"
+    t.string "variety"
+    t.string "farm"
+    t.integer "process"
+    t.integer "roast"
+    t.integer "price"
+    t.string "bean_image"
+    t.string "bean_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "shop_ind_on_beans"
+    t.index ["user_id"], name: "user_ind_on_beans"
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.integer "bean_id", null: false
+    t.integer "i_sour", null: false
+    t.integer "i_sweet", null: false
+    t.integer "i_bitter", null: false
+    t.text "i_comment"
+    t.index ["bean_id"], name: "bean_ind_on_impressions"
+  end
+
+  create_table "mobility_string_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.string "value"
+    t.string "translatable_type"
+    t.bigint "translatable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
+    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
+  end
+
+  create_table "mobility_text_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.text "value"
+    t.string "translatable_type"
+    t.bigint "translatable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "recipe_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "recipe_id", null: false
+    t.index ["recipe_id"], name: "recipe_ind_on_recipe_likes"
+    t.index ["user_id"], name: "user_ind_on_recipe_likes"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "bean_id"
+    t.integer "hot_ice", default: 0, null: false
+    t.integer "grind"
+    t.integer "temperature"
+    t.integer "amount"
+    t.integer "extraction"
+    t.string "recipe_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bean_id"], name: "bean_ind_on_recipess"
+    t.index ["user_id"], name: "user_ind_on_recipes"
+  end
+
+  create_table "shop_likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+    t.index ["shop_id"], name: "shop_ind_on_shop_likes"
+    t.index ["user_id"], name: "user_ind_on_shop_likes"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address"
+    t.string "url", null: false
+    t.string "shop_image"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tastes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "t_sour", null: false
+    t.integer "t_sweet", null: false
+    t.integer "t_bitter", null: false
+    t.integer "t_aroma", null: false
+    t.integer "t_fullbody", null: false
+    t.text "t_comment"
+    t.index ["recipe_id"], name: "recipe_ind_on_tastes"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,4 +155,16 @@ ActiveRecord::Schema.define(version: 2019_09_14_011540) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "bean_likes", "beans", name: "fk_bean_likes_belong_to_bean"
+  add_foreign_key "bean_likes", "users", name: "fk_bean_likes_belong_to_user"
+  add_foreign_key "beans", "shops", name: "fk_beans_belong_to_shop"
+  add_foreign_key "beans", "users", name: "fk_beans_belong_to_user"
+  add_foreign_key "impressions", "beans", name: "fk_impression_belongs_to_bean"
+  add_foreign_key "recipe_likes", "recipes", name: "fk_recipe_likes_belong_to_recipe"
+  add_foreign_key "recipe_likes", "users", name: "fk_recipe_likes_belong_to_user"
+  add_foreign_key "recipes", "beans", name: "fk_recipes_belong_to_bean"
+  add_foreign_key "recipes", "users", name: "fk_recipes_belong_to_user"
+  add_foreign_key "shop_likes", "shops", name: "fk_shop_likes_belong_to_shop"
+  add_foreign_key "shop_likes", "users", name: "fk_shop_likes_belong_to_user"
+  add_foreign_key "tastes", "recipes", name: "fk_taste_belongs_to_recipe"
 end

@@ -64,7 +64,7 @@ gem 'geocoder'
 
 gem 'enum_help'
 
-gem 'mobility', '~> 0.8.13'
+gem 'globalize', '~> 5.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
