@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_154148) do
+ActiveRecord::Schema.define(version: 2020_05_30_142744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2020_05_29_154148) do
     t.integer "bean_id", null: false
     t.index ["bean_id"], name: "bean_ind_on_bean_likes"
     t.index ["user_id"], name: "user_ind_on_bean_likes"
+  end
+
+  create_table "bean_translations", force: :cascade do |t|
+    t.bigint "bean_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "country"
+    t.string "area"
+    t.string "variety"
+    t.index ["bean_id"], name: "index_bean_translations_on_bean_id"
+    t.index ["locale"], name: "index_bean_translations_on_locale"
   end
 
   create_table "beans", force: :cascade do |t|
@@ -49,31 +61,6 @@ ActiveRecord::Schema.define(version: 2020_05_29_154148) do
     t.index ["bean_id"], name: "bean_ind_on_impressions"
   end
 
-  create_table "mobility_string_translations", force: :cascade do |t|
-    t.string "locale", null: false
-    t.string "key", null: false
-    t.string "value"
-    t.string "translatable_type"
-    t.bigint "translatable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
-    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
-    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
-  end
-
-  create_table "mobility_text_translations", force: :cascade do |t|
-    t.string "locale", null: false
-    t.string "key", null: false
-    t.text "value"
-    t.string "translatable_type"
-    t.bigint "translatable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
-    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
-  end
-
   create_table "recipe_likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "recipe_id", null: false
@@ -101,6 +88,17 @@ ActiveRecord::Schema.define(version: 2020_05_29_154148) do
     t.integer "shop_id", null: false
     t.index ["shop_id"], name: "shop_ind_on_shop_likes"
     t.index ["user_id"], name: "user_ind_on_shop_likes"
+  end
+
+  create_table "shop_translations", force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.index ["locale"], name: "index_shop_translations_on_locale"
+    t.index ["shop_id"], name: "index_shop_translations_on_shop_id"
   end
 
   create_table "shops", force: :cascade do |t|
