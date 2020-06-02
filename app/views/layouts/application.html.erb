@@ -29,9 +29,9 @@
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
 					<% else %>
 						<% if current_user.avatar?%>
-							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'}%></li>
+							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%></li>
 						<% else %>
-							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'} %></li>
+							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %></li>
 						<% end %>
 
 						<ul id='dropdown_nav' class='dropdown-content'>

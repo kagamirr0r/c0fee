@@ -40,12 +40,19 @@
 					<td><%= bean.impression.i_sweet%></td>
 					<td><%= bean.impression.i_bitter%></td>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
+
+					<% if bean.user == current_user %>
+						<td><%= current_user.username %></td>
+					<% else %>
+						<td><%= link_to bean.user.username, user_path(id: bean.user.id) %></td>
+					<% end %>
+
 					<% if user_signed_in? && @liked_beans.nil? %>
 						<td style="text-align: center" id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<% else %>
 						<td><%= bean_liked_counts(bean) %></td>
 					<% end %>
+
 					<% if current_user == bean.user %>
 						<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
 						<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') }, class: 'delete_bean' %></td>
@@ -53,6 +60,7 @@
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					<% end %>
+
 					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
 					</tr>
 				<% end %>
