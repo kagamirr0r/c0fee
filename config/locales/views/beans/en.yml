@@ -1,0 +1,35 @@
+en:
+  beans:
+    form:
+      bought_shop: Shop you bought beans
+      select_bean_image: Choose bean image
+      price: Price ($/100g)
+      register: Register
+      confirm: Confirm
+      sour: Sour
+    bean: &bean
+      create_recipe: Make a recipe
+      edit: Edit
+      delete: Delete
+      confirm: Confirm
+    beans:
+      <<: *bean
+    new: &new
+      back: Back
+    edit:
+      title: Edit
+      <<: *new
+    index:
+      title: Beans Index
+      register_bean: Register bean
+    new:
+      title: Register bean
+    show:
+      <<: *new
+    search_form:
+      <<: *new
+      submit_search: Search
+    flash:
+      registered_bean: Registered bean
+      edited_bean: Edited bean
+      deleted_bean: Deleted bean

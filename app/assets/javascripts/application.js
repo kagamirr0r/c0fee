@@ -10,19 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
-//= require jquery
-//= require jquery_ujs
 //= require materialize
 //= require materialize-sprockets
+//= require_tree .
 
-$(document).on("click", "#avatar_select_file_button", function() {
+
+$(document).on("click", "#avatar_select_file_button", function () {
 	$("#user_avatar").click();
 });
 
-$(document).on("change", "#user_avatar", function() {
+$(document).on("change", "#user_avatar", function () {
 	$("#avatar_filename").val(
 		$(this)
 			.val()
@@ -30,11 +30,11 @@ $(document).on("change", "#user_avatar", function() {
 	);
 });
 
-$(document).on("click", "#bean_select_file_button", function() {
+$(document).on("click", "#bean_select_file_button", function () {
 	$("#bean_bean_image").click();
 });
 
-$(document).on("change", "#bean_bean_image", function() {
+$(document).on("change", "#bean_bean_image", function () {
 	$("#bean_filename").val(
 		$(this)
 			.val()
@@ -42,11 +42,11 @@ $(document).on("change", "#bean_bean_image", function() {
 	);
 });
 
-$(document).on("click", "#recipe_select_file_button", function() {
+$(document).on("click", "#recipe_select_file_button", function () {
 	$("#recipe_recipe_image").click();
 });
 
-$(document).on("change", "#recipe_recipe_image", function() {
+$(document).on("change", "#recipe_recipe_image", function () {
 	$("#recipe_filename").val(
 		$(this)
 			.val()
@@ -54,11 +54,11 @@ $(document).on("change", "#recipe_recipe_image", function() {
 	);
 });
 
-$(document).on("click", "#shop_select_file_button", function() {
+$(document).on("click", "#shop_select_file_button", function () {
 	$("#shop_shop_image").click();
 });
 
-$(document).on("change", "#shop_shop_image", function() {
+$(document).on("change", "#shop_shop_image", function () {
 	$("#shop_filename").val(
 		$(this)
 			.val()
@@ -66,17 +66,119 @@ $(document).on("change", "#shop_shop_image", function() {
 	);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
 	$(".dropdown-trigger").dropdown({
 		coverTrigger: false,
 		constrainWidth: false
 	});
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
 	$(".tabs").tabs();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
 	$("select").formSelect();
 });
+
+$(document).ready(function () {
+	$('input.autocomplete').autocomplete({
+		data: {
+			"ブラジル": null,
+			"ベトナム": null,
+			"コロンビア": null,
+			"インドネシア": null,
+			"エチオピア": null,
+			"ホンジュラス": null,
+			"インド": null,
+			"ペルー": null,
+			"グァテマラ": null,
+			"ウガンダ": null,
+			"メキシコ": null,
+			"コスタリカ": null,
+			"パナマ": null,
+			"タンザニア": null,
+			"ケニア": null,
+			"東ティモール": null,
+			"ドミニカ": null,
+			"ハワイ": null,
+			"ニカラグア": null,
+			"エルサルバドル": null,
+			"エスピリット・サント": null,
+			"ミナスジェライス": null,
+			"リントン": null,
+			"トミオフクダ": null,
+			"エスペランサ": null,
+			"アマティトラン": null,
+			"フロレンシア": null,
+			"ブルンジ": null,
+			"トマジーニ": null,
+			"サンパウロ": null,
+			"レッドカトゥアイ": null,
+			"イエローブルボン": null,
+			"トマジーニ": null,
+			"バイーア": null,
+			"カトゥアイ": null,
+			"ブルボン": null,
+			"ウイラ": null,
+			"ピンクブルボン": null,
+			"カトゥーラ": null,
+			"ティピカ": null,
+			"アチェ": null,
+			"ティムティム": null,
+			"北スマトラ": null,
+			"アテン": null,
+			"スラウェシ": null,
+			"イルガチェッフェ": null,
+			"オロミア": null,
+			"シダモ": null,
+			"原種": null,
+			"パライネマ": null,
+			"サンタバルバラ": null,
+			"エル・プラン": null,
+			"ラパス": null,
+			"イエローカトゥアイ": null,
+			"インティブカ": null,
+			"アンティグア": null,
+			"ウエウエテナンゴ": null,
+			"パカマラ": null,
+			"アンティグア": null,
+			"アマティトラン": null,
+			"プーノ": null,
+			"クスコ": null,
+			"チアパス": null,
+			"H1": null,
+			"セントラルバレー": null,
+			"ゲイシャ": null,
+			"ウェストバレー": null,
+			"タラス": null,
+			"セントロアメリカーノ": null,
+			"チリキ": null,
+			"アルーシャ": null,
+			"ケント": null,
+			"ニエリ": null,
+			"ルイル11": null,
+			"SL28": null,
+			"ハラバコア": null,
+			"カヤンザ": null,
+			"ンゴジ": null,
+			"ヒノテガ": null,
+			"イエローパカマラ": null,
+			"ヌエバ・セゴビア": null,
+			"ヌエバセゴビア": null,
+			"ジャバニカ": null,
+			"マタガルパ": null,
+			"オレンジブルボン": null,
+			"マタガルパ": null,
+			"レッドパカマラ": null,
+			"ケサルテペケ": null,
+			"ケサルテペケ": null,
+			"エル・ボケロン": null,
+			"ソンソナテ": null,
+			"サンタリタ": null,
+			"ロマ・ラ・グロリア": null
+		},
+	});
+});
+
+

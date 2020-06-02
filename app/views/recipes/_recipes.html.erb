@@ -7,12 +7,8 @@
 					<th><%= Recipe.human_attribute_name(:bean)%></th>
 					<th><%= Recipe.human_attribute_name(:grind)%></th>
 					<th><%= Recipe.human_attribute_name(:extraction)%></th>
-					<th><%= Taste.human_attribute_name(:t_sour)%></th>
-					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
-					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
-					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
-					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
-					<% if user_signed_in?%>
+					<th><%= Taste.human_attribute_name(:t_comment)%></th>
+					<% if user_signed_in? && @liked_recipes.nil?%>
 						<th>&nbsp;</th>
 					<% else %>
 						<th>Like</th>
@@ -23,7 +19,8 @@
 			</thead>
 
 			<tbody>
-				<% Array(recipes).reverse_each do |recipe| %>
+				<% Array(recipes).each do |recipe| %>
+				 <% unless recipe.bean.country.nil? %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>
@@ -32,17 +29,13 @@
 								<%=link_to image_tag('C0FEE.png', :id => 'no_recipe_image'), recipe_path(recipe) %>
 							<% end %>
 						</td>
-						<td><%= recipe.hot_ice %></td>
+						<td><%= recipe.hot_ice_i18n %></td>
 						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.grind %></td>
-						<td><%= recipe.extraction %></td>
-						<td><%= recipe.taste.t_sour%></td>
-						<td><%= recipe.taste.t_sweet%></td>
-						<td><%= recipe.taste.t_bitter%></td>
-						<td><%= recipe.taste.t_aroma%></td>
-						<td><%= recipe.taste.t_fullbody%></td>
-						<% if user_signed_in? %>
-							<td style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						<td><%= recipe.grind_i18n %></td>
+						<td><%= recipe.extraction_i18n %></td>
+						<td><%= recipe.taste.t_comment%></td>
+						<% if user_signed_in? && @liked_recipes.nil?%>
+							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
 							<td><%= recipe_liked_counts(recipe) %></td>
 						<% end %>
@@ -54,7 +47,9 @@
 								<td>&nbsp;</td>
 							<% end %>
 					</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>
+	<%= paginate recipes %>
 	<% end %>

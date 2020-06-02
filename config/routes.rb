@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks",
                                     :sessions => 'sessions' }
-  root 'top_pages#index'
-  get 'my_pages/show'
+  scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+    devise_scope :user do
+      post 'users/guest_sign_in', to: 'sessions#new_guest'
+    end
 
-  resources :users, only: [:show, :index]
-  resources :shops
-  resources :beans
-  resources :recipes
+    root 'top_pages#index'
+    resources :my_pages, only: [:show]
 
-  resources :impressions
-  resources :tastes
+    resources :users, only: [:show, :index]
 
-  resources :bean_likes, only: [:create, :destroy]
-  resources :recipe_likes, only: [:create, :destroy]
-  resources :shop_likes, only: [:create, :destroy]
+    resources :beans
+    resources :bean_likes, only: [:create, :destroy]
+
+    resources :recipes
+    resources :recipe_likes, only: [:create, :destroy]
+
+    resources :shops
+    resources :shop_likes, only: [:create, :destroy]
+
+    resources :impressions
+    resources :tastes
+  end
 end

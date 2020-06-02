@@ -1,22 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature 'RecipeLikes', type: :feature do
-  let(:user) { create :user }
-  let(:shop) { build :shop }
+  let(:taste) { create :taste }
   before do
-    log_in(user)
-    register_shop(shop)
-    register_bean
-    register_recipe
+    log_in(taste.recipe.bean.user)
   end
 
   scenario 'recipe_like_button' do
     visit recipes_path
-    click_button 'Like!'
-    expect(page).to have_content I18n.t('recipe_likes.flash.liked_recipe')
+    click_button I18n.t('recipe_likes.like_recipe_button.like_recipe')
+    expect(page).to have_content 'Liked'
 
     visit recipes_path
-    click_button 'Liked'
-    expect(page).to have_content I18n.t('recipe_likes.flash.canceled_recipe_like')
+    click_button I18n.t('recipe_likes.like_recipe_button.cancel_like_recipe')
+    expect(page).to have_content 'Like!'
   end
 end

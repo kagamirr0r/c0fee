@@ -19,13 +19,17 @@ ja:
       <<: *new
     index:
       title: レシピ一覧
+      make_recipe: レシピを作成
     new:
       title: レシピの登録
     show:
-      back: 戻る
+      <<: *new
+    search_form:
+      <<: *new
+      submit_search: 検索
     flash:
       created_recipe: レシピを作成しました!
       edited_recipe: レシピを編集しました！
-      deleted_recipe: コーヒー豆を削除しました！
+      deleted_recipe: 豆を削除しました！
 
 

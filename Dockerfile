@@ -1,5 +1,7 @@
 FROM ruby:2.6.3
 
+ENV LANG C.UTF-8
+
 ENV APP_ROOT /app
 RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT

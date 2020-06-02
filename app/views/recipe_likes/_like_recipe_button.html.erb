@@ -1,12 +1,14 @@
-	<% recipe_liked_counts(recipe)%>
+<% recipe_liked_counts(recipe) %>
 	<% if current_user.like_recipe?(recipe) %>
-		<%= form_for(current_user.recipe_likes.find_by(recipe_id: recipe.id), html: { method: :delete }) do |f|  %>
-			<%= hidden_field_tag :recipe_id, recipe.id%>
-			<%= button_tag class: "waves-effect waves-light btn-small" do %><%= content_tag :i, "favorite", class: "material-icons right" %>Liked  <%= @count_recipe_likes %><% end %>
+		<%= button_to recipe_like_path(id: recipe.id),method: :delete,remote: true,class: "waves-effect waves-light btn-small" do%>
+			<%= t('.cancel_like_recipe') %>
+			<%= content_tag :i, "favorite", class: "material-icons right" %>
+			<%= @count_recipe_likes %>
 		<% end %>
 	<% else %>
-		<%= form_for(current_user.recipe_likes.build) do |f| %>
-			<%= hidden_field_tag :recipe_id, recipe.id%>
-			<%= button_tag class: "waves-effect waves-light btn-small red accent-3" do %><%= content_tag :i, "favorite_border", class: "material-icons right red accent-3" %>Like!  <%= @count_recipe_likes %><% end %>
-		<% end %>
-	<% end%>
+		<%= button_to recipe_likes_path(id: recipe.id),remote: true,class: "waves-effect waves-light btn-small red accent-3" do%>
+			<%= t('.like_recipe') %>
+			<%= content_tag :i, "favorite_border", class: "material-icons red accent-3 right" %>
+			<%= @count_recipe_likes %>
+	<% end %>
+<% end%>

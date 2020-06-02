@@ -1,0 +1,38 @@
+<%= form_with(scope: :search_bean, url: beans_path, method: :get, local: true) do |b|%>
+	<div class="row">
+		<div class="input-field col s12 l2 ">
+		<i class="material-icons prefix">public</i>
+			<%= b.label(:country, Bean.human_attribute_name(:country)) %>
+			<%= b.text_field :country, value: @bean_search_params[:country], class: "autocomplete"%>
+		</div>
+		<div class="input-field col s12 l2 ">
+		<i class="material-icons prefix">invert_colors</i>
+			<%= b.select :roast, Bean.roasts.keys.map {|k| [I18n.t("enums.bean.roast.#{k}"),k]}, include_blank: true %>
+			<%= b.label(:roast,Bean.human_attribute_name(:roast))%>
+		</div>
+
+		<div class="input-field col s12 l2 ">
+			<i class="material-icons prefix">change_history</i>
+			<%= b.label(:i_sour,Impression.human_attribute_name(:i_sour))%>
+			<%= b.number_field :i_sour, value: @bean_search_params[:i_sour],min: 1, max: 5, class: "autocomplete"%>
+		</div>
+		<div class="input-field col s12 l2 ">
+			<i class="material-icons prefix">panorama_fish_eye</i>
+			<%= b.label(:i_sweet,Impression.human_attribute_name(:i_sweet))%>
+			<%= b.number_field :i_sweet, value: @bean_search_params[:i_sweet],min: 1, max: 5, class: "autocomplete"%>
+		</div>
+		<div class="input-field col s12 l2 ">
+			<i class="material-icons prefix">crop_square</i>
+			<%= b.label(:i_bitter,Impression.human_attribute_name(:i_bitter))%>
+			<%= b.number_field :i_bitter, value: @bean_search_params[:i_bitter],min: 1, max: 5, class: "autocomplete"%>
+		</div>
+  	<div class="actions col s1 l1">
+			<%= b.submit t('.submit_search'),class:"btn waves-effect waves-light white"%>
+		</div>
+		<% if @bean_search_params.present? %>
+			<div class="actions col s1 l1">
+				<%= link_to t('.back'), beans_path, class:"btn waves-effect waves-light"%>
+			</div>
+		<% end %>
+	</div>
+<% end %>

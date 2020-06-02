@@ -1,10 +1,10 @@
 <div id="user_plofile" style="text-align: center">
   <% if @user.avatar?%>
-  <%= image_tag @user.avatar.to_s, :size => '80x80' %>
+  <%= image_tag @user.avatar.to_s, :size => '400x400' %>
   <% else %>
-  <%= image_tag 'no_avatar.png', :size => '80x80', :id => 'no_image_avatar' %>
+  <%= image_tag 'no_avatar.png', :size => '400x400', :id => 'no_image_avatar' %>
   <% end %></br>
-  <div id="user_name"><%= @user.username %></div>
+  <h4><div id="user_name"><%= @user.username %></div></h4>
 </div>
 
 <div class="row">

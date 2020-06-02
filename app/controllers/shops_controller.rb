@@ -1,12 +1,17 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   def index
-    @shops = Shop.all
-    flash[:choose_shop] = t('shops.flash.choose_shop')
+    @shop_search_params = shop_search_params
+
+    @shops = if @shop_search_params.present?
+               Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page]).order(created_at: :desc)
+             else
+               Shop.page(params[:page]).order(created_at: :desc)
+             end
   end
 
   def show
-    @shop = Shop.find_by(id: params[:id])
+    @shop = Shop.find(params[:id])
     @beans = Bean.where(shop_id: params[:id])
   end
 
@@ -43,6 +48,10 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :url, :shop_image)
+    params.require(:shop).permit(:name, :address, :url, :shop_image, :latitude, :longitude)
+  end
+
+  def shop_search_params
+    params.fetch(:search_shop, {}).permit(:name, :address)
   end
 end
