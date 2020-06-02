@@ -24,9 +24,16 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'example1@example.com') do |user|
-      user.password = 'example'
-      user.confirmed_at = Time.now
+    if I18n.locale == :ja
+      find_or_create_by!(email: 'sato@sato.com') do |user|
+        user.password = 'satosatosato'
+        user.confirmed_at = Time.now
+      end
+    else
+      find_or_create_by!(email: 'smith@smith.com') do |user|
+        user.password = 'smithsmith'
+        user.confirmed_at = Time.now
+      end
     end
   end
 

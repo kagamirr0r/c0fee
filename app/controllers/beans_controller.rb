@@ -5,7 +5,7 @@ class BeansController < ApplicationController
     @bean_search_params = bean_search_params
 
     @beans = if @bean_search_params.present?
-               Bean.search_bean(@bean_search_params).page(params[:page]).order(created_at: :desc)
+               Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page]).order(created_at: :desc)
              else
                Bean.page(params[:page]).order(created_at: :desc)
              end
@@ -27,7 +27,7 @@ class BeansController < ApplicationController
     @shop = Shop.find(params[:bean][:shop_id])
     @bean = @shop.beans.build(bean_params)
     if @bean.save
-      redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
+      redirect_to my_page_path(current_user), notice: t('beans.flash.registered_bean')
     else
       render :new
     end
@@ -35,14 +35,14 @@ class BeansController < ApplicationController
 
   def update
     @bean.update!(bean_params)
-    redirect_to my_pages_show_path, notice: t('beans.flash.edited_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.edited_bean')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @bean.destroy
-    redirect_to my_pages_show_path, notice: t('beans.flash.deleted_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.deleted_bean')
   end
 
   private

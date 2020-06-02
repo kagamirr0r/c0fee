@@ -4,6 +4,8 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   validates :url, presence: true, uniqueness: true
 
+  translates :name, :address
+
   has_many :beans, dependent: :destroy
   accepts_nested_attributes_for :beans, allow_destroy: true
 
@@ -14,8 +16,8 @@ class Shop < ApplicationRecord
     name_search(shop_search_params[:name])
       .address_search(shop_search_params[:address])
   end
-  scope :name_search, ->(name) { where('name LIKE ?', "%#{name}%") if name.present? }
-  scope :address_search, ->(address) { where('address LIKE ?', "%#{address}%") if address.present? }
+  scope :name_search, ->(name) { where('shop_translations.name LIKE ?', "%#{name}%") if name.present? }
+  scope :address_search, ->(address) { where('shop_translations.address LIKE ?', "%#{address}%") if address.present? }
 
   mount_uploader :shop_image, ImageUploader
 

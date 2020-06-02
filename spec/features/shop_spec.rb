@@ -21,7 +21,7 @@ RSpec.feature 'Shops', type: :feature do
 
     # show
     shop = Shop.last
-    visit shop_path(shop.id)
+    visit "/ja/shops/#{shop.id}"
     expect(page).to have_content shop.name
 
     # edit

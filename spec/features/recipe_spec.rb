@@ -29,7 +29,7 @@ RSpec.feature 'Recipes', type: :feature do
 
     # show
     recipe = Recipe.last
-    visit recipe_path(recipe.id)
+    visit "/ja/recipes/#{recipe.id}"
     expect(page).to have_content Recipe.human_attribute_name(:amount)
 
     # edit

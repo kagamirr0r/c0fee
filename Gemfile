@@ -64,6 +64,8 @@ gem 'geocoder'
 
 gem 'enum_help'
 
+gem 'globalize', '~> 5.3.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'

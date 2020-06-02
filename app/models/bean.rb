@@ -1,6 +1,8 @@
 class Bean < ApplicationRecord
   include StringNormalize
+
   validates :country, presence: true
+  translates :country, :area, :variety, :farm
 
   belongs_to :user
   belongs_to :shop
@@ -25,7 +27,7 @@ class Bean < ApplicationRecord
       .merge(Impression.search_impression(bean_search_params))
   end
 
-  scope :country_search, ->(country) { where('country LIKE ?', "%#{country}%") if country.present? }
+  scope :country_search, ->(country) { where('bean_translations.country LIKE ?', "%#{country}%") if country.present? }
   scope :roast_search, ->(roast) { where(roast: roast) if roast.present? }
   mount_uploader :bean_image, ImageUploader
 end
