@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_142744) do
+ActiveRecord::Schema.define(version: 2020_06_01_085118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_142744) do
     t.string "country"
     t.string "area"
     t.string "variety"
+    t.string "farm"
     t.index ["bean_id"], name: "index_bean_translations_on_bean_id"
     t.index ["locale"], name: "index_bean_translations_on_locale"
   end
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_142744) do
   create_table "beans", force: :cascade do |t|
     t.integer "user_id"
     t.integer "shop_id"
-    t.string "country", null: false
+    t.string "country"
     t.string "area"
     t.string "variety"
     t.string "farm"

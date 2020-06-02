@@ -24,6 +24,7 @@
 
 		<tbody>
 			<% Array(beans).each do |bean| %>
+			 <% unless bean.country.nil? %>
 				<tr>
 					<td id="bean_image_td">
 					<% if bean.bean_image? %>
@@ -54,6 +55,7 @@
 					<% end %>
 					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
 					</tr>
+				<% end %>
 			<% end %>
 		</tbody>
 	</table>

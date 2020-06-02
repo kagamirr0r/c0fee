@@ -24,12 +24,6 @@
 				</ul>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-
-            <%# <ul id='dropdown_lang' class='dropdown-content'> %>
-            <%# <li>= link_to('日本語', :locale => 'ja')</li> %>
-						<%# <li><%= link_to('English', :locale => 'en')</li> %>
-						<%# </ul> %>
-
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
@@ -56,7 +50,7 @@
 					<% else %>
 						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
             <ul id='dropdown_lang' class='dropdown-content'>
-            <li><%= link_to('English', :locale => 'en')%></li>
+            <li><%= link_to('EN', :locale => 'en')%></li>
 						</ul>
 					<% end %>
 

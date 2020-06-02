@@ -20,6 +20,7 @@
 
 			<tbody>
 				<% Array(recipes).each do |recipe| %>
+				 <% unless recipe.bean.country.nil? %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>
@@ -46,6 +47,7 @@
 								<td>&nbsp;</td>
 							<% end %>
 					</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>

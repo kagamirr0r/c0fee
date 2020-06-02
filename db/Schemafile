@@ -15,6 +15,7 @@ create_table "bean_translations", force: :cascade do |t|
   t.string "country"
   t.string "area"
   t.string "variety"
+  t.string "farm"
   t.index ["bean_id"], name: "index_bean_translations_on_bean_id"
   t.index ["locale"], name: "index_bean_translations_on_locale"
 end
@@ -22,7 +23,7 @@ end
 create_table "beans", force: :cascade do |t|
   t.integer "user_id"
   t.integer "shop_id"
-  t.string "country", null: false
+  t.string "country"
   t.string "area"
   t.string "variety"
   t.string "farm"
@@ -56,7 +57,7 @@ end
 create_table "recipes", force: :cascade do |t|
   t.integer "user_id"
   t.integer "bean_id"
-  t.integer "hot_ice", default: 0, null: false
+  t.integer "hot_ice", default: 0
   t.integer "grind"
   t.integer "temperature"
   t.integer "amount"
@@ -87,9 +88,9 @@ create_table "shop_translations", force: :cascade do |t|
 end
 
 create_table "shops", force: :cascade do |t|
-  t.string "name", null: false
+  t.string "name"
   t.string "address"
-  t.string "url", null: false
+  t.string "url"
   t.string "shop_image"
   t.float "latitude"
   t.float "longitude"
