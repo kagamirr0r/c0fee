@@ -5,10 +5,10 @@ class BeansController < ApplicationController
     @bean_search_params = bean_search_params
 
     @beans = if @bean_search_params.present?
-							 Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page]).order(created_at: :desc)
+               Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page]).order(created_at: :desc)
              else
                Bean.page(params[:page]).order(created_at: :desc)
-						 end
+             end
   end
 
   def show; end

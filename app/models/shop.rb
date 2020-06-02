@@ -4,7 +4,7 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   validates :url, presence: true, uniqueness: true
 
-	translates :name, :address
+  translates :name, :address
 
   has_many :beans, dependent: :destroy
   accepts_nested_attributes_for :beans, allow_destroy: true

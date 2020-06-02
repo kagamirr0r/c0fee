@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     options.merge(locale: locale)
-	end
+  end
 
   protected
     def configure_permitted_parameters

@@ -1,8 +1,8 @@
 class Bean < ApplicationRecord
-	include StringNormalize
+  include StringNormalize
 
-	validates :country, presence: true
-	translates :country, :area, :variety, :farm
+  validates :country, presence: true
+  translates :country, :area, :variety, :farm
 
   belongs_to :user
   belongs_to :shop
@@ -22,9 +22,9 @@ class Bean < ApplicationRecord
     return if bean_search_params.blank?
 
     joins(:impression)
-			.country_search(bean_search_params[:country])
+      .country_search(bean_search_params[:country])
       .roast_search(bean_search_params[:roast])
-			.merge(Impression.search_impression(bean_search_params))
+      .merge(Impression.search_impression(bean_search_params))
   end
 
   scope :country_search, ->(country) { where('bean_translations.country LIKE ?', "%#{country}%") if country.present? }

@@ -23,18 +23,18 @@ class User < ApplicationRecord
     end
   end
 
-	def self.guest
-		if I18n.locale = :ja
-			find_or_create_by!(email: 'sato@sato.com') do |user|
-				user.password = 'satosatosato'
-				user.confirmed_at = Time.now
-			end
-		else
-			find_or_create_by!(email: 'smith@smith.com') do |user|
-				user.password = 'smithsmith'
-				user.confirmed_at = Time.now
-			end
-		end
+  def self.guest
+    if I18n.locale == :ja
+      find_or_create_by!(email: 'sato@sato.com') do |user|
+        user.password = 'satosatosato'
+        user.confirmed_at = Time.now
+      end
+    else
+      find_or_create_by!(email: 'smith@smith.com') do |user|
+        user.password = 'smithsmith'
+        user.confirmed_at = Time.now
+      end
+    end
   end
 
   has_many :beans, dependent: :destroy
