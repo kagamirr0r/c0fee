@@ -30,7 +30,8 @@
 	top: 13px;
 }
 
-#user_plofile {
+#user_plofile,
+#bean_plofile {
 	margin-left: 5px;
 }
 
@@ -73,6 +74,12 @@
 #shop_icon {
 	width: 35px;
 	height: 35px;
+}
+
+#shop_plofile,
+#shop_map
+{
+	display:  inline-block;
 }
 .grid {
 	display: grid;

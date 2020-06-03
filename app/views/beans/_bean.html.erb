@@ -1,8 +1,16 @@
 <% if bean.present? %>
+
+	<div id="bean_plofile" style="text-align: center">
+		<% if bean.bean_image? %>
+		<%= image_tag bean.bean_image.to_s, :size => '400x400' %>
+		<% else %>
+		<%= image_tag 'C0FEE.png', :size => '400x400' %>
+		<% end %></br>
+	</div>
+
 		<table>
 			<thead>
 				<tr>
-					<th>&nbsp;</th>
 					<th><%= Bean.human_attribute_name(:country)%></th>
 					<th><%= Bean.human_attribute_name(:area)%></th>
 					<th><%= Bean.human_attribute_name(:variety)%></th>
@@ -26,13 +34,6 @@
 			<tbody>
 				<% Array(bean).each do |bean| %>
 				<tr>
-					<td id="bean_image_td">
-						<% if bean.bean_image? %>
-							<%= image_tag bean.bean_image.to_s, :id => 'bean_image' %>
-						<% else%>
-							<%= image_tag 'C0FEE.png', :id => 'no_bean_image' %>
-						<% end %>
-					</td>
 					<td><%= bean.country %></td>
 					<td><%= bean.area %></td>
 					<td><%= bean.variety %></td>

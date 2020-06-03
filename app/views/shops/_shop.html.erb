@@ -1,9 +1,14 @@
-<% if shops.present? %>
+<% if shop.present? %>
+		<div id="shop_plofile" style="text-align: center">
+		<% if shop.shop_image? %>
+			<%= image_tag shop.shop_image.to_s, :size => '400x400' %>
+		<% else%>
+			<%= image_tag 'C0FEE.png', :size => '750x750' %>
+		<% end %>
+		</div>
 			<table>
 					<thead>
 						<tr>
-							<th>&nbsp;</th>
-							<th><%= Shop.human_attribute_name(:name)%></th>
 							<th><%= Shop.human_attribute_name(:address)%></th>
 							<th><%= Shop.human_attribute_name(:url)%></th>
 							<% if user_signed_in?%>
@@ -15,21 +20,13 @@
 							<th>&nbsp;</th>
 						</tr>
 					</thead>
-					<% Array(shops).each do |shop| %>
+					<% Array(shop).each do |shop| %>
 						<tbody>
 								<tr>
-									<td>
-									<% if shop.shop_image? %>
-										<%=link_to image_tag(shop.shop_image.to_s, :id => 'shop_image'), shop_path(shop)%>
-									<% else%>
-										<%=link_to image_tag('C0FEE.png', :id => 'no_shop_image'), shop_path(shop)%>
-									<% end %>
-									</td>
-									<td><%= shop.name %></td>
 									<td><%= shop.address %></td>
 									<td id="shop_url_td"><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
 									<% if user_signed_in? %>
-										<td style="text-align: center" id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop%></td>
+										<td style="text-align: center" id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
 										<td style="text-align: center"><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
 										<td style="text-align: center"><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
 									<% else %>
@@ -40,4 +37,5 @@
 					<% end %>
 				</table>
 	<% end %>
+
 
