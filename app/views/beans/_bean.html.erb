@@ -12,27 +12,27 @@
 			<tbody>
 				<% Array(bean).each do |bean| %>
 				<tr>
-					<th><%= Bean.human_attribute_name(:country) %></th>
+					<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
 					<td><%= bean.country %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:area) %></th>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
 					<td><%= bean.area %></td>
-				<tr>
-				<tr>
-					<th><%= Bean.human_attribute_name(:variety) %></th>
-					<td><%= bean.variety %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:farm) %></th>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:farm) %> >home</i></th>
 					<td><%= bean.farm %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:process) %></th>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:variety) %> >local_florist</i></th>
+					<td><%= bean.variety %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:process) %> >loop</i></th>
 					<td><%= bean.process_i18n %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:roast) %></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
 					<td><%= bean.roast_i18n %></td>
 				</tr>
 				<tr>
@@ -48,46 +48,50 @@
 					<td><%= bean.impression.i_bitter %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:shop) %></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:price) %></th>
-					<td><%= bean.price %><% if bean.price.present? %>/100g<%end%></td>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
+					<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
 				</tr>
 				<tr>
-					<th><%= Impression.human_attribute_name(:i_comment) %></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >message</i></th>
 					<td><%= bean.impression.i_comment %></td>
 				</tr>
 				<tr>
-					<th><%= User.model_name.human %></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
 					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
 				</tr>
 				<tr>
-					<th><%= Bean.human_attribute_name(:updated_at) %></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:updated_at) %> >access_time</i></th>
 					<td><%= l bean.updated_at %></td>
 				</tr>
-				<tr>
-					<th>&nbsp;</th>
-					<td id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
-				</tr>
-				<tr>
-					<th>&nbsp;</th>
-					<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
-				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+						<tr>
+							<th>&nbsp;</th>
+							<td id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
+						</tr>
+						<tr>
+							<th>&nbsp;</th>
+							<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+						</tr>
 
-				<% if current_user == bean.user %>
-					<tr>
-						<th>&nbsp;</th>
-						<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-					</tr>
-					<tr>
-						<th>&nbsp;</th>
-						<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
-					</tr>
+						<% if current_user == bean.user %>
+							<tr>
+								<th>&nbsp;</th>
+								<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+							</tr>
+							<tr>
+								<th>&nbsp;</th>
+								<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
+							</tr>
+						<% end %>
+						</tr>
 				<% end %>
-				</tr>
-		</tbody>
-		<% end %>
-	</table>
+			</tbody>
+		</table>
 <% end %>

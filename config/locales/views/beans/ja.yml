@@ -12,6 +12,7 @@ ja:
       edit: 編集
       delete: 削除
       confirm: この豆を削除していいですか？
+      currency_unit: 円
     beans:
       <<: *bean
     new: &new

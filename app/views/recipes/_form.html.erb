@@ -2,14 +2,10 @@
 	<%= render 'layouts/error_messages', model: r.object %>
 
 		<div class="field">
-			<%# <%= r.label :user_id %>
-			<%# <%= current_user.username %>
 			<%= r.hidden_field :user_id, value: current_user.id %>
 		</div>
 
 		<div class="field">
-			<%# <%= r.label :bean_id %>
-			<%# <%= bean.country %>
 			<%= r.hidden_field :bean_id, value: bean.id %>
 		</div>
 

@@ -11,17 +11,17 @@
 				<tbody>
 					<% Array(shop).each do |shop| %>
 						<tr>
-							<td id="shop_url_td"><%= link_to shop.url, target: :_blank, rel: :noopener %></td>
+							<td id="shop_url_td"><%= link_to shop.url,shop.url, target: :_blank, rel: :noopener %></td>
 						</tr>
 						<% if user_signed_in? %>
 							<tr>
 								<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
 							</tr>
 							<tr>
-								<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
 							</tr>
 							<tr>
-								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
+								<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
 							</tr>
 						<% end %>
 						<tr>
@@ -32,8 +32,8 @@
 					<% end %>
 				</tbody>
 			</table>
-	<% end %>
 	<div id="map" style="width100%; height: 500px;"></div>
+<% end %>
 <script>
 	function initMap() {
 		var latlng = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
