@@ -1,41 +1,53 @@
 <% if shop.present? %>
-		<div id="shop_plofile" style="text-align: center">
+		<div id="shop_plofile" >
 		<% if shop.shop_image? %>
-			<%= image_tag shop.shop_image.to_s, :size => '400x400' %>
+			<%= image_tag shop.shop_image.to_s, :size => '750x750' %>
 		<% else%>
 			<%= image_tag 'C0FEE.png', :size => '750x750' %>
 		<% end %>
+
 		</div>
 			<table>
-					<thead>
-						<tr>
-							<th><%= Shop.human_attribute_name(:address)%></th>
-							<th><%= Shop.human_attribute_name(:url)%></th>
-							<% if user_signed_in?%>
-								<th>&nbsp;</th>
-							<% else %>
-								<th>Like</th>
-							<% end %>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
+				<tbody>
 					<% Array(shop).each do |shop| %>
-						<tbody>
-								<tr>
-									<td><%= shop.address %></td>
-									<td id="shop_url_td"><%= link_to shop.url, shop.url, target: :_blank, rel: :noopener %></td>
-									<% if user_signed_in? %>
-										<td style="text-align: center" id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
-										<td style="text-align: center"><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
-										<td style="text-align: center"><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
-									<% else %>
-										<td><%= shop_liked_counts(shop) %></td>
-									<% end %>
-								</tr>
-						</tbody>
+						<tr>
+							<td id="shop_url_td"><%= link_to shop.url, target: :_blank, rel: :noopener %></td>
+						</tr>
+						<% if user_signed_in? %>
+							<tr>
+								<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
+							</tr>
+							<tr>
+								<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+							</tr>
+							<tr>
+								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
+							</tr>
+						<% end %>
+						<tr>
+							<td><%= shop.address %></td>
+						</tr>
+						<tr>
+						</tr>
 					<% end %>
-				</table>
+				</tbody>
+			</table>
 	<% end %>
+	<div id="map" style="width100%; height: 500px;"></div>
+<script>
+	function initMap() {
+		var latlng = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
 
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 16,
+			center: latlng
+		});
 
+		var marker = new google.maps.Marker({
+				position: latlng,
+				map: map,
+				title: "<%= @shop.name %>"
+			});
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.gcp[:gmap_api_key]%>&callback=initMap" async defer></script>

@@ -31,8 +31,10 @@
 }
 
 #user_plofile,
-#bean_plofile {
-	margin-left: 5px;
+#bean_plofile,
+#recipe_plofile,
+#shop_plofile {
+	text-align: center;
 }
 
 #bean_image,
@@ -76,11 +78,6 @@
 	height: 35px;
 }
 
-#shop_plofile,
-#shop_map
-{
-	display:  inline-block;
-}
 .grid {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -90,6 +87,10 @@
 	text-align: center;
 }
 
+th,
+td {
+	text-align: center;
+}
 // #map {
 // 	height: 400px;
 // }

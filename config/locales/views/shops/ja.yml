@@ -19,7 +19,7 @@ ja:
     new:
       title: 店の登録
     show:
-      registered_bean: 登録されているコーヒー豆
+      registered_bean: コーヒー豆
       back: 戻る
     search_form:
       <<: *new

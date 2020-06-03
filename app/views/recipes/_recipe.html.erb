@@ -1,61 +1,86 @@
 <% if recipe.present? %>
-		<table>
-			<thead>
-				<tr>
-					<th>&nbsp;</th>
-					<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
-					<th><%= Recipe.human_attribute_name(:bean)%></th>
-					<th><%= Recipe.human_attribute_name(:grind)%></th>
-					<th><%= Recipe.human_attribute_name(:amount)%></th>
-					<th><%= Recipe.human_attribute_name(:extraction)%></th>
-					<th><%= Recipe.human_attribute_name(:temperature)%></th>
-					<th><%= Taste.human_attribute_name(:t_sour)%></th>
-					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
-					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
-					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
-					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
-					<th><%= Taste.human_attribute_name(:t_comment)%></th>
-					<th><%= User.model_name.human%></th>
-					<th><%= Recipe.human_attribute_name(:updated_at)%></th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-				</tr>
-			</thead>
 
+	<div id="recipe_plofile" >
+		<% if recipe.recipe_image? %>
+		<%= image_tag recipe.recipe_image.to_s, :size => '750x750' %>
+		<% else %>
+		<%= image_tag 'C0FEE.png', :size => '750x750' %>
+		<% end %></br>
+	</div>
+
+		<table>
 			<tbody>
 				<% Array(recipe).each do |recipe| %>
-					<tr>
-						<td id="recipe_image_td">
-							<% if recipe.recipe_image? %>
-								<%= image_tag recipe.recipe_image.to_s, :id => 'recipe_image'%>
-							<% else%>
-								<%= image_tag 'C0FEE.png', :id => 'no_recipe_image'%>
-							<% end %>
-						</td>
-						<td><%= recipe.hot_ice_i18n %></td>
-						<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.grind_i18n %></td>
-						<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
-						<td><%= recipe.extraction_i18n %></td>
-						<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
-						<td><%= recipe.taste.t_sour%></td>
-						<td><%= recipe.taste.t_sweet%></td>
-						<td><%= recipe.taste.t_bitter%></td>
-						<td><%= recipe.taste.t_aroma%></td>
-						<td><%= recipe.taste.t_fullbody%></td>
-						<td><%= recipe.taste.t_comment%></td>
-						<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
-						<td><%= l recipe.updated_at %></td>
-						<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
-							<% if current_user == recipe.user%>
-								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('.are_you_sure') } %></td>
-							<% else %>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							<% end %>
-				</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
+							<td><%= recipe.hot_ice_i18n %></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:bean)%></th>
+							<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:grind)%></th>
+							<td><%= recipe.grind_i18n %></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:amount)%></th>
+							<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:extraction)%></th>
+							<td><%= recipe.extraction_i18n %></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:temperature)%></th>
+							<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_sour)%></th>
+							<td><%= recipe.taste.t_sour%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_sweet)%></th>
+							<td><%= recipe.taste.t_sweet%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_bitter)%></th>
+							<td><%= recipe.taste.t_bitter%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_aroma)%></th>
+							<td><%= recipe.taste.t_aroma%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+							<td><%= recipe.taste.t_fullbody%></td>
+						</tr>
+						<tr>
+							<th><%= Taste.human_attribute_name(:t_comment)%></th>
+							<td><%= recipe.taste.t_comment%></td>
+						</tr>
+						<tr>
+							<th><%= User.model_name.human%></th>
+							<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
+						</tr>
+						<tr>
+							<th><%= Recipe.human_attribute_name(:updated_at)%></th>
+							<td><%= l recipe.updated_at %></td>
+						</tr>
+						<tr>
+							<th>&nbsp;</th>
+							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						</tr>
+						<% if current_user == recipe.user%>
+							<tr>
+								<th>&nbsp;</th>
+								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+							</tr>
+							<tr>
+								<th>&nbsp;</th>
+								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('.are_you_sure') } %></td>
+							</tr>
+						<% end %>
 			<% end %>
 		</tbody>
 	</table>
