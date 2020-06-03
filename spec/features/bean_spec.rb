@@ -31,7 +31,7 @@ RSpec.feature 'Beans', type: :feature do
     # show
     bean = Bean.last
     visit "/ja/beans/#{bean.id}"
-    expect(page).to have_content Bean.human_attribute_name(:farm)
+    expect(page).to have_content bean.farm
 
     # edit
     click_link I18n.t('beans.bean.edit')

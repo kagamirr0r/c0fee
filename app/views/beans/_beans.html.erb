@@ -2,15 +2,18 @@
 	<table>
 		<thead>
 			<tr>
+							<th>&nbsp;</th>
 				<th>&nbsp;</th>
-				<th><i class= "material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
-				<th><i class="material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
-				<th><i class="material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
-				<th><%= Impression.human_attribute_name(:i_sour)%></th>
-				<th><%= Impression.human_attribute_name(:i_sweet)%></th>
-				<th><%= Impression.human_attribute_name(:i_bitter)%></th>
-				<th><i class="material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
-				<th><i class="material-icons prefix tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+											<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+											<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
 				<% if user_signed_in? && @liked_beans.nil? %>
 					<th>&nbsp;</th>
 				<% else %>

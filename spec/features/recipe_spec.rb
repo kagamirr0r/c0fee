@@ -30,7 +30,7 @@ RSpec.feature 'Recipes', type: :feature do
     # show
     recipe = Recipe.last
     visit "/ja/recipes/#{recipe.id}"
-    expect(page).to have_content Recipe.human_attribute_name(:amount)
+    expect(page).to have_content recipe.temperature
 
     # edit
     click_link I18n.t('recipes.recipe.edit')
