@@ -10,9 +10,6 @@
 			<table>
 				<tbody>
 					<% Array(shop).each do |shop| %>
-						<tr>
-							<td id="shop_url_td"><%= link_to shop.url,shop.url, target: :_blank, rel: :noopener %></td>
-						</tr>
 						<% if user_signed_in? %>
 							<tr>
 								<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>

@@ -35,13 +35,13 @@
 						<td><%= recipe.extraction_i18n %></td>
 						<td><%= recipe.taste.t_comment%></td>
 						<% if user_signed_in? && @liked_recipes.nil?%>
-							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
 							<td><%= recipe_liked_counts(recipe) %></td>
 						<% end %>
 							<% if current_user == recipe.user %>
-								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('are_you_sure') },class: 'delete_recipe' %></td>
+								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
+								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('are_you_sure') },class: 'delete_recipe' %></td>
 							<% else %>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
