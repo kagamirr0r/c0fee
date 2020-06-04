@@ -10,6 +10,8 @@ en:
       delete: Delete
       back: Back
       are_you_sure: Are you sure
+    make_recipe_button:
+      make_recipe: Make a recipe
     recipes:
       <<: *recipe
     new: &new

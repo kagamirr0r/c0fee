@@ -2,5 +2,8 @@
  <h4><%= t('.title')%></h4>
 	<%= render 'search_form'%>
 	<%= render 'recipes/recipes', recipes: @recipes%>
-	<%= link_to t('.make_recipe'), beans_path %>
+	<%= link_to beans_path,class: 'register_recipe',class: "btn-small waves-effect waves-light tooltipped red",data:{position:"bottom", tooltip: t('.make_recipe')} do %>
+			<%= content_tag :i, "add", class: "material-icons" %>
+			<%= content_tag :i, "chrome_reader_mode", class: "material-icons" %>
+	<% end %>
 </div>

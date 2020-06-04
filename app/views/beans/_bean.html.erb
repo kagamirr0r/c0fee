@@ -77,7 +77,7 @@
 						</tr>
 						<tr>
 							<th>&nbsp;</th>
-							<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
+							<%= render 'recipes/make_recipe_button', bean: bean %>
 						</tr>
 
 						<% if current_user == bean.user %>

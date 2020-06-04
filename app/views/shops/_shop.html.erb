@@ -15,7 +15,7 @@
 								<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
 							</tr>
 							<tr>
-								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
+								<td><%= render 'beans/register_bean_button', shop: shop %></td>
 							</tr>
 						<% end %>
 						<tr>

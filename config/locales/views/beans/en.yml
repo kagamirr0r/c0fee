@@ -7,12 +7,15 @@ en:
       register: Register
       confirm: Confirm
       sour: Sour
+      back: Back
     bean: &bean
       create_recipe: Make a recipe
       edit: Edit
       delete: Delete
       confirm: Confirm
       currency_unit: $
+    register_bean_button:
+      register_bean: Register Bean
     beans:
       <<: *bean
     new: &new

@@ -10,6 +10,8 @@ ja:
       delete: 削除
       back: 戻る
       are_you_sure: 削除してよろしいですか？
+    make_recipe_button:
+      make_recipe: レシピを作成
     recipes:
       <<: *recipe
     new: &new

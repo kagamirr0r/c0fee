@@ -29,12 +29,7 @@
 								<td><%= shop.address %></td>
 									<% if user_signed_in? && @liked_shops.nil?%>
 										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
-										<td><%= link_to new_bean_path(id: shop.id),class: 'register_bean',class: "waves-effect waves-light btn-small tooltipped",data:{position:"bottom", tooltip: t('.register_bean')} do %>
-												<%#= t('.register_bean') %>
-												<%= content_tag :i, "add", class: "material-icons" %>
-												<%= image_tag 'white_bean.png',size: '20x20'%>
-												<% end %>
-										</td>
+										<td><%= render 'beans/register_bean_button', shop: shop %></td>
 										<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
 									<% else %>
 										<td><%= shop_liked_counts(shop) %></td>

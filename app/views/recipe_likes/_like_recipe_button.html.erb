@@ -6,7 +6,7 @@
 		<% end %>
 	<% else %>
 		<%= link_to recipe_likes_path(id: recipe.id),method: :post,remote: true,class: "red-text" do%>
-			<%= content_tag :i, "favorite_border", class: "small material-icons" %>
+			<%= content_tag :i, "favorite_border", class: "small material-icons  waves-effect waves-circle waves-red" %>
 			<%= @count_recipe_likes %>
 	<% end %>
 <% end%>
