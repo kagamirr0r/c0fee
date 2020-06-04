@@ -5,7 +5,7 @@
 							<th>&nbsp;</th>
 							<th>&nbsp;</th>
 							<th>&nbsp;</th>
-							<% if user_signed_in? && @liked_shops.nil?%>
+							<% if user_signed_in? && @liked_shops.nil? %>
 								<th>&nbsp;</th>
 							<% else %>
 								<th>Like</th>
@@ -20,17 +20,22 @@
 							<tr>
 								<td>
 									<% if shop.shop_image? %>
-										<%=link_to image_tag(shop.shop_image.to_s, :id => 'shop_image'), shop_path(shop)%>
+										<%=link_to image_tag(shop.shop_image.to_s, :id => 'shop_image'), shop_path(shop) %>
 									<% else%>
-										<%=link_to image_tag('C0FEE.png', :id => 'no_shop_image'), shop_path(shop)%>
+										<%=link_to image_tag('C0FEE.png', :id => 'no_shop_image'), shop_path(shop) %>
 									<% end %>
 								</td>
 								<td><%= link_to shop.name, shop.url, target: :_blank, rel: :noopener %></td>
 								<td><%= shop.address %></td>
 									<% if user_signed_in? && @liked_shops.nil?%>
-										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop%></td>
+										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
+										<td><%= link_to new_bean_path(id: shop.id),class: 'register_bean',class: "waves-effect waves-light btn-small tooltipped",data:{position:"bottom", tooltip: t('.register_bean')} do %>
+												<%#= t('.register_bean') %>
+												<%= content_tag :i, "add", class: "material-icons" %>
+												<%= image_tag 'white_bean.png',size: '20x20'%>
+												<% end %>
+										</td>
 										<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
-										<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
 									<% else %>
 										<td><%= shop_liked_counts(shop) %></td>
 									<% end %>

@@ -5,9 +5,9 @@ class BeansController < ApplicationController
     @bean_search_params = bean_search_params
 
     @beans = if @bean_search_params.present?
-               Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page.(params[:page])
+               Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page])
              else
-               Bean.all.page(params[:page])
+               Bean.page(params[:page])
              end
   end
 

@@ -17,19 +17,21 @@
 							<tr>
 								<td><%= link_to t('.register_bean'), new_bean_path(id: shop.id),class: 'register_bean' %></td>
 							</tr>
-							<tr>
-								<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
-							</tr>
 						<% end %>
 						<tr>
 							<td><%= shop.address %></td>
 						</tr>
-						<tr>
-						</tr>
-					<% end %>
 				</tbody>
 			</table>
-	<div id="map" style="width100%; height: 500px;"></div>
+						<div id="map" style="width100%; height: 500px;"></div>
+						<table>
+							<tbody>
+								<tr>
+									<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+								</tr>
+							</tbody>
+						</table>
+					<% end %>
 <% end %>
 <script>
 	function initMap() {
