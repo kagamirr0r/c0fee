@@ -52,8 +52,16 @@
 					<td><%= render 'recipes/make_recipe_button', bean: bean %></td>
 
 					<% if current_user == bean.user %>
-						<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-						<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') }, class: 'delete_bean' %></td>
+						<td>
+							<%= link_to edit_bean_path(bean),class: "btn-small waves-effect waves-light tooltipped",data:{position:"bottom", tooltip: t('.edit')} do %>
+							<%= content_tag :i, "edit", class: "material-icons" %>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to bean, method: :delete, data: { confirm: t('.confirm') },class: "btn-small waves-effect waves-light tooltipped",data:{position:"bottom", tooltip: t('.delete')} do %>
+							<%= content_tag :i, "delete", class: "material-icons" %>
+							<% end %>
+						</td>
 					<% else %>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>

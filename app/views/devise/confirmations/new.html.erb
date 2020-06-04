@@ -10,7 +10,7 @@
 	<div class="input-field col s12">
 		<i class="material-icons prefix">textsms</i>
 		<%= f.label :email %>
-		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete", value:(resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)%>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email" , value:(resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)%>
 	</div><br />
 
   <div class="actions">

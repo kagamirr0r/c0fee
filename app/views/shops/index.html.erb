@@ -1,7 +1,6 @@
 <div class="shops">
-
-	<h4><%= t('.title')%></h4>
-	<%= render 'search_form'%>
+	<div id="search_form"><%= render 'search_form'%></div>
+	<h4 id="index_title"><%= t('.title')%></h4>
 	<%= render 'shops', shops: @shops%>
 	<%= link_to t('.register_shop'), new_shop_path %>
 </div>

@@ -7,7 +7,7 @@
 	<div class="file-field input-field col s12">
 		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">
 		<%=t('.select_bean_image')%><i class="material-icons right">photo</i></button>
-    <%= b.file_field :bean_image, class: "autocomplete" %>
+    <%= b.file_field :bean_image  %>
 		<div class="file-path-wrapper">
 			<input id="bean_filename" readonly type="text" value="" class="file-path validate">
     </div>
@@ -27,7 +27,7 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">home</i>
-		<%= b.text_field :farm ,class: "autocomplete"%>
+		<%= b.text_field :farm, class: "autocomplete"%>
 		<%= b.label :farm %><br />
 	</div><br />
 
@@ -51,13 +51,13 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">attach_money</i>
-		<%= b.number_field :price, step: 10, class: "autocomplete"%>
+		<%= b.number_field :price, step: 10 %>
 		<%= b.label t('.price')%>
 	</div><br />
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">web</i>
-		<%= b.text_field :bean_url, class: "autocomplete" %>
+		<%= b.text_field :bean_url  %>
 		<%= b.label :url %>
 	</div><br />
 
@@ -65,25 +65,25 @@
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">change_history</i>
-				<%= i.number_field :i_sour,min: 1, max: 5, class: "autocomplete"%>
+				<%= i.number_field :i_sour,min: 1, max: 5 %>
 				<%= i.label t('.sour')%>
 			</div><br />
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">panorama_fish_eye</i>
-				<%= i.number_field :i_sweet,min: 1, max: 5, class: "autocomplete"%>
+				<%= i.number_field :i_sweet,min: 1, max: 5 %>
 				<%= i.label :i_sweet %>
 			</div><br />
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">crop_square</i>
-				<%= i.number_field :i_bitter,min: 1, max: 5, class: "autocomplete"%>
+				<%= i.number_field :i_bitter,min: 1, max: 5 %>
 				<%= i.label :i_bitter %>
 			</div><br />
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">message</i>
-				<%= i.text_area :i_comment, class: "autocomplete" %>
+				<%= i.text_area :i_comment  %>
 				<%= i.label :i_comment %><br />
 			</div><br />
 

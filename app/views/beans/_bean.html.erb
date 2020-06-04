@@ -8,6 +8,8 @@
 		<% end %></br>
 	</div>
 
+	<div id="bean_like_button_<%= bean.id %>" style="text-align: center"><%= render 'bean_likes/like_bean_button',bean: bean %></div>
+
 		<table>
 			<tbody>
 				<% Array(bean).each do |bean| %>
@@ -72,22 +74,21 @@
 		<table>
 			<tbody>
 						<tr>
-							<th>&nbsp;</th>
-							<td id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
+							<td><%= render 'recipes/make_recipe_button', bean: bean %></td>
 						</tr>
-						<tr>
-							<th>&nbsp;</th>
-							<%= render 'recipes/make_recipe_button', bean: bean %>
-						</tr>
-
 						<% if current_user == bean.user %>
 							<tr>
-								<th>&nbsp;</th>
-								<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
+								<td>
+									<%= link_to edit_bean_path(bean),class: "btn-small waves-effect waves-light tooltipped",data:{position:"bottom", tooltip: t('.edit')} do %>
+									<%= content_tag :i, "edit", class: "material-icons" %>
+									<% end %>
+								</td>
 							</tr>
-							<tr>
-								<th>&nbsp;</th>
-								<td><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
+								<td>
+									<%= link_to bean, method: :delete, data: { confirm: t('.confirm') },class: "btn-small waves-effect waves-light tooltipped",data:{position:"bottom", tooltip: t('.delete')} do %>
+									<%= content_tag :i, "delete", class: "material-icons" %>
+									<% end %>
+								</td>
 							</tr>
 						<% end %>
 						</tr>

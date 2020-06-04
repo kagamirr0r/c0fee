@@ -4,13 +4,13 @@
 	<div class="input-field col s12 l5">
 	<i class="material-icons prefix">mode_edit</i>
 		<%= s.label(:name, Shop.human_attribute_name(:name)) %>
-		<%= s.text_field :name,value: @shop_search_params[:name], class: "autocomplete"%>
+		<%= s.text_field :name,value: @shop_search_params[:name] %>
 	</div>
 
 	<div class="input-field col s12 l5">
 		<i class="material-icons prefix">location_on</i>
 		<%= s.label(:address, Shop.human_attribute_name(:address)) %>
-		<%= s.text_field :address,value: @shop_search_params[:address], class: "autocomplete"%>
+		<%= s.text_field :address,value: @shop_search_params[:address] %>
 	</div>
 
 	<div class="actions col s1 l1">
