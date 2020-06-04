@@ -16,6 +16,10 @@ en:
       currency_unit: $
     register_bean_button:
       register_bean: Register Bean
+    edit_bean_link:
+      <<: *bean
+    delete_bean_link:
+      <<: *bean
     beans:
       <<: *bean
     new: &new

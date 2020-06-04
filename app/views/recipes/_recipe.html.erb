@@ -8,6 +8,8 @@
 		<% end %></br>
 	</div>
 
+	<div id="recipe_like_button_<%= recipe.id %>" style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></div>
+
 		<table>
 			<tbody>
 				<% Array(recipe).each do |recipe| %>
@@ -67,20 +69,18 @@
 							<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:updated_at)%> >access_time</i></th>
 							<td><%= l recipe.updated_at %></td>
 						</tr>
-						<tr>
-							<th>&nbsp;</th>
-							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
-						</tr>
-						<% if current_user == recipe.user%>
-							<tr>
-								<th>&nbsp;</th>
-								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-							</tr>
-							<tr>
-								<th>&nbsp;</th>
-								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('.are_you_sure') } %></td>
-							</tr>
-						<% end %>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<% if current_user == recipe.user%>
+					<tr>
+						<td><%= render 'edit_recipe_link', recipe: recipe %></td>
+					</tr>
+					<tr>
+						<td><%= render 'delete_recipe_link', recipe: recipe %></td>
+					</tr>
+				<% end %>
 			<% end %>
 		</tbody>
 	</table>

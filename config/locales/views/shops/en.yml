@@ -5,7 +5,9 @@ en:
       select_shop_image: Select shop image
     shops: &shops
       register_bean: Register bean
-      edit_shop: Edit shop
+      edit: Edit
+    edit_shop_link:
+      <<: *shops
     shop:
       <<: *shops
     new: &new

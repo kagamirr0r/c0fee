@@ -1,19 +1,18 @@
 <% if shop.present? %>
 		<div id="shop_plofile" >
-		<% if shop.shop_image? %>
-			<%= image_tag shop.shop_image.to_s, :size => '750x750' %>
-		<% else%>
-			<%= image_tag 'C0FEE.png', :size => '750x750' %>
-		<% end %>
-
+			<% if shop.shop_image? %>
+				<%= image_tag shop.shop_image.to_s, :size => '750x750' %>
+			<% else%>
+				<%= image_tag 'C0FEE.png', :size => '750x750' %>
+			<% end %>
 		</div>
+
+		<div id="shop_like_button_<%= shop.id %>" style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop %></div>
+
 			<table>
 				<tbody>
 					<% Array(shop).each do |shop| %>
 						<% if user_signed_in? %>
-							<tr>
-								<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
-							</tr>
 							<tr>
 								<td><%= render 'beans/register_bean_button', shop: shop %></td>
 							</tr>
@@ -27,7 +26,7 @@
 						<table>
 							<tbody>
 								<tr>
-									<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+									<td><%= render 'edit_shop_link', shop: shop %></td>
 								</tr>
 							</tbody>
 						</table>

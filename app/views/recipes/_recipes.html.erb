@@ -36,8 +36,8 @@
 							<td><%= recipe_liked_counts(recipe) %>  Likes</td>
 						<% end %>
 							<% if current_user == recipe.user %>
-								<td><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-								<td><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('are_you_sure') },class: 'delete_recipe' %></td>
+								<td><%= render 'edit_recipe_link', recipe: recipe %></td>
+								<td><%= render 'delete_recipe_link', recipe: recipe %></td>
 							<% else %>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

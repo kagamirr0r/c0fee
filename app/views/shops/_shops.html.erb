@@ -30,7 +30,7 @@
 									<% if user_signed_in? && @liked_shops.nil?%>
 										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
 										<td><%= render 'beans/register_bean_button', shop: shop %></td>
-										<td><%= link_to t('.edit_shop'), edit_shop_path(shop)%></td>
+										<td><%= render 'edit_shop_link', shop: shop %></td>
 									<% else %>
 										<td><%= shop_liked_counts(shop) %></td>
 									<% end %>

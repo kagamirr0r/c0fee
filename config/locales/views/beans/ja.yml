@@ -16,6 +16,10 @@ ja:
       currency_unit: 円
     register_bean_button:
       register_bean: 豆を登録
+    edit_bean_link:
+      <<: *bean
+    delete_bean_link:
+      <<: *bean
     beans:
       <<: *bean
     new: &new
