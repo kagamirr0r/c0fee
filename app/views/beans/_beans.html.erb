@@ -2,23 +2,16 @@
 	<table>
 		<thead>
 			<tr>
-							<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
-											<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
-											<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
-				<% if user_signed_in? && @liked_beans.nil? %>
-					<th>&nbsp;</th>
-				<% else %>
-					<th>Like</th>
-				<% end %>
+				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
@@ -53,8 +46,10 @@
 					<% if user_signed_in? && @liked_beans.nil? %>
 						<td id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<% else %>
-						<td><%= bean_liked_counts(bean) %></td>
+						<td><%= bean_liked_counts(bean) %>  Likes</td>
 					<% end %>
+
+					<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
 
 					<% if current_user == bean.user %>
 						<td><%= link_to t('.edit'), edit_bean_path(bean) %></td>
@@ -64,7 +59,7 @@
 						<td>&nbsp;</td>
 					<% end %>
 
-					<td><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
+
 					</tr>
 				<% end %>
 			<% end %>

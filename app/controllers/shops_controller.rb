@@ -4,9 +4,9 @@ class ShopsController < ApplicationController
     @shop_search_params = shop_search_params
 
     @shops = if @shop_search_params.present?
-               Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page]).order(created_at: :desc)
+               Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page])
              else
-               Shop.page(params[:page]).order(created_at: :desc)
+               Shop.page(params[:page])
              end
   end
 
