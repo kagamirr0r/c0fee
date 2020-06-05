@@ -12,7 +12,8 @@ RSpec.feature 'Beans', type: :feature do
   scenario 'CRUD of bean' do
     # create
     click_on I18n.t('layouts.application.bean')
-    click_on 'local_cafe'
+		click_on 'local_cafe'
+		click_on 'local_cafe'
     fill_in 'bean_country', with: impression.bean.country
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
