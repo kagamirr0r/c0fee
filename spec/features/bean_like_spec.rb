@@ -8,11 +8,11 @@ RSpec.feature 'BeanLikes', type: :feature do
 
   scenario 'bean_like_button' do
     visit beans_path
-    click favorite_border
+    click_link favorite_border
     expect(page).to have_content favorite
 
     visit beans_path
-    click favorite
+    click_link favorite
     expect(page).to have_content favorite_border
   end
 end
