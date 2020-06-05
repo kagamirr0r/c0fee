@@ -11,8 +11,9 @@ RSpec.feature 'Recipes', type: :feature do
 
   scenario 'CRUD of recipe' do
     # create
-    visit beans_path
-    find('.create_recipe').click
+    click_on I18n.t('layouts.application.recipe')
+		click_on 'import_contacts'
+		click_on 'import_contacts'
     select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount
@@ -33,7 +34,7 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content recipe.temperature
 
     # edit
-    click_link I18n.t('recipes.recipe.edit')
+    click_on 'edit'
     select another_taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select another_taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: another_taste.recipe.amount
@@ -49,7 +50,7 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
     # delete
-    click_link I18n.t('recipes.recipes.delete')
+    click_on 'delete'
     expect(page).to have_content I18n.t('recipes.flash.deleted_recipe')
   end
 end

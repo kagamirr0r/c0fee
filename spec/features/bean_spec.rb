@@ -11,8 +11,8 @@ RSpec.feature 'Beans', type: :feature do
 
   scenario 'CRUD of bean' do
     # create
-    visit shops_path
-    click_link I18n.t('shops.shops.register_bean')
+    click_on I18n.t('layouts.application.bean')
+    click_on 'local_cafe'
     fill_in 'bean_country', with: impression.bean.country
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
@@ -34,7 +34,7 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content bean.farm
 
     # edit
-    click_link I18n.t('beans.bean.edit')
+    click_on 'edit'
     fill_in 'bean_country', with: another_impression.bean.country
     fill_in 'bean_area', with: another_impression.bean.area
     fill_in 'bean_farm', with: another_impression.bean.farm
@@ -51,7 +51,7 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
     # delete
-    click_link I18n.t('beans.beans.delete')
+    click_on 'delete'
     expect(page).to have_content I18n.t('beans.flash.deleted_bean')
   end
 end
