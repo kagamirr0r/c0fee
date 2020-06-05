@@ -1,11 +1,11 @@
 class Bean < ApplicationRecord
   include StringNormalize
-	default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(created_at: :desc) }
 
   validates :country, presence: true
   translates :country, :area, :variety, :farm
 
-	enum process: { washed: 0, natural: 1, pulped_natural: 2, white_honey: 3, yellow_honey: 4, red_honey: 5, black_honey: 6, sumatera: 7 }
+  enum process: { washed: 0, natural: 1, pulped_natural: 2, white_honey: 3, yellow_honey: 4, red_honey: 5, black_honey: 6, sumatera: 7 }
   enum roast: { light: 0, cinnamon: 1, medium: 2, high: 3, city: 4, fullcity: 5, french: 6, italian: 7 }
 
   belongs_to :user
@@ -17,7 +17,7 @@ class Bean < ApplicationRecord
   has_many :recipes, dependent: :destroy
 
   has_many :bean_likes, dependent: :destroy
-	has_many :bean_liked_users, through: :bean_likes, source: :user, dependent: :destroy
+  has_many :bean_liked_users, through: :bean_likes, source: :user, dependent: :destroy
 
   scope :search_bean, ->(bean_search_params) do
     return if bean_search_params.blank?
@@ -29,8 +29,7 @@ class Bean < ApplicationRecord
   end
 
   scope :country_search, ->(country) { where('bean_translations.country LIKE ?', "%#{country}%") if country.present? }
-	scope :roast_search, ->(roast) { where(roast: roast) if roast.present? }
-
+  scope :roast_search, ->(roast) { where(roast: roast) if roast.present? }
 
   mount_uploader :bean_image, ImageUploader
 end

@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
-	include StringNormalize
+  include StringNormalize
 
-	default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(created_at: :desc) }
 
   validates :hot_ice, presence: true
   validates :amount, length: { minimum: 1, maximum: 3 }
