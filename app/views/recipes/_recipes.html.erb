@@ -1,22 +1,18 @@
 <% if recipes.present? %>
 		<table>
-			<thead>
-				<tr>
-					<th>&nbsp;</th>
-					<th><%= Recipe.human_attribute_name(:hot_ice)%></th>
-					<th><%= Recipe.human_attribute_name(:bean)%></th>
-					<th><%= Recipe.human_attribute_name(:grind)%></th>
-					<th><%= Recipe.human_attribute_name(:extraction)%></th>
-					<th><%= Taste.human_attribute_name(:t_comment)%></th>
-					<% if user_signed_in? && @liked_recipes.nil?%>
-						<th>&nbsp;</th>
-					<% else %>
-						<th>Like</th>
-					<% end %>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-				</tr>
-			</thead>
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
 
 			<tbody>
 				<% Array(recipes).each do |recipe| %>
@@ -35,13 +31,13 @@
 						<td><%= recipe.extraction_i18n %></td>
 						<td><%= recipe.taste.t_comment%></td>
 						<% if user_signed_in? && @liked_recipes.nil?%>
-							<td style="text-align: center" id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
-							<td><%= recipe_liked_counts(recipe) %></td>
+							<td><%= recipe_liked_counts(recipe) %>  Likes</td>
 						<% end %>
 							<% if current_user == recipe.user %>
-								<td style="text-align: center"><%= link_to t('.edit'), edit_recipe_path(recipe) %></td>
-								<td style="text-align: center"><%= link_to t('.delete'), recipe, method: :delete, data: { confirm: t('are_you_sure') },class: 'delete_recipe' %></td>
+								<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>
+								<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
 							<% else %>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

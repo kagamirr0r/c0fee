@@ -1,6 +1,9 @@
 <div class="beans">
-	<h4><%= t('.title')%></h4>
-		<%= render 'search_form', back: @back%>
+		<div id="search_form"><%= render 'search_form', back: @back%></div>
+		<h4 id="index_title"><%= t('.title')%></h4>
 		<%= render 'beans', beans: @beans %>
-		<%= link_to t('.register_bean'), shops_path %>
+		<%= link_to shops_path,class: 'register_bean',class: "btn-small waves-effect waves-light tooltipped red",data:{position:"top", tooltip: t('.register_bean')} do %>
+			<%= content_tag :i, "add", class: "material-icons" %>
+			<%= content_tag :i, "local_cafe", class: "material-icons" %>
+		<% end %>
 </div>

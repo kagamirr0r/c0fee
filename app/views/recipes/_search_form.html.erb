@@ -15,31 +15,31 @@
 
 		<div class="input-field col s12 l1 ">
 			<i class="material-icons prefix">change_history</i>
-			<%= r.number_field :t_sour,min: 1, max: 5, class: "autocomplete" %>
+			<%= r.number_field :t_sour,min: 1, max: 5  %>
 			<%= r.label(:t_sour,Taste.human_attribute_name(:t_sour))%>
 		</div>
 
 		<div class="input-field col s12 l1 ">
 			<i class="material-icons prefix">panorama_fish_eye</i>
-			<%= r.number_field :t_sweet,min: 1, max: 5, class: "autocomplete"%>
+			<%= r.number_field :t_sweet,min: 1, max: 5 %>
 			<%= r.label(:t_sweet,Taste.human_attribute_name(:t_sweet))%>
 		</div>
 
 		<div class="input-field col s12 l1 ">
 			<i class="material-icons prefix">crop_square</i>
-			<%= r.number_field :t_bitter,min: 1, max: 5, class: "autocomplete"%>
+			<%= r.number_field :t_bitter,min: 1, max: 5 %>
 			<%= r.label(:t_bitter,Taste.human_attribute_name(:t_bitter))%>
 		</div>
 
 		<div class="input-field col s12 l1 ">
 			<i class="material-icons prefix">filter_list</i>
-			<%= r.number_field :t_aroma,min: 1, max: 5, class: "autocomplete" %>
+			<%= r.number_field :t_aroma,min: 1, max: 5 %>
 			<%= r.label(:t_aroma,Taste.human_attribute_name(:t_aroma))%>
 		</div>
 
 		<div class="input-field col s12 l1 ">
 			<i class="material-icons prefix">brightness_medium</i>
-			<%= r.number_field :t_fullbody,min: 1, max: 5, class: "autocomplete" %>
+			<%= r.number_field :t_fullbody,min: 1, max: 5 %>
 			<%= r.label(:t_fullbody,Taste.human_attribute_name(:t_fullbody))%>
 		</div>
 

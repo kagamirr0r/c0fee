@@ -7,11 +7,19 @@ ja:
       register: 登録する
       confirm: 登録していいですか？
       sour: 酸味
+      back: 戻る
     bean: &bean
       create_recipe: レシピを作成
       edit: 編集
       delete: 削除
       confirm: この豆を削除していいですか？
+      currency_unit: 円
+    register_bean_button:
+      register_bean: 豆を登録
+    edit_bean_link:
+      <<: *bean
+    delete_bean_link:
+      <<: *bean
     beans:
       <<: *bean
     new: &new

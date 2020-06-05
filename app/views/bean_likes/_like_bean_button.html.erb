@@ -1,14 +1,13 @@
 <% bean_liked_counts(bean) %>
 	<% if current_user.liked_bean?(bean) %>
-		<%= button_to bean_like_path(id: bean.id),method: :delete,remote: true,class: "waves-effect waves-light btn-small" do%>
-			<%= t('.cancel_like_bean') %>
-			<%= content_tag :i, "favorite", class: "material-icons right" %>
+		<%= link_to bean_like_path(id: bean.id),method: :delete,remote: true,class: "red-text" do%>
+			<%= content_tag :i, "favorite", class: "small material-icons" %>
 			<%= @count_bean_likes %>
 		<% end %>
 	<% else %>
-		<%= button_to bean_likes_path(id: bean.id),remote: true,class: "waves-effect waves-light btn-small red accent-3" do%>
-			<%= t('.like_bean')%>
-			<%= content_tag :i, "favorite_border", class: "material-icons red accent-3 right" %>
+		<%= link_to bean_likes_path(id: bean.id),method: :post,remote: true,class: "red-text" do%>
+			<%= content_tag :i, "favorite_border", class: "small material-icons waves-effect waves-circle waves-red" %>
 			<%= @count_bean_likes %>
 	<% end %>
-<% end%>
+<% end %>
+

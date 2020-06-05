@@ -1,8 +1,8 @@
 class TopPagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @beans = Bean.page(params[:page]).order(created_at: :desc).limit(10)
-    @recipes = Recipe.page(params[:page]).order(created_at: :desc).limit(10)
-    @shops = Shop.page(params[:page]).order(created_at: :desc).limit(10)
+    @beans = Bean.limit(10).page(params[:page])
+    @recipes = Recipe.limit(10).page(params[:page])
+    @shops = Shop.limit(10).page(params[:page])
   end
 end

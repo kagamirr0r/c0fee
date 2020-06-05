@@ -13,20 +13,20 @@
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">account_circle</i>
-		<%= f.file_field :avatar, class: "autocomplete"%>
-		<input id="avatar_filename" readonly type="text" value="" class="autocomplete">
+		<%= f.file_field :avatar %>
+		<input id="avatar_filename" readonly type="text" value="" >
 		<button type="button" id="avatar_select_file_button" class="waves-effect waves-light btn">アバターを選ぶ</button>
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">create</i>
-    <%= f.text_field :username, class: "autocomplete"%>
+    <%= f.text_field :username %>
 		<%= f.label :username %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">email</i>
-		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <%= f.label :email %><br />
   </div><br />
 
@@ -36,19 +36,19 @@
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password, autocomplete: "new-password" %>
     <%= f.label t('.new_password', password_length: @minimum_password_length) %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password_confirmation, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     <%= f.label t('.confirm_new_password') %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">done</i>
-		<%= f.password_field :current_password, autocomplete: "current-password",class: "autocomplete" %>
+		<%= f.password_field :current_password, autocomplete: "current-password" %>
     <%= f.label :current_password %><%= t('.we_need_your_current_password_to_confirm_your_changes')%><br />
   </div>
 

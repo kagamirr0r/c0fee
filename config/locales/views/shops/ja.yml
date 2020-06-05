@@ -4,9 +4,10 @@ ja:
       register: 登録する
       select_shop_image: 画像を選ぶ
     shops: &shops
-      register_bean: 豆を登録
-      edit_shop: 編集
+      edit: 編集
     shop:
+      <<: *shops
+    edit_shop_link:
       <<: *shops
     new: &new
       back: 戻る
@@ -19,7 +20,7 @@ ja:
     new:
       title: 店の登録
     show:
-      registered_bean: 登録されているコーヒー豆
+      registered_bean: コーヒー豆
       back: 戻る
     search_form:
       <<: *new

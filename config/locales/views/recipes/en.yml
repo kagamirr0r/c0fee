@@ -10,6 +10,12 @@ en:
       delete: Delete
       back: Back
       are_you_sure: Are you sure
+    make_recipe_button:
+      make_recipe: Make a recipe
+    edit_recipe_link:
+      <<: *recipe
+    delete_recipe_link:
+      <<: *recipe
     recipes:
       <<: *recipe
     new: &new

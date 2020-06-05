@@ -82,6 +82,10 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+	$('.tooltipped').tooltip();
+});
+
+$(document).ready(function () {
 	$('input.autocomplete').autocomplete({
 		data: {
 			"ブラジル": null,

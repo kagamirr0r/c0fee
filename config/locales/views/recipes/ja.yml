@@ -10,6 +10,12 @@ ja:
       delete: 削除
       back: 戻る
       are_you_sure: 削除してよろしいですか？
+    make_recipe_button:
+      make_recipe: レシピを作成
+    edit_recipe_link:
+      <<: *recipe
+    delete_recipe_link:
+      <<: *recipe
     recipes:
       <<: *recipe
     new: &new
@@ -30,6 +36,6 @@ ja:
     flash:
       created_recipe: レシピを作成しました!
       edited_recipe: レシピを編集しました！
-      deleted_recipe: 豆を削除しました！
+      deleted_recipe: レシピを削除しました！
 
 
