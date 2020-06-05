@@ -75,10 +75,10 @@
 			<tbody>
 				<% if current_user == recipe.user%>
 					<tr>
-						<td><%= render 'edit_recipe_link', recipe: recipe %></td>
+						<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>
 					</tr>
 					<tr>
-						<td><%= render 'delete_recipe_link', recipe: recipe %></td>
+						<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
 					</tr>
 				<% end %>
 			<% end %>
