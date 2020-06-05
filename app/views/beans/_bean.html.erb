@@ -90,10 +90,10 @@
 <% end %>
 <script>
 $(window).on('load', function() {
+		$('.waves-light').removeClass('btn-small');
+		$('.waves-light').addClass('btn-large');
     $('.material-icons').removeClass('small');
 		$('.material-icons').addClass('medium');
-		$('.waves-effect').removeClass('btn-small');
-		$('.waves-effect').addClass('btn-large');
 });
 
 $('.red-text').on('ajax:success', function(event){
