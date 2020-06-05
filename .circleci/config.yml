@@ -1,97 +1,15 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.8.1
-  aws-ecs: circleci/aws-ecs@1.1.0
-  slack: circleci/slack@3.4.2
+  ruby: circleci/ruby@0.1.2 
+
 jobs:
-  test:
-    machine:
-      image: circleci/classic:edge
-    environment:
-      RAILS_ENV: test
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
     steps:
       - checkout
       - run:
-          name: touch .env.test
-          command: touch ~/project/.env.test
-      - run:
-          name: set environment variable
-          command: |
-            echo RAILS_ENV=${RAILS_ENV} > ~/project/.env.test
-            echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> ~/project/.env.test
-            echo POSTGRES_USER=${POSTGRES_USER} >> ~/project/.env.test
-            echo POSTGRES_PASSWORD=${POSTGRES_PASSWORD} >> ~/project/.env.test
-            echo DB_USERNAME=${DB_USERNAME} >> ~/project/.env.test
-            echo DB_PASSWORD=${DB_PASSWORD} >> ~/project/.env.test
-            echo RDS_HOST=${RDS_HOST} >> ~/project/.env.test
-            echo RDS_DATABASE=${RDS_DATABASE} >> ~/project/.env.test
-            echo RDS_USERNAME=${RDS_USERNAME} >> ~/project/.env.test
-            echo RDS_PASSWORD=${RDS_PASSWORD} >> ~/project/.env.test
-      - run:
-          name: docker-compose build
-          command: docker-compose -f docker-compose.test.yml build
-      - run:
-          name: docker-compose up
-          command: docker-compose -f docker-compose.test.yml up -d
-      - run:
-          name: sleep for waiting launch db
-          command: sleep 1
-      - run:
-          name: create db
-          command: docker-compose -f docker-compose.test.yml run web rails db:create
-      - run:
-          name: create tables
-          command: docker-compose -f docker-compose.test.yml run web bundle exec dotenv -f ".env.test" ridgepole --apply -E test -f db/Schemafile -c config/database.yml
-      - run:
-          name: rubocop
-          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --auto-correct
-      - run:
-          name: rubocop-faker
-          command: docker-compose -f docker-compose.test.yml run web bundle exec rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
-      - run:
-          name: test
-          command: docker-compose -f docker-compose.test.yml run web bin/rspec
-      - run:
-          name: docker-compose down
-          command: docker-compose -f docker-compose.test.yml down
-      - slack/status:
-          success_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のテストが完了したぞ"
-          failure_message: "おい $CIRCLE_USERNAME、$CIRCLE_BRANCH のテストが失敗したぞ"
-          webhook: "${SLACK_WEBHOOK}"
-workflows:
-  build_and_deploy:
-    jobs:
-      - test
-      - aws-ecr/build-and-push-image:
-          requires:
-            - test
-          dockerfile: Dockerfile.production
-          repo: "c0fee"
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production"
-          filters:
-            branches:
-              only:
-                - deploy
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: "c0fee"
-          cluster-name: "c0fee"
-          service-name: "c0fee"
-          container-image-name-updates: "container=c0fee,tag=latest"
-          filters:
-            branches:
-              only:
-                - deploy
-      - aws-ecs/run-task:
-          requires:
-            - aws-ecs/deploy-service-update
-          cluster: "c0fee"
-          task-definition: "c0fee"
-          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
-          security-group-ids: $SECURITY_GROUP_IDS
-          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"ridgepole\\\", \\\"--apply\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\", \\\"-E\\\", \\\"production\\\"]}]}"
-          filters:
-            branches:
-              only:
-                - deploy
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
