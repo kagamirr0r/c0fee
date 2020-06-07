@@ -16,6 +16,9 @@ ja:
       <<: *recipe
     delete_recipe_link:
       <<: *recipe
+      are_you_sure?: 削除してよろしいですか？
+      cancel: キャンセル
+      delete: 削除
     recipes:
       <<: *recipe
     new: &new

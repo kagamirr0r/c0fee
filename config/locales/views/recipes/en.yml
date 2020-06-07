@@ -16,6 +16,9 @@ en:
       <<: *recipe
     delete_recipe_link:
       <<: *recipe
+      are_you_sure?: Are you sure?
+      cancel: Cancel
+      delete: Delete
     recipes:
       <<: *recipe
     new: &new

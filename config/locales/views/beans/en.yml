@@ -20,6 +20,9 @@ en:
       <<: *bean
     delete_bean_link:
       <<: *bean
+      are_you_sure?: Are you sure?
+      cancel: Cancel
+      delete: Delete
     beans:
       <<: *bean
     new: &new
