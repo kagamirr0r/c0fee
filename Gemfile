@@ -39,7 +39,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', require: false
 
 gem 'devise'
-gem 'omniauth-twitter'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 gem 'mini_magick'
 gem 'carrierwave'
