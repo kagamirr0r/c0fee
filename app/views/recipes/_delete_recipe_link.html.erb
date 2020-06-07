@@ -1,3 +1,11 @@
-<%= link_to recipe, method: :delete, data: { confirm: t('.confirm') },class: "btn-small waves-effect waves-light tooltipped",data:{position:"top", tooltip: t('.delete')} do %>
-<%= content_tag :i, "delete", class: "material-icons" %>
-<% end %>
+<a class="btn modal-trigger" href="#recipe_delete_confirmation"><i class="material-icons white-text">delete</i></a>
+
+  <div id="recipe_delete_confirmation" class="modal">
+    <div class="modal-content red-text" >
+      <h4><%= t('.are_you_sure?')%></h4>
+    </div>
+    <div class="modal-footer">
+			<%= link_to t('.cancel'),"#", class: "modal-close btn-flat blue-text" %>
+			<%= link_to t('.delete'),recipe, method: :delete,class: "waves-effect waves-red btn-flat red-text" %>
+    </div>
+  </div>

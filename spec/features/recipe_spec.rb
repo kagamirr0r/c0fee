@@ -50,7 +50,10 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
     # delete
-    click_on 'delete'
+		click_on 'delete'
+		expect(page).to have_content I18n.t('recipes.delete_recipe_link.are_you_sure?')
+
+		click_on I18n.t('recipes.delete_recipe_link.delete')
     expect(page).to have_content I18n.t('recipes.flash.deleted_recipe')
   end
 end

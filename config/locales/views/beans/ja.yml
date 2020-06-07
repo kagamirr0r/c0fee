@@ -20,6 +20,9 @@ ja:
       <<: *bean
     delete_bean_link:
       <<: *bean
+      are_you_sure?: 削除してよろしいですか？
+      cancel: キャンセル
+      delete: 削除
     beans:
       <<: *bean
     new: &new

@@ -52,7 +52,10 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
     # delete
-    click_on 'delete'
+		click_on 'delete'
+		expect(page).to have_content I18n.t('beans.delete_bean_link.are_you_sure?')
+
+		click_on I18n.t('beans.delete_bean_link.delete')
     expect(page).to have_content I18n.t('beans.flash.deleted_bean')
   end
 end
