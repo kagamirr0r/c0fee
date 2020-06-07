@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks",
-                                    :sessions => 'sessions' }
+	devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+																		registrations: 'users/registrations',
+																		sessions: 'sessions'
+																	 }
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
     devise_scope :user do
       post 'users/guest_sign_in', to: 'sessions#new_guest'

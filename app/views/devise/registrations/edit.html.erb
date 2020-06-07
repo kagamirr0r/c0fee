@@ -46,12 +46,6 @@
     <%= f.label t('.confirm_new_password') %><br />
   </div><br />
 
-  <div class="input-field col s12">
-		<i class="material-icons prefix">done</i>
-		<%= f.password_field :current_password, autocomplete: "current-password" %>
-    <%= f.label :current_password %><%= t('.we_need_your_current_password_to_confirm_your_changes')%><br />
-  </div>
-
   <div class="actions">
     <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.title') %><% end %>
   </div>
