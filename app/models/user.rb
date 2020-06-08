@@ -3,7 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :lockable, :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :email, presence: true
+	validates :email, presence: true
+	validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
