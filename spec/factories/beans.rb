@@ -10,7 +10,6 @@ FactoryBot.define do
     roast { Faker::Number.within(range: 0..7) }
     price { Faker::Number.within(range: 100..10_000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
-    bean_url { Faker::Internet.url }
     association :user
     association :shop
   end
@@ -26,7 +25,6 @@ FactoryBot.define do
     roast { Faker::Number.within(range: 0..7) }
     price { Faker::Number.within(range: 100..10_000) }
     bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
-    bean_url { Faker::Internet.url }
     association :shop
   end
 end

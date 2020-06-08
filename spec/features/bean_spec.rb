@@ -21,7 +21,6 @@ RSpec.feature 'Beans', type: :feature do
     select impression.bean.process_i18n, from: 'bean_process'
     select impression.bean.roast_i18n, from: 'bean_roast'
     fill_in 'bean_price', with: impression.bean.price
-    fill_in 'bean_bean_url', with: impression.bean.bean_url
     select impression.i_sour, from: 'bean_impression_attributes_i_sour'
     select impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
     select impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
@@ -43,7 +42,6 @@ RSpec.feature 'Beans', type: :feature do
     select another_impression.bean.process_i18n, from: 'bean_process'
     select another_impression.bean.roast_i18n, from: 'bean_roast'
     fill_in 'bean_price', with: another_impression.bean.price
-    fill_in 'bean_bean_url', with: another_impression.bean.bean_url
     select another_impression.i_sour, from: 'bean_impression_attributes_i_sour'
     select another_impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
     select another_impression.i_bitter, from: 'bean_impression_attributes_i_bitter'

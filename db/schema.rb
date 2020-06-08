@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
     t.integer "roast"
     t.integer "price"
     t.string "bean_image"
-    t.string "bean_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "shop_ind_on_beans"
