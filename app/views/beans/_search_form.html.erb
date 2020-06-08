@@ -29,11 +29,11 @@
 			<%= b.label(:i_bitter,Impression.human_attribute_name(:i_bitter)) %>
 		</div>
   	<div class="actions col s1 l1">
-			<%= b.submit t('.submit_search'),class:"btn waves-effect waves-light white"%>
+			<%= b.submit t('.submit_search'),class:"btn waves-effect waves-light white" %>
 		</div>
 		<% if @bean_search_params.present? %>
 			<div class="actions col s1 l1">
-				<%= link_to t('.back'), beans_path, class:"btn waves-effect waves-light"%>
+				<%= link_to t('.back'), beans_path, class:"btn waves-effect waves-light" %>
 			</div>
 		<% end %>
 	</div>
