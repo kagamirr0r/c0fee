@@ -34,7 +34,7 @@ RSpec.describe Shop, type: :model do
 		end
 
 		it 'is invalid if url protocol is not normal' do
-			user.url = 'www//https.google.com'
+			shop.url = 'www//https.google.com'
 			expect(shop.valid?).to eq(false)
 		end
   end
