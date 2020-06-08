@@ -4,7 +4,7 @@ class Shop < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   validates :name, presence: true
-  validates :url, presence: true, format: /\A#{URI::regexp(%w(http https))}\z/
+  validates :url, presence: true, format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
 
   translates :name, :address
 
