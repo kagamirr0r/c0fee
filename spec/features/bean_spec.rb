@@ -44,9 +44,9 @@ RSpec.feature 'Beans', type: :feature do
     select another_impression.bean.roast_i18n, from: 'bean_roast'
     fill_in 'bean_price', with: another_impression.bean.price
     fill_in 'bean_bean_url', with: another_impression.bean.bean_url
-    fill_in 'bean_impression_attributes_i_sour', with: another_impression.i_sour
-    fill_in 'bean_impression_attributes_i_sweet', with: another_impression.i_sweet
-    fill_in 'bean_impression_attributes_i_bitter', with: another_impression.i_bitter
+    select another_impression.i_sour, from: 'bean_impression_attributes_i_sour'
+    select another_impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
+    select another_impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
     fill_in 'bean_impression_attributes_i_comment', with: another_impression.i_comment
     click_button I18n.t('beans.form.register')
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
