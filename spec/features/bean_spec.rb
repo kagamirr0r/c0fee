@@ -19,8 +19,8 @@ RSpec.feature 'Beans', type: :feature do
     fill_in 'bean_farm', with: impression.bean.farm
     fill_in 'bean_variety', with: impression.bean.variety
     select impression.bean.process_i18n, from: 'bean_process'
-		select impression.bean.roast_i18n, from: 'bean_roast'
-		fill_in 'bean_roast_date', with: impression.bean.roast_date
+    select impression.bean.roast_i18n, from: 'bean_roast'
+    fill_in 'bean_roast_date', with: impression.bean.roast_date
     fill_in 'bean_price', with: impression.bean.price
     select impression.i_sour, from: 'bean_impression_attributes_i_sour'
     select impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
@@ -41,8 +41,8 @@ RSpec.feature 'Beans', type: :feature do
     fill_in 'bean_farm', with: another_impression.bean.farm
     fill_in 'bean_variety', with: another_impression.bean.variety
     select another_impression.bean.process_i18n, from: 'bean_process'
-		select another_impression.bean.roast_i18n, from: 'bean_roast'
-		fill_in 'bean_roast_date', with: another_impression.bean.roast_date
+    select another_impression.bean.roast_i18n, from: 'bean_roast'
+    fill_in 'bean_roast_date', with: another_impression.bean.roast_date
     fill_in 'bean_price', with: another_impression.bean.price
     select another_impression.i_sour, from: 'bean_impression_attributes_i_sour'
     select another_impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
