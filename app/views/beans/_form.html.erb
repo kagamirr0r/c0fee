@@ -7,7 +7,7 @@
 	<div class="file-field input-field col s12">
 		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">
 		<%=t('.select_bean_image')%><i class="material-icons right">photo</i></button>
-    <%= b.file_field :bean_image  %>
+    <%= b.file_field :bean_image %>
 		<div class="file-path-wrapper">
 			<input id="bean_filename" readonly type="text" value="" class="file-path validate">
     </div>
@@ -50,34 +50,34 @@
 	</div><br />
 
 	<div class="input-field col s12">
-		<i class="material-icons prefix">attach_money</i>
-		<%= b.number_field :price, step: 10 %>
-		<%= b.label t('.price')%>
+		<i class="material-icons prefix">date_range</i>
+		<input type="text" name="bean[roast_date]" id="bean_roast_date" class="datepicker">
+		<%= b.label :roast_date %>
 	</div><br />
 
 	<div class="input-field col s12">
-		<i class="material-icons prefix">web</i>
-		<%= b.text_field :bean_url  %>
-		<%= b.label :url %>
+		<i class="material-icons prefix">attach_money</i>
+		<%= b.number_field :price, step: 10 %>
+		<%= b.label t('.price')%>
 	</div><br />
 
 		<%= b.fields_for :impression do |i| %>
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">change_history</i>
-				<%= i.number_field :i_sour,min: 1, max: 5 %>
-				<%= i.label t('.sour')%>
+				<%= i.select :i_sour,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
+				<%= i.label :i_sour%>
 			</div><br />
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">panorama_fish_eye</i>
-				<%= i.number_field :i_sweet,min: 1, max: 5 %>
+				<%= i.select :i_sweet,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 				<%= i.label :i_sweet %>
 			</div><br />
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">crop_square</i>
-				<%= i.number_field :i_bitter,min: 1, max: 5 %>
+				<%= i.select :i_bitter,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 				<%= i.label :i_bitter %>
 			</div><br />
 

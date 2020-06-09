@@ -32,5 +32,10 @@ RSpec.describe Shop, type: :model do
         expect(shop2.valid?).to eq(false)
       end
     end
+
+    it 'is invalid if url protocol is not normal' do
+      shop.url = 'www//https.google.com'
+      expect(shop.valid?).to eq(false)
+    end
   end
 end

@@ -21,17 +21,17 @@ RSpec.feature 'SearchBeans', type: :feature do
     expect(page).to have_content impression.bean.roast_i18n
 
     # sour
-    fill_in Impression.human_attribute_name(:i_sour), with: impression.i_sour
+    select impression.i_sour, from: Impression.human_attribute_name(:i_sour)
     click_button I18n.t('shops.search_form.submit_search')
     expect(page).to have_content impression.i_sour
 
     # sweet
-    fill_in Impression.human_attribute_name(:i_sweet), with: impression.i_sweet
+    select impression.i_sweet, from: Impression.human_attribute_name(:i_sweet)
     click_button I18n.t('shops.search_form.submit_search')
     expect(page).to have_content impression.i_sweet
 
     # bitter
-    fill_in Impression.human_attribute_name(:i_bitter), with: impression.i_bitter
+    select impression.i_bitter, from: Impression.human_attribute_name(:i_bitter)
     click_button I18n.t('shops.search_form.submit_search')
     expect(page).to have_content impression.i_bitter
   end

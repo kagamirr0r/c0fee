@@ -12,19 +12,19 @@ RSpec.feature 'Beans', type: :feature do
   scenario 'CRUD of bean' do
     # create
     click_on I18n.t('layouts.application.bean')
-		click_on 'local_cafe'
-		click_on 'local_cafe'
+    click_on 'local_cafe'
+    click_on 'local_cafe'
     fill_in 'bean_country', with: impression.bean.country
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
     fill_in 'bean_variety', with: impression.bean.variety
     select impression.bean.process_i18n, from: 'bean_process'
     select impression.bean.roast_i18n, from: 'bean_roast'
+    fill_in 'bean_roast_date', with: impression.bean.roast_date
     fill_in 'bean_price', with: impression.bean.price
-    fill_in 'bean_bean_url', with: impression.bean.bean_url
-    fill_in 'bean_impression_attributes_i_sour', with: impression.i_sour
-    fill_in 'bean_impression_attributes_i_sweet', with: impression.i_sweet
-    fill_in 'bean_impression_attributes_i_bitter', with: impression.i_bitter
+    select impression.i_sour, from: 'bean_impression_attributes_i_sour'
+    select impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
+    select impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
     fill_in 'bean_impression_attributes_i_comment', with: impression.i_comment
     click_button I18n.t('beans.form.register')
     expect(page).to have_content I18n.t('beans.flash.registered_bean')
@@ -42,20 +42,20 @@ RSpec.feature 'Beans', type: :feature do
     fill_in 'bean_variety', with: another_impression.bean.variety
     select another_impression.bean.process_i18n, from: 'bean_process'
     select another_impression.bean.roast_i18n, from: 'bean_roast'
+    fill_in 'bean_roast_date', with: another_impression.bean.roast_date
     fill_in 'bean_price', with: another_impression.bean.price
-    fill_in 'bean_bean_url', with: another_impression.bean.bean_url
-    fill_in 'bean_impression_attributes_i_sour', with: another_impression.i_sour
-    fill_in 'bean_impression_attributes_i_sweet', with: another_impression.i_sweet
-    fill_in 'bean_impression_attributes_i_bitter', with: another_impression.i_bitter
+    select another_impression.i_sour, from: 'bean_impression_attributes_i_sour'
+    select another_impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
+    select another_impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
     fill_in 'bean_impression_attributes_i_comment', with: another_impression.i_comment
     click_button I18n.t('beans.form.register')
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
     # delete
-		click_on 'delete'
-		expect(page).to have_content I18n.t('beans.delete_bean_link.are_you_sure?')
+    click_on 'delete'
+    expect(page).to have_content I18n.t('beans.delete_bean_link.are_you_sure?')
 
-		click_on I18n.t('beans.delete_bean_link.delete')
+    click_on I18n.t('beans.delete_bean_link.delete')
     expect(page).to have_content I18n.t('beans.flash.deleted_bean')
   end
 end

@@ -12,63 +12,66 @@
 
 		<table>
 			<tbody>
-				<% Array(recipe).each do |recipe| %>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:hot_ice)%> >swap_vert</i></th>
-							<td><%= recipe.hot_ice_i18n %></td>
-						</tr>
-						<tr>
-							<th><%= image_tag 'bean.png',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
-							<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:grind)%> >grain</i></th>
-							<td><%= recipe.grind_i18n %></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
-							<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
-							<td><%= recipe.extraction_i18n %></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:temperature)%> >whatshot</i></th>
-							<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
-						</tr>
-						<tr>
-							<th><%= Taste.human_attribute_name(:t_sour)%></th>
-							<td><%= recipe.taste.t_sour%></td>
-						</tr>
-						<tr>
-							<th><%= Taste.human_attribute_name(:t_sweet)%></th>
-							<td><%= recipe.taste.t_sweet%></td>
-						</tr>
-						<tr>
-							<th><%= Taste.human_attribute_name(:t_bitter)%></th>
-							<td><%= recipe.taste.t_bitter%></td>
-						</tr>
-						<tr>
-							<th><%= Taste.human_attribute_name(:t_aroma)%></th>
-							<td><%= recipe.taste.t_aroma%></td>
-						</tr>
-						<tr>
-							<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
-							<td><%= recipe.taste.t_fullbody%></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Taste.human_attribute_name(:t_comment)%> >message</i></th>
-							<td><%= recipe.taste.t_comment%></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human%> >person</i></th>
-							<td><%= link_to recipe.user.username, user_path(id: recipe.user.id)%></td>
-						</tr>
-						<tr>
-							<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:updated_at)%> >access_time</i></th>
-							<td><%= l recipe.updated_at %></td>
-						</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:hot_ice)%> >swap_vert</i></th>
+					<td><%= recipe.hot_ice_i18n %></td>
+				</tr>
+				<tr>
+					<th><%= image_tag 'bean.png',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
+					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:grind)%> >grain</i></th>
+					<td><%= recipe.grind_i18n %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
+					<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
+					<td><%= recipe.extraction_i18n %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:temperature)%> >whatshot</i></th>
+					<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= t('.from_roast_date') %> >date_range</i></th>
+					<td><%= from_roast_date(recipe) %><%= t('.day') if recipe.bean.roast_date? %></td>
+				</tr>
+				<tr>
+					<th><%= Taste.human_attribute_name(:t_sour)%></th>
+					<td><%= recipe.taste.t_sour %></td>
+				</tr>
+				<tr>
+					<th><%= Taste.human_attribute_name(:t_sweet)%></th>
+					<td><%= recipe.taste.t_sweet %></td>
+				</tr>
+				<tr>
+					<th><%= Taste.human_attribute_name(:t_bitter)%></th>
+					<td><%= recipe.taste.t_bitter %></td>
+				</tr>
+				<tr>
+					<th><%= Taste.human_attribute_name(:t_aroma)%></th>
+					<td><%= recipe.taste.t_aroma %></td>
+				</tr>
+				<tr>
+					<th><%= Taste.human_attribute_name(:t_fullbody)%></th>
+					<td><%= recipe.taste.t_fullbody %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Taste.human_attribute_name(:t_comment)%> >message</i></th>
+					<td><%= recipe.taste.t_comment %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
+					<td><%= link_to recipe.user.username, user_path(id: recipe.user.id) %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:updated_at)%> >access_time</i></th>
+					<td><%= l recipe.updated_at %></td>
+				</tr>
 			</tbody>
 		</table>
 		<table>
@@ -81,7 +84,6 @@
 						<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
 					</tr>
 				<% end %>
-			<% end %>
 		</tbody>
 	</table>
 <% end %>

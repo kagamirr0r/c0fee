@@ -17,8 +17,8 @@ ja:
         farm: 農園
         process: 精製
         roast: 焙煎
+        roast_date: 焙煎日
         price: 価格
-        bean_url: URL
         shop: 店
         bean_image: 豆画像
         updated_at: 最終更新

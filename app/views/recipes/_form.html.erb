@@ -45,38 +45,38 @@
 		<div class="input-field col s12">
 			<i class="material-icons prefix">whatshot</i>
 			<%= r.label t('.temperature') %>
-			<%= r.number_field :temperature, value: 90, step: 5 %>
+			<%= r.number_field :temperature, value: 90, max: 100 %>
 		</div><br />
 
 	<%= r.fields_for :taste do |t| %>
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">change_history</i>
-			<%= t.number_field :t_sour,min: 1, max: 5  %>
+			<%= t.select :t_sour,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
 			<%= t.label :t_sour %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">panorama_fish_eye</i>
-			<%= t.number_field :t_sweet,min: 1, max: 5 %>
+			<%= t.select :t_sweet,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= t.label :t_sweet %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">crop_square</i>
-			<%= t.number_field :t_bitter,min: 1, max: 5 %>
+			<%= t.select :t_bitter,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= t.label :t_bitter %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">filter_list</i>
-			<%= t.number_field :t_aroma,min: 1, max: 5  %>
+			<%= t.select :t_aroma,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
 			<%= t.label :t_aroma %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">brightness_medium</i>
-			<%= t.number_field :t_fullbody,min: 1, max: 5  %>
+			<%= t.select :t_fullbody,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
 			<%= t.label :t_fullbody %>
 		</div><br />
 

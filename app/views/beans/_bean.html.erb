@@ -12,7 +12,6 @@
 
 		<table>
 			<tbody>
-				<% Array(bean).each do |bean| %>
 				<tr>
 					<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
 					<td><%= bean.country %></td>
@@ -36,6 +35,10 @@
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
 					<td><%= bean.roast_i18n %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast_date) %> >date_range</i></th>
+					<td><%= bean.roast_date%></td>
 				</tr>
 				<tr>
 					<th><%= Impression.human_attribute_name(:i_sour) %></th>
@@ -84,7 +87,6 @@
 								<td><%= render 'delete_bean_link', bean: bean %></td>
 							</tr>
 						<% end %>
-				<% end %>
 			</tbody>
 		</table>
 <% end %>
