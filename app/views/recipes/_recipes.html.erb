@@ -33,7 +33,7 @@
 						<% if user_signed_in? && @liked_recipes.nil?%>
 							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
 						<% else %>
-							<td><%= recipe_liked_counts(recipe) %>  Likes</td>
+							<td class="red-text"><i class="material-icons">favorite</i><%= recipe_liked_counts(recipe) %></td>
 						<% end %>
 							<% if current_user == recipe.user %>
 								<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>

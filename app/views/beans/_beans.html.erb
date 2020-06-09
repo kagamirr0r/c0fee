@@ -44,7 +44,7 @@
 					<% if user_signed_in? && @liked_beans.nil? %>
 						<td id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></td>
 					<% else %>
-						<td><%= bean_liked_counts(bean) %>  Likes</td>
+						<td class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></td>
 					<% end %>
 
 					<td><%= render 'recipes/make_recipe_button', bean: bean %></td>
