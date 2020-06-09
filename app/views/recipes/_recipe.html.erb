@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= t('.from_roast_date') %> >date_range</i></th>
-					<td><%= from_roast_date(recipe) %><%= t('.day') %></td>
+					<td><%= from_roast_date(recipe) %><%= t('.day') if recipe.bean.roast_date? %></td>
 				</tr>
 				<tr>
 					<th><%= Taste.human_attribute_name(:t_sour)%></th>

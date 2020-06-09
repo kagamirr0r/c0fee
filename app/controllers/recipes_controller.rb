@@ -11,8 +11,7 @@ class RecipesController < ApplicationController
                end
   end
 
-	def show
-	end
+  def show; end
 
   def new
     @bean = Bean.find(params[:id])

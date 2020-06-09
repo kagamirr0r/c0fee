@@ -19,7 +19,9 @@ RSpec.feature 'Beans', type: :feature do
     fill_in 'bean_farm', with: impression.bean.farm
     fill_in 'bean_variety', with: impression.bean.variety
     select impression.bean.process_i18n, from: 'bean_process'
-    select impression.bean.roast_i18n, from: 'bean_roast'
+		select impression.bean.roast_i18n, from: 'bean_roast'
+		fill_in 'year-text', with: 2020
+		fill_in 'date-text', with: "Tue, Jun 1"
     fill_in 'bean_price', with: impression.bean.price
     select impression.i_sour, from: 'bean_impression_attributes_i_sour'
     select impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
