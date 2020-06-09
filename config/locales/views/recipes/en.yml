@@ -10,6 +10,8 @@ en:
       delete: Delete
       back: Back
       are_you_sure: Are you sure
+      from_roast_date: From roast
+      day: day
     make_recipe_button:
       make_recipe: Make a recipe
     edit_recipe_link:

@@ -10,6 +10,8 @@ ja:
       delete: 削除
       back: 戻る
       are_you_sure: 削除してよろしいですか？
+      from_roast_date: 焙煎から
+      day: 日後
     make_recipe_button:
       make_recipe: レシピを作成
     edit_recipe_link:
@@ -32,7 +34,7 @@ ja:
     new:
       title: レシピの登録
     show:
-      <<: *new
+      back: 戻る
     search_form:
       <<: *new
       submit_search: 検索

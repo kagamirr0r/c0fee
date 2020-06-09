@@ -50,6 +50,12 @@
 	</div><br />
 
 	<div class="input-field col s12">
+		<i class="material-icons prefix">date_range</i>
+		<input type="text" name="bean[roast_date]" id="bean_roast_date" class="datepicker">
+	<%= b.label :roast_date %>
+	</div><br />
+
+	<div class="input-field col s12">
 		<i class="material-icons prefix">attach_money</i>
 		<%= b.number_field :price, step: 10 %>
 		<%= b.label t('.price')%>

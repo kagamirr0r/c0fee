@@ -9,28 +9,23 @@
 
 		<div id="shop_like_button_<%= shop.id %>" style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop %></div>
 
-			<table>
+			<table id="table-css">
 				<tbody>
-					<% Array(shop).each do |shop| %>
-						<% if user_signed_in? %>
-							<tr>
-								<td><%= render 'beans/register_bean_button', shop: shop %></td>
-							</tr>
-						<% end %>
+						<% if shop.address? %>
+						<thead>
 						<tr>
-							<td><%= shop.address %></td>
+							<th>&nbsp;</th>
 						</tr>
+						</thead>
+							<tr><td><%= shop.address %></td></tr>
+							<td><div id="map" style="width100%; height: 500px;"></div></td>
+						<% end %>
+						<% if user_signed_in? %>
+							<tr><td><%= render 'beans/register_bean_button', shop: shop %></td></tr>
+						<% end %>
+							<tr><td><%= render 'shops/edit_shop_link', shop: shop %></td></tr>
 				</tbody>
 			</table>
-						<div id="map" style="width100%; height: 500px;"></div>
-						<table>
-							<tbody>
-								<tr>
-									<td><%= render 'shops/edit_shop_link', shop: shop %></td>
-								</tr>
-							</tbody>
-						</table>
-					<% end %>
 <% end %>
 <script>
 $(window).on('load', function() {
@@ -39,20 +34,22 @@ $(window).on('load', function() {
 		$('.waves-light').removeClass('btn-small');
 		$('.waves-light').addClass('btn-large');
 });
-
+</script>
+<script>
 	function initMap() {
-		var latlng = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
+	var latlng = new google.maps.LatLng(<%= @shop.latitude %>,<%= @shop.longitude %>);
 
-		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 16,
-			center: latlng
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 16,
+		center: latlng
+	});
+
+	var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: "<%= @shop.name %>"
 		});
-
-		var marker = new google.maps.Marker({
-				position: latlng,
-				map: map,
-				title: "<%= @shop.name %>"
-			});
 	}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.gcp[:gmap_api_key]%>&callback=initMap" async defer></script>
+

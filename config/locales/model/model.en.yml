@@ -17,6 +17,7 @@ en:
         farm: Farm
         process: Process
         roast: Roast
+        roast_date: Roast Date
         price: Price
         shop: Shop
         bean_image: Bean image
