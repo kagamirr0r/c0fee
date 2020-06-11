@@ -8,7 +8,9 @@
 		<% end %></br>
 	</div>
 
-	<div id="bean_like_button_<%= bean.id %>" style="text-align: center" class= "like_bean_button"><%= render 'bean_likes/like_bean_button',bean: bean %></div>
+		<div id="chartContainer">
+			<canvas id="beanChart"></canvas>
+		</div>
 
 		<table>
 			<tbody>
@@ -41,18 +43,6 @@
 					<td><%= bean.roast_date%></td>
 				</tr>
 				<tr>
-					<th><%= Impression.human_attribute_name(:i_sour) %></th>
-					<td><%= bean.impression.i_sour %></td>
-				</tr>
-				<tr>
-					<th><%= Impression.human_attribute_name(:i_sweet) %></th>
-					<td><%= bean.impression.i_sweet %></td>
-				</tr>
-				<tr>
-					<th><%= Impression.human_attribute_name(:i_bitter) %></th>
-					<td><%= bean.impression.i_bitter %></td>
-				</tr>
-				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
 					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
 				</tr>
@@ -76,6 +66,9 @@
 		</table>
 		<table>
 			<tbody>
+						<tr>
+							<td><div id="bean_like_button_<%= bean.id %>" style="text-align: center" class= "like_bean_button"><%= render 'bean_likes/like_bean_button',bean: bean %></div></td>
+						</tr>
 						<tr>
 							<td><%= render 'recipes/make_recipe_button', bean: bean %></td>
 						</tr>
@@ -101,5 +94,50 @@ $(window).on('load', function() {
 $('.red-text').on('ajax:success', function(event){
   $('.material-icons').removeClass('small');
 	$('.material-icons').addClass('medium');
+});
+</script>
+<script>
+var ctx = document.getElementById("beanChart").getContext('2d');
+ctx.canvas.height = 600;
+Chart.defaults.global.defaultFontSize = 20;
+
+var beanChart = new Chart(ctx,{
+	type: 'radar',
+	data: {
+		labels:["Sour","Bitter","Sweet"],
+		datasets: [{
+			data: [<%= bean.impression.i_sour %>, <%= bean.impression.i_bitter %>, <%= bean.impression.i_sweet %>],
+			backgroundColor: 'rgba(235,9,212,0.2)',
+			borderColor: "Brown",
+			pointStyle: "circle"
+		}]
+	},
+	options: {
+		responsive: true,
+		maintainAspectRatio: false,
+		tooltips: {
+		mode: 'nearest'
+        },
+		legend: {
+			display: false
+				 },
+		scale: {
+			ticks: {
+				suggestedMin: 0,
+				uggestedMax: 5,
+				stepSize: 1
+			},
+			pointLabels: {
+            fontSize: 20
+			},
+			gridLines: {
+				display: true,
+			},
+			angleLines: {
+				display: true
+			}
+
+		}
+	}
 });
 </script>

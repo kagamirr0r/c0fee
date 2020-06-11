@@ -15,6 +15,7 @@
 //= require activestorage
 //= require materialize
 //= require materialize-sprockets
+//= require Chart.min
 //= require_tree .
 
 
