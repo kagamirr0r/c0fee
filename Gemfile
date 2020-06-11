@@ -67,6 +67,8 @@ gem 'enum_help'
 
 gem 'globalize', '~> 5.3.0'
 
+gem 'chart-js-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
