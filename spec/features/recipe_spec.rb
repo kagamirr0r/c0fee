@@ -26,7 +26,7 @@ RSpec.feature 'Recipes', type: :feature do
     select taste.t_fullbody, from: 'recipe_taste_attributes_t_fullbody'
     fill_in 'recipe_taste_attributes_t_comment', with: taste.t_comment
     click_button I18n.t('recipes.form.register')
-    expect(page).to have_content I18n.t('recipes.flash.created_recipe')
+    expect(page).to have_content I18n.t('recipes.flash.made_recipe')
 
     # show
     recipe = Recipe.last

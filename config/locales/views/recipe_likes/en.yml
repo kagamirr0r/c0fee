@@ -1,8 +1,5 @@
 en:
   recipe_likes:
-    like_recipe_button:
-      cancel_like_recipe: Liked
-      like_recipe: Like!
     flash:
       liked_recipe: Liked Recipe
       canceled_recipe_like: Canceled Recipe Like

@@ -1,8 +1,5 @@
 en:
   shop_likes:
-    like_shop_button:
-      cancel_like_shop: Liked
-      like_shop: Like!
     shops:
       edit_shop: Edit shop
       register_bean: Register bean

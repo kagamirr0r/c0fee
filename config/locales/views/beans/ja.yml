@@ -1,7 +1,7 @@
 ja:
   beans:
     bean: &bean
-      create_recipe: レシピを作成
+      make_recipe: レシピを作成
       edit: 編集
       delete: 削除
       currency_unit: 円

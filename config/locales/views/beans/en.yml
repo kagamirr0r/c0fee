@@ -1,7 +1,7 @@
 en:
   beans:
     bean: &bean
-      create_recipe: Make a recipe
+      make_recipe: Make a recipe
       edit: Edit
       delete: Delete
       currency_unit: $

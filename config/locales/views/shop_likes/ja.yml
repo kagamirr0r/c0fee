@@ -1,8 +1,5 @@
 ja:
   shop_likes:
-    like_shop_button:
-      cancel_like_shop: Liked
-      like_shop: Like!
     shops:
       edit_shop: 店を編集する
       register_bean: 豆を登録する
