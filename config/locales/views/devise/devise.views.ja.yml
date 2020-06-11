@@ -84,7 +84,7 @@ ja:
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
         delete_account: "アカウント削除"
-        back: "戻る"
+        return: "戻る"
       new:
         sign_up: "アカウント登録"
         password: "パスワード(%{password_length}字以上)"
@@ -96,7 +96,7 @@ ja:
         simple_login: "簡単ログイン"
     shared:
       links:
-        back: "戻る"
+        return: "戻る"
         didn_t_receive_confirmation_instructions: "確認メールが届かない場合はこちら"
         didn_t_receive_unlock_instructions: "ロック解除のメールを受け取っていませんか？"
         forgot_your_password: "パスワードを忘れましたか?"

@@ -10,7 +10,7 @@ ja:
     edit_shop_link:
       <<: *shops
     new: &new
-      back: 戻る
+      return: 戻る
     edit:
       title: 店の編集
       <<: *new
@@ -21,7 +21,7 @@ ja:
       title: 店の登録
     show:
       registered_bean: コーヒー豆
-      back: 戻る
+      return: 戻る
     search_form:
       <<: *new
       submit_search: 検索

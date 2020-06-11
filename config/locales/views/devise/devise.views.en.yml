@@ -32,6 +32,7 @@ en:
     confirmations:
       new:
         resend_confirmation_instructions: resend_confirmation_instructions
+        confirmed: Registered account
     mailer:
       confirmation_instructions:
         action: action
@@ -73,7 +74,7 @@ en:
         update: Update
         we_need_your_current_password_to_confirm_your_changes: We need your current password to confirm your changes
         delete_account: Delete account
-        back: Back
+        return: Back
       new:
         sign_up: Sign up
         password: Password(more than%{password_length})
@@ -85,7 +86,7 @@ en:
         simple_login: Simple login
     shared:
       links:
-        back: Back
+        return: Back
         didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions
         forgot_your_password: Forgot your password

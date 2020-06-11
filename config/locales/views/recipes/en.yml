@@ -8,7 +8,7 @@ en:
     recipe: &recipe
       edit: Edit
       delete: Delete
-      back: Back
+      return: Back
       are_you_sure: Are you sure
       from_roast_date: From roast
       day: day
@@ -24,7 +24,7 @@ en:
     recipes:
       <<: *recipe
     new: &new
-      back: Back
+      return: Back
     edit:
       title: Edit
       <<: *new

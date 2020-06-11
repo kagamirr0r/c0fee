@@ -11,7 +11,7 @@ en:
     shop:
       <<: *shops
     new: &new
-      back: Back
+      return: Back
     edit:
       title: Edit
       <<: *new
@@ -22,7 +22,7 @@ en:
       title: Register
     show:
       registered_bean: Registered bean
-      back: Back
+      return: Back
     search_form:
       <<: *new
       submit_search: Search

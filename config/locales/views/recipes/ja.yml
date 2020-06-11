@@ -8,7 +8,7 @@ ja:
     recipe: &recipe
       edit: 編集
       delete: 削除
-      back: 戻る
+      return: 戻る
       are_you_sure: 削除してよろしいですか？
       from_roast_date: 焙煎から
       day: 日後
@@ -24,7 +24,7 @@ ja:
     recipes:
       <<: *recipe
     new: &new
-      back: 戻る
+      return: 戻る
     edit:
       title: レシピの編集
       <<: *new
@@ -34,7 +34,7 @@ ja:
     new:
       title: レシピの登録
     show:
-      back: 戻る
+      return: 戻る
     search_form:
       <<: *new
       submit_search: 検索

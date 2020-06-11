@@ -1,8 +1,5 @@
 ja:
   bean_likes:
-    like_bean_button:
-      cancel_like_bean: Liked
-      like_bean: Like!
     flash:
       liked_bean: 豆がお気に入りされました！
       canceled_like_bean: 豆をお気に入りから外しました！
