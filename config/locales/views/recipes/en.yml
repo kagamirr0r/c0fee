@@ -17,7 +17,7 @@ en:
       make_recipe: Make a recipe
     recipe: &recipe
       <<: *edit_recipe_link
-      from_roast_date: From roast
+      from_roast_date: From roast date
       day: days
     recipes:
       <<: *recipe
@@ -28,7 +28,7 @@ en:
       <<: *delete_recipe_link
       title: Edit
     index:
-      title: Index
+      title: Recipes Index
       make_recipe: Make a recipe
     new:
       <<: *delete_recipe_link

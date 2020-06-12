@@ -18,7 +18,7 @@ en:
       <<: *form
       title: Edit
     index:
-      title: Index
+      title: Shops Index
       register_shop: Register Shop
     new:
       <<: *form
