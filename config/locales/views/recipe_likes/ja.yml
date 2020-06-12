@@ -1,5 +1,0 @@
-ja:
-  recipe_likes:
-    flash:
-      liked_recipe: レシピをお気に入りしました
-      canceled_recipe_like: レシピをお気に入りから外しました！

@@ -1,8 +1,0 @@
-en:
-  shop_likes:
-    shops:
-      edit_shop: Edit shop
-      register_bean: Register bean
-    flash:
-      liked_shop: Liked shop
-      canceled_shop_like: Canceled shop like

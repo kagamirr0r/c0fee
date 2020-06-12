@@ -1,8 +1,0 @@
-ja:
-  shop_likes:
-    shops:
-      edit_shop: 店を編集する
-      register_bean: 豆を登録する
-    flash:
-      liked_shop: 店をお気に入りしました！
-      canceled_shop_like: 店をお気に入りから外しました！
