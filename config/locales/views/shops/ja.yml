@@ -1,34 +1,32 @@
 ja:
   shops:
-    form:
+    edit_shop_link: &edit_shop_link
+      edit: 編集
+    form: &form
       register: 登録する
       select_shop_image: 画像を選ぶ
-    shops: &shops
-      edit: 編集
-    shop:
-      <<: *shops
-    edit_shop_link:
-      <<: *shops
-    new: &new
-      back: 戻る
+      return: 戻る
+    search_form:
+      <<: *form
+      submit_search: 検索
+    shop: &shop
+      <<: *edit_shop_link
+      register_bean: 豆を登録
+    shops:
+      <<: *shop
     edit:
+      <<: *form
       title: 店の編集
-      <<: *new
     index:
       title: 店一覧
       register_shop: 店を登録
     new:
+      <<: *form
       title: 店の登録
     show:
-      registered_bean: コーヒー豆
-      back: 戻る
-    search_form:
-      <<: *new
-      submit_search: 検索
+      <<: *form
+      registered_bean: 登録済みコーヒー豆
     flash:
-      choose_shop: どの店でコーヒー豆を買いましたか?
       registered_shop: 店を登録しました!
       edited_shop: 店を更新しました！
       deleted_shop: 店を削除しました！
-      liked_shop: 店をお気に入りしました！
-      canceled_shop_like: 店をお気に入りから外しました！

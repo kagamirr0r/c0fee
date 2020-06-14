@@ -1,35 +1,32 @@
 en:
   shops:
-    form:
-      register: Register
-      select_shop_image: Select shop image
-    shops: &shops
-      register_bean: Register bean
+    edit_shop_link: &edit_shop_link
       edit: Edit
-    edit_shop_link:
-      <<: *shops
-    shop:
-      <<: *shops
-    new: &new
-      back: Back
+    form: &form
+      register: Register
+      select_shop_image: Select Shop Image
+      return: Back
+    search_form:
+      <<: *form
+      submit_search: Search
+    shop: &shop
+      <<: *edit_shop_link
+      register_bean: Register Bean
+    shops:
+      <<: *shop
     edit:
+      <<: *form
       title: Edit
-      <<: *new
     index:
-      title: Index
-      register_shop: Register shop
+      title: Shops Index
+      register_shop: Register Shop
     new:
+      <<: *form
       title: Register
     show:
-      registered_bean: Registered bean
-      back: Back
-    search_form:
-      <<: *new
-      submit_search: Search
+      <<: *form
+      registered_bean: Registered Beans
     flash:
-      choose_shop: Choose shop?
       registered_shop: Registered shop!
       edited_shop: Edited shop
       deleted_shop: Deleted shop
-      liked_shop: Liked shop
-      canceled_shop_like: Canceled shop Like

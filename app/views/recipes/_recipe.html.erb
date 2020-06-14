@@ -73,6 +73,12 @@
 <% end %>
 
 <script>
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  I18n.fallbacks = true;
+</script>
+
+<script>
 $(window).on('load', function() {
     $('.material-icons').removeClass('small');
 		$('.material-icons').addClass('medium');
@@ -80,6 +86,7 @@ $(window).on('load', function() {
 		$('.waves-light').addClass('btn-large');
 });
 </script>
+
 <script>
 var ctx = document.getElementById("recipeChart").getContext('2d');
 ctx.canvas.height = 600;
@@ -88,7 +95,7 @@ Chart.defaults.global.defaultFontSize = 20;
 var beanChart = new Chart(ctx,{
 	type: 'radar',
 	data: {
-		labels:["Sour","Bitter","Sweet","Aroma","Fullbody"],
+		labels:[I18n.t('js.sour'),I18n.t('js.bitter'),I18n.t('js.sweet'),I18n.t('js.aroma'),I18n.t('js.fullbody')],
 		datasets: [{
 			data: [<%= recipe.taste.t_sour %>, <%= recipe.taste.t_sweet %>, <%= recipe.taste.t_bitter %>, <%= recipe.taste.t_aroma %>, <%= recipe.taste.t_fullbody %>],
 			backgroundColor: 'rgba(235,9,212,0.2)',

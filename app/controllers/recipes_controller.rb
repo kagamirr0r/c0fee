@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
     @bean = Bean.find(params[:recipe][:bean_id])
     @recipe = @bean.recipes.build(recipe_params)
     @recipe.save!
-    redirect_to recipes_path, notice: t('recipes.flash.created_recipe')
+    redirect_to recipes_path, notice: t('recipes.flash.made_recipe')
   rescue StandardError
     render :new
   end

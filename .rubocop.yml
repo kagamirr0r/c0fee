@@ -19,6 +19,10 @@ Documentation:
 AndOr:
   Enabled: false
 
+AllCops:
+  Exclude:
+    - 'spec/i18n_spec.rb'
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*

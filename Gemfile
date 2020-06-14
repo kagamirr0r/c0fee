@@ -53,6 +53,7 @@ gem 'jquery-rails'
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'i18n-js'
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
@@ -71,6 +72,7 @@ gem 'chart-js-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'i18n-tasks'
   gem 'rspec-rails'
   gem 'factory_bot_rails', require: false
   gem 'spring-commands-rspec'

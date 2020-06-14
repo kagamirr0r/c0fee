@@ -1,8 +1,8 @@
-ja:
+en:
   users:
     show:
       registered_beans: Registered beans
-      created_recipes: Created recipes
+      made_recipes: Made recipes
       liked_beans: Liked beans
       liked_recipes: Liked recipes
       liked_shops: Liked shops
