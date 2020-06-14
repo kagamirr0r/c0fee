@@ -84,6 +84,11 @@
 		</table>
 <% end %>
 <script>
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  I18n.fallbacks = true;
+</script>
+<script>
 $(window).on('load', function() {
 		$('.waves-light').removeClass('btn-small');
 		$('.waves-light').addClass('btn-large');
@@ -104,7 +109,7 @@ Chart.defaults.global.defaultFontSize = 20;
 var beanChart = new Chart(ctx,{
 	type: 'radar',
 	data: {
-		labels:["Sour","Bitter","Sweet"],
+		labels:[I18n.t('js.sour'),I18n.t('js.bitter'),I18n.t('js.sweet')],
 		datasets: [{
 			data: [<%= bean.impression.i_sour %>, <%= bean.impression.i_bitter %>, <%= bean.impression.i_sweet %>],
 			backgroundColor: 'rgba(235,9,212,0.2)',
@@ -136,7 +141,6 @@ var beanChart = new Chart(ctx,{
 			angleLines: {
 				display: true
 			}
-
 		}
 	}
 });
