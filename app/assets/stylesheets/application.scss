@@ -40,20 +40,23 @@
 #search_form {
 	margin-top: 30px;
 }
+
 #shop_title,
 #index_title {
 	text-align: center;
 }
 
-#bean_image,
-#recipe_image {
+#beans_image,
+#recipes_image,
+#shops_image,
+#country_flag {
 	display: inline-block;
 	width: 100px;
 }
 
-#no_bean_image,
-#no_recipe_image,
-#no_shop_image {
+#no_beans_image,
+#no_recipes_image,
+#no_shops_image {
 	width: 60px;
 }
 
