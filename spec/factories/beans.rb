@@ -1,8 +1,6 @@
 FactoryBot.define do
   factory :bean, class: Bean do
-    # user_id { Faker::Number.number(digits: 1) }
-    # shop_id { Faker::Number.number(digits: 1) }
-    country { Faker::Nation.nationality }
+    country { Faker::Number.within(range: 0..30) }
     area { Faker::Nation.capital_city }
     variety { Faker::Coffee.variety }
     farm { Faker::Name.first_name }
@@ -15,9 +13,7 @@ FactoryBot.define do
   end
 
   factory :another_bean, class: Bean do
-    # user_id { Faker::Number.number(digits: 1) }
-    # shop_id { Faker::Number.number(digits: 1) }
-    country { Faker::Nation.nationality }
+    country { Faker::Number.within(range: 0..30) }
     area { Faker::Nation.capital_city }
     variety { Faker::Coffee.variety }
     farm { Faker::Name.first_name }
