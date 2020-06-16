@@ -14,7 +14,7 @@ RSpec.feature 'Beans', type: :feature do
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
     click_on 'local_cafe'
-    fill_in 'bean_country', with: impression.bean.country
+    select impression.bean.country_i18n, from: 'bean_country'
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
     fill_in 'bean_variety', with: impression.bean.variety
@@ -36,7 +36,7 @@ RSpec.feature 'Beans', type: :feature do
 
     # edit
     click_on 'edit'
-    fill_in 'bean_country', with: another_impression.bean.country
+    select another_impression.bean.country_i18n, from: 'bean_country'
     fill_in 'bean_area', with: another_impression.bean.area
     fill_in 'bean_farm', with: another_impression.bean.farm
     fill_in 'bean_variety', with: another_impression.bean.variety
