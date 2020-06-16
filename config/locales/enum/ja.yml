@@ -3,31 +3,36 @@ ja:
     bean:
       country:
         Yemen: イエメン
-        Ethiopia: エチオピア
-        Tanzania: タンザニア
-        Kenya: ケニア
-        Rwanda: ルワンダ
-        Burundi: ブルンジ
         India: インド
         Indonesia: インドネシア
-        PNG: パプアニューギニア
-        Mexico: メキシコ
-        Guatemala: グアテマラ
-        Costa_Rica: コスタリカ
-        El_Salvador: エルサルバドル
-        Nicaragua: ニカラグア
-        Honduras: ホンジュラス
-        Panama: パナマ
-        Dominica: ドミニカ
-        Haiti: ハイチ
-        Jamaica: ジャマイカ
-        Brazil: ブラジル
-        Colombia: コロンビア
         Ecuador: エクアドル
+        Ethiopia: エチオピア
+        El_Salvador: エルサルバドル
+        Cuba: キューバ
+        Guatemala: グアテマラ
+        Kenya: ケニア
+        Costa_Rica: コスタリカ
+        Colombia: コロンビア
+        Jamaica: ジャマイカ
+        Tanzania: タンザニア
+        China: 中国
+        Dominica: ドミニカ
+        Nicaragua: ニカラグア
+        Nepal: ネパール
+        PNG: パプアニューギニア
+        Panama: パナマ
+        Haiti: ハイチ
+        Hawaii: ハワイ
+        East_Timor: 東ティモール
+        Brazil: ブラジル
+        Burundi: ブルンジ
+        Vietnam: ベトナム
         Peru: ペルー
         Bolivia: ボリビア
-        Hawaii: ハワイ
-        Cuba: キューバ
+        Honduras: ホンジュラス
+        Myanmar: ミャンマー
+        Mexico: メキシコ
+        Rwanda: ルワンダ
       process:
         washed: ウォッシュド
         natural: ナチュラル

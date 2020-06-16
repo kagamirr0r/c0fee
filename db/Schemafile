@@ -39,9 +39,9 @@ end
 
 create_table "impressions", force: :cascade do |t|
   t.integer "bean_id", null: false
-  t.integer "i_sour", null: false
-  t.integer "i_sweet", null: false
-  t.integer "i_bitter", null: false
+  t.integer "i_sour"
+  t.integer "i_sweet"
+  t.integer "i_bitter"
   t.text "i_comment"
   t.index ["bean_id"], name: "bean_ind_on_impressions"
 end

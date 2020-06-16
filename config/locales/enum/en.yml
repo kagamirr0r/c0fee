@@ -28,6 +28,11 @@ en:
         Bolivia: Bolivia
         Hawaii: Hawaii
         Cuba: Cuba
+        Nepal: Nepal
+        China: China
+        Vietnam: Vietnam
+        East_Timor: East_Timor
+        Myanmar: Myanmar
       process:
         washed: Washed
         natural: Natural
