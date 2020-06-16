@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="input-field col s12 l2 ">
 		<i class="material-icons prefix">public</i>
-			<%= b.text_field :country, value: @bean_search_params[:country], class: "autocomplete"%>
+			<%= b.select :country, Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"),k]}, include_blank: true, value: @bean_search_params[:country] %>
 			<%= b.label(:country,Bean.human_attribute_name(:country)) %>
 		</div>
 

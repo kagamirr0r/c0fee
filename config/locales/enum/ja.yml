@@ -1,6 +1,33 @@
 ja:
   enums:
     bean:
+      country:
+        Yemen: イエメン
+        Ethiopia: エチオピア
+        Tanzania: タンザニア
+        Kenya: ケニア
+        Rwanda: ルワンダ
+        Burundi: ブルンジ
+        India: インド
+        Indonesia: インドネシア
+        PNG: パプアニューギニア
+        Mexico: メキシコ
+        Guatemala: グアテマラ
+        Costa_Rica: コスタリカ
+        El_Salvador: エルサルバドル
+        Nicaragua: ニカラグア
+        Honduras: ホンジュラス
+        Panama: パナマ
+        Dominica: ドミニカ
+        Haiti: ハイチ
+        Jamaica: ジャマイカ
+        Brazil: ブラジル
+        Colombia: コロンビア
+        Ecuador: エクアドル
+        Peru: ペルー
+        Bolivia: ボリビア
+        Hawaii: ハワイ
+        Cuba: キューバ
       process:
         washed: ウォッシュド
         natural: ナチュラル
