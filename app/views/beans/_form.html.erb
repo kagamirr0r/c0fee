@@ -15,8 +15,8 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">public</i>
-		<%= b.text_field :country, class: "autocomplete" %>
-		<%= b.label :country%>
+		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }), {include_blank: true}, {class: 'icons'} %>
+		<%= b.label :country %>
 	</div><br />
 
 	<div class="input-field col s12">

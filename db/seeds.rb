@@ -50,9 +50,9 @@ end
 end
 
 [
-  [1, 1, 'タンザニア', 'キリマンジャロ', 'アラビカ', '', 6, 4, 340],
-  [2, 2, 'エチオピア', 'イェルガチェフェ', '', '', 1, 3, 850],
-  [3, 3, 'ブラジル', 'ミナスジェライス', 'ブルボン', 'トミオフクダ', 0, 5, 800]
+  [1, 1, 12, 'キリマンジャロ', 'アラビカ', '', 6, 4, 340],
+  [2, 2, 4, 'イェルガチェフェ', '', '', 1, 3, 850],
+  [3, 3, 22, 'ミナスジェライス', 'ブルボン', 'トミオフクダ', 0, 5, 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
 	I18n.locale = :ja
   Bean.create!(
@@ -63,9 +63,9 @@ end
 end
 
 [
-  [4, 4, 'Tanzania', 'Kilimanjaro', 'Arabica', '', 6, 4, 340],
-  [5, 5, 'Ethiopia', 'Yirgacheffe', '', '', 1, 3, 850],
-  [6, 6, 'Brazil', 'Minas Gerais', 'Bourbon', 'TomioFukuda', 0, 5, 800]
+  [4, 4, 12, 'Kilimanjaro', 'Arabica', '', 6, 4, 340],
+  [5, 5, 4, 'Yirgacheffe', '', '', 1, 3, 850],
+  [6, 6, 22, 'Minas Gerais', 'Bourbon', 'TomioFukuda', 0, 5, 800]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
 	I18n.locale = :en
   Bean.create!(

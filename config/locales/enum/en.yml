@@ -1,6 +1,38 @@
 en:
   enums:
     bean:
+      country:
+        Yemen: Yemen
+        Ethiopia: Ethiopia
+        Tanzania: Tanzania
+        Kenya: Kenya
+        Rwanda: Rwanda
+        Burundi: Burundi
+        India: India
+        Indonesia: Indonesia
+        PNG: PNG
+        Mexico: Mexico
+        Guatemala: Guatemala
+        Costa_Rica: Costa_Rica
+        El_Salvador: El_Salvador
+        Nicaragua: Nicaragua
+        Honduras: Honduras
+        Panama: Panama
+        Dominica: Dominica
+        Haiti: Haiti
+        Jamaica: Jamaica
+        Brazil: Brazil
+        Colombia: Colombia
+        Ecuador: Ecuador
+        Peru: Peru
+        Bolivia: Bolivia
+        Hawaii: Hawaii
+        Cuba: Cuba
+        Nepal: Nepal
+        China: China
+        Vietnam: Vietnam
+        East_Timor: East_Timor
+        Myanmar: Myanmar
       process:
         washed: Washed
         natural: Natural

@@ -19,7 +19,7 @@
 
 		<tbody>
 			<% Array(beans).each do |bean| %>
-			 <% unless bean.country.nil? %>
+			 <% unless bean.shop.name.nil? %>
 				<tr>
 					<td id="bean_image_td">
 					<% if bean.bean_image? %>
@@ -28,7 +28,7 @@
 						<%=link_to image_tag('C0FEE.png', :id => 'no_bean_image'), bean_path(bean)%>
 					<% end %>
 					</td>
-					<td><%= bean.country %></td>
+					<td><%= bean.country_i18n %></td>
 					<td><%= bean.roast_i18n %></td>
 					<td><%= bean.impression.i_sour%></td>
 					<td><%= bean.impression.i_sweet%></td>

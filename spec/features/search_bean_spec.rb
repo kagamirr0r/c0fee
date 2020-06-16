@@ -11,9 +11,9 @@ RSpec.feature 'SearchBeans', type: :feature do
     click_link I18n.t('layouts.application.bean')
 
     # country
-    fill_in Bean.human_attribute_name(:country), with: impression.bean.country
+    select impression.bean.country_i18n, from: Bean.human_attribute_name(:country)
     click_button I18n.t('shops.search_form.submit_search')
-    expect(page).to have_content impression.bean.country
+    expect(page).to have_content impression.bean.country_i18n
 
     # roast
     select impression.bean.roast_i18n, from: Bean.human_attribute_name(:roast)
