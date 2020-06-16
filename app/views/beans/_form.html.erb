@@ -15,41 +15,7 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">public</i>
-
-		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }),
-				{include_blank: true}, {class: 'icons'} %>
-
-<!--	<select name="bean[country]" id="bean_country" class="icons">
- 		<option value=<%= Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"),k]} %> data-icon=<%= Bean.countries.keys.map {|k| "/assets/#{k}.png"} %>><%= Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"),k]} %></option>
-		<option value="Yemen" data-icon="/assets/Yemen.png" class="left"><%=I18n.t("enums.bean.country.Yemen")%></option>
-		<option value="Ethiopia" data-icon="/assets/Ethiopia.png" class="left"><%=I18n.t("enums.bean.country.Ethiopia")%></option>
-		<option value="Tanzania" data-icon="/assets/Tanzania.png" class="left"><%=I18n.t("enums.bean.country.Tanzania")%></option>
-		<option value="Kenya" data-icon="/assets/Kenya.png" class="left"><%=I18n.t("enums.bean.country.Kenya")%></option>
-		<option value="Rwanda" data-icon="/assets/Rwanda.png" class="left"><%=I18n.t("enums.bean.country.Rwanda")%></option>
-		<option value="Burundi" data-icon="/assets/Burundi.png" class="left"><%=I18n.t("enums.bean.country.Burundi")%></option>
-		<option value="India" data-icon="/assets/India.png" class="left"><%=I18n.t("enums.bean.country.India")%></option>
-		<option value="Indonesia" data-icon="/assets/Indonesia.png" class="left"><%=I18n.t("enums.bean.country.Indonesia")%></option>
-		<option value="PNG" data-icon="/assets/PNG.png" class="left"><%=I18n.t("enums.bean.country.PNG")%></option>
-		<option value="Mexico" data-icon="/assets/Mexico.png" class="left"><%=I18n.t("enums.bean.country.Mexico")%></option>
-		<option value="Guatemala" data-icon="/assets/Guatemala.png" class="left"><%=I18n.t("enums.bean.country.Guatemala")%></option>
-		<option value="Costa_Rica" data-icon="/assets/Costa_Rica.png" class="left"><%=I18n.t("enums.bean.country.Costa_Rica")%></option>
-		<option value="El_Salvador" data-icon="/assets/El_Salvador.png" class="left"><%=I18n.t("enums.bean.country.El_Salvador")%></option>
-		<option value="Nicaragua" data-icon="/assets/Nicaragua.png" class="left"><%=I18n.t("enums.bean.country.Nicaragua")%></option>
-		<option value="Honduras" data-icon="/assets/Honduras.png" class="left"><%=I18n.t("enums.bean.country.Honduras")%></option>
-		<option value="Panama" data-icon="/assets/Panama.png" class="left"><%=I18n.t("enums.bean.country.Panama")%></option>
-		<option value="Dominica" data-icon="/assets/Dominica.png" class="left"><%=I18n.t("enums.bean.country.Dominica")%></option>
-		<option value="Haiti" data-icon="/assets/Haiti.png" class="left"><%=I18n.t("enums.bean.country.Haiti")%></option>
-		<option value="Jamaica" data-icon="/assets/Jamaica.png" class="left"><%=I18n.t("enums.bean.country.Jamaica")%></option>
-		<option value="Brazil" data-icon="/assets/Brazil.png" class="left"><%=I18n.t("enums.bean.country.Brazil")%></option>
-		<option value="Colombia" data-icon="/assets/Colombia.png" class="left"><%=I18n.t("enums.bean.country.Colombia")%></option>
-		<option value="Ecuador" data-icon="/assets/Ecuador.png" class="left"><%=I18n.t("enums.bean.country.Ecuador")%></option>
-		<option value="Peru" data-icon="/assets/Peru.png" class="left"><%=I18n.t("enums.bean.country.Peru")%></option>
-		<option value="Bolivia" data-icon="/assets/Bolivia.png" class="left"><%=I18n.t("enums.bean.country.Bolivia")%></option>
-		<option value="Hawaii" data-icon="/assets/Hawaii.png" class="left"><%=I18n.t("enums.bean.country.Hawaii")%></option>
-		<option value="Cuba" data-icon="/assets/Cuba.png" class="left"><%=I18n.t("enums.bean.country.Cuba")%></option>
-		<option value="East_Timor" data-icon="/assets/East_Timor.png" class="left"><%=I18n.t("enums.bean.country.East_Timor")%></option>
-		</select>
--->
+		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }), {include_blank: true}, {class: 'icons'} %>
 		<%= b.label :country %>
 	</div><br />
 

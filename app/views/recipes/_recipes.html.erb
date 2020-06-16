@@ -16,7 +16,7 @@
 
 			<tbody>
 				<% Array(recipes).each do |recipe| %>
-				 <% unless recipe.bean.country.nil? %>
+				 <% unless recipe.bean.shop.name.nil? %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>

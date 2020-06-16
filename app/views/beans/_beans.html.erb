@@ -19,7 +19,7 @@
 
 		<tbody>
 			<% Array(beans).each do |bean| %>
-			 <% unless bean.country.nil? %>
+			 <% unless bean.shop.name.nil? %>
 				<tr>
 					<td id="bean_image_td">
 					<% if bean.bean_image? %>

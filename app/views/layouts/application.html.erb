@@ -45,12 +45,12 @@
 					<% if I18n.locale.to_s == "en" %>
 						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
             <ul id='dropdown_lang' class='dropdown-content'>
-            <li><%= link_to('JPN', :locale => 'ja')%></li>
+            <li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
 						</ul>
 					<% else %>
 						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
             <ul id='dropdown_lang' class='dropdown-content'>
-            <li><%= link_to('EN', :locale => 'en')%></li>
+            <li><%= link_to('EN Ver.', :locale => 'en')%></li>
 						</ul>
 					<% end %>
 
