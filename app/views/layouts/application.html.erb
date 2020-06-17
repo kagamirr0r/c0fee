@@ -59,15 +59,15 @@
 		</nav>
 	</header>
 
-  <div class="notice card light-blue lighten-4 blue-text col s12 m6">
-    <p><%= notice %></p>
-  </div>
-  <div class="alert card red accent-3 white-text col s12 m6">
-    <p><%= alert %></p>
-  </div>
-
   <%= yield %>
 
 </body>
 </html>
 
+	<% unless flash.empty? %>
+  <script type="text/javascript">
+    <% flash.each do |key, value| %>
+      M.toast({html: '<%= value %>', classes: 'teal lighten-2'})
+    <% end %>
+  </script>
+	<% end %>

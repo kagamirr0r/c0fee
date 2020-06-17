@@ -2,7 +2,7 @@
 	<%= render 'layouts/error_messages', model: b.object %>
 
 		<%= b.hidden_field :user_id, value: current_user.id %>
-		<%= b.hidden_field :shop_id, value: shop.id%>
+		<%= b.hidden_field :shop_id, value: shop.id %>
 
 	<div class="file-field input-field col s12">
 		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">
@@ -15,7 +15,7 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">public</i>
-		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }), {include_blank: true}, {class: 'icons'} %>
+		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"}} ]},selected: bean.country), {include_blank: true}, {class: 'icons',value: bean.country} %>
 		<%= b.label :country %>
 	</div><br />
 

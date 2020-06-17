@@ -20,7 +20,7 @@ class BeansController < ApplicationController
   end
 
   def edit
-    @shop = Shop.find(@bean.shop.id)
+		@shop = Shop.find(@bean.shop.id)
   end
 
   def create
@@ -33,10 +33,11 @@ class BeansController < ApplicationController
     end
   end
 
-  def update
-    @bean.update!(bean_params)
+	def update
+		@bean.update!(bean_params)
     redirect_to my_page_path(current_user), notice: t('beans.flash.edited_bean')
-  rescue StandardError
+	rescue StandardError
+		@shop = Shop.find(@bean.shop.id)
     render action: 'edit'
   end
 
