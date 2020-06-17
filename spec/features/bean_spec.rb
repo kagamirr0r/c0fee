@@ -26,8 +26,11 @@ RSpec.feature 'Beans', type: :feature do
     select impression.i_sweet, from: 'bean_impression_attributes_i_sweet'
     select impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
     fill_in 'bean_impression_attributes_i_comment', with: impression.i_comment
-    click_button I18n.t('beans.form.register')
-    expect(page).to have_content I18n.t('beans.flash.registered_bean')
+		click_button I18n.t('beans.form.register')
+		within '.teal' do
+			expect(page).to have_content I18n.t('beans.flash.registered_bean')
+		end
+
 
     # show
     bean = Bean.last
