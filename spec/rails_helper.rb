@@ -9,21 +9,17 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
-Capybara.register_driver :remote_chrome do |app|
-  url = "http://chrome:4444/wd/hub"
-  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
-    "goog:chromeOptions" => {
-      "args" => [
-        "no-sandbox",
-        "headless",
-        "disable-gpu",
-        "window-size=1680,1050"
-      ]
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome, options: {
+      browser: :remote,
+      url: ENV.fetch("SELENIUM_DRIVER_URL"),
+      desired_capabilities: :chrome
     }
-  )
-  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
+    Capybara.server_host = 'web'
+    Capybara.app_host='http://web'
+  end
 end
-
 require 'devise'
 require File.expand_path('spec/support/controller_macros.rb')
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -58,17 +54,6 @@ RSpec.configure do |config|
   # instead of true.
 
 	config.use_transactional_fixtures = false
-
-	config.before(:each, :type, :system) do
-		driven_by :rack_test
-	end
-
-	config.before(:each, :type, :system, js: true) do
-		driven_by :remote_chrome
-		Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-		Capybara.server_port = 3000
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-	end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

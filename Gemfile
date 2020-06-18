@@ -79,7 +79,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'capybara'
 	gem 'selenium-webdriver'
-	gem 'webdrivers'
   gem 'database_rewinder'
   gem 'better_errors'
   gem 'binding_of_caller'
