@@ -485,6 +485,7 @@ DEPENDENCIES
   rubocop-faker
   rubocop-rails
   sassc-rails
+  selenium-webdriver
   solargraph
   spring
   spring-commands-rspec

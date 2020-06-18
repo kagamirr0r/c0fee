@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Beans', type: :feature do
+RSpec.feature 'Beans', type: :system do
   let(:user) { create :user }
   let(:impression) { build :impression }
   let(:another_impression) { build :another_impression }
@@ -9,7 +9,7 @@ RSpec.feature 'Beans', type: :feature do
     log_in(user)
   end
 
-  scenario 'CRUD of bean', js: true do
+  scenario 'CRUD of bean' do
     # create
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
