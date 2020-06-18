@@ -9,7 +9,7 @@ RSpec.feature 'Beans', type: :feature do
     log_in(user)
   end
 
-  scenario 'CRUD of bean' do
+  scenario 'CRUD of bean', js: true do
     # create
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
