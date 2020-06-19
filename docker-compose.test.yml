@@ -23,7 +23,7 @@ services:
       - db
       - selenium_chrome
   selenium_chrome:
-    image: selenium/standalone-chrome:latest
+    image: selenium/standalone-chrome-debug:latest
     ports:
       - 4444:4444
     logging:
