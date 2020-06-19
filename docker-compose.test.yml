@@ -14,7 +14,6 @@ services:
     environment:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       RAILS_ENV: test
-      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     volumes:
       - .:/app
     env_file: .env.test
@@ -22,6 +21,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - selenium_chrome
   selenium_chrome:
     image: selenium/standalone-chrome:latest
     ports:
