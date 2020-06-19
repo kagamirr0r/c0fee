@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Beans', type: :system do
+RSpec.feature 'Beans', type: :system,js: true do
   let(:user) { create :user }
   let(:impression) { build :impression }
   let(:another_impression) { build :another_impression }
@@ -27,7 +27,7 @@ RSpec.feature 'Beans', type: :system do
     select impression.i_bitter, from: 'bean_impression_attributes_i_bitter'
     fill_in 'bean_impression_attributes_i_comment', with: impression.i_comment
 		click_button I18n.t('beans.form.register')
-		expect(find('.lighten-2').text).to eq I18n.t('beans.flash.registered_bean')
+		expect(page).to have_content eq I18n.t('beans.flash.registered_bean')
 
 
     # show
