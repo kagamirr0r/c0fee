@@ -23,7 +23,9 @@ services:
     depends_on:
       - db
   selenium_chrome:
-    image: selenium/standalone-chrome-debug
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
     logging:
       driver: none
 volumes:

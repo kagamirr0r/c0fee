@@ -9,17 +9,14 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
-RSpec.configure do |config|
-  config.before(:each, type: :system) do
-    driven_by :selenium, using: :headless_chrome, options: {
-      browser: :remote,
-      url: ENV.fetch("SELENIUM_DRIVER_URL"),
-      desired_capabilities: :chrome
-    }
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 3000
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-  end
+Capybara.register_driver :selenium_chrome do |app|
+	url = "http://chrome:4444/wd/hub"
+	options = Selenium::WebDriver::Chrome::Options.new
+	options.add_argument('no-sandbox')
+	options.add_argument('headless')
+	options.add_argument('disable-gpu')
+  options.add_argument('window-size=1440,990')
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 require 'devise'
 require File.expand_path('spec/support/controller_macros.rb')
@@ -50,6 +47,17 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+
+	config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 3000
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
