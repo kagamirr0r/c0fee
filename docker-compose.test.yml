@@ -10,11 +10,10 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.production
+      dockerfile: Dockerfile.test
     environment:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       RAILS_ENV: test
-      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     volumes:
       - .:/app
     env_file: .env.test
@@ -22,11 +21,5 @@ services:
       - "3000:3000"
     depends_on:
       - db
-      - chrome
-  chrome:
-    image: selenium/standalone-chrome-debug:latest
-    ports:
-      - 4444:4444
-      - 5900:5900
 volumes:
   datavol:
