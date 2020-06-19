@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Beans', type: :system do
+RSpec.feature 'Beans', type: :system, js: true do
   let(:user) { create :user }
   let(:impression) { build :impression }
   let(:another_impression) { build :another_impression }
