@@ -38,28 +38,25 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-
-	config.before(:each, type: :system) do
+  config.before(:each, type: :system) do
     driven_by :rack_test
   end
 
-	RSpec.configure do |config|
-		config.before(:each, type: :system) do
-			driven_by :selenium, using: :headless_chrome, options: {
-				browser: :remote,
-				url: ENV.fetch("SELENIUM_DRIVER_URL"),
-				desired_capabilities: :chrome
-			}
-			Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-			Capybara.server_port = 3000
-			Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-		end
-	end
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome, options: {
+      browser: :remote,
+      url: ENV.fetch('SELENIUM_DRIVER_URL'),
+      desired_capabilities: :chrome
+    }
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 3000
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
 
-	config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

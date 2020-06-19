@@ -78,7 +78,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rails-controller-testing'
   gem 'capybara'
-	gem 'selenium-webdriver'
+  gem 'selenium-webdriver'
   gem 'database_rewinder'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -104,7 +104,6 @@ group :development do
 end
 
 group :test do
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

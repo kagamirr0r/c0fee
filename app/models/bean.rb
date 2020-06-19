@@ -8,7 +8,7 @@ class Bean < ApplicationRecord
 
   enum country: { Yemen: 0, India: 1, Indonesia: 2, Ecuador: 3, Ethiopia: 4, El_Salvador: 5, Cuba: 6,
                   Guatemala: 7, Kenya: 8, Costa_Rica: 9, Colombia: 10, Jamaica: 11, Tanzania: 12,
-                  China: 13, Dominica: 14, Nicaragua: 15, Nepal: 16, PNG: 17, Panama: 18,Haiti: 19,
+                  China: 13, Dominica: 14, Nicaragua: 15, Nepal: 16, PNG: 17, Panama: 18, Haiti: 19,
                   Hawaii: 20, East_Timor: 21, Brazil: 22, Burundi: 23, Vietnam: 24, Peru: 25, Bolivia: 26, Honduras: 27,
                   Myanmar: 28, Mexico: 29, Rwanda: 30 }
   enum process: { washed: 0, natural: 1, pulped_natural: 2, white_honey: 3, yellow_honey: 4, red_honey: 5, black_honey: 6, sumatera: 7 }
