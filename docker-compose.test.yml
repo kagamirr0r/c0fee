@@ -10,7 +10,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile.production
     environment:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       RAILS_ENV: test
@@ -21,5 +21,10 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
 volumes:
   datavol:

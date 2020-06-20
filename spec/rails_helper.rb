@@ -14,15 +14,19 @@ require File.expand_path('spec/support/controller_macros.rb')
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
-Capybara.register_driver :selenium_chrome_headless do |app|
-  options = ::Selenium::WebDriver::Chrome::Options.new
-
-  options.add_argument('--headless')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-dev-shm-usage')
-  options.add_argument('--window-size=1400,1400')
-
-  driver = Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+Capybara.register_driver :remote_chrome do |app|
+  url = "http://chrome:4444/wd/hub"
+  caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(
+    "goog:chromeOptions" => {
+      "args" => [
+        "no-sandbox",
+        "headless",
+        "disable-gpu",
+        "window-size=1680,1050"
+      ]
+    }
+  )
+  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, desired_capabilities: caps)
 end
 
 Capybara.javascript_driver = :selenium_chrome_headless
@@ -55,7 +59,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-	config.before(:each, type: :system) do
+  config.before(:each, type: :system) do
     driven_by :rack_test
   end
 
@@ -68,6 +72,16 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = false
 
+	config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 3000
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
