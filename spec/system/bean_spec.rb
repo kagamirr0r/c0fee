@@ -13,7 +13,8 @@ RSpec.feature 'Beans', type: :system, js: true do
     # create
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
-    click_on 'local_cafe'
+		click_on 'local_cafe'
+		click_on 'bean_country'
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
