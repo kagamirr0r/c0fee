@@ -13,7 +13,7 @@
     </div>
   </div><br />
 
-	<div class="input-field col s12">
+	<div class="input-field col s12 beancountry">
 		<i class="material-icons prefix">public</i>
 		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"}} ]},selected: bean.country), {include_blank: true}, {class: 'icons',value: bean.country} %>
 		<%= b.label :country %>
