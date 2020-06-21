@@ -14,7 +14,7 @@ RSpec.feature 'Beans', type: :system, js: true do
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
 		click_on 'local_cafe'
-		expect(page).to have_css('.icons')
+		expect(page).to have_css('.icons', visible: false)
     select impression.bean.country_i18n, from: 'bean[country]'
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
