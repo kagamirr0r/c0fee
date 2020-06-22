@@ -61,9 +61,6 @@
 
   <%= yield %>
 
-</body>
-</html>
-
 	<% unless flash.empty? %>
   <script type="text/javascript">
     <% flash.each do |key, value| %>
@@ -71,3 +68,7 @@
     <% end %>
   </script>
 	<% end %>
+</body>
+</html>
+
+
