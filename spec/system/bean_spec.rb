@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Beans', type: :system, js: true do
+RSpec.feature 'Beans', type: :system do
   let(:user) { create :user }
   let(:impression) { build :impression }
   let(:another_impression) { build :another_impression }
@@ -14,7 +14,6 @@ RSpec.feature 'Beans', type: :system, js: true do
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
 		click_on 'local_cafe'
-		find('.beancountry').click
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
