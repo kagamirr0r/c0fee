@@ -13,13 +13,13 @@ RSpec.feature 'Beans', type: :feature do
     # create
     click_on I18n.t('layouts.application.bean')
     click_on 'local_cafe'
-    click_on 'local_cafe'
-    select impression.bean.country_i18n, from: 'bean_country'
+		click_on 'local_cafe'
+    select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
     fill_in 'bean_variety', with: impression.bean.variety
-    select impression.bean.process_i18n, from: 'bean_process'
-    select impression.bean.roast_i18n, from: 'bean_roast'
+    select impression.bean.process_i18n
+    select impression.bean.roast_i18n
     fill_in 'bean_roast_date', with: impression.bean.roast_date
     fill_in 'bean_price', with: impression.bean.price
     select impression.i_sour, from: 'bean_impression_attributes_i_sour'

@@ -51,6 +51,8 @@ jobs:
       - run:
           name: test
           command: docker-compose -f docker-compose.test.yml run web bin/rspec
+      - store_artifacts:
+          path: tmp/screenshots/
       - run:
           name: docker-compose down
           command: docker-compose -f docker-compose.test.yml down

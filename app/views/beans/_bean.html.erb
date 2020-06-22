@@ -16,7 +16,7 @@
 			<tbody>
 				<tr>
 					<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
-					<td><%= bean.country_i18n %></td>
+					<td><%= image_tag "#{bean.country}.png" ,size:'120x90',class: "tooltipped",data:{position:"right",tooltip: bean.country_i18n } %></td>
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
