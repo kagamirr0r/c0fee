@@ -36,6 +36,7 @@ ja:
         temperature: 湯温
         amount: 豆量
         extraction: 抽出
+        extracted_amount: 抽出量
         recipe_image: レシピ画像
         updated_at: 最終更新
       taste:

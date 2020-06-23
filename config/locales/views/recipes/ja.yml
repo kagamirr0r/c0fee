@@ -13,6 +13,7 @@ ja:
       select_recipe_image: 画層を選ぶ
       amount: 豆の量/g
       temperature: 湯温(°C)
+      extracted_amount: 抽出量(ml)
     make_recipe_button:
       make_recipe: レシピを作成
     recipe: &recipe
