@@ -20,6 +20,8 @@ en:
     index:
       title: Shops Index
       register_shop: Register Shop
+      Did_you_buy_a_coffee_beans_following_shops?: Did you buy a coffee beans following shops?
+      If_you_click_cup_button_you_can_register_a_bean: If you click cup button you can register a bean!
     new:
       <<: *form
       title: Register
