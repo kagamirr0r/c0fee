@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :bean, class: Bean do
     country { Faker::Number.within(range: 0..30) }
     area { Faker::Nation.capital_city }
-    variety { Faker::Coffee.variety }
+    variety { Faker::Number.within(range: 0..13) }
     farm { Faker::Name.first_name }
     process { Faker::Number.within(range: 0..7) }
     roast { Faker::Number.within(range: 0..7) }
@@ -15,7 +15,7 @@ FactoryBot.define do
   factory :another_bean, class: Bean do
     country { Faker::Number.within(range: 0..30) }
     area { Faker::Nation.capital_city }
-    variety { Faker::Coffee.variety }
+    variety { Faker::Number.within(range: 0..13) }
     farm { Faker::Name.first_name }
     process { Faker::Number.within(range: 0..7) }
     roast { Faker::Number.within(range: 0..7) }

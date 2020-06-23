@@ -3,13 +3,13 @@
 
 		<div class="input-field col s12 l2 ">
 			<i class="material-icons prefix">swap_vert</i>
-			<%= r.select :hot_ice,Recipe.hot_ices.keys.map {|k| [I18n.t("enums.recipe.hot_ice.#{k}"),k]}, include_blank: true %>
+			<%= r.select :hot_ice,Recipe.hot_ices.keys.map {|k| I18n.t("enums.recipe.hot_ice.#{k}")}, include_blank: true %>
 			<%= r.label(:hot_ice,Recipe.human_attribute_name(:hot_ice))%>
 		</div>
 
 		<div class="input-field col s12 l2 ">
 		<i class="material-icons prefix">local_drink</i>
-			<%= r.select :extraction, Recipe.extractions.keys.map {|k| [I18n.t("enums.recipe.extraction.#{k}"),k]}, include_blank: true %>
+			<%= r.select :extraction, Recipe.extractions.keys.map {|k| I18n.t("enums.recipe.extraction.#{k}")}, include_blank: true %>
 			<%= r.label(:extraction,Recipe.human_attribute_name(:extraction))%>
 		</div>
 

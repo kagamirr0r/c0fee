@@ -33,6 +33,21 @@ ja:
         Myanmar: ミャンマー
         Mexico: メキシコ
         Rwanda: ルワンダ
+      variety:
+        typica: ティピカ
+        bourbon: ブルボン
+        catura: カトゥーラ
+        catuai: カトゥアイ
+        mundonovo: ムンドノーヴォ
+        mandheling: マンデリン
+        maragogype: マラゴジッペ
+        pacamara: パカマラ
+        pacas: パカス
+        geisha: ゲイシャ
+        ethiopian: エチオピア原種
+        blue_mountain: ブルーマウンテン
+        SL28: SL28
+        SL34: SL34
       process:
         washed: ウォッシュド
         natural: ナチュラル

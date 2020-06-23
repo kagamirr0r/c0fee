@@ -10,7 +10,8 @@ class Bean < ApplicationRecord
                   Guatemala: 7, Kenya: 8, Costa_Rica: 9, Colombia: 10, Jamaica: 11, Tanzania: 12,
                   China: 13, Dominica: 14, Nicaragua: 15, Nepal: 16, PNG: 17, Panama: 18, Haiti: 19,
                   Hawaii: 20, East_Timor: 21, Brazil: 22, Burundi: 23, Vietnam: 24, Peru: 25, Bolivia: 26, Honduras: 27,
-                  Myanmar: 28, Mexico: 29, Rwanda: 30 }
+									Myanmar: 28, Mexico: 29, Rwanda: 30 }
+	enum variety: { typica: 0, bourbon: 1, catura: 2, catuai: 3, mundonovo: 4, mandheling: 5, maragogype: 6, pacamara: 7, pacas:8, geisha: 9, ethiopian: 10, blue_mountain:11, SL28: 12, SL34:13 }
   enum process: { washed: 0, natural: 1, pulped_natural: 2, white_honey: 3, yellow_honey: 4, red_honey: 5, black_honey: 6, sumatera: 7 }
   enum roast: { light: 0, cinnamon: 1, medium: 2, high: 3, city: 4, fullcity: 5, french: 6, italian: 7 }
 

@@ -24,7 +24,7 @@ create_table "beans", force: :cascade do |t|
   t.integer "shop_id"
   t.integer "country"
   t.string "area"
-  t.string "variety"
+  t.integer "variety"
   t.string "farm"
   t.integer "process"
   t.integer "roast"
