@@ -36,6 +36,7 @@ en:
         temperature: Temperature
         amount: Amount
         extraction: Extraction
+        extracted_amount: Extracted Amount
         recipe_image: Recipe image
         updated_at: Updated at
       taste:

@@ -37,6 +37,12 @@
 		</div><br />
 
 		<div class="input-field col s12">
+			<i class="material-icons prefix">whatshot</i>
+			<%= r.label t('.extracted_amount') %>
+			<%= r.number_field :extracted_amount, max: 1000 %>
+		</div><br />
+
+		<div class="input-field col s12">
 		<i class="material-icons prefix">local_drink</i>
 			<%= r.select :extraction, Recipe.extractions.keys.map {|k| [I18n.t("enums.recipe.extraction.#{k}"),k]}, include_blank: true %>
 			<%= r.label :extraction %>

@@ -59,6 +59,7 @@ create_table "recipes", force: :cascade do |t|
   t.integer "grind"
   t.integer "temperature"
   t.integer "amount"
+	t.integer "extracted_amount"
   t.integer "extraction"
   t.string "recipe_image"
   t.datetime "created_at", null: false

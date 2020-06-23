@@ -19,7 +19,7 @@
 				</tr>
 				<tr>
 					<th><%= image_tag 'bean.png',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
-					<td><%= link_to recipe.bean.country, bean_path(id: recipe.bean.id) %></td>
+					<td><%= link_to recipe.bean.country_i18n, bean_path(id: recipe.bean.id) %></td>
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:grind)%> >grain</i></th>
@@ -27,7 +27,7 @@
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
-					<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%></td>
+					<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%> / <%= recipe.extracted_amount %><% if recipe.extracted_amount?%>ml<%end%></td>
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
@@ -95,7 +95,7 @@ Chart.defaults.global.defaultFontSize = 20;
 var beanChart = new Chart(ctx,{
 	type: 'radar',
 	data: {
-		labels:[I18n.t('js.sour'),I18n.t('js.bitter'),I18n.t('js.sweet'),I18n.t('js.aroma'),I18n.t('js.fullbody')],
+		labels:[I18n.t('js.sour'),I18n.t('js.sweet'),I18n.t('js.bitter'),I18n.t('js.aroma'),I18n.t('js.fullbody')],
 		datasets: [{
 			data: [<%= recipe.taste.t_sour %>, <%= recipe.taste.t_sweet %>, <%= recipe.taste.t_bitter %>, <%= recipe.taste.t_aroma %>, <%= recipe.taste.t_fullbody %>],
 			backgroundColor: 'rgba(235,9,212,0.2)',
