@@ -13,7 +13,6 @@ create_table "bean_translations", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.string "area"
-  t.string "variety"
   t.string "farm"
   t.index ["bean_id"], name: "index_bean_translations_on_bean_id"
   t.index ["locale"], name: "index_bean_translations_on_locale"
