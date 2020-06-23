@@ -33,6 +33,21 @@ en:
         Vietnam: Vietnam
         East_Timor: East_Timor
         Myanmar: Myanmar
+      variety:
+        typica: Typica
+        bourbon: Bourbon
+        catura: Catura
+        catuai: Catuai
+        mundonovo: MundoNovo
+        mandheling: Mandheling
+        maragogype: Maragogype
+        pacamara: Pacamara
+        pacas: Pacas
+        geisha: Geisha
+        ethiopian: Ethiopian
+        blue_mountain: Blue Mountain
+        SL28: SL28
+        SL34: SL34
       process:
         washed: Washed
         natural: Natural

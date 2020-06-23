@@ -33,7 +33,7 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">local_florist</i>
-		<%= b.text_field :variety, class: "autocomplete"%>
+		<%= b.select :variety, Bean.varieties.keys.map {|k| [I18n.t("enums.bean.variety.#{k}"),k]}, include_blank: true %>
 		<%= b.label :variety %><br />
 	</div><br />
 
