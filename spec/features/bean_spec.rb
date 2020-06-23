@@ -17,7 +17,7 @@ RSpec.feature 'Beans', type: :feature do
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
-    select impression.bean.variety_i18n
+    select impression.bean.variety_i18n, from: 'bean_variety'
     select impression.bean.process_i18n
     select impression.bean.roast_i18n
     fill_in 'bean_roast_date', with: impression.bean.roast_date
