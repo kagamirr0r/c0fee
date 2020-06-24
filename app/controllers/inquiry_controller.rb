@@ -1,7 +1,7 @@
 class InquiryController < ApplicationController
 	def index
 		@inquiry = Inquiry.new
-		render action: :new
+		render action: :index
 	end
 
 	def confirm
@@ -18,7 +18,7 @@ class InquiryController < ApplicationController
 		@inquiry = Inquiry.new(inquiry_params)
 		InquilyMailer.send_mail(@inquiry).deliver_now
 
-		redirect_to my_page_path(current_user), notice: "お問い合わせを送信しました！"
+		redirect_to my_page_path(current_user), notice: "お問い合わせありがとうございました。", notice: "お問い合わせ内容を管理者に送信しました。"
 	end
 
 	def inquiry_params
