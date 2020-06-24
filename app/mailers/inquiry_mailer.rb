@@ -3,7 +3,7 @@ class InquiryMailer < ApplicationMailer
 		@inquiry = inquiry
 		mail(
 			from: 'cofee@system.com',
-			to: Rails.application.credentials.gmail[:address],
+			to: 'cofee.manager@gmail.com',
 			subject: '問い合わせ'
 		)
 	end
