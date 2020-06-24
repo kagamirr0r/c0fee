@@ -29,7 +29,7 @@ create_table "beans", force: :cascade do |t|
   t.integer "roast"
   t.integer "price"
   t.string "bean_image"
-	t.date "roast_date"
+  t.date "roast_date"
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.index ["shop_id"], name: "shop_ind_on_beans"
@@ -43,6 +43,13 @@ create_table "impressions", force: :cascade do |t|
   t.integer "i_bitter"
   t.text "i_comment"
   t.index ["bean_id"], name: "bean_ind_on_impressions"
+end
+
+create_table "inquiries", force: :cascade do |t|
+  t.string "name"
+  t.string "message"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
 end
 
 create_table "recipe_likes", force: :cascade do |t|
@@ -59,7 +66,7 @@ create_table "recipes", force: :cascade do |t|
   t.integer "grind"
   t.integer "temperature"
   t.integer "amount"
-	t.integer "extracted_amount"
+  t.integer "extracted_amount"
   t.integer "extraction"
   t.string "recipe_image"
   t.datetime "created_at", null: false
