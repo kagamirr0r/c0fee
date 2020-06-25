@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     root 'top_pages#index'
 
-		resources :inquiries, only: [:new, :create]
+    resources :inquiries, only: [:new, :create]
 
     resources :my_pages, only: [:show]
 
