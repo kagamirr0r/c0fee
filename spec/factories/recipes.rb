@@ -5,8 +5,8 @@ FactoryBot.define do
     hot_ice { Faker::Number.within(range: 0..1) }
     grind { Faker::Number.within(range: 0..5) }
     temperature { Faker::Number.within(range: 60..100) }
-		extracted_amount { Faker::Number.within(range: 1..1000) }
-		amount { Faker::Number.within(range: 1..1000) }
+    extracted_amount { Faker::Number.within(range: 1..1000) }
+    amount { Faker::Number.within(range: 1..1000) }
     extraction { Faker::Number.within(range: 0..10) }
     association :bean
     association :user
@@ -17,8 +17,8 @@ FactoryBot.define do
     bean_id { Faker::Number.number(digits: 1) }
     hot_ice { Faker::Number.within(range: 0..1) }
     grind { Faker::Number.within(range: 0..5) }
-		temperature { Faker::Number.within(range: 60..100) }
-		extracted_amount { Faker::Number.within(range: 1..1000) }
+    temperature { Faker::Number.within(range: 60..100) }
+    extracted_amount { Faker::Number.within(range: 1..1000) }
     amount { Faker::Number.within(range: 1..1000) }
     extraction { Faker::Number.within(range: 0..10) }
     association :bean

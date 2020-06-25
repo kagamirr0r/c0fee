@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     end
 
     root 'top_pages#index'
+
+    get 'inquiry', to: 'inquiry#index'
+    get 'inquiry/confirm' => redirect("/inquiry")
+    post 'inquiry/confirm' => 'inquiry#confirm'
+
     resources :my_pages, only: [:show]
 
     resources :users, only: [:show, :index]
