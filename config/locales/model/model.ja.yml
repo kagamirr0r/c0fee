@@ -27,6 +27,10 @@ ja:
         i_sweet: 甘味
         i_bitter: 苦味
         i_comment: コメント
+      inquiry:
+        name: お名前
+        email: メールアドレス
+        message: ご内容
       recipe:
         user_id: ユーザー
         bean_id: 豆

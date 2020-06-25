@@ -1,5 +1,5 @@
 class Inquiry < ApplicationRecord
-  validates :name, presence: { message: 'お名前をご入力ください'}
-  validates :email, presence: { message: 'メールアドレスをご入力ください'}, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'メールアドレスの形式をご確認ください'}
-  validates :message, presence: { message: 'お問い合わせ内容をご入力ください'}, length: { in: 10..300, message: 'お問い合わせ内容は１0から300文字以内でご入力ください' }
+  validates :name, presence: { message: I18n.t('errors.messages.Please_enter_your_name')}
+  validates :email, presence: { message: I18n.t('errors.messages.Please_input_your_email_address')}, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: I18n.t('errors.messages.Please_check_the_format_of_your_email_address'})
+  validates :message, presence: { message: I18n.t('errors.messages.Please_enter_your_inquiry')}, length: { in: 10..300, message: I18n.t('errors.messages.Please_enter_your_inquiry_within_10_to_300_characters') }
 end

@@ -42,3 +42,8 @@ ja:
       mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
       min_size_error: "ファイルを%{min_size}バイト以上のサイズにしてください"
       max_size_error: "ファイルを%{max_size}バイト以下のサイズにしてください"
+      Please_enter_your_name: お名前をご入力ください
+      Please_input_your_email_address: メールアドレスをご入力ください
+      Please_enter_your_inquiry: お問い合わせ内容をご入力ください
+      Please_check_the_format_of_your_email_address: メールアドレスの形式をご確認ください
+      Please_enter_your_inquiry_within_10_to_300_characters: お問い合わせ内容は１0から300文字以内でご入力ください

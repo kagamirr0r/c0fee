@@ -48,3 +48,8 @@ en:
       mini_magick_processing_error: "MiniMagick was unable to process the file. Please check the image. Error message: %{e}"
       min_size_error: "Make the file a size of at least %{min_size} bytes"
       max_size_error: "Make the file no larger than %{max_size} bytes"
+      Please_enter_your_name: Please enter your name
+      Please_input_your_email_address: Please input your email address
+      Please_enter_your_inquiry: Please enter your inquiry
+      Please_check_the_format_of_your_email_address: Please check the format of your email address
+      Please_enter_your_inquiry_within_10_to_300_characters: Please enter your inquiry within 10 to 300 characters

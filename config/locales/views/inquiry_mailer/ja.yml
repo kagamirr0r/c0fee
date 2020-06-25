@@ -1,0 +1,7 @@
+ja:
+  inquiry_mailer:
+    send_mail:
+      title: C0FEEお問い合わせがありました
+      customer_name: お客様
+      customer_email_address: お客様メールアドレス
+      contents_of_inquiry: お問い合わせ内容

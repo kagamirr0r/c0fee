@@ -1,0 +1,11 @@
+en:
+  inquiries:
+    new:
+      title: Inquiry
+      required: Required
+      send: Send
+      Are_you_sure_you_want_to_send_it?: Are you sure you want to send it?
+      cancel: Cancel
+    flash:
+      Thank_you_for_your_inquiry: Thank you for your inquiry
+      Inquiry_sent_to_administrator: Inquiry sent to administrator

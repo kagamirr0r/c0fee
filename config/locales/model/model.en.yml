@@ -27,6 +27,10 @@ en:
         i_sweet: Sweet
         i_bitter: Bitter
         i_comment: Comment
+      inquiry:
+        name: Name
+        email: Email
+        message: Message
       recipe:
         user_id: User
         bean_id: Bean
