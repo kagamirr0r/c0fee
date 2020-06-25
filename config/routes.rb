@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
     root 'top_pages#index'
 
-    get 'inquiry', to: 'inquiry#index'
-    get 'inquiry/confirm' => redirect("/inquiry")
-    post 'inquiry/confirm' => 'inquiry#confirm'
+		resources :inquiries, only: [:new, :create]
 
     resources :my_pages, only: [:show]
 
