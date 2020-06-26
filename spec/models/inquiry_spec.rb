@@ -15,7 +15,7 @@ RSpec.describe Inquiry, type: :model do
 		end
 
 		it 'is invalid except for normal email address format' do
-			inquiry.email = aa.com@bbb
+			inquiry.email = 'aa.com@bbb'
 			expect(inquiry.valid?).to eq(false)
 		end
 
