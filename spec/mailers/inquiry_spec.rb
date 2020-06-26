@@ -20,7 +20,7 @@ RSpec.describe InquiryMailer, type: :mailer do
     end
 
     it 'subject of mail' do
-      expect(mail.subject).to eq [Inquiry.model_name.human.to_s]
+      expect(mail.subject).to eq [Inquiry.model_name.human]
     end
   end
 end
