@@ -28,7 +28,7 @@ RSpec.describe Inquiry, type: :model do
 			inquiry.message = 'a' * 9
 			expect(inquiry.valid?).to eq(false)
 
-			inquiry.message = 'a' * 101
+			inquiry.message = 'a' * 301
 			expect(inquiry.valid?).to eq(false)
 		end
 	end
