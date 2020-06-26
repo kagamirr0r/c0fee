@@ -5,6 +5,9 @@ ja:
       bean: 豆
       recipe: レシピ
       shop: 店/
+      impression: 印象
+      taste: 味
+      inquiry: 問い合わせ
     attributes:
       user:
         username: 名前

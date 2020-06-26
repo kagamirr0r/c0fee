@@ -5,6 +5,9 @@ en:
       bean: Bean
       recipe: Recipe
       shop: Shop
+      impression: Impression
+      taste: Taste
+      inquiry: Inquiry
     attributes:
       user:
         username: Username

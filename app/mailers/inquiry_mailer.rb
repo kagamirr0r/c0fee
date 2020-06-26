@@ -4,7 +4,7 @@ class InquiryMailer < ApplicationMailer
     mail(
       from: 'cofee@system.com',
       to: 'cofee.manager@gmail.com',
-      subject: '問い合わせ'
+      subject: Inquiry.model_name.human
     )
   end
 end
