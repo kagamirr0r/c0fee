@@ -2,8 +2,8 @@ class InquiryMailer < ApplicationMailer
   def send_mail(inquiry)
     @inquiry = inquiry
     mail(
-      from: 'cofee@system.com',
-      to: 'cofee.manager@gmail.com',
+      from: 'c0fee@system.com',
+      to: Rails.application.credentials.gmail[:address],
       subject: Inquiry.model_name.human
     )
   end

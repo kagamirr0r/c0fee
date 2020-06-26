@@ -11,6 +11,14 @@ RSpec.describe InquiryMailer, type: :mailer do
 			end.to change { ActionMailer::Base.deliveries.size }.by(1)
 		end
 
+		it "from of mail" do
+			expect(mail.from).to eq 'c0fee@system.com'
+		end
+
+		it "to of mail" do
+			expect(mail.to).to eq Rails.application.credentials.gmail[:address]
+		end
+
 		it "subject of mail" do
 			expect(mail.subject).to eq Inquiry.model_name.human
 		end
