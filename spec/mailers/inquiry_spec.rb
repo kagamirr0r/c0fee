@@ -16,11 +16,11 @@ RSpec.describe InquiryMailer, type: :mailer do
     end
 
     it 'to of mail' do
-      expect(mail.to).to eq [Rails.application.credentials.gmail[:address]]
+      expect(mail.to).to eq Rails.application.credentials.gmail[:address]
     end
 
     it 'subject of mail' do
-      expect(mail.subject).to eq [Inquiry.model_name.human]
+      expect(mail.subject).to eq Inquiry.model_name.human
     end
   end
 end
