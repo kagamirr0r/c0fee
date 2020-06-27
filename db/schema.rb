@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_085118) do
+ActiveRecord::Schema.define(version: 2020_06_24_045002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "country"
     t.string "area"
-    t.string "variety"
     t.string "farm"
     t.index ["bean_id"], name: "index_bean_translations_on_bean_id"
     t.index ["locale"], name: "index_bean_translations_on_locale"
@@ -38,14 +36,15 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
   create_table "beans", force: :cascade do |t|
     t.integer "user_id"
     t.integer "shop_id"
-    t.string "country"
+    t.integer "country"
     t.string "area"
-    t.string "variety"
+    t.integer "variety"
     t.string "farm"
     t.integer "process"
     t.integer "roast"
     t.integer "price"
     t.string "bean_image"
+    t.date "roast_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "shop_ind_on_beans"
@@ -54,11 +53,18 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
 
   create_table "impressions", force: :cascade do |t|
     t.integer "bean_id", null: false
-    t.integer "i_sour", null: false
-    t.integer "i_sweet", null: false
-    t.integer "i_bitter", null: false
+    t.integer "i_sour"
+    t.integer "i_sweet"
+    t.integer "i_bitter"
     t.text "i_comment"
     t.index ["bean_id"], name: "bean_ind_on_impressions"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipe_likes", force: :cascade do |t|
@@ -71,10 +77,11 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "bean_id"
-    t.integer "hot_ice", default: 0, null: false
+    t.integer "hot_ice", default: 0
     t.integer "grind"
     t.integer "temperature"
     t.integer "amount"
+    t.integer "extracted_amount"
     t.integer "extraction"
     t.string "recipe_image"
     t.datetime "created_at", null: false
@@ -102,9 +109,9 @@ ActiveRecord::Schema.define(version: 2020_06_01_085118) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.string "address"
-    t.string "url", null: false
+    t.string "url"
     t.string "shop_image"
     t.float "latitude"
     t.float "longitude"

@@ -36,8 +36,9 @@
 
 						<ul id='dropdown_nav' class='dropdown-content'>
 							<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
-							<li><%= link_to_unless_current t('.edit_profile'), edit_user_registration_path %></li>
-							<li><%= link_to_unless_current t('.log_out'), destroy_user_session_path, method: :delete %></li>
+							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
+							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
+							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
 						</ul>
 
 					<% end %>

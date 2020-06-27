@@ -31,7 +31,7 @@
   </div><br />
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>t('.currently_waiting_confirmation_for_email'): <%= resource.unconfirmed_email %></div>
+    <div class="red white-text"><%= resource.unconfirmed_email %>の<%=t('.currently_waiting_confirmation_for_email')%> </div>
   <% end %>
 
   <div class="input-field col s12">

@@ -1,0 +1,41 @@
+<%= form_with(model: @inquiry, local: true) do |f| %>
+
+<h3 id="index_title"><%= t('.title') %></h3>
+
+  <% if @inquiry.errors.any? %>
+		<% @inquiry.errors.each do |attr, msg| %>
+			<script type="text/javascript">
+				M.toast({html: '<%= msg %>', classes: 'red accent-3'})
+			</script>
+		<% end %>
+  <% end %>
+
+  <table>
+    <tr>
+      <th><%= Inquiry.human_attribute_name(:name) %><span class="red-text"> <%= t('.required')%></span></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+
+    <tr>
+      <th><%= Inquiry.human_attribute_name(:email) %><span class="red-text"> <%= t('.required')%></span></th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+
+    <tr>
+      <th><%= Inquiry.human_attribute_name(:message) %><span class="red-text"> <%= t('.required')%></span></th>
+      <td><%= f.text_area :message %></td>
+    </tr>
+
+  </table>
+	<a class="btn-small modal-trigger" href="#inquiry_submit_confirmation" ><%= t('.send') %></a>
+
+	<div id="inquiry_submit_confirmation" class="modal">
+    <div class="modal-content red-text" >
+      <h4 id="index_title"><%= t('.Are_you_sure_you_want_to_send_it?')%></h4>
+    </div>
+    <div class="modal-footer">
+			<%= link_to t('.cancel'),"#", class: "modal-close btn-flat blue-text" %>
+			<%= f.submit t('.send'),class: "btn-flat red white-text" %>
+    </div>
+  </div>
+<% end %>

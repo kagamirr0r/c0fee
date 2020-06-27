@@ -5,6 +5,9 @@ ja:
       bean: 豆
       recipe: レシピ
       shop: 店/
+      impression: 印象
+      taste: 味
+      inquiry: 問い合わせ
     attributes:
       user:
         username: 名前
@@ -20,13 +23,17 @@ ja:
         roast_date: 焙煎日
         price: 価格
         shop: 店
-        bean_image: 豆画像
+        bean_image: 豆の画像
         updated_at: 最終更新
       impression:
         i_sour: 酸味
         i_sweet: 甘味
         i_bitter: 苦味
         i_comment: コメント
+      inquiry:
+        name: お名前
+        email: メールアドレス
+        message: ご内容
       recipe:
         user_id: ユーザー
         bean_id: 豆

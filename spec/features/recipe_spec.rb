@@ -17,8 +17,8 @@ RSpec.feature 'Recipes', type: :feature do
     select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount
-		select taste.recipe.extraction_i18n, from: 'recipe_extraction'
-		fill_in 'recipe_extracted_amount', with: taste.recipe.extracted_amount
+    select taste.recipe.extraction_i18n, from: 'recipe_extraction'
+    fill_in 'recipe_extracted_amount', with: taste.recipe.extracted_amount
     fill_in 'recipe_temperature', with: taste.recipe.temperature
     select taste.t_sour, from: 'recipe_taste_attributes_t_sour'
     select taste.t_sweet, from: 'recipe_taste_attributes_t_sweet'
@@ -39,8 +39,8 @@ RSpec.feature 'Recipes', type: :feature do
     select another_taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select another_taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: another_taste.recipe.amount
-		select another_taste.recipe.extraction_i18n, from: 'recipe_extraction'
-		fill_in 'recipe_extracted_amount', with: another_taste.recipe.extracted_amount
+    select another_taste.recipe.extraction_i18n, from: 'recipe_extraction'
+    fill_in 'recipe_extracted_amount', with: another_taste.recipe.extracted_amount
     fill_in 'recipe_temperature', with: another_taste.recipe.temperature
     select another_taste.t_sour, from: 'recipe_taste_attributes_t_sour'
     select another_taste.t_sweet, from: 'recipe_taste_attributes_t_sweet'

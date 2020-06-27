@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
 
     root 'top_pages#index'
+
+    resources :inquiries, only: [:new, :create]
+
     resources :my_pages, only: [:show]
 
     resources :users, only: [:show, :index]
