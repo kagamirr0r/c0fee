@@ -1,0 +1,9 @@
+en:
+  top_pages:
+    index:
+      recent_beans: Recent beans
+      recent_recipes: Recent recipes
+      recent_shops: Recent shops
+      bean_index: Bean index
+      recipe_index: Recipe index
+      shop_index: Shop index

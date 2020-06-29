@@ -1,0 +1,12 @@
+ja:
+  layouts:
+    application:
+      bean: 豆
+      shop: 店
+      recipe: レシピ
+      edit_profile: プロフィール変更
+      log_out: ログアウト
+      create_account: アカウント作成
+      log_in: ログイン
+      my_page: マイページ
+      inquiry: お問い合わせ

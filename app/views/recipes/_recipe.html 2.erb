@@ -1,0 +1,134 @@
+<% if recipe.present? %>
+
+	<div id="recipe_plofile" >
+		<% if recipe.recipe_image? %>
+		<%= image_tag recipe.recipe_image.to_s, :size => '750x750' %>
+		<% else %>
+		<%= image_tag 'C0FEE.png', :size => '750x750' %>
+		<% end %></br>
+	</div>
+
+	<div id="chartContainer">
+		<canvas id="recipeChart"></canvas>
+	</div>
+		<table>
+			<tbody>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:hot_ice)%> >swap_vert</i></th>
+					<td><%= recipe.hot_ice_i18n %></td>
+				</tr>
+				<tr>
+					<th><%= image_tag 'bean.png',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
+					<td><%= link_to recipe.bean.country_i18n, bean_path(id: recipe.bean.id) %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:grind)%> >grain</i></th>
+					<td><%= recipe.grind_i18n %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
+					<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%> / <%= recipe.extracted_amount %><% if recipe.extracted_amount?%>ml<%end%></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
+					<td><%= recipe.extraction_i18n %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:temperature)%> >whatshot</i></th>
+					<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= t('.from_roast_date') %> >date_range</i></th>
+					<td><%= from_roast_date(recipe) %><%= t('.day') if recipe.bean.roast_date? %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Taste.human_attribute_name(:t_comment)%> >message</i></th>
+					<td><%= recipe.taste.t_comment %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
+					<td><%= link_to recipe.user.username, user_path(id: recipe.user.id) %></td>
+				</tr>
+				<tr>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:updated_at)%> >access_time</i></th>
+					<td><%= l recipe.updated_at %></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td><div id="recipe_like_button_<%= recipe.id %>" style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></div></td>
+				</tr>
+				<% if current_user == recipe.user%>
+					<tr>
+						<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>
+					</tr>
+					<tr>
+						<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
+					</tr>
+				<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<script>
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  I18n.fallbacks = true;
+</script>
+
+<script>
+$(window).on('load', function() {
+    $('.material-icons').removeClass('small');
+		$('.material-icons').addClass('medium');
+		$('.waves-light').removeClass('btn-small');
+		$('.waves-light').addClass('btn-large');
+});
+</script>
+
+<script>
+var ctx = document.getElementById("recipeChart").getContext('2d');
+ctx.canvas.height = 600;
+Chart.defaults.global.defaultFontSize = 20;
+
+var beanChart = new Chart(ctx,{
+	type: 'radar',
+	data: {
+		labels:[I18n.t('js.sour'),I18n.t('js.sweet'),I18n.t('js.bitter'),I18n.t('js.aroma'),I18n.t('js.fullbody')],
+		datasets: [{
+			data: [<%= recipe.taste.t_sour %>, <%= recipe.taste.t_sweet %>, <%= recipe.taste.t_bitter %>, <%= recipe.taste.t_aroma %>, <%= recipe.taste.t_fullbody %>],
+			backgroundColor: 'rgba(235,9,212,0.2)',
+			borderColor: "Brown",
+			pointStyle: "circle"
+		}]
+	},
+	options: {
+		responsive: true,
+		maintainAspectRatio: false,
+		tooltips: {
+		mode: 'nearest'
+        },
+		legend: {
+			display: false
+				 },
+		scale: {
+			ticks: {
+				suggestedMin: 0,
+				uggestedMax: 5,
+				stepSize: 1
+			},
+			pointLabels: {
+            fontSize: 20
+			},
+			gridLines: {
+				display: true,
+			},
+			angleLines: {
+				display: true
+			}
+
+		}
+	}
+});
+</script>

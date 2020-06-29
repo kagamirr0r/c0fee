@@ -1,0 +1,51 @@
+<% if recipes.present? %>
+		<table>
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+			<tbody>
+				<% Array(recipes).each do |recipe| %>
+				 <% unless recipe.bean.shop.name.nil? %>
+					<tr>
+						<td id="recipe_image_td">
+							<% if recipe.recipe_image? %>
+								<%=link_to image_tag(recipe.recipe_image.to_s, :id => 'recipes_image'), recipe_path(recipe) %>
+							<% else%>
+								<%=link_to image_tag('C0FEE.png', :id => 'no_recipes_image'), recipe_path(recipe) %>
+							<% end %>
+						</td>
+						<td><%= recipe.hot_ice_i18n %></td>
+						<td><%= link_to image_tag("#{recipe.bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(id: recipe.bean.id) %></td>
+						<td><%= recipe.grind_i18n %></td>
+						<td><%= recipe.extraction_i18n %></td>
+						<td><%= recipe.taste.t_comment%></td>
+						<% if user_signed_in? && @liked_recipes.nil?%>
+							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
+						<% else %>
+							<td class="red-text"><i class="material-icons">favorite</i><%= recipe_liked_counts(recipe) %></td>
+						<% end %>
+							<% if current_user == recipe.user %>
+								<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>
+								<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
+							<% else %>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							<% end %>
+					</tr>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	<%= paginate recipes %>
+	<% end %>

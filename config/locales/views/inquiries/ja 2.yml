@@ -1,0 +1,11 @@
+ja:
+  inquiries:
+    new:
+      title: お問い合わせ
+      required: 必須
+      send: 送信
+      Are_you_sure_you_want_to_send_it?: 送信してよろしいですか？
+      cancel: キャンセル
+    flash:
+      Thank_you_for_your_inquiry: お問い合わせありがとうございます
+      Inquiry_sent_to_administrator: お問い合わせ内容を管理者に送信しました

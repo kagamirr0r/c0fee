@@ -1,0 +1,12 @@
+<% shop_liked_counts(shop)%>
+	<% if current_user.liked_shop?(shop) %>
+		<%= link_to shop_like_path(id: shop.id),method: :delete,remote: true,class: "red-text" do%>
+			<%= content_tag :i, "favorite", class: "small material-icons" %>
+			<%= @count_shop_likes %>
+		<% end %>
+	<% else %>
+		<%= link_to shop_likes_path(id: shop.id),method: :post,remote: true,class: "red-text" do%>
+			<%= content_tag :i, "favorite_border", class: "small material-icons  waves-effect waves-circle waves-red" %>
+			<%= @count_shop_likes %>
+		<% end %>
+	<% end%>
