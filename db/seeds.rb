@@ -45,43 +45,43 @@
 #	)
 #end
 
-[
-	['スターバックスコーヒー 銀座松屋通り店', '東京都中央区銀座３丁目７−１４ ESKビル 1F', 'https://store.starbucks.co.jp/detail-1/',db/fixtures/shop1.png,35.671700, 139.766601],
-	['カルディコーヒーファーム 下高井戸店', '東京都世田谷区松原3-29-20 稲川ビル1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&adr=13&bpref=13112&bid=004&pgret=2',db/fixtures/shop2.png,35.666357, 139.641513],
-	['やなか珈琲店 谷中店', '東京都台東区谷中3-8-6', 'https://www.yanaka-coffeeten.com/',db/fixtures/shop3.png,35.726894, 139.764729],
-	['サザコーヒー本店', '茨城県ひたちなか市共栄町', 'https://www.saza.co.jp/',db/fixtures/shop4.png,36.398315, 140.527000],
-	['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/',db/fixtures/shop5.png,35.8663161,139.9699134],
-	['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/',db/fixtures/shop6.png,35.7277996,139.7132372],
-	['LIGHT UP COFFEE', '東京都武蔵野市吉祥寺本町4-13-15', 'https://lightupcoffee.com/',db/fixtures/shop7.png,35.705462, 139.572519],
-	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/', db/fixtures/shop8.png,34.674107, 135.498055],
-	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/',db/fixtures/shop9.png,35.636246, 139.709597],
-	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/',db/fixtures/shop10.png,35.747852, 139.801818],
-	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/',db/fixtures/shop11.png,35.006792, 135.764502]
-].each do |name, address, url, shop_image, latitude, longitude|
-	I18n.locale = :ja
-  Shop.create!(
-    name: name, address: address, url: url, shop_image: open("#{shop_image}"), latitude: latitude, longitude: longitude
-  )
-end
-
 #[
-#	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',47.609966,-122.342323],
-# ['The Coffee Bean & Tea leaf Pico Blvd', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',34.055595, -118.396758],
-#	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',21.290679, -157.835092],
-#	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division','db/fixtures/shop15.png',45.505504, -122.615562],
-#	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/','db/fixtures/shop16.png',32.814479, -117.269759],
-#	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', 'db/fixtures/shop17.png',40.716057, -73.964690],
-#	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/','db/fixtures/shop18.png',42.362057, -71.057043],
-#	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/','db/fixtures/shop19.png',34.075583, -118.323485],
-#	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/','db/fixtures/shop20.png',43.051040, -89.278895],
-#	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/','db/fixtures/shop21.png',32.983281, -117.075453],
-#	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/','db/fixtures/shop22.png',40.038126, -76.306330]
-#].each do |name, address, url, latitude, longitude|
-#	I18n.locale = :en
+#	['スターバックスコーヒー 銀座松屋通り店', '東京都中央区銀座３丁目７−１４ ESKビル 1F', 'https://store.starbucks.co.jp/detail-1/',File.open('db/fixtures/shop1.png'),35.671700, 139.766601],
+#	['カルディコーヒーファーム 下高井戸店', '東京都世田谷区松原3-29-20 稲川ビル1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&adr=13&bpref=13112&bid=004&pgret=2',File.open('db/fixtures/shop2.png'),35.666357, 139.641513],
+#	['やなか珈琲店 谷中店', '東京都台東区谷中3-8-6', 'https://www.yanaka-coffeeten.com/', File.open('db/fixtures/shop3.png'),35.726894, 139.764729],
+#	['サザコーヒー本店', '茨城県ひたちなか市共栄町', 'https://www.saza.co.jp/', File.open('db/fixtures/shop4.png'),36.398315, 140.527000],
+#	['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/', File.open('db/fixtures/shop5.png'),35.8663161,139.9699134],
+#	['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/', File.open('db/fixtures/shop6.png'),35.7277996,139.7132372],
+#	['LIGHT UP COFFEE', '東京都武蔵野市吉祥寺本町4-13-15', 'https://lightupcoffee.com/', File.open('db/fixtures/shop7.png'),35.705462, 139.572519],
+#	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/',  File.open('db/fixtures/shop8.png'),34.674107, 135.498055],
+#	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/', File.open('db/fixtures/shop9.png'),35.636246, 139.709597],
+#	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.png'),35.747852, 139.801818],
+#	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.png'),35.006792, 135.764502]
+#].each do |name, address, url, shop_image, latitude, longitude|
+#	I18n.locale = :ja
 #  Shop.create!(
-#    name: name, address: address, url: url
+#    name: name, address: address, url: url, shop_image: shop_image, latitude: latitude, longitude: longitude
 #  )
 #end
+
+[
+	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',File.open('db/fixtures/shop12.png'),47.609966,-122.342323],
+ 	['The Coffee Bean & Tea leaf Pico & Smithwood', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',File.open('db/fixtures/shop13.png'),34.055595, -118.396758],
+	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',File.open('db/fixtures/shop14.png'),21.290679, -157.835092],
+	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division',File.open('db/fixtures/shop15.png'),45.505504, -122.615562],
+	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/',File.open('db/fixtures/shop16.png'),32.814479, -117.269759],
+	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', File.open('db/fixtures/shop17.png'),40.716057, -73.964690],
+	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/',File.open('db/fixtures/shop18.png'),42.362057, -71.057043],
+	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/',File.open('db/fixtures/shop19.png'),34.075583, -118.323485],
+	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/',File.open('db/fixtures/shop20.png'),43.051040, -89.278895],
+	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/',File.open('db/fixtures/shop21.png'),32.983281, -117.075453],
+	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/',File.open('db/fixtures/shop22.png'),40.038126, -76.306330]
+].each do |name, address, url, shop_image, latitude, longitude|
+	I18n.locale = :en
+  Shop.create!(
+    name: name, address: address, url: url, shop_image: shop_image, latitude: latitude, longitude: longitude
+  )
+end
 #
 #[
 #  [1, 1, 12, 'キリマンジャロ', 0, '', 6, 4, 340],
