@@ -13,7 +13,7 @@ en:
       select_recipe_image: Select recipe image
       amount: Amount/g
       temperature: Temperature(°C)
-      extracted_amount: Extracted Amount(ml)
+      extracted_amount: Extracted Amount(g)
     make_recipe_button:
       make_recipe: Make a recipe
     recipe: &recipe

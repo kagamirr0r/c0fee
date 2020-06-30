@@ -65,34 +65,54 @@
 #end
 
 [
-	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',File.open('db/fixtures/shop12.png'),47.609966,-122.342323],
- 	['The Coffee Bean & Tea leaf Pico & Smithwood', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',File.open('db/fixtures/shop13.png'),34.055595, -118.396758],
-	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',File.open('db/fixtures/shop14.png'),21.290679, -157.835092],
-	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division',File.open('db/fixtures/shop15.png'),45.505504, -122.615562],
-	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/',File.open('db/fixtures/shop16.png'),32.814479, -117.269759],
-	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', File.open('db/fixtures/shop17.png'),40.716057, -73.964690],
-	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/',File.open('db/fixtures/shop18.png'),42.362057, -71.057043],
-	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/',File.open('db/fixtures/shop19.png'),34.075583, -118.323485],
-	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/',File.open('db/fixtures/shop20.png'),43.051040, -89.278895],
-	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/',File.open('db/fixtures/shop21.png'),32.983281, -117.075453],
-	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/',File.open('db/fixtures/shop22.png'),40.038126, -76.306330]
-].each do |name, address, url, shop_image, latitude, longitude|
-	I18n.locale = :en
-  Shop.create!(
-    name: name, address: address, url: url, shop_image: shop_image, latitude: latitude, longitude: longitude
+  [1, 1, 7, 'ニューオリエンテ', , '', 0, 5, 1040, File.open('db/fixtures/bean1.png')],
+  [2, 2, 0, 'モカマタリ', , '', , 5, 800, File.open('db/fixtures/bean2.png')],
+	[3, 3, 2, 'トラジャ', 0, 'スロトコ', 0, 5, 800,File.open('db/fixtures/bean3.png')],
+	[4, 4, 25, 'クスコ', 1, '', 1, 4, 600,File.open('db/fixtures/bean4.png')],
+	[5, 5, 27, 'ラ・フロリダ', 0, 'ラ　フロレンシア', 0, 4, 750,File.open('db/fixtures/bean5.png')],
+	[6, 6, 22, 'カルモデミナス', 1, 'モンテアレグレ', 1, 5, 600,File.open('db/fixtures/bean6.png')],
+	[7, 7, 4, 'グジ シャキソ', 10, 'シャキソ',0,2,870,File.open('db/fixtures/bean7.png')],
+	[8, 7, 4, 'グジ シャキソ', 10, 'シャキソ',0,2,870,File.open('db/fixtures/bean6.png')]
+].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
+	I18n.locale = :ja
+  Bean.create!(
+    user_id: user_id, shop_id: shop_id, country: country, area: area,
+    variety: variety, farm: farm, process: process, roast: roast, price: price, bean_image: bean_image
   )
 end
-#
+
+[
+  [1, 3, 3, 5, '美味しい!でも高い！'],
+  [2, 2, 5, 4, 'ワインのような香り。やわらかい甘味とコクがある'],
+	[3, 3, 5, 3, '初めての農園だけど美味しい！'],
+	[4, 1, 4, 4, 'すっきりとしてる。後に甘さが残る'],
+	[5, 2, 5, 4, '完熟感があり、甘味もたっぷりあります'],
+	[6, 3, 3, 4, 'アーモンドやカカオニブを彷彿とさせるビター感'],
+	[7, 5, 2, 3, 'さくらんぼやセイロンティーを思わせるような風味'],
+].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
+	I18n.locale = :ja
+  Impression.create!(
+    bean_id: bean_id, i_sour: i_sour, i_sweet: i_sweet, i_bitter: i_bitter, i_comment: i_comment
+  )
+end
+
+
 #[
-#  [1, 1, 12, 'キリマンジャロ', 0, '', 6, 4, 340],
-#  [2, 2, 4, 'イェルガチェフェ', 2, '', 1, 3, 850],
-#  [3, 3, 22, 'ミナスジェライス', 4, 'トミオフクダ', 0, 5, 800]
-#].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
-#	I18n.locale = :ja
-#  Bean.create!(
-#    user_id: user_id, shop_id: shop_id, country: country, area: area,
-#    variety: variety, farm: farm, process: process, roast: roast,
-#    price: price
+#	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',File.open('db/fixtures/shop12.png'),47.609966,-122.342323],
+# 	['The Coffee Bean & Tea leaf Pico & Smithwood', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',File.open('db/fixtures/shop13.png'),34.055595, -118.396758],
+#	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',File.open('db/fixtures/shop14.png'),21.290679, -157.835092],
+#	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division',File.open('db/fixtures/shop15.png'),45.505504, -122.615562],
+#	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/',File.open('db/fixtures/shop16.png'),32.814479, -117.269759],
+#	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', File.open('db/fixtures/shop17.png'),40.716057, -73.964690],
+#	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/',File.open('db/fixtures/shop18.png'),42.362057, -71.057043],
+#	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/',File.open('db/fixtures/shop19.png'),34.075583, -118.323485],
+#	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/',File.open('db/fixtures/shop20.png'),43.051040, -89.278895],
+#	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/',File.open('db/fixtures/shop21.png'),32.983281, -117.075453],
+#	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/',File.open('db/fixtures/shop22.png'),40.038126, -76.306330]
+#].each do |name, address, url, shop_image, latitude, longitude|
+#	I18n.locale = :en
+#  Shop.create!(
+#    name: name, address: address, url: url, shop_image: shop_image, latitude: latitude, longitude: longitude
 #  )
 #end
 #
@@ -110,16 +130,7 @@ end
 #end
 #
 #
-#[
-#  [1, 3, 3, 5, '美味しい!'],
-#  [2, 5, 3, 3, '酸っぱくていいぞ!'],
-#  [3, 3, 5, 3, '初めての農園だけど美味しい！']
-#].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
-#	I18n.locale = :ja
-#  Impression.create!(
-#    bean_id: bean_id, i_sour: i_sour, i_sweet: i_sweet, i_bitter: i_bitter, i_comment: i_comment
-#  )
-#end
+
 #
 #[
 #  [4, 3, 3, 5, 'Delicious!'],
@@ -145,18 +156,6 @@ end
 #end
 #
 #[
-#  [4, 4, 0, 0, 90, 15, 3],
-#  [5, 5, 0, 1, 95, 10, 0],
-#  [6, 6, 1, 2, 85, 20, 10]
-#].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
-#	I18n.locale = :en
-#  Recipe.create!(
-#    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
-#    amount: amount, extraction: extraction
-#  )
-#end
-#
-#[
 #  [1, 2, 3, 5, 4, 5, 'ブラジルのコーヒーは間違いない'],
 #  [2, 5, 2, 5, 4, 3, '高い温度で入れたほうがおいしいかも'],
 #  [3, 3, 5, 3, 4, 4, '最高！']
@@ -165,6 +164,19 @@ end
 #  Taste.create!(
 #    recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
 #    t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment
+#  )
+#end
+
+
+#[
+#  [4, 4, 0, 0, 90, 15, 3],
+#  [5, 5, 0, 1, 95, 10, 0],
+#  [6, 6, 1, 2, 85, 20, 10]
+#].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
+#	I18n.locale = :en
+#  Recipe.create!(
+#    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
+#    amount: amount, extraction: extraction
 #  )
 #end
 #
