@@ -48,8 +48,11 @@ ja:
         blue_mountain: ブルーマウンテン
         SL28: SL28
         SL34: SL34
+        marsellesa: マルセレサ
       process:
         washed: ウォッシュド
+        semi_washed: セミウォッシュド
+        fully_washed: フリーウォッシュド
         natural: ナチュラル
         pulped_natural: パルプドナチュラル
         white_honey: ホワイトハニー

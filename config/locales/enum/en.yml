@@ -48,8 +48,11 @@ en:
         blue_mountain: Blue Mountain
         SL28: SL28
         SL34: SL34
+        marsellesa: Marsellesa
       process:
         washed: Washed
+        semi_washed: Semi washed
+        fully_washed: Fully washed
         natural: Natural
         pulped_natural: Pulped Natural
         white_honey: White Honey
