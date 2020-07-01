@@ -45,8 +45,8 @@
 #end
 #
 #[
-#  [1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.png')],
-#  [2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.png')],
+# [1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.png')],
+# [2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.png')],
 #	[3, 3, 2, 'トラジャ', 0, 'スロトコ', 0, 5, 800,File.open('db/fixtures/bean3.png')],
 #	[4, 4, 25, 'クスコ', 1, '', 1, 4, 600,File.open('db/fixtures/bean4.png')],
 #	[5, 5, 27, 'ラ・フロリダ', 0, 'ラ　フロレンシア', 0, 4, 750,File.open('db/fixtures/bean5.png')],
@@ -123,22 +123,38 @@ end
 end
 
 [
-	[12, 12, 12, 'Kilimanjaro', 0, '', 6, 4, 340],
-  [13, 13, 4, 'Yirgacheffe', 2, '', 1, 3, 850],
-  [14, 14, 22, 'Minas Gerais', 4, 'TomioFukuda', 0, 5, 800]
-].each do |user_id, shop_id, country, area, variety, farm, process, roast, price|
+	[12, 12, 17, '', '', '', 3, 4, 2.5, File.open('db/fixtures/bean12.png')],
+  [13, 13, 9, '', '', '', 1, 3, 0.54, File.open('db/fixtures/bean13.png')],
+	[14, 14, 20, '', 'Peaberry', '', ３, 4, 5.8, File.open('db/fixtures/bean14.png')],
+	[15, 15, 7, 'Huehuetenango', 1, 'El Injerto', '', 4, 3.66, File.open('db/fixtures/bean15.png')],
+	[16, 16, 10, 'Huila', 1, '', '', 5, 1.66, File.open('db/fixtures/bean16.png')],
+	[17, 17, 10, 'Tolima', 15, '', '', 5, 1.9, File.open('db/fixtures/bean17.png')],
+	[18, 18, 18, 'Boquete', 9, 'La Esmeralda', 0, 2, 16.9, ''],
+	[19, 19, 3, 'Habitat Forest', 2, '', '', 4, 1.9, File.open('db/fixtures/bean19.png')],
+	[20, 20, 8, 'KIRINYAGA', 12, '', 0, 5, 1.75, File.open('db/fixtures/bean20.png')],
+	[21, 21, 24, 'Cau Dat', '', '', 0, 4, 1.5, File.open('db/fixtures/bean21.png')],
+	[22, 22, 22, 'Kayanza', 1, '', 0, 4, 1.5, File.open('db/fixtures/bean22.png')]
+
+].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
 	I18n.locale = :en
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,
-    variety: variety, farm: farm, process: process, roast: roast,
-    price: price
+    variety: variety, farm: farm, process: process, roast: roast, price: price, bean_image: bean_image
   )
 end
 
 [
-  [4, 3, 3, 5, 'Delicious!'],
-  [5, 5, 3, 3, 'Strong Sour and I hate Trump!'],
-  [6, 3, 5, 3, 'This is firadt time I bought this. I apreciate all people for this beans!']
+  [12, 3, 3, 3, 'Delicious! But little bit expensive.'],
+  [13, 5, 3, 3, 'Bring Back Costa Rica from Korea!'],
+	[14, 3, 5, 3, 'The smell is very gorgeous！'],
+	[15, 3, 5, 5, 'I wanna say thank you to a farm directly!'],
+	[16, 4, 2, 1, 'Its strong sour. I recommend brew with high hot water'],
+	[17, 2, 3, 4, 'LA PRIMAVERA WOMEN IN COFFEE'],
+	[18, 5, 4, 2, 'NO NEED WORD!'],
+	[19, 3, 3, 4, 'Bulanced'],
+	[20, 4, 4, 4, 'Bitter and sweet and beautiful!'],
+	[21, 2, 4, 5, 'Bitter. its so match with milk.'],
+	[22, 3, 3, 3, 'This is my first time buy beans of Burunji. it was awesome.']
 ].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
 	I18n.locale = :en
   Impression.create!(

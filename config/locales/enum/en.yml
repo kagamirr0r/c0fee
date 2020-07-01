@@ -49,12 +49,14 @@ en:
         SL28: SL28
         SL34: SL34
         marsellesa: Marsellesa
+        castillo: Castillo
       process:
         washed: Washed
         semi_washed: Semi washed
         fully_washed: Fully washed
         natural: Natural
         pulped_natural: Pulped Natural
+        honey: Honey
         white_honey: White Honey
         yellow_honey: Yellow Honey
         red_honey: Red Honey

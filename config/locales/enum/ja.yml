@@ -49,12 +49,14 @@ ja:
         SL28: SL28
         SL34: SL34
         marsellesa: マルセレサ
+        castillo: カスティージョ
       process:
         washed: ウォッシュド
         semi_washed: セミウォッシュド
         fully_washed: フリーウォッシュド
         natural: ナチュラル
         pulped_natural: パルプドナチュラル
+        honey: ハニー
         white_honey: ホワイトハニー
         yellow_honey: イエローハニー
         red_honey: レッドハニー

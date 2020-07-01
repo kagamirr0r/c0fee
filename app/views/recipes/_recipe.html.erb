@@ -27,7 +27,7 @@
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
-					<td><%= recipe.amount %><% if recipe.amount.present?%>g<%end%> / <%= recipe.extracted_amount %><% if recipe.extracted_amount?%>g<%end%></td>
+					<td><%= recipe.amount %><% if i18n.locale == :ja && recipe.amount.present? %>g<% elsif i18n.locale == :en %>oz<%end%> / <%= recipe.extracted_amount %><% if i18n.locale == :ja && recipe.amount.present?%>g<% elsif i18n.locale == :en %>oz<%end%></td>
 				</tr>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
