@@ -13,9 +13,10 @@ class Bean < ApplicationRecord
                   Myanmar: 28, Mexico: 29, Rwanda: 30 }
 
   enum variety: { typica: 0, bourbon: 1, catura: 2, catuai: 3, mundonovo: 4, mandheling: 5, maragogype: 6, pacamara: 7,
-                  pacas: 8, geisha: 9, ethiopian: 10, blue_mountain: 11, SL28: 12, SL34: 13, marsellesa: 14,castillo: 15 }
+                  pacas: 8, geisha: 9, ethiopian: 10, blue_mountain: 11, SL28: 12, SL34: 13, marsellesa: 14, castillo: 15 }
 
-  enum process: { washed: 0, semi_washed:1, fully_washed: 2, natural: 3, pulped_natural: 4, honey: 5, white_honey: 6, yellow_honey: 7, red_honey: 8, black_honey: 9, sumatera: 10 }
+  enum process: { washed: 0, semi_washed: 1, fully_washed: 2, natural: 3, pulped_natural: 4, honey: 5,
+                  white_honey: 6, yellow_honey: 7, red_honey: 8, black_honey: 9, sumatera: 10 }
 
   enum roast: { light: 0, cinnamon: 1, medium: 2, high: 3, city: 4, fullcity: 5, french: 6, italian: 7 }
 
