@@ -60,7 +60,7 @@ end
 	I18n.locale = :ja
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,
-    variety: variety, farm: farm, process: process, roast: roast, price: price, bean_image: bean_image
+    variety: variety, farm: farm, process: process, roast: roast, roast_date: Time.now, price: price, bean_image: bean_image
   )
 end
 
@@ -138,7 +138,7 @@ end
 	I18n.locale = :en
   Bean.create!(
     user_id: user_id, shop_id: shop_id, country: country, area: area,
-    variety: variety, farm: farm, process: process, roast: roast, price: price, bean_image: bean_image
+    variety: variety, farm: farm, process: process, roast: roast, roast_date: Time.now, price: price, bean_image: bean_image
   )
 end
 
