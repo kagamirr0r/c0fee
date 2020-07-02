@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-<h3><%= @shop.name %></h3>
-<%= render 'shop', shop: @shop%>
-<h4><%= t('.registered_bean')%></h4>
-<%= render 'beans/beans', beans: @shop.beans.page(params[:page]).order(created_at: :desc)%>
-<%= link_to t('.back'), :back %>
-=======
 <h3 id="shop_title"><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3>
 <%= render 'shop', shop: @shop%>
 <h4><%= t('.registered_bean') if @beans.present?%></h4>
 <%= render 'beans/beans', beans: @shop.beans.page(params[:page])%>
 <%= link_to t('.return'), :back %>
 
->>>>>>> master
