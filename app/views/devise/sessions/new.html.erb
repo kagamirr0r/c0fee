@@ -3,13 +3,13 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="input-field col s12">
 		<i class="material-icons prefix">email</i>
-		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <%= f.label :email %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password, autocomplete: "new-password" %>
     <%= f.label t('.password', password_length: @minimum_password_length) %><br />
   </div><br />
 
@@ -20,7 +20,9 @@
 
   <div class="actions">
     <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.sign_in') %><% end %>
+		<%= link_to t('.simple_login'), users_guest_sign_in_path, method: :post, class: "waves-effect waves-light white-text btn red" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

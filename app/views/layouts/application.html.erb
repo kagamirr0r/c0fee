@@ -23,34 +23,54 @@
 					<% end %>
 				</ul>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
+
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
 					<% else %>
 						<% if current_user.avatar?%>
-							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'}%></li>
+							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%></li>
 						<% else %>
-							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'} %></li>
+							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %></li>
 						<% end %>
-				</ul>
-					<ul id='dropdown_nav' class='dropdown-content'>
-						<li><%= link_to t('.my_page'),my_pages_show_path(current_user)%></li>
-						<li><%= link_to_unless_current t('.edit_profile'), edit_user_registration_path %></li>
-						<li><%= link_to_unless_current t('.log_out'), destroy_user_session_path, method: :delete %></li>
-					</ul>
+
+						<ul id='dropdown_nav' class='dropdown-content'>
+							<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
+							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
+							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
+							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
+						</ul>
+
 					<% end %>
+
+					<% if I18n.locale.to_s == "en" %>
+						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
+						</ul>
+					<% else %>
+						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('EN Ver.', :locale => 'en')%></li>
+						</ul>
+					<% end %>
+
+				</ul>
 			</div>
 		</nav>
 	</header>
 
-  <div class="notice card light-blue lighten-4 blue-text col s12 m6">
-    <p><%= notice %></p>
-  </div>
-  <div class="alert card red accent-3 white-text col s12 m6">
-    <p><%= alert %></p>
-  </div>
-
   <%= yield %>
-</body>
 
+	<% unless flash.empty? %>
+		<script type="text/javascript">
+			<% flash.each do |key, value| %>
+			<% next if key == 'timedout' %>
+				M.toast({html: '<%= value %>', classes: 'teal lighten-2'})
+			<% end %>
+		</script>
+	<% end %>
+</body>
 </html>
+
+

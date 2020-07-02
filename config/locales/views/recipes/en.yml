@@ -1,0 +1,42 @@
+en:
+  recipes:
+    delete_recipe_link: &delete_recipe_link
+      return: Back
+      are_you_sure?: Are you sure?
+      cancel: Cancel
+      delete: Delete
+    edit_recipe_link: &edit_recipe_link
+      edit: Edit
+    form:
+      <<: *delete_recipe_link
+      register: Register
+      select_recipe_image: Select recipe image
+      amount: Amount/g
+      temperature: Temperature(°C)
+      extracted_amount: Extracted Amount(g)
+    make_recipe_button:
+      make_recipe: Make a recipe
+    recipe: &recipe
+      <<: *edit_recipe_link
+      from_roast_date: From roast date
+      day: days
+    recipes:
+      <<: *recipe
+    search_form:
+      <<: *delete_recipe_link
+      submit_search: Search
+    edit:
+      <<: *delete_recipe_link
+      title: Edit
+    index:
+      title: Recipes Index
+      make_recipe: Make a recipe
+    new:
+      <<: *delete_recipe_link
+      title: Register
+    show:
+      <<: *delete_recipe_link
+    flash:
+      made_recipe: make recipe!
+      edited_recipe: Edited recipe
+      deleted_recipe: Deleted recipe

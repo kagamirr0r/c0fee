@@ -4,7 +4,7 @@
 	<div class="file-field input-field col s12">
 		<button type="button" id="shop_select_file_button"class="waves-effect waves-light btn">
 		<%= t('.select_shop_image')%><i class="material-icons right">photo</i></button>
-		<%= s.file_field :shop_image, class: "autocomplete" %>
+		<%= s.file_field :shop_image %>
 		<div class="file-path-wrapper">
 			<input id="shop_filename" readonly type="text" value="" class="file-path validate">
 		</div>
@@ -12,20 +12,20 @@
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">mode_edit</i>
-		<%= s.label :name	 %>
-		<%= s.text_field :name, class: "autocomplete"%>
+		<%= s.label :name	%>
+		<%= s.text_field :name %>
 	</div><br />
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">location_on</i>
 		<%= s.label :address %>
-		<%= s.text_field :address, class: "autocomplete"%>
+		<%= s.text_field :address %>
 	</div><br />
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">web</i>
 		<%= s.label :url %>
-		<%= s.text_field :url, class: "autocomplete" %>
+		<%= s.text_field :url %>
 	</div><br />
 
   <div class="actions">

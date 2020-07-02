@@ -1,36 +1,45 @@
 ja:
   beans:
-    form:
+    bean: &bean
+      make_recipe: レシピを作成
+      edit: 編集
+      delete: 削除
+      currency_unit: 円
+    beans:
+      <<: *bean
+    delete_bean_link:
+      <<: *bean
+      are_you_sure?: 削除してよろしいですか？
+      cancel: キャンセル
+    edit_bean_link:
+      <<: *bean
+    form: &form
       bought_shop: 購入した店/
       select_bean_image: 画像を選ぶ
       price: 価格 (円/100g)
       register: 登録する
       confirm: 登録していいですか？
       sour: 酸味
-    bean: &bean
-      create_recipe: レシピを作成
-      edit: 編集
-      delete: 削除
-      confirm: この豆を削除していいですか？
-    beans:
-      <<: *bean
-    new: &new
-      back: 戻る
+      return: 戻る
+    register_bean_button:
+      register_bean: 豆を登録
+    search_form:
+      <<: *form
+      submit_search: 検索
     edit:
+      <<: *form
       title: 豆の編集
-      <<: *new
     index:
       title: 豆一覧
       register_bean: 豆を登録する
+      Did_you_brew_the_following_beans?: 以下の豆で淹れましたか？
+      Click_the_button_on_the_book_to_make_a_recipe!: 本のボタンをクリックするとレシピが作れます!
     new:
+      <<: *form
       title: 豆の登録
     show:
-      <<: *new
-    search_form:
-      <<: *new
-      submit_search: 検索
+      <<: *form
     flash:
-      choose_bean: 以下の豆でを淹れましたか?
       registered_bean: 豆を登録しました！
       edited_bean: 豆を編集しました！
       deleted_bean: 豆を削除しました！

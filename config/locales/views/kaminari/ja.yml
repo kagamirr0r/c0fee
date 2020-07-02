@@ -1,0 +1,4 @@
+ja:
+  kaminari:
+    gap:
+      truncate: "&hellip;"

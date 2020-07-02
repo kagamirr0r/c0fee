@@ -1,25 +1,29 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
-  validates :email, presence: true
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :lockable, :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
+
+  validates :email, presence: true, format: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   def self.from_omniauth(auth)
-    find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.username = auth["info"]["nickname"]
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.username = auth.info.name
+      user.password = Devise.friendly_token[0, 20]
     end
   end
 
-  def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"]) do |user|
-        user.attributes = params
+  def self.guest
+    if I18n.locale == :ja
+      find_or_create_by!(email: 'guestja@guest.com') do |user|
+        user.password = 'guestmanja'
+        user.confirmed_at = Time.now
       end
     else
-      super
+      find_or_create_by!(email: 'guesten@guest.com') do |user|
+        user.password = 'guestmanen'
+        user.confirmed_at = Time.now
+      end
     end
   end
 

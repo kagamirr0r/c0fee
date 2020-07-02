@@ -1,0 +1,96 @@
+ja:
+  enums:
+    bean:
+      country:
+        Yemen: イエメン
+        India: インド
+        Indonesia: インドネシア
+        Ecuador: エクアドル
+        Ethiopia: エチオピア
+        El_Salvador: エルサルバドル
+        Cuba: キューバ
+        Guatemala: グアテマラ
+        Kenya: ケニア
+        Costa_Rica: コスタリカ
+        Colombia: コロンビア
+        Jamaica: ジャマイカ
+        Tanzania: タンザニア
+        China: 中国
+        Dominica: ドミニカ
+        Nicaragua: ニカラグア
+        Nepal: ネパール
+        PNG: パプアニューギニア
+        Panama: パナマ
+        Haiti: ハイチ
+        Hawaii: ハワイ
+        East_Timor: 東ティモール
+        Brazil: ブラジル
+        Burundi: ブルンジ
+        Vietnam: ベトナム
+        Peru: ペルー
+        Bolivia: ボリビア
+        Honduras: ホンジュラス
+        Myanmar: ミャンマー
+        Mexico: メキシコ
+        Rwanda: ルワンダ
+      variety:
+        typica: ティピカ
+        bourbon: ブルボン
+        catura: カトゥーラ
+        catuai: カトゥアイ
+        mundonovo: ムンドノーヴォ
+        mandheling: マンデリン
+        maragogype: マラゴジッペ
+        pacamara: パカマラ
+        pacas: パカス
+        geisha: ゲイシャ
+        ethiopian: エチオピア原種
+        blue_mountain: ブルーマウンテン
+        SL28: SL28
+        SL34: SL34
+        marsellesa: マルセレサ
+        castillo: カスティージョ
+      process:
+        washed: ウォッシュド
+        semi_washed: セミウォッシュド
+        fully_washed: フリーウォッシュド
+        natural: ナチュラル
+        pulped_natural: パルプドナチュラル
+        honey: ハニー
+        white_honey: ホワイトハニー
+        yellow_honey: イエローハニー
+        red_honey: レッドハニー
+        black_honey: ブラックハニー
+        sumatera: スマトラ
+      roast:
+        light: ライト
+        cinnamon: シナモン
+        medium: ミディアム
+        high: ハイ
+        city: シティ
+        fullcity: フルシティ
+        french: フレンチ
+        italian: イタリアン
+    recipe:
+      hot_ice:
+        hot: ホット
+        ice: アイス
+      grind:
+        coarse: 粗挽き
+        medium_coarse: 中粗挽き
+        medium: 中挽き
+        medium_fine: 中細挽き
+        fine: 細挽き
+        turkish: 極細挽き
+      extraction:
+        paper_filter: ペーパーフィルター
+        cloth_filter: 布フィルター
+        metal_filter: 金属フィルター
+        french_press: フレンチプレス
+        aero_press: エアロプレス
+        siphon: サイフォン
+        coffee_maker: コーヒーメーカー
+        macchinetta: マキネッタ
+        espresso_machine: エスプレッソマシン
+        cold_brew: 水出し
+        iced: 急冷

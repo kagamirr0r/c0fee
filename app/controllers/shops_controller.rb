@@ -4,9 +4,9 @@ class ShopsController < ApplicationController
     @shop_search_params = shop_search_params
 
     @shops = if @shop_search_params.present?
-               Shop.search_shop(@shop_search_params).page(params[:page]).order(created_at: :desc)
+               Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page])
              else
-               Shop.all.page(params[:page]).order(created_at: :desc)
+               Shop.page(params[:page])
              end
   end
 
@@ -48,7 +48,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :url, :shop_image)
+    params.require(:shop).permit(:name, :address, :url, :shop_image, :latitude, :longitude)
   end
 
   def shop_search_params

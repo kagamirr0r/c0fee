@@ -2,21 +2,17 @@
 	<%= render 'layouts/error_messages', model: r.object %>
 
 		<div class="field">
-			<%# <%= r.label :user_id %>
-			<%# <%= current_user.username %>
 			<%= r.hidden_field :user_id, value: current_user.id %>
 		</div>
 
 		<div class="field">
-			<%# <%= r.label :bean_id %>
-			<%# <%= bean.country %>
 			<%= r.hidden_field :bean_id, value: bean.id %>
 		</div>
 
 		<div class="file-field input-field col s12">
 			<button type="button" id="recipe_select_file_button" class="waves-effect waves-light btn">
 			<%= t('.select_recipe_image')%><i class="material-icons right">photo</i></button>
-			<%= r.file_field :recipe_image, class: "autocomplete" %>
+			<%= r.file_field :recipe_image  %>
 			<div class="file-path-wrapper">
 				<input id="recipe_filename" readonly type="text" value="" class="file-path validate">
 			</div>
@@ -24,73 +20,76 @@
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">swap_vert</i>
-			<%= r.select :hot_ice,[["ホット","ホット"],["アイス","アイス"]]%>
+			<%= r.select :hot_ice, Recipe.hot_ices.keys.map {|k| [I18n.t("enums.recipe.hot_ice.#{k}"),k]}, include_blank: true %>
 			<%= r.label :hot_ice %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">grain</i>
-			<%= r.select :grind, [["粗挽き", "粗挽き"],["中挽き", "中挽き"],
-			["中細挽き", "中細挽き"],["細挽き", "細挽き"],["極細挽き", "極細挽き"]]%>
+			<%= r.select :grind, Recipe.grinds.keys.map {|k| [I18n.t("enums.recipe.grind.#{k}"),k]}, include_blank: true %>
 			<%= r.label :grind %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">opacity</i>
 			<%= r.label t('.amount') %>
-			<%= r.number_field :amount, value: 10, class: "autocomplete"%>
+			<%= r.number_field :amount, value: 10 %>
+		</div><br />
+
+		<div class="input-field col s12">
+			<i class="material-icons prefix">whatshot</i>
+			<%= r.label t('.extracted_amount') %>
+			<%= r.number_field :extracted_amount, max: 1000 %>
 		</div><br />
 
 		<div class="input-field col s12">
 		<i class="material-icons prefix">local_drink</i>
-			<%= r.select :extraction, [["ペーパーフィルター", "ペーパーフィルター"],["金属フィルター", "金属フィルター"],
-			["ネル", "ネル"],["フレンチプレス", "フレンチプレス"],["エスプレッソ", "エスプレッソ"],
-			["ユーロプレス", "ユーロプレス"],["水出し","水出し"],["急冷","急冷"],["コーヒーメーカー", "コーヒーメーカー"]] %>
+			<%= r.select :extraction, Recipe.extractions.keys.map {|k| [I18n.t("enums.recipe.extraction.#{k}"),k]}, include_blank: true %>
 			<%= r.label :extraction %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">whatshot</i>
 			<%= r.label t('.temperature') %>
-			<%= r.number_field :temperature, value: 90, step: 5, class: "autocomplete"%>
+			<%= r.number_field :temperature, value: 90, max: 100 %>
 		</div><br />
 
 	<%= r.fields_for :taste do |t| %>
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">change_history</i>
-			<%= t.number_field :t_sour,min: 1, max: 5, class: "autocomplete" %>
-			<%= t.label :t_sour%>
+			<%= t.select :t_sour,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
+			<%= t.label :t_sour %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">panorama_fish_eye</i>
-			<%= t.number_field :t_sweet,min: 1, max: 5, class: "autocomplete"%>
+			<%= t.select :t_sweet,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= t.label :t_sweet %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">crop_square</i>
-			<%= t.number_field :t_bitter,min: 1, max: 5, class: "autocomplete"%>
+			<%= t.select :t_bitter,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= t.label :t_bitter %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">filter_list</i>
-			<%= t.number_field :t_aroma,min: 1, max: 5, class: "autocomplete" %>
+			<%= t.select :t_aroma,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
 			<%= t.label :t_aroma %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">brightness_medium</i>
-			<%= t.number_field :t_fullbody,min: 1, max: 5, class: "autocomplete" %>
+			<%= t.select :t_fullbody,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true  %>
 			<%= t.label :t_fullbody %>
 		</div><br />
 
 		<div class="input-field col s12">
 			<i class="material-icons prefix">message</i>
 			<%= t.label :t_comment %>
-			<%= t.text_area :t_comment, class: "autocomplete"  %>
+			<%= t.text_area :t_comment %>
 		</div><br />
 
 	<% end %>

@@ -1,0 +1,96 @@
+en:
+  enums:
+    bean:
+      country:
+        Yemen: Yemen
+        Ethiopia: Ethiopia
+        Tanzania: Tanzania
+        Kenya: Kenya
+        Rwanda: Rwanda
+        Burundi: Burundi
+        India: India
+        Indonesia: Indonesia
+        PNG: PNG
+        Mexico: Mexico
+        Guatemala: Guatemala
+        Costa_Rica: Costa_Rica
+        El_Salvador: El_Salvador
+        Nicaragua: Nicaragua
+        Honduras: Honduras
+        Panama: Panama
+        Dominica: Dominica
+        Haiti: Haiti
+        Jamaica: Jamaica
+        Brazil: Brazil
+        Colombia: Colombia
+        Ecuador: Ecuador
+        Peru: Peru
+        Bolivia: Bolivia
+        Hawaii: Hawaii
+        Cuba: Cuba
+        Nepal: Nepal
+        China: China
+        Vietnam: Vietnam
+        East_Timor: East_Timor
+        Myanmar: Myanmar
+      variety:
+        typica: Typica
+        bourbon: Bourbon
+        catura: Catura
+        catuai: Catuai
+        mundonovo: MundoNovo
+        mandheling: Mandheling
+        maragogype: Maragogype
+        pacamara: Pacamara
+        pacas: Pacas
+        geisha: Geisha
+        ethiopian: Ethiopian
+        blue_mountain: Blue Mountain
+        SL28: SL28
+        SL34: SL34
+        marsellesa: Marsellesa
+        castillo: Castillo
+      process:
+        washed: Washed
+        semi_washed: Semi washed
+        fully_washed: Fully washed
+        natural: Natural
+        pulped_natural: Pulped Natural
+        honey: Honey
+        white_honey: White Honey
+        yellow_honey: Yellow Honey
+        red_honey: Red Honey
+        black_honey: Black Honey
+        sumatera: Sumatera
+      roast:
+        light: Light
+        cinnamon: Cinnamon
+        medium: Medium
+        high: High
+        city: City
+        fullcity: Fullcity
+        french: French
+        italian: Italian
+    recipe:
+      hot_ice:
+        hot: Hot
+        ice: Ice
+      grind:
+        coarse: Coarse
+        medium_coarse: Medium Coarse
+        medium: Medium
+        medium_fine: Medium Fine
+        fine: Fine
+        turkish: Turkish
+      extraction:
+        paper_filter: Paper Filter
+        cloth_filter: Cloth Filter
+        metal_filter: Metal Filter
+        french_press: French Press
+        aero_press: Aero Press
+        siphon: Siphon
+        coffee_maker: Coffee Maker
+        macchinetta: Macchinetta
+        espresso_machine: Espresso Machine
+        cold_brew: Cold Brew
+        iced: Iced

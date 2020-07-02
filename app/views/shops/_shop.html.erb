@@ -1,19 +1,27 @@
 <% if shop.present? %>
+<<<<<<< HEAD
 			<table>
 					<thead>
+=======
+		<div id="shop_plofile" >
+			<% if shop.shop_image? %>
+				<%= image_tag shop.shop_image.to_s, :size => '750x750' %>
+			<% else%>
+				<%= image_tag 'C0FEE.png', :size => '750x750' %>
+			<% end %>
+		</div>
+
+		<div id="shop_like_button_<%= shop.id %>" style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop %></div>
+
+			<table id="table-css">
+				<tbody>
+						<% if shop.address? %>
+						<thead>
+>>>>>>> master
 						<tr>
 							<th>&nbsp;</th>
-							<th><%= Shop.human_attribute_name(:name)%></th>
-							<th><%= Shop.human_attribute_name(:address)%></th>
-							<th><%= Shop.human_attribute_name(:url)%></th>
-							<% if user_signed_in?%>
-								<th>&nbsp;</th>
-							<% else %>
-								<th>Like</th>
-							<% end %>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
 						</tr>
+<<<<<<< HEAD
 					</thead>
 					<tbody>
 							<tr>
@@ -36,7 +44,42 @@
 									<td><%= shop_liked_counts(shop) %></td>
 								<% end %>
 							</tr>
+=======
+						</thead>
+							<tr><td><%= shop.address %></td></tr>
+							<td><div id="map" style="width100%; height: 500px;"></div></td>
 						<% end %>
-					</tbody>
-				</table>
-	<% end %>
+						<% if user_signed_in? %>
+							<tr><td><%= render 'beans/register_bean_button', shop: shop %></td></tr>
+>>>>>>> master
+						<% end %>
+							<tr><td><%= render 'shops/edit_shop_link', shop: shop %></td></tr>
+				</tbody>
+			</table>
+<% end %>
+<script>
+$(window).on('load', function() {
+    $('.material-icons').removeClass('small');
+		$('.material-icons').addClass('medium');
+		$('.waves-light').removeClass('btn-small');
+		$('.waves-light').addClass('btn-large');
+});
+</script>
+<script>
+	function initMap() {
+	var latlng = new google.maps.LatLng(<%= @shop.latitude %>,<%= @shop.longitude %>);
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 16,
+		center: latlng
+	});
+
+	var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: "<%= @shop.name %>"
+		});
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.gcp[:gmap_api_key]%>&callback=initMap" async defer></script>
+

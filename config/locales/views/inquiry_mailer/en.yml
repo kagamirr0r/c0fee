@@ -1,0 +1,7 @@
+en:
+  inquiry_mailer:
+    send_mail:
+      title: C0FEE There was an inquiry
+      customer_name: Customer Name
+      customer_email_address: Customer email address
+      contents_of_inquiry: Contents of inquiry

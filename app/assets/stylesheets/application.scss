@@ -30,19 +30,33 @@
 	top: 13px;
 }
 
-#user_plofile {
-	margin-left: 5px;
+#user_plofile,
+#bean_plofile,
+#recipe_plofile,
+#shop_plofile {
+	text-align: center;
 }
 
-#bean_image,
-#recipe_image {
+#search_form {
+	margin-top: 30px;
+}
+
+#shop_title,
+#index_title {
+	text-align: center;
+}
+
+#beans_image,
+#recipes_image,
+#shops_image,
+#country_flag {
 	display: inline-block;
 	width: 100px;
 }
 
-#no_bean_image,
-#no_recipe_image,
-#no_shop_image {
+#no_beans_image,
+#no_recipes_image,
+#no_shops_image {
 	width: 60px;
 }
 
@@ -74,6 +88,7 @@
 	width: 35px;
 	height: 35px;
 }
+
 .grid {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -82,6 +97,19 @@
 .pagination {
 	text-align: center;
 }
+
+th,
+td {
+	text-align: center;
+}
+
+#table-css {
+	border-collapse: collapse;
+}
+
+// #map {
+// 	height: 400px;
+// }
 // .alert {
 //   display: block;
 //   overflow: hidden;
