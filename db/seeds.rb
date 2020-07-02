@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+#I18n.locale = :ja
 [
 	['ゲストマン', 'guestja@guest.com', 'guestmanja', Time.now]
 ].each do |name, mail, pass, confirmed_at|
@@ -70,12 +73,12 @@ end
 	[3, 3, 5, 3, '初めての農園だけど美味しい！'],
 	[4, 1, 4, 4, 'すっきりとしてる。後に甘さが残る'],
 	[5, 2, 5, 4, '完熟感があり、甘味もたっぷりあります'],
-	[6, 3, 3, 4, 'アーモンドやカカオニブを彷彿とさせるビター感'],
+	[6, 3, 3, 4, 'アーモンドっぽいさせるビター感'],
 	[7, 5, 2, 3, 'さくらんぼやセイロンティーを思わせるような風味'],
 	[8, 5, 3, 3, '独特の酸味！さっぱりとしたお菓子に合う！'],
 	[9, 5, 2, 2, '酸味が強くて美味しい。アイスにしてもうまい'],
 	[10, 2, 4, 4, 'バランスが良くてうまい。'],
-	[11, 2, 4, 4, 'すっきりした酸味。夏の定番になるかも']
+	[11, 3, 4, 4, 'すっきりした苦味。夏の定番になるかも']
 ].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
 	I18n.locale = :ja
   Impression.create!(
@@ -83,6 +86,47 @@ end
   )
 end
 
+[
+  [1, 1, 0, 3, 90, 15, 150, 2, File.open('db/fixtures/recipe1.jpg')],
+  [2, 2, 0, 3, 92, 15, 200, 0, File.open('db/fixtures/recipe2.jpg')],
+	[3, 3, 0, 1, 88, 20, 200, 3, File.open('db/fixtures/recipe3.jpg')],
+	[4, 4, 0, 4, 90, 20, 150, 0, File.open('db/fixtures/recipe4.jpg')],
+	[5, 5, 1, 4, 93, 25, 200, 10, File.open('db/fixtures/recipe5.jpg')],
+	[6, 6, 0, 3, 88, 25, 250, 6, File.open('db/fixtures/recipe6.jpg')],
+	[7, 7, 0, 4, 95, 20, 200, 2, File.open('db/fixtures/recipe7.jpg')],
+	[8, 8, 0, 4, 90, 20, 200, 1, File.open('db/fixtures/recipe8.jpg')],
+	[9, 9, 1, 4, 93, 30, 250, 10, File.open('db/fixtures/recipe9.jpg')],
+	[10, 10, 0, 3, 93, 30, 250, 5, File.open('db/fixtures/recipe10.jpg')],
+	[11, 11, 0, 3, 88, 20, 200, 0, File.open('db/fixtures/recipe10.jpg')]
+].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extracted_amount, extraction, recipe_image|
+	I18n.locale = :ja
+  Recipe.create!(
+    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
+    amount: amount, extracted_amount: extracted_amount, extraction: extraction, recipe_image: recipe_image
+  )
+end
+
+[
+  [1, 3, 3, 3, 5, 5, '美味しい!１週間後が楽しみ'],
+  [2, 5, 2, 5, 4, 3, '90度ぐらいで入れたほうがおいしいかも'],
+	[3, 3, 3, 2, 4, 5, 'コクがあって美味しい！'],
+	[4, 1, 4, 4, 3, 4, '甘い。ネルでも試したい'],
+	[5, 2, 5, 4, 4, 4, '独特の香り。アイスでもうまかった'],
+	[6, 3, 3, 4, 4, 5, '苦い。目を覚ましたいときはこれ'],
+	[7, 5, 2, 3, 5, 3, '酸味が強い。撹拌して淹れると美味しい'],
+	[8, 5, 3, 3, 4, 5, '美味しい。ミルク入れても美味しい'],
+	[9, 5, 3, 3, 4, 5, '夏はこれよ'],
+	[10, 2, 4, 4, 4, 3, 'サイフォンで淹れるとすっきり'],
+	[11, 3, 4, 4, 4, 3, '甘いパンにめっちゃ合う']
+].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
+	I18n.locale = :ja
+  Taste.create!(
+    recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
+    t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment
+  )
+end
+
+# I18n.locale = :en
 [
 	['GuestMan', 'guesten@guest.com', 'guestmanen', Time.now]
 ].each do |name, mail, pass, confirmed_at|
@@ -144,7 +188,7 @@ end
 
 [
   [12, 3, 3, 3, 'Delicious! But little bit expensive.'],
-  [13, 5, 3, 3, 'Bring Back Costa Rica from Korea!'],
+  [13, 5, 3, 3, 'Bring Back Costa Rica from coffee beans!'],
 	[14, 3, 5, 3, 'The smell is very gorgeous！'],
 	[15, 3, 5, 5, 'I wanna say thank you to a farm directly!'],
 	[16, 4, 2, 1, 'Its strong sour. I recommend brew with high hot water'],
@@ -160,121 +204,160 @@ end
     bean_id: bean_id, i_sour: i_sour, i_sweet: i_sweet, i_bitter: i_bitter, i_comment: i_comment
   )
 end
-#
-#[
-#  [1, 1, 0, 0, 90, 15, 3],
-#  [2, 2, 0, 1, 95, 10, 0],
-#  [3, 3, 1, 2, 85, 20, 10]
-#].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
-#	I18n.locale = :ja
-#  Recipe.create!(
-#    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
-#    amount: amount, extraction: extraction
-#  )
-#end
-#
-#[
-#  [1, 2, 3, 5, 4, 5, 'ブラジルのコーヒーは間違いない'],
-#  [2, 5, 2, 5, 4, 3, '高い温度で入れたほうがおいしいかも'],
-#  [3, 3, 5, 3, 4, 4, '最高！']
-#].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
-#	I18n.locale = :ja
-#  Taste.create!(
-#    recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
-#    t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment
-#  )
-#end
+
+[
+  [12, 12, 0, 2, 90, 15, 150, 6, File.open('db/fixtures/recipe12.jpg')],
+  [13, 13, 0, 4, 95, 10, 100, 0, File.open('db/fixtures/recipe13.jpg')],
+	[14, 14, 0, 4, 88, 20, 200, 0, File.open('db/fixtures/recipe14.jpg')],
+	[15, 15, 1, 4, 93, 25, 200, 2, File.open('db/fixtures/recipe15.jpg')],
+	[16, 16, 0, 4, 95, 25, 200, 0, File.open('db/fixtures/recipe16.jpg')],
+	[17, 17, 0, 3, 90, 20, 200, 1, File.open('db/fixtures/recipe17.jpg')],
+	[18, 18, 0, 4, 92, 20, 200, 3, File.open('db/fixtures/recipe18.jpg')],
+	[19, 19, 0, 4, 93, 25, 220, 0, File.open('db/fixtures/recipe19.jpg')],
+	[20, 20, 1, 4, 92, 30, 250, 1, File.open('db/fixtures/recipe20.jpg')],
+	[21, 21, 0, 4, 90, 30, 300, 1, File.open('db/fixtures/recipe21.jpg')],
+	[22, 22, 0, 3, 92, 30, 300, 0, File.open('db/fixtures/recipe22.jpg')]
+
+].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extracted_amount, extraction, recipe_image|
+	I18n.locale = :en
+  Recipe.create!(
+    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
+    amount: amount, extracted_amount: extracted_amount, extraction: extraction, recipe_image: recipe_image
+  )
+end
+
+[
+  [12, 3, 3, 3, 4, 5, 'I wanna go Papua new guinia!!'],
+  [13, 5, 3, 3, 4, 3, 'I recommend make coffee with high tempreture hot water'],
+	[14, 3, 5, 3, 4, 5, 'GOOOD！'],
+	[15, 3, 5, 5, 3, 4, 'Its good match with milk!'],
+	[16, 4, 2, 1, 5, 4, 'Its falvor like a lime'],
+	[17, 2, 3, 4, 4, 4, 'Its balanced'],
+	[18, 5, 4, 2, 5, 5, 'NO NEED WORD!'],
+	[19, 3, 3, 4, 3, 3, 'AWESOME with Bread'],
+	[20, 2, 3, 4, 4, 2, 'Best summer iced coffee'],
+	[21, 2, 4, 5, 4, 2, 'So Bitter'],
+	[22, 3, 3, 3, 4, 2, 'BURUJI!!']
+
+].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
+	I18n.locale = :en
+  Taste.create!(
+    recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
+    t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment
+  )
+end
 
 
-#[
-#  [4, 4, 0, 0, 90, 15, 3],
-#  [5, 5, 0, 1, 95, 10, 0],
-#  [6, 6, 1, 2, 85, 20, 10]
-#].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extraction|
-#	I18n.locale = :en
-#  Recipe.create!(
-#    user_id: user_id, bean_id: bean_id, hot_ice: hot_ice, grind: grind, temperature: temperature,
-#    amount: amount, extraction: extraction
-#  )
-#end
-#
-#[
-#  [4, 2, 3, 5, 4, 5, 'Brazil beans are truelly awesome!'],
-#  [5, 5, 2, 5, 4, 3, 'I recommend make coffee with high tempreture hot water'],
-#  [6, 3, 5, 3, 4, 4, 'GOOOD！']
-#].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
-#	I18n.locale = :en
-#  Taste.create!(
-#    recipe_id: recipe_id, t_sour: t_sour, t_sweet: t_sweet, t_bitter: t_bitter,
-#    t_aroma: t_aroma, t_fullbody: t_fullbody, t_comment: t_comment
-#  )
-#end
-#
-#
-#[
-#  [1, 2],
-#  [2, 3],
-#  [3, 1]
-#].each do |user_id, bean_id|
-#	I18n.locale = :ja
-#  BeanLike.create!(
-#    user_id: user_id, bean_id: bean_id
-#  )
-#end
-#
-#[
-#  [4, 5],
-#  [5, 6],
-#  [6, 4]
-#].each do |user_id, bean_id|
-#	I18n.locale = :en
-#  BeanLike.create!(
-#    user_id: user_id, bean_id: bean_id
-#  )
-#end
-#
-#[
-#  [1, 2],
-#  [2, 3],
-#  [3, 1]
-#].each do |user_id, recipe_id|
-#	I18n.locale = :ja
-#  RecipeLike.create!(
-#    user_id: user_id, recipe_id: recipe_id
-#  )
-#end
-#
-#[
-#  [4, 5],
-#  [5, 6],
-#  [6, 4]
-#].each do |user_id, recipe_id|
-#	I18n.locale = :en
-#  RecipeLike.create!(
-#    user_id: user_id, recipe_id: recipe_id
-#  )
-#end
-#
-#
-#
-#[
-#  [1, 2],
-#  [2, 3],
-#  [3, 1]
-#].each do |user_id, shop_id|
-#	I18n.locale = :ja
-#  ShopLike.create!(
-#    user_id: user_id, shop_id: shop_id
-#  )
-#end
-#
-#[
-#  [4, 5],
-#  [5, 6],
-#  [6, 4]
-#].each do |user_id, shop_id|
-#	I18n.locale = :en
-#  ShopLike.create!(
-#    user_id: user_id, shop_id: shop_id
-#  )
-#end
+[
+  [1, 2],
+  [2, 3],
+	[3, 4],
+	[4, 5],
+	[5, 6],
+	[6, 7],
+	[7, 8],
+	[8, 9],
+	[9, 10],
+	[10, 11],
+	[11, 1]
+].each do |user_id, bean_id|
+	I18n.locale = :ja
+  BeanLike.create!(
+    user_id: user_id, bean_id: bean_id
+  )
+end
+
+[
+  [12, 13],
+  [13, 14],
+	[14, 15],
+	[16, 17],
+	[17, 18],
+	[18, 19],
+	[19, 20],
+	[20, 21],
+	[21, 22],
+	[22, 12]
+
+].each do |user_id, bean_id|
+	I18n.locale = :en
+  BeanLike.create!(
+    user_id: user_id, bean_id: bean_id
+  )
+end
+
+[
+	[1, 2],
+  [2, 3],
+	[3, 4],
+	[4, 5],
+	[5, 6],
+	[6, 7],
+	[7, 8],
+	[8, 9],
+	[9, 10],
+	[10, 11],
+	[11, 1]
+].each do |user_id, recipe_id|
+	I18n.locale = :ja
+  RecipeLike.create!(
+    user_id: user_id, recipe_id: recipe_id
+  )
+end
+
+[
+  [12, 13],
+  [13, 14],
+	[14, 15],
+	[16, 17],
+	[17, 18],
+	[18, 19],
+	[19, 20],
+	[20, 21],
+	[21, 22],
+	[22, 12]
+].each do |user_id, recipe_id|
+	I18n.locale = :en
+  RecipeLike.create!(
+    user_id: user_id, recipe_id: recipe_id
+  )
+end
+
+
+
+[
+	[1, 2],
+  [2, 3],
+	[3, 4],
+	[4, 5],
+	[5, 6],
+	[6, 7],
+	[7, 8],
+	[8, 9],
+	[9, 10],
+	[10, 11],
+	[11, 1]
+].each do |user_id, shop_id|
+	I18n.locale = :ja
+  ShopLike.create!(
+    user_id: user_id, shop_id: shop_id
+  )
+end
+
+[
+  [12, 13],
+  [13, 14],
+	[14, 15],
+	[16, 17],
+	[17, 18],
+	[18, 19],
+	[19, 20],
+	[20, 21],
+	[21, 22],
+	[22, 12]
+].each do |user_id, shop_id|
+	I18n.locale = :en
+  ShopLike.create!(
+    user_id: user_id, shop_id: shop_id
+  )
+end
