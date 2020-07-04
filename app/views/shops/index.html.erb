@@ -2,6 +2,7 @@
 	<div id="search_form"><%= render 'search_form'%></div>
 	<h4 id="index_title"><%= t('.title')%></h4>
 	<%= render 'shops', shops: @shops%>
+	<%= paginate @shops %>
 	<%= link_to new_shop_path,class: "btn-small waves-effect waves-light tooltipped red",data:{position:"right", tooltip: t('.register_shop')} do %>
 		<%= content_tag :i, "add", class: "material-icons" %>
 		<%= content_tag :i, "store", class: "material-icons" %>

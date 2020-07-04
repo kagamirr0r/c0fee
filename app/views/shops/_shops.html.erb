@@ -12,7 +12,7 @@
 					</thead>
 					<tbody>
 						<% Array(shops).each do |shop| %>
-						 <% unless shop.name.nil? %>
+						 <%# unless shop.name.nil? %>
 							<tr>
 								<td>
 									<% if shop.shop_image? %>
@@ -32,8 +32,7 @@
 									<% end %>
 							</tr>
 						 <% end %>
-						<% end %>
+						<%# end %>
 					</tbody>
 				</table>
-			<%= paginate shops %>
 	<% end %>

@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
     @shops = if @shop_search_params.present?
                Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page])
              else
-               Shop.page(params[:page])
+							 Shop.with_translations.where( shop_translations:{ locale: I18n.locale } ).page(params[:page])
              end
   end
 

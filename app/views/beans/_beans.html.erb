@@ -19,7 +19,7 @@
 
 		<tbody>
 			<% Array(beans).each do |bean| %>
-			 <% unless bean.shop.name.nil? %>
+			 <%# unless bean.shop.name.nil? %>
 				<tr>
 					<td id="bean_image_td">
 					<% if bean.bean_image? %>
@@ -56,11 +56,9 @@
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					<% end %>
-
 					</tr>
-				<% end %>
+				<%# end %>
 			<% end %>
 		</tbody>
 	</table>
-	<%= paginate beans %>
 <% end %>

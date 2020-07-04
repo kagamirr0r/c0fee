@@ -7,7 +7,7 @@ class BeansController < ApplicationController
     @beans = if @bean_search_params.present?
                Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page])
              else
-               Bean.page(params[:page])
+							 Bean.joins(shop: :translations).where( shop_translations:{ locale: I18n.locale } ).page(params[:page])
              end
   end
 

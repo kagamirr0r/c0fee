@@ -16,7 +16,7 @@
 
 			<tbody>
 				<% Array(recipes).each do |recipe| %>
-				 <% unless recipe.bean.shop.name.nil? %>
+				 <%# unless recipe.bean.shop.name.nil? %>
 					<tr>
 						<td id="recipe_image_td">
 							<% if recipe.recipe_image? %>
@@ -43,9 +43,8 @@
 								<td>&nbsp;</td>
 							<% end %>
 					</tr>
-					<% end %>
+					<%# end %>
 				<% end %>
 			</tbody>
 		</table>
-	<%= paginate recipes %>
 	<% end %>
