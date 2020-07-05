@@ -27,6 +27,7 @@
 #avatar_image {
 	display: inline-block;
 	position: relative;
+	border-radius: 20px;
 	top: 13px;
 }
 
@@ -46,7 +47,6 @@
 	text-align: center;
 }
 
-#beans_image,
 #recipes_image,
 #shops_image,
 #country_flag {
@@ -54,7 +54,6 @@
 	width: 100px;
 }
 
-#no_beans_image,
 #no_recipes_image,
 #no_shops_image {
 	width: 60px;
@@ -103,9 +102,16 @@ td {
 	text-align: center;
 }
 
-#table-css {
-	border-collapse: collapse;
+#thumbnail {
+	border-radius: 30px;
+	height: 50px;
+	width: 50px;
 }
+
+// #table-css {
+// 	border-collapse: collapse;
+// }
+
 
 // #map {
 // 	height: 400px;
