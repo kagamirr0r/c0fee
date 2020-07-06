@@ -1,7 +1,7 @@
 <% if beans.present? %>
 		<% Array(beans).each do |bean| %>
 			<div class="col s12 m6 l3">
-				<div class="card large">
+				<div class="card medium">
 					<div class="card-image">
 						<div id="beans_image">
 							<% if bean.bean_image? %>
@@ -12,17 +12,14 @@
 							<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n }%>
 						</div>
 					</div>
-					<div class="card-content center-align">
-						<!--<div>
-							<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n } %>
-							<i class="material-icons right activator">more_vert</i>
-						</div>-->
 
+					<div class="card-content">
 						<% if user_signed_in? && @liked_beans.nil? %>
-							<p id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></p>
+							<span id="bean_like_button_<%= bean.id %>" ><%= render 'bean_likes/like_bean_button',bean: bean %></span>
 						<% else %>
-							<p class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></p>
+							<span class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
 						<% end %>
+						<i class="material-icons right activator">more_vert</i>
 					</div>
 
 					<div class="card-reveal center-align">

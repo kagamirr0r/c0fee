@@ -55,8 +55,29 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 90px;
-	height: 60px;
+	width: 75px;
+	height: 50px;
+}
+
+.card.small .card-image,
+.card.medium .card-image,
+.card.large .card-image {
+	max-height: 82%;
+	// overflow: hidden;
+}
+
+.card.small .card-content,
+.card.medium .card-content,
+.card.large .card-content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -5;
+	// margin: auto;
+}
+
+.card.medium {
+	height: 380px
 }
 
 #recipes_image,
@@ -114,9 +135,27 @@ td {
 }
 
 #thumbnail {
-	border-radius: 30px;
+	border-radius: 40px;
 	height: 70px;
 	width: 70px;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1500px;
+	width: 100%;
+}
+
+@media only screen and (min-width: 601px) {
+	.container {
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 90%;
+	}
 }
 
 // #table-css {

@@ -1,5 +1,5 @@
 <%= form_with(scope: :search_bean, url: beans_path, method: :get, local: true) do |b|%>
-	<div class="row">
+	<div class="row valign-wrapper">
 	<div class="input-field col s12 l2">
 		<i class="material-icons prefix">public</i>
 		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }), {include_blank: true}, {class: 'icons'} %>
