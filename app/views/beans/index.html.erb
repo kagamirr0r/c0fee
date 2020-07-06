@@ -1,7 +1,7 @@
 <div class="beans">
 	<div id="search_form"><%= render 'search_form', back: @back%></div>
 	<h4 id="index_title"><%= t('.title')%></h4>
-	<div class="row"><%= render 'beans', beans: @beans %></div></div>
+	<div class="row"><%= render 'beans', beans: @beans %></div>
 
 	<%= paginate @beans %>
 	<%= link_to shops_path,class: 'register_bean',class: "btn-small waves-effect waves-light tooltipped red",data:{position:"top", tooltip: t('.register_bean')} do %>

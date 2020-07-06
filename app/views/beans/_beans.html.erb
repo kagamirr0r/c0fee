@@ -3,29 +3,21 @@
 			<div class="col s12 m6 l3">
 				<div class="card large">
 					<div class="card-image">
-
-						<% if bean.bean_image? %>
-							<%=link_to image_tag(bean.bean_image.to_s, id:'beans_image'), bean_path(bean)%>
-						<% else%>
-							<%=link_to image_tag('C0FEE.png', id:'no_beans_image'), bean_path(bean)%>
-						<% end %>
-						<!--<div class="card-title"><%= bean.country%></div>-->
-
+						<div id="beans_image">
+							<% if bean.bean_image? %>
+								<%=link_to image_tag(bean.bean_image.to_s), bean_path(bean)%>
+							<% else%>
+								<%=link_to image_tag('C0FEE.png'), bean_path(bean)%>
+							<% end %>
+							<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n }%>
+						</div>
 					</div>
 					<div class="card-content center-align">
-						<div>
+						<!--<div>
 							<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n } %>
-						</div>
-						<span>
-							<% if bean.user.avatar?%>
-								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, size: '60x60', id: 'thumbnail'), user_path(id: bean.user.id)%>
-							<% else %>
-								<%= image_tag 'no_avatar.png', size: '60x60', id: 'thumbnail' %>
-							<% end %>
-						</span>
-						<span>
-							<%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %>
-						</span>
+							<i class="material-icons right activator">more_vert</i>
+						</div>-->
+
 						<% if user_signed_in? && @liked_beans.nil? %>
 							<p id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></p>
 						<% else %>
@@ -33,13 +25,43 @@
 						<% end %>
 					</div>
 
-					<!--<div class="card-action">
+					<div class="card-reveal center-align">
+      			<span class="card-title">
+							<% if bean.user.avatar?%>
+								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
+							<% else %>
+								<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+							<% end %>
+							<span><%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %></span>
+							<i class="material-icons right">close</i>
+						</span>
+      			<p>
+							<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n } %>
+						</p>
+
 						<span><%= render 'recipes/make_recipe_button', bean: bean %></span>
 						<% if current_user == bean.user %>
 							<span><%= render 'beans/edit_bean_link', bean: bean %></span>
 							<span><%= render 'beans/delete_bean_link', bean: bean %></span>
 						<% end %>
-					</div>-->
+   				</div>
+
+					<!--<div class="card-action">
+						<span>
+							<% if bean.user.avatar?%>
+								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, size: '60x60', id: 'thumbnail'), user_path(id: bean.user.id)%>
+							<% else %>
+								<%= image_tag 'no_avatar.png', size: '60x60', id: 'thumbnail' %>
+							<% end %>
+						</span>
+						<span><%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %></span>
+						<span><%= render 'recipes/make_recipe_button', bean: bean %></span>
+						<% if current_user == bean.user %>
+							<span><%= render 'beans/edit_bean_link', bean: bean %></span>
+							<span><%= render 'beans/delete_bean_link', bean: bean %></span>
+						<% end %>
+					</div>
+
 					<div class="card-tabs">
 						<ul class="tabs tabs-fixed-width">
 							<li class="tab"><a href="#test4">Test 1</a></li>
@@ -51,9 +73,9 @@
 						<div id="test4">Test 1</div>
 						<div id="test5">Test 2</div>
 						<div id="test6">Test 3</div>
-					</div>
+					</div>-->
 				</div>
-			</div>}
+			</div>
 		<% end %>
 	<!--<table>
 		<thead>

@@ -47,9 +47,20 @@
 	text-align: center;
 }
 
-#recipes_image,
-#shops_image,
+#beans_image {
+	position: relative;
+}
+
 #country_flag {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 90px;
+	height: 60px;
+}
+
+#recipes_image,
+#shops_image {
 	display: inline-block;
 	width: 100px;
 }
@@ -104,8 +115,8 @@ td {
 
 #thumbnail {
 	border-radius: 30px;
-	height: 50px;
-	width: 50px;
+	height: 70px;
+	width: 70px;
 }
 
 // #table-css {
