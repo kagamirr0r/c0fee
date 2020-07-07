@@ -59,6 +59,17 @@
 	height: 50px;
 }
 
+#country_flag_in_card_reveal {
+	width: 75px;
+	height: 50px;
+}
+
+.card.small,
+.card.medium,
+.card.large {
+	position: relative;
+}
+
 .card.small .card-image,
 .card.medium .card-image,
 .card.large .card-image {
@@ -72,7 +83,10 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: -5;
+	bottom: 0;
+	margin: 8px;
+	margin-bottom: 13px;
+	padding: 0;
 	// margin: auto;
 }
 
