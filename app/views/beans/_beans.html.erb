@@ -14,12 +14,15 @@
 				</div>
 
 				<div class="card-content">
+					<span class="make_recipe"><%= render 'recipes/make_recipe_button', bean: bean %></span>
 					<% if user_signed_in? && @liked_beans.nil? %>
-						<span id="bean_like_button_<%= bean.id %>" ><%= render 'bean_likes/like_bean_button',bean: bean %></span>
+						<span id="bean_like_button_<%= bean.id %>" class="favorite" ><%= render 'bean_likes/like_bean_button',bean: bean %></span>
 					<% else %>
-						<span class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
+						<span class="red-text favorite"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
 					<% end %>
+
 					<i class="card-title material-icons right activator">more_vert</i>
+
 				</div>
 
 				<div class="card-reveal center-align">
@@ -35,11 +38,6 @@
 						<%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %>
 					</p>
 					<p><%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: bean.country_i18n }%></p>
-
-					<div id="chartContainer">
-						<canvas id="beanChart_<%= bean.id %>" ></canvas>
-					</div>
-
 					<span>
 						<%= render 'recipes/make_recipe_button', bean: bean %>
 						<% if current_user == bean.user %>
@@ -50,49 +48,6 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			var ctx = document.getElementById("beanChart_<%= bean.id %>").getContext('2d');
-			ctx.canvas.height = 100;
-			Chart.defaults.global.defaultFontSize = 10;
-
-			var beanChart = new Chart(ctx,{
-				type: 'radar',
-				data: {
-					labels:[I18n.t('js.sour'),I18n.t('js.bitter'),I18n.t('js.sweet')],
-					datasets: [{
-						data: [<%= bean.impression.i_sour %>, <%= bean.impression.i_bitter %>, <%= bean.impression.i_sweet %>],
-						backgroundColor: 'rgba(235,9,212,0.2)',
-						borderColor: "Brown",
-						pointStyle: "circle"
-					}]
-				},
-				options: {
-					responsive: true,
-					maintainAspectRatio: false,
-					tooltips: {
-					mode: 'nearest'
-							},
-					legend: {
-						display: false
-							},
-					scale: {
-						ticks: {
-							suggestedMin: 0,
-							uggestedMax: 5,
-							stepSize: 1
-						},
-						pointLabels: {
-									fontSize: 20
-						},
-						gridLines: {
-							display: true,
-						},
-						angleLines: {
-							display: true
-						}
-					}
-				}
-			});
-		</script>
 	<% end %>
 <% end %>
+

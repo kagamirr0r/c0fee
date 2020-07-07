@@ -70,6 +70,10 @@
 	position: relative;
 }
 
+.card.medium {
+	height: 380px
+}
+
 .card.small .card-image,
 .card.medium .card-image,
 .card.large .card-image {
@@ -90,8 +94,14 @@
 	// margin: auto;
 }
 
-.card.medium {
-	height: 380px
+.card-content .favorite {
+	position: absolute;
+	left: 43%;
+}
+
+.card-content .make_recipe {
+	position: absolute;
+	top: 4px;
 }
 
 #recipes_image,
