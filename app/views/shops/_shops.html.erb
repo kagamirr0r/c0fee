@@ -1,38 +1,40 @@
 <% if shops.present? %>
-			<table>
-					<thead>
-						<tr>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% Array(shops).each do |shop| %>
-						 <%# unless shop.name.nil? %>
-							<tr>
-								<td>
-									<% if shop.shop_image? %>
-										<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
-									<% else%>
-										<%=link_to image_tag('C0FEE.png', :id => 'no_shops_image'), shop_path(shop) %>
-									<% end %>
-								</td>
-								<td><%= link_to shop.name, shop.url, target: :_blank, rel: :noopener %></td>
-								<td><%= shop.address %></td>
-									<% if user_signed_in? && @liked_shops.nil?%>
-										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
-										<td><%= render 'beans/register_bean_button', shop: shop %></td>
-										<td><%= render 'shops/edit_shop_link', shop: shop %></td>
-									<% else %>
-										<td class="red-text"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></td>
-									<% end %>
-							</tr>
-						 <% end %>
-						<%# end %>
-					</tbody>
-				</table>
+	<% Array(shops).each do |shop| %>
+		<div class="col s12 m6 l3">
+			<div class="card medium">
+				<div class="card-image">
+					<div id="shops_image">
+						<% if shop.shop_image? %>
+							<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
+						<% else%>
+							<%=link_to image_tag('C0FEE.png', :id => 'no_shops_image'), shop_path(shop) %>
+						<% end %>
+					</div>
+				</div>
+
+				<div>
+					<p><%= link_to shop.name, shop.url, target: :_blank %></p>
+					<p><%= shop.address.truncate(17) %></p>
+				</div>
+
+				<div class="card-action">
+					<% if user_signed_in? && @liked_beans.nil? %>
+						<span id="shop_like_button_<%= shop.id %>" class="left favorite" ><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+					<% else %>
+						<span class="red-text favorite"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></span>
+					<% end %>
+					<span class="make_recipe"><%= render 'beans/register_bean_button', shop: shop %></span>
+					<i class="card-title material-icons right activator">more_vert</i>
+				</div>
+
+				<div class="card-reveal center-align">
+					<p class="card-title material-icons right">close</p>
+					<h5><%= link_to shop.name, shop.url, target: :_blank %></h5>
+					<p><%=shop.address%></p>
+					<p><%= render 'beans/register_bean_button', shop: shop %></p>
+					<p><%= render 'shops/edit_shop_link', shop: shop %></p>
+				</div>
+			</div>
+		</div>
 	<% end %>
+<% end %>

@@ -1,4 +1,4 @@
-<%= link_to new_bean_path(id: shop.id),class: "btn-small waves-effect waves-light tooltipped red",data:{position:"top", tooltip: t('.register_bean')} do %>
+<%= link_to new_bean_path(id: shop.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.register_bean')} do %>
 	<%= content_tag :i, "add", class: "material-icons" %>
-	<%= content_tag :i, "local_cafe", class: "material-icons" %>
+	<%#= content_tag :i, "local_cafe", class: "material-icons" %>
 <% end %>

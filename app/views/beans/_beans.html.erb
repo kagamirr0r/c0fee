@@ -19,14 +19,9 @@
 					<% else %>
 						<span class="red-text favorite"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
 					<% end %>
-
 					<span class="make_recipe"><%= render 'recipes/make_recipe_button', bean: bean %></span>
-
-
 					<i class="card-title material-icons right activator">more_vert</i>
-
 				</div>
-
 				<div class="card-reveal center-align">
 					<span class="card-title">
 						<i class="material-icons right">close</i>
@@ -39,13 +34,10 @@
 						<% end %>
 						<%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %>
 					</p>
-
 					<p><%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: bean.country_i18n }%></p>
-
 					<p><%= Impression.human_attribute_name(:i_sour)%>：<%= bean.impression.i_sour %></p>
 					<p><%= Impression.human_attribute_name(:i_bitter)%>：<%= bean.impression.i_bitter %></p>
 					<p><%= Impression.human_attribute_name(:i_sweet)%>：<%= bean.impression.i_sweet %></p>
-
 					<span>
 						<% if current_user == bean.user %>
 						<%= render 'beans/edit_bean_link', bean: bean %>

@@ -48,7 +48,8 @@
 }
 
 #recipes_image,
-#beans_image {
+#beans_image,
+#shops_image {
 	position: relative;
 }
 
@@ -104,13 +105,6 @@
 	position: absolute;
 	top: 4px;
 	left: 44%;
-}
-
-
-
-#shops_image {
-	display: inline-block;
-	width: 100px;
 }
 
 #no_recipes_image,
