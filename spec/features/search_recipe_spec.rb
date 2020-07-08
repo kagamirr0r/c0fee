@@ -22,26 +22,26 @@ RSpec.feature 'SearchRecipes', type: :feature do
     # sour
     select taste.t_sour, from: Taste.human_attribute_name(:t_sour)
     click_button I18n.t('recipes.search_form.submit_search')
-    expect(page).to have_content taste.t_comment
+    expect(page).to have_content taste.t_sour
 
     # bitter
     select taste.t_bitter, from: Taste.human_attribute_name(:t_bitter)
     click_button I18n.t('recipes.search_form.submit_search')
-    expect(page).to have_content taste.t_comment
+    expect(page).to have_content taste.t_bitter
 
     # sweet
     select taste.t_sweet, from: Taste.human_attribute_name(:t_sweet)
     click_button I18n.t('recipes.search_form.submit_search')
-    expect(page).to have_content taste.t_comment
+    expect(page).to have_content taste.t_sweet
 
     # aroma
     select taste.t_aroma, from: Taste.human_attribute_name(:t_aroma)
     click_button I18n.t('recipes.search_form.submit_search')
-    expect(page).to have_content taste.t_comment
+    expect(page).to have_content taste.t_aroma
 
     # fullbody
     select taste.t_fullbody, from: Taste.human_attribute_name(:t_fullbody)
     click_button I18n.t('recipes.search_form.submit_search')
-    expect(page).to have_content taste.t_comment
+    expect(page).to have_content taste.t_fullbody
   end
 end

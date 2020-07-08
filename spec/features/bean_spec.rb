@@ -32,9 +32,9 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content I18n.t('beans.flash.registered_bean')
 
     # show
-    bean = Bean.first
+    bean = Bean.last
 		visit "/ja/beans/#{bean.id}"
-		expect(page).to have_content bean.country_i18n
+		expect(page).to have_selector("img[src$='#{bean.country}.png']")
 		expect(page).to have_content bean.area
 		expect(page).to have_content bean.farm
 		expect(page).to have_content bean.variety_i18n

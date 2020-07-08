@@ -32,7 +32,7 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content I18n.t('recipes.flash.made_recipe')
 
     # show
-    recipe = Recipe.first
+    recipe = Recipe.last
     visit "/ja/recipes/#{recipe.id}"
 		expect(page).to have_content recipe.hot_ice_i18n
 		expect(page).to have_content recipe.grind_i18n
