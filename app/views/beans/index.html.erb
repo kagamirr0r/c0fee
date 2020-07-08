@@ -7,9 +7,8 @@
 	</div>
 
 	<%= paginate @beans %>
-
 	<div class="fixed-action-btn">
-		<%= link_to shops_path,class: 'register_bean',class: "btn-floating btn-large red waves-effect waves-light tooltipped right",data:{position:"top", tooltip: t('.register_bean')} do %>
+		<%= link_to shops_path,class: 'register_bean',class: "btn-floating btn-large red waves-effect waves-light tooltipped",data:{position:"left", tooltip: t('.register_bean')} do %>
 			<%= content_tag :i, "edit", class: "material-icons" %>
 		<% end %>
 	</div>

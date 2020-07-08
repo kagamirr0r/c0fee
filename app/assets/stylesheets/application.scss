@@ -42,7 +42,6 @@
 	margin-top: 30px;
 }
 
-#shop_title,
 #index_title {
 	text-align: center;
 }
@@ -107,20 +106,15 @@
 	left: 44%;
 }
 
+.card-action .register_bean {
+	position: absolute;
+	left: 44%;
+}
+
+
 #no_recipes_image,
 #no_shops_image {
 	width: 60px;
-}
-
-#bean_image_td,
-#recipe_image_td,
-#shop_image_td {
-	text-align: center;
-	width: 10px;
-}
-
-#shop_url_td {
-	width: 10px;
 }
 
 #user_avatar,

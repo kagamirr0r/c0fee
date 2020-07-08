@@ -31,8 +31,19 @@ RSpec.feature 'Beans', type: :feature do
 
     # show
     bean = Bean.last
-    visit "/ja/beans/#{bean.id}"
-    expect(page).to have_content bean.farm
+		visit "/ja/beans/#{bean.id}"
+		expect(page).to have_content bean.country_i18n
+		expect(page).to have_content bean.area
+		expect(page).to have_content bean.farm
+		expect(page).to have_content bean.variety_i18n
+		expect(page).to have_content bean.process_i18n
+		expect(page).to have_content bean.roast_i18n
+		expect(page).to have_content bean.roast_date
+		expect(page).to have_content bean.price
+		expect(page).to have_content bean.impression.i_sour
+		expect(page).to have_content bean.impression.i_sweet
+		expect(page).to have_content bean.impression.i_bitter
+		expect(page).to have_content bean.impression.i_comment
 
     # edit
     click_on 'edit'
