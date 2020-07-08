@@ -14,7 +14,7 @@
 
 				<div class="card-shop-info">
 					<p class="shop-name"><%= link_to shop.name, shop.url, target: :_blank %></p>
-					<p><%= shop.address.truncate(17) %></p>
+					<p><%= link_to shop.address.truncate(17), "https://www.google.com/maps/search/?api=1&query=#{shop.name}", target: :_blank, class: "black-text" %></p>
 				</div>
 
 				<div class="card-action">
@@ -30,7 +30,7 @@
 				<div class="card-reveal center-align">
 					<p class="card-title material-icons right">close</p>
 					<h5><%= link_to shop.name, shop.url, target: :_blank %></h5>
-					<p><%=shop.address%></p>
+					<p><%= link_to shop.address, "https://www.google.com/maps/search/?api=1&query=#{shop.latitude},#{shop.longitude}", target: :_blank, class: "black-text" %></p>
 					<p><%= render 'beans/register_bean_button', shop: shop %></p>
 					<p><%= render 'shops/edit_shop_link', shop: shop %></p>
 				</div>
