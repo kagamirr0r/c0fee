@@ -12,8 +12,10 @@ RSpec.feature 'Beans', type: :feature do
   scenario 'CRUD of bean' do
     # create
     click_on I18n.t('layouts.application.bean')
-    click_on 'edit'
-    click_on 'add'
+		click_on 'edit'
+		within '.card-action' do
+			click_on 'add'
+		end
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm

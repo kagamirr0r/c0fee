@@ -12,8 +12,10 @@ RSpec.feature 'Recipes', type: :feature do
   scenario 'CRUD of recipe' do
     # create
     click_on I18n.t('layouts.application.recipe')
-    click_on 'add'
-    click_on 'add'
+		click_on 'add'
+		within '.card-content' do
+			click_on 'add'
+		end
     select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount

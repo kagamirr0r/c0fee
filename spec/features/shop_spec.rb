@@ -10,8 +10,10 @@ RSpec.feature 'Shops', type: :feature do
 
   scenario 'CRUD of shop wihtout delete' do
     # create
-    click_on I18n.t('layouts.application.shop')
-    click_on 'store'
+		click_on I18n.t('layouts.application.shop')
+		within '.btn-floating' do
+			click_on 'add'
+		end
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address
     fill_in 'shop_url', with: shop.url
