@@ -82,6 +82,14 @@
 	// overflow: hidden;
 }
 
+.card.small .card-image.shop-image,
+.card.medium .card-image.shop-image,
+.card.large .card-image.shop-image {
+	max-height: 55%;
+	// overflow: hidden;
+}
+
+
 .card.small .card-content,
 .card.medium .card-content,
 .card.large .card-content {
@@ -111,6 +119,14 @@
 	left: 44%;
 }
 
+.card-shop-info {
+	position: absolute;
+	bottom: 15%;
+}
+
+.shop-name {
+	font-size: 18px;
+}
 
 #no_recipes_image,
 #no_shops_image {

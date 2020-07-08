@@ -2,7 +2,7 @@
 	<% Array(shops).each do |shop| %>
 		<div class="col s12 m6 l3">
 			<div class="card medium">
-				<div class="card-image">
+				<div class="card-image shop-image">
 					<div id="shops_image">
 						<% if shop.shop_image? %>
 							<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
@@ -12,8 +12,8 @@
 					</div>
 				</div>
 
-				<div>
-					<p><%= link_to shop.name, shop.url, target: :_blank %></p>
+				<div class="card-shop-info">
+					<p class="shop-name"><%= link_to shop.name, shop.url, target: :_blank %></p>
 					<p><%= shop.address.truncate(17) %></p>
 				</div>
 
