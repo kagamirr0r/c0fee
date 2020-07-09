@@ -65,6 +65,13 @@
 	height: 50px;
 }
 
+.card-content .material-icons,
+.card-reveal .material-icons,
+.card-action .material-icons {
+	display: inline-flex;
+	vertical-align: middle;
+}
+
 .card.small,
 .card.medium,
 .card.large {

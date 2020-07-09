@@ -31,8 +31,10 @@
 					<p class="card-title material-icons right">close</p>
 					<h5><%= link_to shop.name, shop.url, target: :_blank %></h5>
 					<p><%= link_to shop.address, "https://www.google.com/maps/search/?api=1&query=#{shop.latitude},#{shop.longitude}", target: :_blank, class: "black-text" %></p>
-					<p><%= render 'beans/register_bean_button', shop: shop %></p>
-					<p><%= render 'shops/edit_shop_link', shop: shop %></p>
+					<span>
+						<%= render 'beans/register_bean_button', shop: shop %>
+						<%= render 'shops/edit_shop_link', shop: shop %>
+					</span>
 				</div>
 			</div>
 		</div>
