@@ -17,8 +17,8 @@
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
 					<% if user_signed_in? %>
-						<li><%= link_to t('.bean'), beans_path%></li>
 						<li><%= link_to t('.shop'), shops_path%></li>
+						<li><%= link_to t('.bean'), beans_path%></li>
 						<li><%= link_to t('.recipe'), recipes_path%></li>
 					<% end %>
 				</ul>

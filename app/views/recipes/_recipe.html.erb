@@ -3,7 +3,7 @@
 	<div class="row right">
 		<div class="card">
 			<% if recipe.recipe_image? %>
-			<%= image_tag recipe.recipe_image.to_s, size: '630x550'%>
+			<%= image_tag recipe.recipe_image.to_s, size: '630x470'%>
 			<% else %>
 			<%= image_tag 'C0FEE.png', size: '630x550' %>
 			<% end %>
@@ -49,47 +49,47 @@
 					<td><%= link_to recipe.bean.country_i18n, bean_path(id: recipe.bean.id) %></td>
 				</tr>
 
-				<% if recipe.grind.present? %>
+				<%# <% if recipe.grind.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:grind)%> >grain</i></th>
 					<td><%= recipe.grind_i18n %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if recipe.amount.present? %>
+				<%# <% if recipe.amount.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> >opacity</i></th>
 					<td><%= recipe.amount %><% if I18n.locale == :ja && recipe.amount.present? %>g<% elsif i18n.locale == :en %>oz<%end%> / <%= recipe.extracted_amount %><% if I18n.locale == :ja && recipe.amount.present?%>g<% elsif i18n.locale == :en %>oz<%end%></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if recipe.extraction.present? %>
+				<%# <% if recipe.extraction.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:extraction)%> >local_drink</i></th>
 					<td><%= recipe.extraction_i18n %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if recipe.temperature.present? %>
+				<%# <% if recipe.temperature.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:temperature)%> >whatshot</i></th>
 					<td><%= recipe.temperature %><% if recipe.temperature.present?%>℃<%end%></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if recipe.bean.roast_date.present? %>
+				<%# <% if recipe.bean.roast_date.present? %>
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= t('.from_roast_date') %> >date_range</i></th>
 					<td><%= from_roast_date(recipe) %><%= t('.day') if recipe.bean.roast_date? %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if recipe.taste.t_comment.present? %>
+				<%# <% if recipe.taste.t_comment.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Taste.human_attribute_name(:t_comment)%> >message</i></th>
 					<td><%= recipe.taste.t_comment %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:updated_at)%> >access_time</i></th>
@@ -118,7 +118,7 @@ $(window).on('load', function() {
 
 <script>
 var ctx = document.getElementById("recipeChart").getContext('2d');
-ctx.canvas.height = 400;
+ctx.canvas.height = 380;
 Chart.defaults.global.defaultFontSize = 15;
 
 var beanChart = new Chart(ctx,{

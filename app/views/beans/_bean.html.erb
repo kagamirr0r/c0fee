@@ -50,61 +50,61 @@
 					<td><%= bean.country_i18n %></td>
 				</tr>
 
-				<% if bean.area.present? %>
+				<%#<% if bean.area.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
 					<td><%= bean.area %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.farm.present? %>
+				<%# <% if bean.farm.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:farm) %> >home</i></th>
 					<td><%= bean.farm %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.variety.present? %>
+				<%# <% if bean.variety.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:variety) %> >local_florist</i></th>
 					<td><%= bean.variety_i18n %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.process.present? %>
+				<%# <% if bean.process.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:process) %> >loop</i></th>
 					<td><%= bean.process_i18n %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-        <% if bean.roast.present? %>
+        <%# <% if bean.roast.present? %>
 				<tr>
 					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
 					<td><%= bean.roast_i18n %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.roast_date.present? %>
+				<%# <% if bean.roast_date.present? %>
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast_date) %> >date_range</i></th>
 					<td><%= bean.roast_date %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.price.present? %>
+				<%# <% if bean.price.present? %>
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
 					<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
-				<% if bean.impression.i_comment.present? %>
+				<%# <% if bean.impression.i_comment.present? %>
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >message</i></th>
 					<td><%= bean.impression.i_comment %></td>
 				</tr>
-				<% end %>
+				<%# <% end %>
 
 				<tr>
 					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:updated_at) %> >access_time</i></th>
