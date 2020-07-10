@@ -96,6 +96,13 @@
 	// overflow: hidden;
 }
 
+.card.small .card-image.recipe-image,
+.card.medium .card-image.recipe-image,
+.card.large .card-image.recipe-image {
+	max-height: 60%;
+	// overflow: hidden;
+}
+
 
 .card.small .card-content,
 .card.medium .card-content,

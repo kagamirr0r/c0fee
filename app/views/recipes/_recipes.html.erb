@@ -1,8 +1,8 @@
 <% if recipes.present? %>
 	<% Array(recipes).each do |recipe| %>
 		<div class="col s12 m6 l3">
-			<div class="card small">
-				<div class="card-image">
+			<div class="card medium">
+				<div class="card-image recipe-image">
 					<div id="recipes_image">
 						<% if recipe.recipe_image? %>
 							<%=link_to image_tag(recipe.recipe_image.to_s, :id => 'recipes_image'), recipe_path(recipe) %>
@@ -11,8 +11,12 @@
 						<% end %>
 					</div>
 				</div>
+				<div>
+					<!--<p><%= recipe.extraction_i18n %></p>-->
+					<p><%= recipe.taste.t_comment.truncate(17) %></p>
+				</div>
 
-				<div class="card-content">
+				<div class="card-action">
 						<% if user_signed_in? && @liked_recipes.nil?%>
 							<span id="recipe_like_button_<%= recipe.id %>" class="left favorite" ><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></span>
 						<% else %>
