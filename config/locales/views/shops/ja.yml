@@ -27,7 +27,7 @@ ja:
       title: 店の登録
     show:
       <<: *form
-      registered_bean: 登録済みコーヒー豆
+      registered_bean: コーヒー豆
     flash:
       registered_shop: 店を登録しました!
       edited_shop: 店を更新しました！

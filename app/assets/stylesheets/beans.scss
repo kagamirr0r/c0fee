@@ -5,3 +5,8 @@
 #bean_info {
 	width: 52%;
 }
+
+.card img,
+.card-image img {
+	object-fit: cover;
+}

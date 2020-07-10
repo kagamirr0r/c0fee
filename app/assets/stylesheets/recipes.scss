@@ -5,3 +5,8 @@
 #recipe_info {
 	width: 55%;
 }
+
+.card img,
+.card-image img {
+	object-fit: cover;
+}
