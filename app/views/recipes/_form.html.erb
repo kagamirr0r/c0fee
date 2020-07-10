@@ -31,13 +31,13 @@
 		</div><br />
 
 		<div class="input-field col s12">
-			<i class="material-icons prefix">opacity</i>
+			<i class="fas fa-weight prefix"></i>
 			<%= r.label t('.amount') %>
 			<%= r.number_field :amount, value: 10 %>
 		</div><br />
 
 		<div class="input-field col s12">
-			<i class="material-icons prefix">whatshot</i>
+			<i class="fas fa-flask prefix"></i>
 			<%= r.label t('.extracted_amount') %>
 			<%= r.number_field :extracted_amount, max: 1000 %>
 		</div><br />
@@ -49,7 +49,7 @@
 		</div><br />
 
 		<div class="input-field col s12">
-			<i class="material-icons prefix">whatshot</i>
+			<i class="fas fa-thermometer-three-quarters prefix"></i>
 			<%= r.label t('.temperature') %>
 			<%= r.number_field :temperature, value: 90, max: 100 %>
 		</div><br />
