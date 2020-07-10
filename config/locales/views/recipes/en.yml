@@ -18,6 +18,7 @@ en:
       make_recipe: Make a recipe
     recipe: &recipe
       <<: *edit_recipe_link
+      return: Back
       from_roast_date: From roast date
       day: days
     recipes:

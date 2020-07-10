@@ -2,11 +2,10 @@
 
 	<div class="row right">
 		<div class="card">
-			<%# <i class="material-icons activator" id="activator">more_vert</i></span> %>
 			<% if bean.bean_image? %>
-			<%= image_tag bean.bean_image.to_s, size: '580'%>
+			<%= image_tag bean.bean_image.to_s, size: '680'%>
 			<% else %>
-			<%= image_tag 'C0FEE.png', size: '580' %>
+			<%= image_tag 'C0FEE.png', size: '680' %>
 			<% end %>
 
 			<div id="chartContainer">
@@ -48,7 +47,7 @@
 
 				<tr>
 					<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
-					<td><%= bean.country_i18n %><%#= image_tag "#{bean.country}.png" ,size:'90x60',class: "tooltipped",data:{position:"right",tooltip: bean.country_i18n } %></td>
+					<td><%= bean.country_i18n %></td>
 				</tr>
 
 				<% if bean.area.present? %>
@@ -113,6 +112,7 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="left"><%= link_to t('.return'), :back %></div>
 <% end %>
 <script>
   I18n.defaultLocale = "<%= I18n.default_locale %>";
@@ -134,8 +134,8 @@ $('.red-text').on('ajax:success', function(event){
 </script>
 <script>
 var ctx = document.getElementById("beanChart").getContext('2d');
-ctx.canvas.height = 280;
-Chart.defaults.global.defaultFontSize = 15;
+ctx.canvas.height = 380;
+Chart.defaults.global.defaultFontSize = 20;
 
 var beanChart = new Chart(ctx,{
 	type: 'radar',
@@ -152,33 +152,24 @@ var beanChart = new Chart(ctx,{
 		responsive: true,
 		maintainAspectRatio: false,
 		tooltips: {
-		mode: 'nearest'
-        },
+			enabled: true,
+			callbacks: {
+					label: function(tooltipItem, data) {
+							return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					}
+			}
+		},
 		legend: {
 			display: false
 				 },
 		scale: {
-			  //       beforeFit: function (scale) {
-        //     if (scale.chart.config.data.labels.length === 3) {
-        //         var pointLabelFontSize = Chart.helpers.getValueOrDefault(scale.options.pointLabels.fontSize, Chart.defaults.global.defaultFontSize);
-        //         scale.height *= (2 / 1.5)
-        //         scale.height -= pointLabelFontSize;
-        //     }
-        // },
-        // afterFit: function (scale) {
-        //     if (scale.chart.config.data.labels.length === 3) {
-        //         var pointLabelFontSize = Chart.helpers.getValueOrDefault(scale.options.pointLabels.fontSize, Chart.defaults.global.defaultFontSize);
-        //         scale.height += pointLabelFontSize;
-        //         scale.height /= (2 / 1.5);
-        //     }
-        // },
 			ticks: {
 				suggestedMin: 0,
 				uggestedMax: 5,
 				stepSize: 1
 			},
 			pointLabels: {
-            fontSize: 20
+            fontSize: 18
 			},
 			gridLines: {
 				display: true,

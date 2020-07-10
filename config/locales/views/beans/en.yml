@@ -5,6 +5,7 @@ en:
       edit: Edit
       delete: Delete
       currency_unit: $
+      return: Back
     beans:
       <<: *bean
     delete_bean_link:

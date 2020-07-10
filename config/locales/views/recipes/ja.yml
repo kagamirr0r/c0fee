@@ -18,6 +18,7 @@ ja:
       make_recipe: レシピを作成
     recipe: &recipe
       <<: *edit_recipe_link
+      return: 戻る
       from_roast_date: 焙煎から
       day: 日後
     recipes:

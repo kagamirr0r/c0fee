@@ -5,6 +5,7 @@ ja:
       edit: 編集
       delete: 削除
       currency_unit: 円
+      return: 戻る
     beans:
       <<: *bean
     delete_bean_link:
