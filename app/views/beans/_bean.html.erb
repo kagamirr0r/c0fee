@@ -94,14 +94,18 @@
 
 				<%# <% if bean.price.present? %>
 				<tr>
-					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
+					<% if I18n.locale == :ja %>
+						<th><i class="fas fa-yen-sign fa-3x tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> ></i></th>
+					<% else %>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
+					<% end %>
 					<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
 				</tr>
 				<%# <% end %>
 
 				<%# <% if bean.impression.i_comment.present? %>
 				<tr>
-					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >message</i></th>
+					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >chat_bubble_outline</i></th>
 					<td><%= bean.impression.i_comment %></td>
 				</tr>
 				<%# <% end %>

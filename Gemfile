@@ -70,6 +70,8 @@ gem 'globalize', '~> 5.3.0'
 
 gem 'chart-js-rails'
 
+gem 'font-awesome-sass'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'i18n-tasks'

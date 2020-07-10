@@ -16,6 +16,8 @@
 
 @import "materialize";
 @import "material_icons";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 #logo {
 	text-decoration: none;
@@ -189,6 +191,10 @@ td {
 	margin: 0 auto;
 	max-width: 1500px;
 	width: 100%;
+}
+
+.fas.prefix {
+	padding-left: 7px;
 }
 
 @media only screen and (min-width: 601px) {

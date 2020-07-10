@@ -20,8 +20,12 @@
 
   <div class="actions">
     <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.sign_in') %><% end %>
+		<%= link_to user_google_oauth2_omniauth_authorize_path, class: "waves-effect waves-light btn white black-text" do %>
+			<i class="fab fa-google red-text"></i>
+			Google
+		<% end %><br /><br />
 		<%= link_to t('.simple_login'), users_guest_sign_in_path, method: :post, class: "waves-effect waves-light white-text btn red" %>
-  </div>
+  </div><br />
 
 <% end %>
 
