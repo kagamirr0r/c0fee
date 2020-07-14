@@ -19,9 +19,9 @@
 
 				<div class="card-action">
 					<% if user_signed_in? && @liked_beans.nil? %>
-						<span id="shop_like_button_<%= shop.id %>" class="left favorite" ><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+						<span id="shop_like_button_<%= shop.id %>" ><%= render 'shop_likes/like_shop_button', shop: shop %></span>
 					<% else %>
-						<span class="red-text favorite"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></span>
+						<span class="red-text"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></span>
 					<% end %>
 					<span class="register_bean"><%= render 'beans/register_bean_button', shop: shop %></span>
 					<i class="card-title material-icons right activator">more_vert</i>

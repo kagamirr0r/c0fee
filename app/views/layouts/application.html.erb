@@ -14,16 +14,21 @@
 	<header>
 		<nav>
 			<div class='nav-wrapper red accent-3'>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
-					<% if user_signed_in? %>
-						<li><%= link_to t('.shop'), shops_path%></li>
-						<li><%= link_to t('.bean'), beans_path%></li>
-						<li><%= link_to t('.recipe'), recipes_path%></li>
-					<% end %>
-				</ul>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
 
+				<% if user_signed_in? %>
+				<a class='dropdown-trigger left hide-on-med-and-down' href='#' data-target='dropdown1'><i class="material-icons">menu</i></a>
+					<ul class="dropdown-content" id='dropdown1'>
+						<li class="teal"><%= link_to shops_path, class:"white-text" do%><i class="material-icons">store</i><%= t('.shop') %><% end %></li>
+						<li class="teal"><%= link_to beans_path, class:"white-text" do%><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
+						<li class="teal"><%= link_to recipes_path, class:"white-text" do%><i class="material-icons">import_contacts</i><%= t('.recipe') %><% end %></li>
+					</ul>
+				<% end %>
+
+					<ul class="brand-logo center">
+						<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
+					</ul>
+
+				<ul class="right hide-on-med-and-down">
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
