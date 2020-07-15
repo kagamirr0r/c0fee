@@ -29,7 +29,6 @@
 #avatar_image {
 	display: inline-block;
 	position: relative;
-	border-radius: 20px;
 	top: 13px;
 }
 
@@ -206,6 +205,10 @@ td {
 	.container {
 		width: 90%;
 	}
+}
+
+img {
+	object-fit: cover;
 }
 
 // #table-css {

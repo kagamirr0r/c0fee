@@ -1,14 +1,14 @@
 <% if shop.present? %>
 
-	<div class="row left">
+	<span class="row left">
 		<div class="card">
 			<% if shop.shop_image? %>
-			<%= image_tag shop.shop_image.to_s, size: '700x650'%>
+			<%= image_tag shop.shop_image.to_s, size: '690x640'%>
 			<% else %>
-			<%= image_tag 'C0FEE.png', size: '680' %>
+			<%= image_tag 'C0FEE.png', size: '690x640'%>
 			<% end %>
 		</div>
-	</div>
+	</span>
 
 	<span id="shop_info" class="right">
 		<table>
