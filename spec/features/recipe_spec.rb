@@ -12,7 +12,7 @@ RSpec.feature 'Recipes', type: :feature do
   scenario 'CRUD of recipe' do
 		# create
 		click_on 'menu'
-    click_on I18n.t('layouts.application.recipe')
+    click_on 'import_contacts'
 		click_on 'add'
 		within '.card-content' do
 			click_on 'add'
