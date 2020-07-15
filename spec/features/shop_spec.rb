@@ -8,8 +8,9 @@ RSpec.feature 'Shops', type: :feature do
     log_in(user)
   end
 
-  scenario 'CRUD of shop wihtout delete' do
-    # create
+	scenario 'CRUD of shop wihtout delete' do
+		# create
+		click_on 'menu'
 		click_on I18n.t('layouts.application.shop')
 		within '.fixed-action-btn' do
 			click_on 'add'
