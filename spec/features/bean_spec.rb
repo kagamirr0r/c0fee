@@ -11,12 +11,12 @@ RSpec.feature 'Beans', type: :feature do
 
   scenario 'CRUD of bean' do
     # create
-		click_on 'menu'
+    click_on 'menu'
     click_on I18n.t('layouts.application.bean')
-		click_on 'edit'
-		within '.card-action' do
-			click_on 'add'
-		end
+    click_on 'edit'
+    within '.card-action' do
+      click_on 'add'
+    end
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
@@ -34,19 +34,19 @@ RSpec.feature 'Beans', type: :feature do
 
     # show
     bean = Bean.last
-		visit "/ja/beans/#{bean.id}"
-		expect(page).to have_content bean.country_i18n
-		expect(page).to have_content bean.area
-		expect(page).to have_content bean.farm
-		expect(page).to have_content bean.variety_i18n
-		expect(page).to have_content bean.process_i18n
-		expect(page).to have_content bean.roast_i18n
-		expect(page).to have_content bean.roast_date
-		expect(page).to have_content bean.price
-		expect(page).to have_content bean.impression.i_sour
-		expect(page).to have_content bean.impression.i_sweet
-		expect(page).to have_content bean.impression.i_bitter
-		expect(page).to have_content bean.impression.i_comment
+    visit "/ja/beans/#{bean.id}"
+    expect(page).to have_content bean.country_i18n
+    expect(page).to have_content bean.area
+    expect(page).to have_content bean.farm
+    expect(page).to have_content bean.variety_i18n
+    expect(page).to have_content bean.process_i18n
+    expect(page).to have_content bean.roast_i18n
+    expect(page).to have_content bean.roast_date
+    expect(page).to have_content bean.price
+    expect(page).to have_content bean.impression.i_sour
+    expect(page).to have_content bean.impression.i_sweet
+    expect(page).to have_content bean.impression.i_bitter
+    expect(page).to have_content bean.impression.i_comment
 
     # edit
     click_on 'edit'

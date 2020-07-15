@@ -8,13 +8,13 @@ RSpec.feature 'Shops', type: :feature do
     log_in(user)
   end
 
-	scenario 'CRUD of shop wihtout delete' do
-		# create
-		click_on 'menu'
-		click_on 'store'
-		within '.fixed-action-btn' do
-			click_on 'add'
-		end
+  scenario 'CRUD of shop wihtout delete' do
+    # create
+    click_on 'menu'
+    click_on 'store'
+    within '.fixed-action-btn' do
+      click_on 'add'
+    end
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address
     fill_in 'shop_url', with: shop.url

@@ -10,13 +10,13 @@ RSpec.feature 'Recipes', type: :feature do
   end
 
   scenario 'CRUD of recipe' do
-		# create
-		click_on 'menu'
+    # create
+    click_on 'menu'
     click_on 'import_contacts'
-		click_on 'add'
-		within '.card-content' do
-			click_on 'add'
-		end
+    click_on 'add'
+    within '.card-action' do
+      click_on 'add'
+    end
     select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount
@@ -35,18 +35,18 @@ RSpec.feature 'Recipes', type: :feature do
     # show
     recipe = Recipe.last
     visit "/ja/recipes/#{recipe.id}"
-		expect(page).to have_content recipe.hot_ice_i18n
-		expect(page).to have_content recipe.grind_i18n
-		expect(page).to have_content recipe.amount
-		expect(page).to have_content recipe.extraction_i18n
-		expect(page).to have_content recipe.extracted_amount
-		expect(page).to have_content recipe.temperature
-		expect(page).to have_content recipe.taste.t_sour
-		expect(page).to have_content recipe.taste.t_sweet
-		expect(page).to have_content recipe.taste.t_bitter
-		expect(page).to have_content recipe.taste.t_aroma
-		expect(page).to have_content recipe.taste.t_fullbody
-		expect(page).to have_content recipe.taste.t_comment
+    expect(page).to have_content recipe.hot_ice_i18n
+    expect(page).to have_content recipe.grind_i18n
+    expect(page).to have_content recipe.amount
+    expect(page).to have_content recipe.extraction_i18n
+    expect(page).to have_content recipe.extracted_amount
+    expect(page).to have_content recipe.temperature
+    expect(page).to have_content recipe.taste.t_sour
+    expect(page).to have_content recipe.taste.t_sweet
+    expect(page).to have_content recipe.taste.t_bitter
+    expect(page).to have_content recipe.taste.t_aroma
+    expect(page).to have_content recipe.taste.t_fullbody
+    expect(page).to have_content recipe.taste.t_comment
 
     # edit
     click_on 'edit'
