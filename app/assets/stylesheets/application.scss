@@ -69,7 +69,8 @@
 .nav-wrapper .material-icons,
 .card-content .material-icons,
 .card-reveal .material-icons,
-.card-action .material-icons {
+.card-action .material-icons,
+#shop_info .material-icons {
 	display: inline-flex;
 	vertical-align: middle;
 }
@@ -200,6 +201,6 @@ td {
 	}
 }
 
-img img:not(#backgroud_image) {
-	object-fit: cover;
-}
+// img {
+// 	object-fit: cover;
+// }

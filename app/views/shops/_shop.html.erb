@@ -1,35 +1,27 @@
 <% if shop.present? %>
+<div class="row">
+		<h3 class="center-align"><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3>
 
-	<span class="row left">
-		<div class="card">
+		<div id="shop_image" class="col l6 left">
 			<% if shop.shop_image? %>
-			<%= image_tag shop.shop_image.to_s, size: '690x640'%>
+			<%= image_tag shop.shop_image.to_s %>
 			<% else %>
-			<%= image_tag 'C0FEE.png', size: '690x640'%>
+			<%= image_tag 'C0FEE.png'%>
 			<% end %>
 		</div>
-	</span>
 
-	<span id="shop_info" class="right">
-		<table>
-			<tbody>
-				<tr>
-					<td>
-						<span><h3><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3></span>
-					</td>
-				</tr>
-				<tr><td><%= shop.address %></td></tr>
-				<tr><td><div id="map" style="width100%; height: 350px;"></div></td></tr>
-				<tr>
-					<td>
-						<span id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %>
-						<%= render 'beans/register_bean_button', shop: shop %>
-						<%= render 'shops/edit_shop_link', shop: shop %>
-						</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="shop_info" class="col l6 right">
+			<h6 class="center-align"><%= shop.address %></h6><br/>
+			<div id="map" style="width100%; height: 380px;"></div><br/>
+				<div class="center-align">
+					<span id="shop_like_button_<%= shop.id %>" class="center-align"><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+					<span>
+					<%= render 'beans/register_bean_button', shop: shop %>
+					<%= render 'shops/edit_shop_link', shop: shop %>
+					</span>
+				</div>
+		</div>
+	</div>
 <% end %>
 <script>
 $(window).on('load', function() {

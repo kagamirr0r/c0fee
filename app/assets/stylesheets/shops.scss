@@ -1,12 +1,18 @@
 // Place all the styles related to the shops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#shop_info {
-	width: 50%;
+
+// div#shop_image {
+// 	height: 500px;
+// }
+
+#shop_image img {
+	width: 100%;
+	height: 530px;
+	object-fit: cover;
 }
 
-
-td .material-icons {
-	display: inline-flex;
-	vertical-align: middle;
-}
+// .col.l6.right,
+// .col.l6.left {
+// 	padding: 0;
+// }

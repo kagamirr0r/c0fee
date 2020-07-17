@@ -51,15 +51,10 @@
 			<% else %>
 				<li><%= link_to('EN Ver.', :locale => 'en')%></li>
 			<% end %>
-				<%# <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-				<li><a href="#!">Second Link</a></li>
-				<li><div class="divider"></div></li>
-				<li><a class="subheader">Subheader</a></li>
-				<li><a class="waves-effect" href="#!">Third Link With Waves</a></li> %>
 			</div>
   	</ul>
 
-		<nav>
+		<nav class="col">
 			<div class='nav-wrapper red accent-3'>
 				  <span><a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only left"><i class="material-icons">menu</i></a></span>
 				<% if user_signed_in? %>
