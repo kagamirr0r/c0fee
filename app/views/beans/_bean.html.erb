@@ -1,11 +1,12 @@
 <% if bean.present? %>
+<div class="row"></div>
 
-	<div class="row right">
-		<div class="card">
+	<div class="row">
+		<div id="bean_image" class="card col l6 left">
 			<% if bean.bean_image? %>
-			<%= image_tag bean.bean_image.to_s, size: '680'%>
+			<%= image_tag bean.bean_image.to_s %>
 			<% else %>
-			<%= image_tag 'C0FEE.png', size: '680' %>
+			<%= image_tag 'C0FEE.png' %>
 			<% end %>
 
 			<div id="chartContainer">
@@ -23,100 +24,101 @@
 				</span>
 			</div>
 		</div>
-	</div>
 
-	<span id="bean_info" class="left">
-		<table>
-			<tbody>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
-					<td>
-						<% if bean.user.avatar?%>
-							<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
+		<div id="bean_info" class="col l6 s12 right">
+			<table>
+				<tbody>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
+						<td>
+							<% if bean.user.avatar?%>
+								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
+							<% else %>
+								<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+							<% end %>
+							<%= link_to bean.user.username, user_path(id: bean.user.id)%>
+						</td>
+					</tr>
+
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
+						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
+					</tr>
+
+					<tr>
+						<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
+						<td><%= bean.country_i18n %></td>
+					</tr>
+
+					<%#<% if bean.area.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
+						<td><%= bean.area %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.farm.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:farm) %> >home</i></th>
+						<td><%= bean.farm %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.variety.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:variety) %> >local_florist</i></th>
+						<td><%= bean.variety_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.process.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:process) %> >loop</i></th>
+						<td><%= bean.process_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.roast.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
+						<td><%= bean.roast_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.roast_date.present? %>
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast_date) %> >date_range</i></th>
+						<td><%= bean.roast_date %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.price.present? %>
+					<tr>
+						<% if I18n.locale == :ja %>
+							<th><i class="fas fa-yen-sign fa-3x tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> ></i></th>
 						<% else %>
-							<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+							<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
 						<% end %>
-						<%= link_to bean.user.username, user_path(id: bean.user.id)%>
-					</td>
-				</tr>
+						<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
+					</tr>
+					<%# <% end %>
 
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
-					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-				</tr>
+					<%# <% if bean.impression.i_comment.present? %>
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >chat_bubble_outline</i></th>
+						<td><%= bean.impression.i_comment %></td>
+					</tr>
+					<%# <% end %>
 
-				<tr>
-					<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
-					<td><%= bean.country_i18n %></td>
-				</tr>
-
-				<%#<% if bean.area.present? %>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
-					<td><%= bean.area %></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.farm.present? %>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:farm) %> >home</i></th>
-					<td><%= bean.farm %></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.variety.present? %>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:variety) %> >local_florist</i></th>
-					<td><%= bean.variety_i18n %></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.process.present? %>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:process) %> >loop</i></th>
-					<td><%= bean.process_i18n %></td>
-				</tr>
-				<%# <% end %>
-
-        <%# <% if bean.roast.present? %>
-				<tr>
-					<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
-					<td><%= bean.roast_i18n %></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.roast_date.present? %>
-				<tr>
-					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast_date) %> >date_range</i></th>
-					<td><%= bean.roast_date %></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.price.present? %>
-				<tr>
-					<% if I18n.locale == :ja %>
-						<th><i class="fas fa-yen-sign fa-3x tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> ></i></th>
-					<% else %>
-						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
-					<% end %>
-					<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
-				</tr>
-				<%# <% end %>
-
-				<%# <% if bean.impression.i_comment.present? %>
-				<tr>
-					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >chat_bubble_outline</i></th>
-					<td><%= bean.impression.i_comment %></td>
-				</tr>
-				<%# <% end %>
-
-				<tr>
-					<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:updated_at) %> >access_time</i></th>
-					<td><%= l bean.updated_at %></td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="left"><%= link_to t('.return'), :back %></div>
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:updated_at) %> >access_time</i></th>
+						<td><%= l bean.updated_at %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="left"><%= link_to t('.return'), :back %></div>
 <% end %>
 <script>
   I18n.defaultLocale = "<%= I18n.default_locale %>";
