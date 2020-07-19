@@ -15,8 +15,8 @@ RSpec.feature 'Shops', type: :feature do
 			click_on 'store'
 		end
 
-    within '.fixed-action-btn' do
-      click_on 'add'
+    within '.register_shop' do
+      click_on 'edit'
 		end
 
     fill_in 'shop_name', with: shop.name
