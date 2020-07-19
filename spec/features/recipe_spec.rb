@@ -10,8 +10,10 @@ RSpec.feature 'Recipes', type: :feature do
   end
 
   scenario 'CRUD of recipe' do
-    # create
-    click_on 'import_contacts'
+		# create
+		within '.nav-wrapper' do
+			click_on 'import_contacts'
+		end
     click_on 'add'
     within '.card-action' do
       click_on 'add'

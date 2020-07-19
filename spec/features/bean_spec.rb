@@ -10,8 +10,10 @@ RSpec.feature 'Beans', type: :feature do
   end
 
   scenario 'CRUD of bean' do
-    # create
-    click_on I18n.t('layouts.application.bean')
+		# create
+		within '.nav-wrapper' do
+			click_on I18n.t('layouts.application.bean')
+		end
     click_on 'edit'
     within '.card-action' do
       click_on 'add'
