@@ -16,7 +16,7 @@
 	<ul id="slide-out" class="sidenav">
 		<% if user_signed_in? %>
     <li>
-			<div class="user-view">
+			<div class="user-view" style="margin: 0;">
 				<div class="background">
 					<%= image_tag "toppage_image", id:"backgroud_image" %>
 				</div>
@@ -34,6 +34,9 @@
 			</span>
    	 </div>
 		</li>
+		<li class="teal"><%= link_to shops_path, class:"white-text" do%><i class="material-icons white-text">store</i><%= t('.shop') %><% end %></li>
+			<li class="teal"><%= link_to beans_path, class:"white-text" do%><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
+			<li class="teal"><%= link_to recipes_path, class:"white-text" do%><i class="material-icons white-text">import_contacts</i><%= t('.recipe') %><% end %></li>
 		<% end %>
 		<div>
 			<% unless user_signed_in? %>
@@ -56,13 +59,12 @@
 
 		<nav class="col">
 			<div class='nav-wrapper red accent-3'>
-				  <span><a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only left"><i class="material-icons">menu</i></a></span>
+				<span><a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only left"><i class="material-icons">menu</i></a></span>
 				<% if user_signed_in? %>
-				<a class='dropdown-trigger left hide-on-med-and-down' href='#' data-target='dropdown1'><i class="material-icons">menu</i></a>
-					<ul class="dropdown-content" id='dropdown1'>
-						<li class="teal"><%= link_to shops_path, class:"white-text" do%><i class="material-icons">store</i><%= t('.shop') %><% end %></li>
-						<li class="teal"><%= link_to beans_path, class:"white-text" do%><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
-						<li class="teal"><%= link_to recipes_path, class:"white-text" do%><i class="material-icons">import_contacts</i><%= t('.recipe') %><% end %></li>
+					<ul class="left hide-on-med-and-down">
+						<li><%= link_to shops_path, class:"white-text" do%><i class="material-icons prefix">store</i>          <%= t('.shop') %><% end %></li>
+						<li><%= link_to beans_path, class:"white-text" do%><i class="material-icons prefix" style="height: 21px;"><%= image_tag 'white-bean.png', class: "material-icons", style:"font-size: 21px;" %></i>           <%= t('.bean') %><% end %></li>
+						<li><%= link_to recipes_path, class:"white-text" do%><i class="material-icons prefix">import_contacts</i>          <%= t('.recipe') %><% end %></li>
 					</ul>
 				<% end %>
 

@@ -11,7 +11,6 @@ RSpec.feature 'Beans', type: :feature do
 
   scenario 'CRUD of bean' do
     # create
-    click_on 'menu'
     click_on I18n.t('layouts.application.bean')
     click_on 'edit'
     within '.card-action' do

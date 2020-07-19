@@ -11,7 +11,6 @@ RSpec.feature 'Recipes', type: :feature do
 
   scenario 'CRUD of recipe' do
     # create
-    click_on 'menu'
     click_on 'import_contacts'
     click_on 'add'
     within '.card-action' do
