@@ -16,7 +16,7 @@ RSpec.feature 'Recipes', type: :feature do
 			click_on 'import_contacts'
 		end
 
-		within '.egister_recipe' do
+		within '.register_recipe' do
 			click_on 'edit'
 		end
 

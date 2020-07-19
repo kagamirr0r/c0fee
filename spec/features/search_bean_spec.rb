@@ -7,8 +7,11 @@ RSpec.feature 'SearchBeans', type: :feature do
   end
 
   scenario 'search bean' do
-    visit root_path
-    click_link I18n.t('layouts.application.bean')
+		visit root_path
+
+		within '.nav-wrapper' do
+			click_link I18n.t('layouts.application.bean')
+		end
 
     # country
     select impression.bean.country_i18n, from: Bean.human_attribute_name(:country)
