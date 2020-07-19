@@ -9,15 +9,15 @@ RSpec.feature 'Shops', type: :feature do
   end
 
   scenario 'CRUD of shop wihtout delete' do
-		# create
+    # create
 
-		within '.nav-wrapper' do
-			click_on 'store'
-		end
+    within '.nav-wrapper' do
+      click_on 'store'
+    end
 
     within '.register_shop' do
       click_on 'edit'
-		end
+    end
 
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address

@@ -9,7 +9,7 @@
 	<%= paginate @shops %>
 	<div class="fixed-action-btn">
 		<%= link_to new_shop_path,class: "register_shop btn-floating btn-large red waves-effect waves-light tooltipped",data:{position:"left", tooltip: t('.register_shop')} do %>
-			<%= content_tag :i, "edit", class: "material-icons" %>
+			<i class="white-text material-icons">edit</i>
 		<% end %>
 	</div>
 <script>

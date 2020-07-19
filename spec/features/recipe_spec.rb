@@ -10,17 +10,17 @@ RSpec.feature 'Recipes', type: :feature do
   end
 
   scenario 'CRUD of recipe' do
-		# create
+    # create
 
-		within '.nav-wrapper' do
-			click_on 'import_contacts'
-		end
+    within '.nav-wrapper' do
+      click_on 'import_contacts'
+    end
 
-		click_on 'edit'
+    click_on 'edit'
 
     within '.card-action' do
       click_on 'add'
-		end
+    end
 
     select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select taste.recipe.grind_i18n, from: 'recipe_grind'
