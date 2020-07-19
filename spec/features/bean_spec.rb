@@ -15,13 +15,14 @@ RSpec.feature 'Beans', type: :feature do
 			click_on I18n.t('layouts.application.bean')
 		end
 
-		within '.fixed-action-btn' do
+		within '.register_bean' do
 			click_on 'edit'
 		end
 
     within '.card-action' do
       click_on 'add'
-    end
+		end
+
     select impression.bean.country_i18n
     fill_in 'bean_area', with: impression.bean.area
     fill_in 'bean_farm', with: impression.bean.farm
