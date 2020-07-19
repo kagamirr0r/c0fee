@@ -15,9 +15,7 @@ RSpec.feature 'Beans', type: :feature do
 			click_on I18n.t('layouts.application.bean')
 		end
 
-		within '.register_bean .material-icons' do
-			click_on 'edit'
-		end
+		click_on 'edit'
 
     within '.card-action' do
       click_on 'add'
