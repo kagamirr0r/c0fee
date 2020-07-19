@@ -17,7 +17,7 @@ RSpec.feature 'Beans', type: :feature do
 
 		# expect(page).to have_content I18n.t('beans.flash.registered_bean')
 		visit "/ja/beans"
-		click_on '.btn-floating'
+		click_on 'edit', match: :first
 
     within '.card-action' do
       click_on 'add'
