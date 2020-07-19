@@ -15,8 +15,8 @@ RSpec.feature 'Beans', type: :feature do
       click_on I18n.t('layouts.application.bean')
     end
 
-		within '.btn-floating' do
-			click_on 'edit'
+		within '.fixed-action-btn' do
+			click_on '.material-icons'
 		end
 
     within '.card-action' do
