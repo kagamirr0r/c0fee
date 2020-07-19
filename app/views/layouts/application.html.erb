@@ -34,9 +34,9 @@
 			</span>
    	 </div>
 		</li>
-		<li class="teal"><%= link_to shops_path, class:"white-text" do%><i class="material-icons white-text">store</i><%= t('.shop') %><% end %></li>
-			<li class="teal"><%= link_to beans_path, class:"white-text" do%><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
-			<li class="teal"><%= link_to recipes_path, class:"white-text" do%><i class="material-icons white-text">import_contacts</i><%= t('.recipe') %><% end %></li>
+		<li class="teal"><%= link_to shops_path, class:"white-text" do %><i class="material-icons white-text">store</i><%= t('.shop') %><% end %></li>
+		<li class="teal"><%= link_to beans_path, class:"white-text" do %><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
+		<li class="teal"><%= link_to recipes_path, class:"white-text" do %><i class="material-icons white-text">import_contacts</i><%= t('.recipe') %><% end %></li>
 		<% end %>
 		<div>
 			<% unless user_signed_in? %>
