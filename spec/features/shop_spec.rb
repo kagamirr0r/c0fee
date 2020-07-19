@@ -17,7 +17,6 @@ RSpec.feature 'Shops', type: :feature do
 
     click_on 'edit'
 
-
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address
     fill_in 'shop_url', with: shop.url
