@@ -11,16 +11,21 @@ RSpec.feature 'Beans', type: :feature do
 
   scenario 'CRUD of bean' do
     # create
-    # within '.nav-wrapper' do
-    #   find("img[src*='white-bean']").click
-		# end
 
-		# expect(page).to have_content I18n.t('beans.flash.registered_bean')
-		visit "/ja/beans"
-		click_on 'edit', match: :first
-
-    within '.card-action' do
-      click_on 'add'
+    within ".nav-wrapper" do
+      click_on I18n.t('layouts.application.bean')
+    end
+    
+    expect(page).to have_content I18n.t('beans.index.Did_you_brew_the_following_beans?')
+    
+    within ".fixed-action-btn" do
+      click_on "edit"
+    end
+    
+    expect(page).to have_content I18n.t('shops.index.Did_you_buy_a_coffee_beans_following_shops?')
+    
+    within ".card-action" do
+      click_on "add"
     end
 
     select impression.bean.country_i18n
@@ -55,7 +60,9 @@ RSpec.feature 'Beans', type: :feature do
     expect(page).to have_content bean.impression.i_comment
 
     # edit
+    within ".card-action" do
     click_on 'edit'
+    end
     select another_impression.bean.country_i18n, from: 'bean_country'
     fill_in 'bean_area', with: another_impression.bean.area
     fill_in 'bean_farm', with: another_impression.bean.farm

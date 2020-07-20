@@ -15,7 +15,9 @@ RSpec.feature 'Shops', type: :feature do
       click_on 'store'
     end
 
-    click_on 'edit'
+		within '.fixed-action-btn' do
+			click_on 'edit'
+		end
 
     fill_in 'shop_name', with: shop.name
     fill_in 'shop_address', with: shop.address
@@ -28,8 +30,10 @@ RSpec.feature 'Shops', type: :feature do
     visit "/ja/shops/#{shop.id}"
     expect(page).to have_content shop.name
 
-    # edit
-    click_on 'edit'
+		# edit
+		within '#shop_info' do
+			click_on 'edit'
+		end
     fill_in 'shop_name', with: another_shop.name
     fill_in 'shop_address', with: another_shop.address
     fill_in 'shop_url', with: another_shop.url
