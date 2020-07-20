@@ -18,6 +18,7 @@ ja:
       make_recipe: レシピを作成
     recipe: &recipe
       <<: *edit_recipe_link
+      return: 戻る
       from_roast_date: 焙煎から
       day: 日後
     recipes:
@@ -27,13 +28,13 @@ ja:
       submit_search: 検索
     edit:
       <<: *delete_recipe_link
-      title: レシピの編集
+      title: レシピ編集
     index:
       title: レシピ一覧
       make_recipe: レシピを作成
     new:
       <<: *delete_recipe_link
-      title: レシピの登録
+      title: レシピ作成
     show:
       <<: *delete_recipe_link
     flash:

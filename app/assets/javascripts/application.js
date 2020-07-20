@@ -98,26 +98,6 @@ $(document).ready(function () {
 $(document).ready(function () {
 	$('input.autocomplete').autocomplete({
 		data: {
-			"ブラジル": null,
-			"ベトナム": null,
-			"コロンビア": null,
-			"インドネシア": null,
-			"エチオピア": null,
-			"ホンジュラス": null,
-			"インド": null,
-			"ペルー": null,
-			"グァテマラ": null,
-			"ウガンダ": null,
-			"メキシコ": null,
-			"コスタリカ": null,
-			"パナマ": null,
-			"タンザニア": null,
-			"ケニア": null,
-			"東ティモール": null,
-			"ドミニカ": null,
-			"ハワイ": null,
-			"ニカラグア": null,
-			"エルサルバドル": null,
 			"エスピリット・サント": null,
 			"ミナスジェライス": null,
 			"リントン": null,
@@ -128,16 +108,9 @@ $(document).ready(function () {
 			"ブルンジ": null,
 			"トマジーニ": null,
 			"サンパウロ": null,
-			"レッドカトゥアイ": null,
-			"イエローブルボン": null,
 			"トマジーニ": null,
 			"バイーア": null,
-			"カトゥアイ": null,
-			"ブルボン": null,
 			"ウイラ": null,
-			"ピンクブルボン": null,
-			"カトゥーラ": null,
-			"ティピカ": null,
 			"アチェ": null,
 			"ティムティム": null,
 			"北スマトラ": null,
@@ -146,16 +119,13 @@ $(document).ready(function () {
 			"イルガチェッフェ": null,
 			"オロミア": null,
 			"シダモ": null,
-			"原種": null,
 			"パライネマ": null,
 			"サンタバルバラ": null,
 			"エル・プラン": null,
 			"ラパス": null,
-			"イエローカトゥアイ": null,
 			"インティブカ": null,
 			"アンティグア": null,
 			"ウエウエテナンゴ": null,
-			"パカマラ": null,
 			"アンティグア": null,
 			"アマティトラン": null,
 			"プーノ": null,
@@ -177,15 +147,8 @@ $(document).ready(function () {
 			"カヤンザ": null,
 			"ンゴジ": null,
 			"ヒノテガ": null,
-			"イエローパカマラ": null,
 			"ヌエバ・セゴビア": null,
-			"ヌエバセゴビア": null,
-			"ジャバニカ": null,
 			"マタガルパ": null,
-			"オレンジブルボン": null,
-			"マタガルパ": null,
-			"レッドパカマラ": null,
-			"ケサルテペケ": null,
 			"ケサルテペケ": null,
 			"エル・ボケロン": null,
 			"ソンソナテ": null,
@@ -193,4 +156,11 @@ $(document).ready(function () {
 			"ロマ・ラ・グロリア": null
 		},
 	});
+});
+$(document).ready(function () {
+	$('.collapsible').collapsible();
+});
+
+$(document).ready(function () {
+	$('.sidenav').sidenav();
 });

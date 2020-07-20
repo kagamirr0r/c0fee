@@ -1,12 +1,17 @@
 <div class="shops">
 	<div id="search_form"><%= render 'search_form'%></div>
-	<h4 id="index_title"><%= t('.title')%></h4>
-	<%= render 'shops', shops: @shops%>
-	<%= link_to new_shop_path,class: "btn-small waves-effect waves-light tooltipped red",data:{position:"right", tooltip: t('.register_shop')} do %>
-		<%= content_tag :i, "add", class: "material-icons" %>
-		<%= content_tag :i, "store", class: "material-icons" %>
-	<% end %>
-</div>
+	<div class="row">
+		<div class="container">
+			<%= render 'shops', shops: @shops%>
+		</div>
+	</div>
+
+	<%= paginate @shops %>
+	<div class="fixed-action-btn">
+		<%= link_to new_shop_path,class: "btn-floating btn-large red waves-effect waves-light tooltipped",data:{position:"left", tooltip: t('.register_shop')} do %>
+			<%= content_tag :i, "edit", class: "material-icons" %>
+		<% end %>
+	</div>
 <script>
  M.toast({html: '<%= t('.Did_you_buy_a_coffee_beans_following_shops?') %>', classes: 'teal lighten-2'})
  M.toast({html: '<%= t('.If_you_click_cup_button_you_can_register_a_bean!') %>', classes: 'teal lighten-2'})

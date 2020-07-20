@@ -1,13 +1,23 @@
 <div class="beans">
 	<div id="search_form"><%= render 'search_form', back: @back%></div>
-	<h4 id="index_title"><%= t('.title')%></h4>
-	<%= render 'beans', beans: @beans %>
-	<%= link_to shops_path,class: 'register_bean',class: "btn-small waves-effect waves-light tooltipped red",data:{position:"top", tooltip: t('.register_bean')} do %>
-		<%= content_tag :i, "add", class: "material-icons" %>
-		<%= content_tag :i, "local_cafe", class: "material-icons" %>
-	<% end %>
+	<div class="row">
+		<div class="container">
+			<%= render 'beans', beans: @beans %>
+		</div>
+	</div>
+
+	<%= paginate @beans %>
+	<div class="fixed-action-btn">
+		<%= link_to shops_path,class: "btn-floating btn-large red waves-effect waves-light tooltipped",data:{position:"left", tooltip: t('.register_bean')} do %>
+			<%= content_tag :i, "edit", class: "material-icons" %>
+		<% end %>
+	</div>
+
 </div>
 <script>
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });
  M.toast({html: '<%= t('.Did_you_brew_the_following_beans?') %>', classes: 'teal lighten-2'})
  M.toast({html: '<%= t('.Click_the_button_on_the_book_to_make_a_recipe!') %>', classes: 'teal lighten-2'})
 </script>

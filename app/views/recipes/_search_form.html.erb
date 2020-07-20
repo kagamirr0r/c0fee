@@ -1,43 +1,43 @@
 <%= form_with(scope: :search_recipe, url: recipes_path, method: :get, local: true) do |r|%>
 	<div class="row">
 
-		<div class="input-field col s12 l2 ">
+		<div class="input-field col s12 l2">
 			<i class="material-icons prefix">swap_vert</i>
 			<%= r.select :hot_ice,Recipe.hot_ices.keys.map {|k| [I18n.t("enums.recipe.hot_ice.#{k}"),k]}, include_blank: true %>
 			<%= r.label(:hot_ice,Recipe.human_attribute_name(:hot_ice))%>
 		</div>
 
-		<div class="input-field col s12 l2 ">
+		<div class="input-field col s12 l2">
 		<i class="material-icons prefix">local_drink</i>
 			<%= r.select :extraction, Recipe.extractions.keys.map {|k| [I18n.t("enums.recipe.extraction.#{k}"),k]}, include_blank: true %>
 			<%= r.label(:extraction,Recipe.human_attribute_name(:extraction))%>
 		</div>
 
-		<div class="input-field col s12 l1 ">
+		<div class="input-field col s12 l1">
 			<i class="material-icons prefix">change_history</i>
 			<%= r.select :t_sour,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= r.label(:t_sour,Taste.human_attribute_name(:t_sour)) %>
 		</div>
 
-		<div class="input-field col s12 l1 ">
+		<div class="input-field col s12 l1">
 			<i class="material-icons prefix">panorama_fish_eye</i>
 			<%= r.select :t_sweet,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true%>
 			<%= r.label(:t_sweet,Taste.human_attribute_name(:t_sweet)) %>
 		</div>
 
-		<div class="input-field col s12 l1 ">
-			<i class="material-icons prefix">crop_square</i>
+		<div class="input-field col s12 l1">
+			<i class="material-icons prefix">crop_din</i>
 			<%= r.select :t_bitter,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= r.label(:t_bitter,Taste.human_attribute_name(:t_bitter)) %>
 		</div>
 
-		<div class="input-field col s12 l1 ">
+		<div class="input-field col s12 l1">
 			<i class="material-icons prefix">filter_list</i>
 			<%= r.select :t_aroma,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= r.label(:t_aroma,Taste.human_attribute_name(:t_aroma)) %>
 		</div>
 
-		<div class="input-field col s12 l1 ">
+		<div class="input-field col s12 l1">
 			<i class="material-icons prefix">brightness_medium</i>
 			<%= r.select :t_fullbody,[[1,1],[2,2],[3,3],[4,4],[5,5]], include_blank: true %>
 			<%= r.label(:t_fullbody,Taste.human_attribute_name(:t_fullbody)) %>

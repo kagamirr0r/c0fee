@@ -13,9 +13,10 @@ RSpec.feature 'SignUps', type: :feature do
   scenario 'signup with a email and a password' do
     visit root_path
     expect(page).to have_http_status :ok
-
-    click_link I18n.t('layouts.application.create_account')
-
+    
+    within ".nav-wrapper" do
+      click_on I18n.t('layouts.application.create_account')
+    end
     fill_in 'user_username', with: 'foo'
     fill_in 'user_email', with: 'foo@example.com'
     fill_in 'user_password', with: 'password'
@@ -47,7 +48,10 @@ RSpec.feature 'SignUps', type: :feature do
     click_button I18n.t('devise.sessions.new.sign_in')
     expect(page).to have_content I18n.t('layouts.application.log_out')
 
+
+    within ".nav-wrapper" do
     click_link I18n.t('layouts.application.log_out')
+    end
     expect(page).to have_content I18n.t('layouts.application.log_in')
   end
 end

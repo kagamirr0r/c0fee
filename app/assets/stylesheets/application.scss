@@ -16,6 +16,8 @@
 
 @import "materialize";
 @import "material_icons";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 #logo {
 	text-decoration: none;
@@ -30,45 +32,105 @@
 	top: 13px;
 }
 
-#user_plofile,
-#bean_plofile,
-#recipe_plofile,
-#shop_plofile {
-	text-align: center;
-}
+// img.material-icons.prefix {
+// 	top: 20px;
+// 	font-size: 22px;
+// }
 
 #search_form {
 	margin-top: 30px;
 }
 
-#shop_title,
 #index_title {
 	text-align: center;
 }
 
-#beans_image,
 #recipes_image,
-#shops_image,
+#beans_image,
+#shops_image {
+	position: relative;
+}
+
 #country_flag {
-	display: inline-block;
-	width: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 75px;
+	height: 50px;
 }
 
-#no_beans_image,
-#no_recipes_image,
-#no_shops_image {
-	width: 60px;
+#country_flag_in_card_reveal {
+	width: 75px;
+	height: 50px;
 }
 
-#bean_image_td,
-#recipe_image_td,
-#shop_image_td {
-	text-align: center;
-	width: 10px;
+.nav-wrapper .material-icons,
+.card-content .material-icons,
+.card-reveal .material-icons,
+.card-action .material-icons,
+#shop_info .material-icons {
+	display: inline-flex;
+	vertical-align: middle;
 }
 
-#shop_url_td {
-	width: 10px;
+.card.small,
+.card.medium,
+.card.large {
+	position: relative;
+}
+
+// .card.medium {
+// 	height: 380px
+// }
+
+.card.small .card-image,
+.card.medium .card-image,
+.card.large .card-image {
+	max-height: 82%;
+	// overflow: hidden;
+}
+
+.card.small .card-image.shop-image,
+.card.medium .card-image.shop-image,
+.card.large .card-image.shop-image {
+	max-height: 55%;
+	// overflow: hidden;
+}
+
+.card.small .card-image.recipe-image,
+.card.medium .card-image.recipe-image,
+.card.large .card-image.recipe-image {
+	max-height: 60%;
+	// overflow: hidden;
+}
+
+
+.card.small .card-content,
+.card.medium .card-content,
+.card.large .card-content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 8px;
+	margin-bottom: 13px;
+	padding: 0;
+	// margin: auto;
+}
+
+.card-action .register_bean,
+.card-action .make_recipe {
+	position: absolute;
+	left: 44%;
+}
+
+.card-shop-info {
+	position: absolute;
+	bottom: 15%;
+}
+
+.shop-name {
+	font-size: 18px;
 }
 
 #user_avatar,
@@ -80,13 +142,6 @@
 
 #dropdown_nav {
 	width: 170px;
-}
-
-#bean_icon,
-#recipe_icon,
-#shop_icon {
-	width: 35px;
-	height: 35px;
 }
 
 .grid {
@@ -103,41 +158,35 @@ td {
 	text-align: center;
 }
 
-#table-css {
-	border-collapse: collapse;
+#thumbnail {
+	border-radius: 40px;
+	height: 70px;
+	width: 70px;
 }
 
-// #map {
-// 	height: 400px;
-// }
-// .alert {
-//   display: block;
-//   overflow: hidden;
-//   margin: 10px 0px;
-//   padding: 15px;
-//   border-radius: 0 0 2px 2px;
-// }
+.container {
+	margin: 0 auto;
+	max-width: 1500px;
+	width: 100%;
+}
 
-// .alert-success {
-//   @extend .green !optional;
-//   @extend .lighten-5 !optional;
-//   @extend .green-text !optional;
-// }
+.input-field .fas.fa-thermometer-three-quarters.prefix {
+	padding-left: 7px;
+}
 
-// .alert-info {
-//   @extend .light-blue !optional;
-//   @extend .lighten-5 !optional;
-//   @extend .light-blue-text !optional;
-// }
 
-// .alert-warning {
-//   @extend .orange !optional;
-//   @extend .lighten-5 !optional;
-//   @extend .orange-text !optional;
-// }
+@media only screen and (min-width: 601px) {
+	.container {
+		width: 85%;
+	}
+}
 
-// .alert-danger {
-//   @extend .red !optional;
-//   @extend .lighten-5 !optional;
-//   @extend .red-text !optional;
-// }
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 90%;
+	}
+}
+
+img {
+	object-fit: cover;
+}

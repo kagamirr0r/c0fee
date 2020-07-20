@@ -1,4 +1,4 @@
-<%= link_to new_recipe_path(id: bean.id),class: "btn-small waves-effect waves-light tooltipped red",data:{position:"top", tooltip: t('.make_recipe')} do %>
+<%= link_to new_recipe_path(id: bean.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.make_recipe')} do %>
 <%= content_tag :i, "add", class: "material-icons" %>
-<%= content_tag :i, "import_contacts", class: "material-icons" %>
+<%#= content_tag :i, "import_contacts", class: "material-icons" %>
 <% end %>

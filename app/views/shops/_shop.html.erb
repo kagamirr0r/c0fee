@@ -1,38 +1,32 @@
 <% if shop.present? %>
-		<div id="shop_plofile" >
+<div class="row">
+		<h3 class="center-align"><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3>
+
+		<div id="shop_image" class="col l6 left">
 			<% if shop.shop_image? %>
-				<%= image_tag shop.shop_image.to_s, :size => '750x750' %>
-			<% else%>
-				<%= image_tag 'C0FEE.png', :size => '750x750' %>
+			<%= image_tag shop.shop_image.to_s %>
+			<% else %>
+			<%= image_tag 'C0FEE.png'%>
 			<% end %>
 		</div>
 
-		<div id="shop_like_button_<%= shop.id %>" style="text-align: center"><%= render 'shop_likes/like_shop_button', shop: shop %></div>
-
-			<table id="table-css">
-				<tbody>
-						<% if shop.address? %>
-						<thead>
-						<tr>
-							<th>&nbsp;</th>
-						</tr>
-						</thead>
-							<tr><td><%= shop.address %></td></tr>
-							<td><div id="map" style="width100%; height: 500px;"></div></td>
-						<% end %>
-						<% if user_signed_in? %>
-							<tr><td><%= render 'beans/register_bean_button', shop: shop %></td></tr>
-						<% end %>
-							<tr><td><%= render 'shops/edit_shop_link', shop: shop %></td></tr>
-				</tbody>
-			</table>
+		<div id="shop_info" class="col l6 right">
+			<h6 class="center-align"><%= shop.address %></h6><br/>
+			<div id="map" style="width100%; height: 380px;"></div><br/>
+				<div class="center-align">
+					<span id="shop_like_button_<%= shop.id %>" class="center-align"><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+					<span>
+					<%= render 'beans/register_bean_button', shop: shop %>
+					<%= render 'shops/edit_shop_link', shop: shop %>
+					</span>
+				</div>
+		</div>
+	</div>
 <% end %>
 <script>
 $(window).on('load', function() {
-    $('.material-icons').removeClass('small');
-		$('.material-icons').addClass('medium');
-		$('.waves-light').removeClass('btn-small');
-		$('.waves-light').addClass('btn-large');
+    $('#shop_info .material-icons').removeClass('small');
+		$('#shop_info .material-icons').addClass('medium');
 });
 </script>
 <script>

@@ -38,7 +38,7 @@ end
 	['LIGHT UP COFFEE', '東京都武蔵野市吉祥寺本町4-13-15', 'https://lightupcoffee.com/', File.open('db/fixtures/shop7.png'),35.705462, 139.572519],
 	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/',  File.open('db/fixtures/shop8.png'),34.674107, 135.498055],
 	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/', File.open('db/fixtures/shop9.png'),35.636246, 139.709597],
-	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.png'),35.747852, 139.801818],
+	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.png'),35.747845, 139.801818],
 	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.png'),35.006792, 135.764502]
 ].each do |name, address, url, shop_image, latitude, longitude|
 	I18n.locale = :ja

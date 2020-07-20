@@ -1,51 +1,58 @@
 <% if recipes.present? %>
-		<table>
-		<thead>
-			<tr>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-			</tr>
-		</thead>
-
-			<tbody>
-				<% Array(recipes).each do |recipe| %>
-				 <% unless recipe.bean.shop.name.nil? %>
-					<tr>
-						<td id="recipe_image_td">
-							<% if recipe.recipe_image? %>
-								<%=link_to image_tag(recipe.recipe_image.to_s, :id => 'recipes_image'), recipe_path(recipe) %>
-							<% else%>
-								<%=link_to image_tag('C0FEE.png', :id => 'no_recipes_image'), recipe_path(recipe) %>
-							<% end %>
-						</td>
-						<td><%= recipe.hot_ice_i18n %></td>
-						<td><%= link_to image_tag("#{recipe.bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(id: recipe.bean.id) %></td>
-						<td><%= recipe.grind_i18n %></td>
-						<td><%= recipe.extraction_i18n %></td>
-						<td><%= recipe.taste.t_comment%></td>
-						<% if user_signed_in? && @liked_recipes.nil?%>
-							<td id="recipe_like_button_<%= recipe.id %>"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></td>
-						<% else %>
-							<td class="red-text"><i class="material-icons">favorite</i><%= recipe_liked_counts(recipe) %></td>
+	<% Array(recipes).each do |recipe| %>
+		<div class="col s12 m6 l3">
+			<div class="card medium">
+				<div class="card-image recipe-image">
+					<div id="recipes_image">
+						<% if recipe.recipe_image? %>
+							<%=link_to image_tag(recipe.recipe_image.to_s), recipe_path(recipe) %>
+						<% else%>
+							<%=link_to image_tag('C0FEE.png'), recipe_path(recipe) %>
 						<% end %>
-							<% if current_user == recipe.user %>
-								<td><%= render 'recipes/edit_recipe_link', recipe: recipe %></td>
-								<td><%= render 'recipes/delete_recipe_link', recipe: recipe %></td>
-							<% else %>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							<% end %>
-					</tr>
-					<% end %>
-				<% end %>
-			</tbody>
-		</table>
-	<%= paginate recipes %>
+					</div>
+				</div>
+				<div>
+					<p>・<%= recipe.extraction_i18n %></p>
+					<p><%= recipe.taste.t_comment.truncate(17) %></p>
+				</div>
+
+				<div class="card-action">
+						<% if user_signed_in? && @liked_recipes.nil?%>
+							<span id="recipe_like_button_<%= recipe.id %>" class="left favorite" ><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></span>
+						<% else %>
+							<span class="red-text favorite"><i class="material-icons">favorite</i><%= recipe_liked_counts(recipe) %></span>
+						<% end %>
+					<i class="card-title material-icons right activator">more_vert</i>
+				</div>
+
+				<div class="card-reveal center-align">
+					<span class="card-title">
+						<i class="material-icons right">close</i>
+					</span>
+					<p>
+						<% if recipe.user.avatar?%>
+							<%= link_to image_tag(recipe.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(recipe.user)%>
+						<% else %>
+							<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+						<% end %>
+						<%= link_to "@#{recipe.user.username}", user_path(id: recipe.user.id) %>
+					</p>
+
+					<p><%= link_to image_tag("#{recipe.bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(recipe.bean)%></p>
+					<p class=""><%= recipe.hot_ice_i18n %></p>
+					<p><%= Taste.human_attribute_name(:t_sour)%>：<%= recipe.taste.t_sour %></p>
+					<p><%= Taste.human_attribute_name(:t_bitter)%>：<%= recipe.taste.t_bitter %></p>
+					<p><%= Taste.human_attribute_name(:t_sweet)%>：<%= recipe.taste.t_sweet %></p>
+					<p><%= Taste.human_attribute_name(:t_aroma)%>：<%= recipe.taste.t_aroma %></p>
+					<p><%= Taste.human_attribute_name(:t_fullbody)%>：<%= recipe.taste.t_fullbody %></p>
+					<span>
+						<% if current_user == recipe.user %>
+						<%= render 'recipes/edit_recipe_link', recipe: recipe %>
+						<%= render 'recipes/delete_recipe_link', recipe: recipe %>
+						<% end %>
+					</span>
+				</div>
+			</div>
+		</div>
+		<% end %>
 	<% end %>

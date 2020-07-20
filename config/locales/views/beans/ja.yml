@@ -5,6 +5,7 @@ ja:
       edit: 編集
       delete: 削除
       currency_unit: 円
+      return: 戻る
     beans:
       <<: *bean
     delete_bean_link:
@@ -31,9 +32,9 @@ ja:
       title: 豆の編集
     index:
       title: 豆一覧
-      register_bean: 豆を登録する
+      register_bean: 豆を登録
       Did_you_brew_the_following_beans?: 以下の豆で淹れましたか？
-      Click_the_button_on_the_book_to_make_a_recipe!: 本のボタンをクリックするとレシピが作れます!
+      Click_the_button_on_the_book_to_make_a_recipe!: ＋をクリックするとレシピが作れます!
     new:
       <<: *form
       title: 豆の登録

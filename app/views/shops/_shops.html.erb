@@ -1,39 +1,42 @@
 <% if shops.present? %>
-			<table>
-					<thead>
-						<tr>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% Array(shops).each do |shop| %>
-						 <% unless shop.name.nil? %>
-							<tr>
-								<td>
-									<% if shop.shop_image? %>
-										<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
-									<% else%>
-										<%=link_to image_tag('C0FEE.png', :id => 'no_shops_image'), shop_path(shop) %>
-									<% end %>
-								</td>
-								<td><%= link_to shop.name, shop.url, target: :_blank, rel: :noopener %></td>
-								<td><%= shop.address %></td>
-									<% if user_signed_in? && @liked_shops.nil?%>
-										<td id="shop_like_button_<%= shop.id %>"><%= render 'shop_likes/like_shop_button', shop: shop %></td>
-										<td><%= render 'beans/register_bean_button', shop: shop %></td>
-										<td><%= render 'shops/edit_shop_link', shop: shop %></td>
-									<% else %>
-										<td class="red-text"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></td>
-									<% end %>
-							</tr>
-						 <% end %>
+	<% Array(shops).each do |shop| %>
+		<div class="col s12 m6 l3">
+			<div class="card medium">
+				<div class="card-image shop-image">
+					<div id="shops_image">
+						<% if shop.shop_image? %>
+							<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
+						<% else%>
+							<%=link_to image_tag('C0FEE.png', :id => 'no_shops_image'), shop_path(shop) %>
 						<% end %>
-					</tbody>
-				</table>
-			<%= paginate shops %>
+					</div>
+				</div>
+
+				<div class="card-shop-info">
+					<p class="shop-name"><%= link_to shop.name, shop.url, target: :_blank if shop.name.present? %></p>
+					<p><%= link_to shop.address.truncate(17), "https://www.google.com/maps/search/?api=1&query=#{shop.name}", target: :_blank, class: "black-text" if shop.address.present? %></p>
+				</div>
+
+				<div class="card-action">
+					<% if user_signed_in? && @liked_beans.nil? %>
+						<span id="shop_like_button_<%= shop.id %>" ><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+					<% else %>
+						<span class="red-text"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></span>
+					<% end %>
+					<span class="register_bean"><%= render 'beans/register_bean_button', shop: shop %></span>
+					<i class="card-title material-icons right activator">more_vert</i>
+				</div>
+
+				<div class="card-reveal center-align">
+					<p class="card-title material-icons right">close</p>
+					<h5><%= link_to shop.name, shop.url, target: :_blank %></h5>
+					<p><%= link_to shop.address, "https://www.google.com/maps/search/?api=1&query=#{shop.latitude},#{shop.longitude}", target: :_blank, class: "black-text" %></p>
+					<span>
+						<%= render 'beans/register_bean_button', shop: shop %>
+						<%= render 'shops/edit_shop_link', shop: shop %>
+					</span>
+				</div>
+			</div>
+		</div>
 	<% end %>
+<% end %>

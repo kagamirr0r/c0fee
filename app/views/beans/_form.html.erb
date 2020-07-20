@@ -56,7 +56,11 @@
 	</div><br />
 
 	<div class="input-field col s12">
+		<% if I18n.locale == :ja %>
+		<i class="fas fa-yen-sign prefix"></i>
+		<% else %>
 		<i class="material-icons prefix">attach_money</i>
+		<% end %>
 		<%= b.number_field :price, step: 10 %>
 		<%= b.label t('.price')%>
 	</div><br />
@@ -82,7 +86,7 @@
 			</div><br />
 
 			<div class="input-field col s12">
-				<i class="material-icons prefix">message</i>
+				<i class="material-icons prefix">chat_bubble_outline</i>
 				<%= i.text_area :i_comment  %>
 				<%= i.label :i_comment %><br />
 			</div><br />
