@@ -1,6 +1,6 @@
 [{
 	"name": "c0fee",
-	"image": "053721905422.dkr.ecr.ap-northeast-1.amazonaws.com/c0fee:latest",
+	"image": "377125859054.dkr.ecr.ap-northeast-1.amazonaws.com/c0fee:latest",
 	"essential": true,
 	"logConfiguration": {
 		"logDriver": "awslogs",
