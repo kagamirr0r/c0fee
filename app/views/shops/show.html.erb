@@ -1,5 +1,11 @@
-<h3><%= @shop.name %></h3>
-<%= render 'shops', shops: @shop%>
-<h4><%= t('.registered_bean')%></h4>
-<%= render 'beans/beans', beans: @shop.beans%>
-<%= link_to t('.back'), :back %>
+<%= render 'shop', shop: @shop%>
+
+<div class="left">
+	<div class="container">
+		<div class="row">
+			<!--<h4><%= t('.registered_bean') if @beans.present?%></h4>-->
+				<%= render 'beans/beans', beans: @shop.beans.page(params[:page])%>
+		</div>
+	</div>
+<%= link_to t('.return'), :back %>
+</div>

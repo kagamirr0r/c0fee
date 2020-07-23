@@ -5,9 +5,9 @@ class BeansController < ApplicationController
     @bean_search_params = bean_search_params
 
     @beans = if @bean_search_params.present?
-               Bean.search_bean(@bean_search_params)
+               Bean.with_translations(I18n.locale).search_bean(@bean_search_params).page(params[:page])
              else
-               Bean.all
+               Bean.joins(shop: :translations).where(shop_translations: { locale: I18n.locale }).page(params[:page])
              end
   end
 
@@ -27,7 +27,7 @@ class BeansController < ApplicationController
     @shop = Shop.find(params[:bean][:shop_id])
     @bean = @shop.beans.build(bean_params)
     if @bean.save
-      redirect_to my_pages_show_path, notice: t('beans.flash.registered_bean')
+      redirect_to my_page_path(current_user), notice: t('beans.flash.registered_bean')
     else
       render :new
     end
@@ -35,14 +35,15 @@ class BeansController < ApplicationController
 
   def update
     @bean.update!(bean_params)
-    redirect_to my_pages_show_path, notice: t('beans.flash.edited_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.edited_bean')
   rescue StandardError
+    @shop = Shop.find(@bean.shop.id)
     render action: 'edit'
   end
 
   def destroy
     @bean.destroy
-    redirect_to my_pages_show_path, notice: t('beans.flash.deleted_bean')
+    redirect_to my_page_path(current_user), notice: t('beans.flash.deleted_bean')
   end
 
   private
@@ -52,7 +53,7 @@ class BeansController < ApplicationController
   end
 
   def bean_params
-    params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast, :bean_url, :bean_image,
+    params.require(:bean).permit(:user_id, :shop_id, :country, :price, :area, :variety, :farm, :process, :roast, :bean_image, :roast_date,
                                  impression_attributes: [:id, :bean_id, :i_sour, :i_sweet, :i_bitter, :i_comment])
   end
 

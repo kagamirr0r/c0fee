@@ -25,7 +25,3 @@ resource "aws_ecr_lifecycle_policy" "c0fee" {
 	}
 EOF
 }
-
-output "ecr_repository_url" {
-  value = aws_ecr_repository.c0fee.repository_url
-}

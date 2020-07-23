@@ -5,25 +5,25 @@
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">create</i>
-    <%= f.text_field :username, class: "autocomplete"%>
+    <%= f.text_field :username %>
 		<%= f.label :username %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">email</i>
-		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <%= f.label :email %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-    <%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+    <%= f.password_field :password, autocomplete: "new-password"  %>
 		<%= f.label t('.password', password_length: @minimum_password_length) %>
   </div>
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password_confirmation, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     <%= f.label t('.confirm_new_password') %><br />
   </div><br />
 

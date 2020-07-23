@@ -5,52 +5,46 @@
 
 	<div>
 		<% if current_user.avatar?%>
-			<%= image_tag current_user.avatar.url %>
+			<%= image_tag current_user.avatar.url, size: '100x100' %>
 		<% else %>
-			<%= image_tag 'no_avatar.png', :size => '100x100'%>
+			<%= image_tag 'no_avatar.png', size: '100x100'%>
 		<% end %>
 	</div>
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">account_circle</i>
-		<%= f.file_field :avatar, class: "autocomplete"%>
-		<input id="avatar_filename" readonly type="text" value="" class="autocomplete">
+		<%= f.file_field :avatar %>
+		<input id="avatar_filename" readonly type="text" value="" >
 		<button type="button" id="avatar_select_file_button" class="waves-effect waves-light btn">アバターを選ぶ</button>
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">create</i>
-    <%= f.text_field :username, class: "autocomplete"%>
+    <%= f.text_field :username %>
 		<%= f.label :username %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">email</i>
-		<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "autocomplete" %>
+		<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <%= f.label :email %><br />
   </div><br />
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>t('.currently_waiting_confirmation_for_email'): <%= resource.unconfirmed_email %></div>
+    <div class="red white-text"><%= resource.unconfirmed_email %>の<%=t('.currently_waiting_confirmation_for_email')%> </div>
   <% end %>
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password, autocomplete: "new-password" %>
     <%= f.label t('.new_password', password_length: @minimum_password_length) %><br />
   </div><br />
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-		<%= f.password_field :password_confirmation, autocomplete: "new-password",class: "autocomplete" %>
+		<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     <%= f.label t('.confirm_new_password') %><br />
   </div><br />
-
-  <div class="input-field col s12">
-		<i class="material-icons prefix">done</i>
-		<%= f.password_field :current_password, autocomplete: "current-password",class: "autocomplete" %>
-    <%= f.label :current_password %><%= t('.we_need_your_current_password_to_confirm_your_changes')%><br />
-  </div>
 
   <div class="actions">
     <%= button_tag class: "waves-effect waves-light btn" do %><%= t('.title') %><% end %>
@@ -59,4 +53,4 @@
 
 <p><%= button_to t('.delete_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "waves-effect waves-light btn red accent-3"%></p>
 
-<%= link_to t('.back'), :back %>
+<%= link_to t('.return'), :back %>

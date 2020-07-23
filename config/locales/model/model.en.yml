@@ -1,0 +1,60 @@
+en:
+  activerecord:
+    models:
+      user: User
+      bean: Bean
+      recipe: Recipe
+      shop: Shop
+      impression: Impression
+      taste: Taste
+      inquiry: Inquiry
+    attributes:
+      user:
+        username: Username
+        email: Email
+        avatar: Avatar
+      bean:
+        country: Country
+        area: Area
+        variety: Variety
+        farm: Farm
+        process: Process
+        roast: Roast
+        roast_date: Roast Date
+        price: Price
+        shop: Shop
+        bean_image: Bean image
+        updated_at: Updated at
+      impression:
+        i_sour: Sour
+        i_sweet: Sweet
+        i_bitter: Bitter
+        i_comment: Comment
+      inquiry:
+        name: Name
+        email: Email
+        message: Message
+      recipe:
+        user_id: User
+        bean_id: Bean
+        bean: Bean
+        hot_ice: Hot_Ice
+        grind: Grind
+        temperature: Temperature
+        amount: Amount
+        extraction: Extraction
+        extracted_amount: Extracted Amount
+        recipe_image: Recipe image
+        updated_at: Updated at
+      taste:
+        t_sour: Sour
+        t_sweet: Sweet
+        t_bitter: Bitter
+        t_aroma: Aroma
+        t_fullbody: Fullbody
+        t_comment: Comment
+      shop:
+        name: Name
+        address: Address
+        url: URL
+        shop_image: Shop image

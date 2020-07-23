@@ -1,0 +1,11 @@
+<a class="modal-trigger tooltipped" href="#bean_delete_confirmation" data-position="top" data-tooltip=<%= t('.delete') %> ><i class="material-icons red-text">delete</i></a>
+
+  <div id="bean_delete_confirmation" class="modal">
+    <div class="modal-content red-text" >
+      <h4><%= t('.are_you_sure?')%></h4>
+    </div>
+    <div class="modal-footer">
+			<%= link_to t('.cancel'),"#", class: "modal-close btn-flat blue-text" %>
+			<%= link_to t('.delete'),bean, method: :delete,class: "waves-effect waves-red btn-flat red-text" %>
+    </div>
+  </div>

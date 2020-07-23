@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature 'RecipeLikes', type: :feature do
-  let(:impression) { create :impression }
+  let(:taste) { create :taste }
   before do
-    log_in(impression.bean.user)
-    create(:taste)
+    log_in(taste.recipe.bean.user)
   end
 
   scenario 'recipe_like_button' do
     visit recipes_path
-    click_button 'Like!'
-    expect(page).to have_content I18n.t('recipe_likes.flash.liked_recipe')
+    click_on 'favorite_border'
+    expect(page).to have_content 'favorite'
 
     visit recipes_path
-    click_button 'Liked'
-    expect(page).to have_content I18n.t('recipe_likes.flash.canceled_recipe_like')
+    click_on 'favorite'
+    expect(page).to have_content 'favorite_border'
   end
 end

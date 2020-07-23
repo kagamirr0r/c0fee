@@ -11,45 +11,74 @@ RSpec.feature 'Recipes', type: :feature do
 
   scenario 'CRUD of recipe' do
     # create
-    visit beans_path
-    find('.create_recipe').click
-    select taste.recipe.hot_ice, from: 'recipe_hot_ice'
-    select taste.recipe.grind, from: 'recipe_grind'
+
+    within '.nav-wrapper' do
+      click_on 'import_contacts'
+    end
+
+		within ".fixed-action-btn" do
+			click_on 'edit'
+		end
+
+    within '.card-action' do
+      click_on 'add'
+    end
+
+    select taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
+    select taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: taste.recipe.amount
-    select taste.recipe.extraction, from: 'recipe_extraction'
+    select taste.recipe.extraction_i18n, from: 'recipe_extraction'
+    fill_in 'recipe_extracted_amount', with: taste.recipe.extracted_amount
     fill_in 'recipe_temperature', with: taste.recipe.temperature
-    fill_in 'recipe_taste_attributes_t_sour', with: taste.t_sour
-    fill_in 'recipe_taste_attributes_t_sweet', with: taste.t_sweet
-    fill_in 'recipe_taste_attributes_t_bitter', with: taste.t_bitter
-    fill_in 'recipe_taste_attributes_t_aroma', with: taste.t_aroma
-    fill_in 'recipe_taste_attributes_t_fullbody', with: taste.t_fullbody
+    select taste.t_sour, from: 'recipe_taste_attributes_t_sour'
+    select taste.t_sweet, from: 'recipe_taste_attributes_t_sweet'
+    select taste.t_bitter, from: 'recipe_taste_attributes_t_bitter'
+    select taste.t_aroma, from: 'recipe_taste_attributes_t_aroma'
+    select taste.t_fullbody, from: 'recipe_taste_attributes_t_fullbody'
     fill_in 'recipe_taste_attributes_t_comment', with: taste.t_comment
     click_button I18n.t('recipes.form.register')
-    expect(page).to have_content I18n.t('recipes.flash.created_recipe')
+    expect(page).to have_content I18n.t('recipes.flash.made_recipe')
 
     # show
     recipe = Recipe.last
-    visit recipe_path(recipe.id)
-    expect(page).to have_content Recipe.human_attribute_name(:amount)
+    visit "/ja/recipes/#{recipe.id}"
+    expect(page).to have_content recipe.hot_ice_i18n
+    expect(page).to have_content recipe.grind_i18n
+    expect(page).to have_content recipe.amount
+    expect(page).to have_content recipe.extraction_i18n
+    expect(page).to have_content recipe.extracted_amount
+    expect(page).to have_content recipe.temperature
+    expect(page).to have_content recipe.taste.t_sour
+    expect(page).to have_content recipe.taste.t_sweet
+    expect(page).to have_content recipe.taste.t_bitter
+    expect(page).to have_content recipe.taste.t_aroma
+    expect(page).to have_content recipe.taste.t_fullbody
+    expect(page).to have_content recipe.taste.t_comment
 
-    # edit
-    click_link I18n.t('recipes.recipe.edit')
-    select another_taste.recipe.hot_ice, from: 'recipe_hot_ice'
-    select another_taste.recipe.grind, from: 'recipe_grind'
+		# edit
+		within '.card-action' do
+			click_on 'edit'
+		end
+    select another_taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
+    select another_taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: another_taste.recipe.amount
-    select another_taste.recipe.extraction, from: 'recipe_extraction'
+    select another_taste.recipe.extraction_i18n, from: 'recipe_extraction'
+    fill_in 'recipe_extracted_amount', with: another_taste.recipe.extracted_amount
     fill_in 'recipe_temperature', with: another_taste.recipe.temperature
-    fill_in 'recipe_taste_attributes_t_sour', with: another_taste.t_sour
-    fill_in 'recipe_taste_attributes_t_sweet', with: another_taste.t_sweet
-    fill_in 'recipe_taste_attributes_t_bitter', with: another_taste.t_bitter
-    fill_in 'recipe_taste_attributes_t_aroma', with: another_taste.t_aroma
-    fill_in 'recipe_taste_attributes_t_fullbody', with: another_taste.t_fullbody
+    select another_taste.t_sour, from: 'recipe_taste_attributes_t_sour'
+    select another_taste.t_sweet, from: 'recipe_taste_attributes_t_sweet'
+    select another_taste.t_bitter, from: 'recipe_taste_attributes_t_bitter'
+    select another_taste.t_aroma, from: 'recipe_taste_attributes_t_aroma'
+    select another_taste.t_fullbody, from: 'recipe_taste_attributes_t_fullbody'
     fill_in 'recipe_taste_attributes_t_comment', with: another_taste.t_comment
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
     # delete
-    click_link I18n.t('recipes.recipes.delete')
+    click_on 'delete'
+    expect(page).to have_content I18n.t('recipes.delete_recipe_link.are_you_sure?')
+
+    click_on I18n.t('recipes.delete_recipe_link.delete')
     expect(page).to have_content I18n.t('recipes.flash.deleted_recipe')
   end
 end

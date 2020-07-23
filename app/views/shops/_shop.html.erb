@@ -1,0 +1,49 @@
+<% if shop.present? %>
+<div class="row">
+		<h3 class="center-align"><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3>
+
+		<div id="shop_image" class="col l6 left">
+			<% if shop.shop_image? %>
+			<%= image_tag shop.shop_image.to_s %>
+			<% else %>
+			<%= image_tag 'C0FEE.png'%>
+			<% end %>
+		</div>
+
+		<div id="shop_info" class="col l6 right">
+			<h6 class="center-align"><%= shop.address %></h6><br/>
+			<div id="map" style="width100%; height: 380px;"></div><br/>
+				<div class="center-align">
+					<span id="shop_like_button_<%= shop.id %>" class="center-align"><%= render 'shop_likes/like_shop_button', shop: shop %></span>
+					<span>
+					<%= render 'beans/register_bean_button', shop: shop %>
+					<%= render 'shops/edit_shop_link', shop: shop %>
+					</span>
+				</div>
+		</div>
+	</div>
+<% end %>
+<script>
+$(window).on('load', function() {
+    $('#shop_info .material-icons').removeClass('small');
+		$('#shop_info .material-icons').addClass('medium');
+});
+</script>
+<script>
+	function initMap() {
+	var latlng = new google.maps.LatLng(<%= @shop.latitude %>,<%= @shop.longitude %>);
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 16,
+		center: latlng
+	});
+
+	var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			title: "<%= @shop.name %>"
+		});
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.gcp[:gmap_api_key]%>&callback=initMap" async defer></script>
+

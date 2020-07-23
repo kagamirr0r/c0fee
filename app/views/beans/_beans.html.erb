@@ -1,60 +1,54 @@
-	<% if beans.present? %>
-	<table>
-		<thead>
-			<tr>
-				<th>&nbsp;</th>
-				<th><%= Bean.human_attribute_name(:country)%></th>
-				<th><%= Bean.human_attribute_name(:area)%></th>
-				<th><%= Bean.human_attribute_name(:roast)%></th>
-				<th><%= Impression.human_attribute_name(:i_sour)%></th>
-				<th><%= Impression.human_attribute_name(:i_sweet)%></th>
-				<th><%= Impression.human_attribute_name(:i_bitter)%></th>
-				<th><%= Bean.human_attribute_name(:shop)%></th>
-				<th><%= User.model_name.human %></th>
-				<% if user_signed_in?%>
-					<th>&nbsp;</th>
-				<% else %>
-					<th>Like</th>
-				<% end %>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
-			</tr>
-		</thead>
+<% if beans.present? %>
+	<% Array(beans).each do |bean| %>
+		<div class="col s12 m6 l3">
+			<div class="card medium">
+				<div class="card-image">
+					<div id="beans_image">
+						<% if bean.bean_image? %>
+							<%=link_to image_tag(bean.bean_image.to_s), bean_path(bean)%>
+						<% else%>
+							<%=link_to image_tag('C0FEE.png'), bean_path(bean)%>
+						<% end %>
+						<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n }%>
+					</div>
+				</div>
 
-		<tbody>
-			<% Array(beans).reverse_each do |bean| %>
-				<tr>
-					<td id="bean_image_td">
-					<% if bean.bean_image? %>
-						<%=link_to image_tag(bean.bean_image.to_s, :id => 'bean_image'), bean_path(bean)%>
-					<% else%>
-						<%=link_to image_tag('C0FEE.png', :id => 'no_bean_image'), bean_path(bean)%>
-					<% end %>
-					</td>
-					<td><%= bean.country %></td>
-					<td><%= bean.area %></td>
-					<td><%= bean.roast %></td>
-					<td><%= bean.impression.i_sour%></td>
-					<td><%= bean.impression.i_sweet%></td>
-					<td><%= bean.impression.i_bitter%></td>
-					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
-					<% if user_signed_in? %>
-						<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
+				<div class="card-action">
+					<% if user_signed_in? && @liked_beans.nil? %>
+						<span id="bean_like_button_<%= bean.id %>"><%= render 'bean_likes/like_bean_button',bean: bean %></span>
 					<% else %>
-						<td><%= bean_liked_counts(bean) %></td>
+						<span class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
 					<% end %>
-					<% if current_user == bean.user %>
-						<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-						<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') }, class: 'delete_bean' %></td>
-					<% else %>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-					<% end %>
-					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id),class:'create_recipe'%></td>
-					</tr>
-			<% end %>
-		</tbody>
-	</table>
+					<span class="make_recipe"><%= render 'recipes/make_recipe_button', bean: bean %></span>
+					<i class="card-title material-icons right activator">more_vert</i>
+				</div>
+
+				<div class="card-reveal center-align">
+					<span class="card-title">
+						<i class="material-icons right">close</i>
+					</span>
+					<p>
+						<% if bean.user.avatar?%>
+							<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
+						<% else %>
+							<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+						<% end %>
+						<%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %>
+					</p>
+					<p><%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: bean.country_i18n }%></p>
+					<p><%= Impression.human_attribute_name(:i_sour)%>：<%= bean.impression.i_sour %></p>
+					<p><%= Impression.human_attribute_name(:i_bitter)%>：<%= bean.impression.i_bitter %></p>
+					<p><%= Impression.human_attribute_name(:i_sweet)%>：<%= bean.impression.i_sweet %></p>
+					<span>
+						<%= render 'recipes/make_recipe_button', bean: bean %>
+						<% if current_user == bean.user %>
+						<%= render 'beans/edit_bean_link', bean: bean %>
+						<%= render 'beans/delete_bean_link', bean: bean %>
+						<% end %>
+					</span>
+				</div>
+			</div>
+		</div>
+	<% end %>
 <% end %>
+

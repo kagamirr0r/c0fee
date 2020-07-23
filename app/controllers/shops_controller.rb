@@ -4,14 +4,14 @@ class ShopsController < ApplicationController
     @shop_search_params = shop_search_params
 
     @shops = if @shop_search_params.present?
-               Shop.search_shop(@shop_search_params)
+               Shop.with_translations(I18n.locale).search_shop(@shop_search_params).page(params[:page])
              else
-               Shop.all
+               Shop.with_translations.where(shop_translations: { locale: I18n.locale }).page(params[:page])
              end
   end
 
   def show
-    @shop = Shop.find_by(id: params[:id])
+    @shop = Shop.find(params[:id])
     @beans = Bean.where(shop_id: params[:id])
   end
 
@@ -48,7 +48,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :url, :shop_image)
+    params.require(:shop).permit(:name, :address, :url, :shop_image, :latitude, :longitude)
   end
 
   def shop_search_params

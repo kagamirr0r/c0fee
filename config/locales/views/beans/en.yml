@@ -1,0 +1,46 @@
+en:
+  beans:
+    bean: &bean
+      make_recipe: Make a recipe
+      edit: Edit
+      delete: Delete
+      currency_unit: $
+      return: Back
+    beans:
+      <<: *bean
+    delete_bean_link:
+      <<: *bean
+      are_you_sure?: Are you sure?
+      cancel: Cancel
+    edit_bean_link:
+      <<: *bean
+    form: &form
+      bought_shop: Shop you bought beans
+      select_bean_image: Choose bean image
+      price: Price ($/100g)
+      register: Register
+      confirm: Confirm
+      sour: Sour
+      return: Back
+    register_bean_button:
+      register_bean: Register Bean
+    search_form:
+      <<: *form
+      submit_search: Search
+    edit:
+      <<: *form
+      title: Edit
+    index:
+      title: Beans Index
+      register_bean: Register bean
+      Did_you_brew_the_following_beans?: Did you brew the following beans ?
+      Click_the_button_on_the_book_to_make_a_recipe!: Click + to make a recipe!
+    new:
+      <<: *form
+      title: Register bean
+    show:
+      <<: *form
+    flash:
+      registered_bean: Registered bean
+      edited_bean: Edited bean
+      deleted_bean: Deleted bean

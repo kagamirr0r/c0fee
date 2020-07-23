@@ -1,16 +1,25 @@
 <div class="row">
+<div class="col s12 center-align">
+  <% if current_user.avatar?%>
+  <%= image_tag current_user.avatar.to_s, :size => '400x400' %>
+  <% else %>
+  <%= image_tag 'no_avatar.png', :size => '400x400', :id => 'no_image_avatar' %>
+  <% end %></br>
+  <h4><div id="user_name"><%= current_user.username %></div></h4>
+</div>
+
   <div class="col s12">
     <ul class="tabs grid">
       <li class="tab"><a href="#registered_beans"><%=t('.registered_beans')%></a></li>
-      <li class="tab"><a href="#created_recipes"><%=t('.created_recipes')%></a></li>
+      <li class="tab"><a href="#made_recipes"><%=t('.made_recipes')%></a></li>
       <li class="tab"><a href="#liked_beans"><%=t('.liked_beans')%></a></li>
       <li class="tab"><a href="#liked_recipes"><%=t('.liked_recipes')%></a></li>
       <li class="tab"><a href="#liked_shops"><%=t('.liked_shops')%></a></li>
     </ul>
   </div>
-  <div id="registered_beans" class="col s12"><%= render 'beans/beans', beans: @beans%></div>
-  <div id="created_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @recipes%></div>
-  <div id="liked_beans" class="col s12"><%= render 'beans/beans', beans: @liked_beans%></div>
-  <div id="liked_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @liked_recipes%></div>
-  <div id="liked_shops" class="col s12"><%= render 'shops/shops', shops: @liked_shops%></div>
+  <div id="registered_beans" class="col s12"><%= render 'beans/beans', beans: @beans %></div>
+  <div id="made_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @recipes %></div>
+  <div id="liked_beans" class="col s12"><%= render 'beans/beans', beans: @liked_beans %></div>
+  <div id="liked_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @liked_recipes %></div>
+  <div id="liked_shops" class="col s12"><%= render 'shops/shops', shops: @liked_shops %></div>
 </div>

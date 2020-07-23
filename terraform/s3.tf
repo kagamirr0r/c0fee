@@ -1,5 +1,13 @@
+resource "aws_s3_bucket" "tfstate" {
+  bucket = "c0fee-tfstate-bucket"
+
+  versioning {
+    enabled = true
+  }
+}
+
 resource "aws_s3_bucket" "private" {
-  bucket = "c0fee-private"
+  bucket = "c0fee-private-bucket"
 
   versioning {
     enabled = true
@@ -13,17 +21,17 @@ resource "aws_s3_bucket" "private" {
   }
 }
 
-# resource "aws_s3_bucket_public_access_block" "private" {
-#   bucket = aws_s3_bucket.private.id
+resource "aws_s3_bucket_public_access_block" "private" {
+  bucket = aws_s3_bucket.private.id
 
-#   block_public_acls       = true
-#   block_public_policy     = true
-#   ignore_public_acls      = true
-#   restrict_public_buckets = true
-# }
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
 
 resource "aws_s3_bucket" "alb_log" {
-  bucket = "c0fee-alb-log"
+  bucket = "c0fee-alb-log-bucket"
 
   lifecycle_rule {
     enabled = true

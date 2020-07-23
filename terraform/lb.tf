@@ -23,9 +23,6 @@ resource "aws_lb" "c0fee" {
   ]
 }
 
-output "alb_dns_name" {
-  value = aws_lb.c0fee.dns_name
-}
 
 #___Security Group____________________________________________________________________________________________
 module "http_sg" {
@@ -110,8 +107,9 @@ resource "aws_lb_listener" "https" {
 #   }
 
 #   condition {
-#     field  = "path-pattern"
+#     path-pattern{
 #     values = ["/*"]
+#			}
 #   }
 # }
 

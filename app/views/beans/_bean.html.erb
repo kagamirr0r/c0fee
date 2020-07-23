@@ -1,61 +1,189 @@
 <% if bean.present? %>
-		<table>
-			<thead>
-				<tr>
-					<th>&nbsp;</th>
-					<th><%= Bean.human_attribute_name(:country)%></th>
-					<th><%= Bean.human_attribute_name(:area)%></th>
-					<th><%= Bean.human_attribute_name(:variety)%></th>
-					<th><%= Bean.human_attribute_name(:farm)%></th>
-					<th><%= Bean.human_attribute_name(:process)%></th>
-					<th><%= Bean.human_attribute_name(:roast)%></th>
-					<th><%= Impression.human_attribute_name(:i_sour)%></th>
-					<th><%= Impression.human_attribute_name(:i_sweet)%></th>
-					<th><%= Impression.human_attribute_name(:i_bitter) %></th>
-					<th><%= Bean.human_attribute_name(:shop)%></th>
-					<th><%= Bean.human_attribute_name(:price)%></th>
-					<th><%= Impression.human_attribute_name(:i_comment)%></th>
-					<th><%= User.model_name.human%></th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-				</tr>
-			</thead>
+<div class="row"></div>
 
-			<tbody>
-				<% Array(bean).reverse_each do |bean| %>
-				<tr>
-					<td id="bean_image_td">
-						<% if bean.bean_image? %>
-							<%= image_tag bean.bean_image.to_s, :id => 'bean_image' %>
-						<% else%>
-							<%= image_tag 'C0FEE.png', :id => 'no_bean_image' %>
+	<div class="row">
+		<div id="bean_image" class="card col l6 left">
+			<% if bean.bean_image? %>
+			<%= image_tag bean.bean_image.to_s %>
+			<% else %>
+			<%= image_tag 'C0FEE.png' %>
+			<% end %>
+
+			<div id="chartContainer">
+				<canvas id="beanChart"></canvas>
+			</div>
+
+			<div class="card-action center-align">
+				<span id="bean_like_button_<%= bean.id %>" ><%= render 'bean_likes/like_bean_button',bean: bean %></span>
+				<span><%= render 'recipes/make_recipe_button', bean: bean %></span>
+				<span>
+				<% if current_user == bean.user %>
+					<%= render 'edit_bean_link', bean: bean %>
+					<%= render 'delete_bean_link', bean: bean %>
+				<% end %>
+				</span>
+			</div>
+		</div>
+
+		<div id="bean_info" class="col l6 s12 right">
+			<table>
+				<tbody>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= User.model_name.human %> >person</i></th>
+						<td>
+							<% if bean.user.avatar?%>
+								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
+							<% else %>
+								<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+							<% end %>
+							<%= link_to bean.user.username, user_path(id: bean.user.id)%>
+						</td>
+					</tr>
+
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:shop) %> >store</i></th>
+						<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
+					</tr>
+
+					<tr>
+						<th><i class= "medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:country) %> >public</i></th>
+						<td><%= bean.country_i18n %></td>
+					</tr>
+
+					<%#<% if bean.area.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:area) %> >place</i></th>
+						<td><%= bean.area %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.farm.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:farm) %> >home</i></th>
+						<td><%= bean.farm %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.variety.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:variety) %> >local_florist</i></th>
+						<td><%= bean.variety_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.process.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:process) %> >loop</i></th>
+						<td><%= bean.process_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.roast.present? %>
+					<tr>
+						<th><i class="medium material-icons tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast) %> >invert_colors</i></th>
+						<td><%= bean.roast_i18n %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.roast_date.present? %>
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:roast_date) %> >date_range</i></th>
+						<td><%= bean.roast_date %></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.price.present? %>
+					<tr>
+						<% if I18n.locale == :ja %>
+							<th><i class="fas fa-yen-sign fa-3x tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> ></i></th>
+						<% else %>
+							<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:price) %> >attach_money</i></th>
 						<% end %>
-					</td>
-					<td><%= bean.country %></td>
-					<td><%= bean.area %></td>
-					<td><%= bean.variety %></td>
-					<td><%= bean.farm %></td>
-					<td><%= bean.process %></td>
-					<td><%= bean.roast %></td>
-					<td><%= bean.impression.i_sour%></td>
-					<td><%= bean.impression.i_sweet%></td>
-					<td><%= bean.impression.i_bitter%></td>
-					<td><%= link_to bean.shop.name, shop_path(id: bean.shop.id) %></td>
-					<td><%= bean.price %><% if bean.price.present?%>/100g<%end%></td>
-					<td><%= bean.impression.i_comment%></td>
-					<td><%= link_to bean.user.username, user_path(id: bean.user.id)%></td>
-					<td style="text-align: center"><%= render 'bean_likes/like_bean_button', bean: bean %></td>
-					<td style="text-align: center"><%= link_to t('.create_recipe'), new_recipe_path(id: bean.id)%></td>
-					<% if current_user == bean.user %>
-						<td style="text-align: center"><%= link_to t('.edit'), edit_bean_path(bean) %></td>
-						<td style="text-align: center"><%= link_to t('.delete'), bean, method: :delete, data: { confirm: t('.confirm') } %></td>
-					<% else %>
-						<td style="text-align: center">&nbsp;</td>
-						<td style="text-align: center">&nbsp;</td>
-					<% end %>
-				</tr>
-		</tbody>
-		<% end %>
-	</table>
+						<td><%= bean.price %><% if bean.price.present? %><%= t('.currency_unit') %>/100g<%end%></td>
+					</tr>
+					<%# <% end %>
+
+					<%# <% if bean.impression.i_comment.present? %>
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Impression.human_attribute_name(:i_comment) %> >chat_bubble_outline</i></th>
+						<td><%= bean.impression.i_comment %></td>
+					</tr>
+					<%# <% end %>
+
+					<tr>
+						<th><i class="medium material-icons prefix tooltipped" data-position="right" data-tooltip=<%= Bean.human_attribute_name(:updated_at) %> >access_time</i></th>
+						<td><%= l bean.updated_at %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="left"><%= link_to t('.return'), :back %></div>
 <% end %>
+<script>
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  I18n.fallbacks = true;
+</script>
+<script>
+$(window).on('load', function() {
+		$('.waves-light').removeClass('btn-small');
+		$('.waves-light').addClass('btn-large');
+    $('.material-icons').removeClass('small');
+		$('.material-icons').addClass('medium');
+});
+
+$('.red-text').on('ajax:success', function(event){
+  $('.material-icons').removeClass('small');
+	$('.material-icons').addClass('small');
+});
+</script>
+<script>
+var ctx = document.getElementById("beanChart").getContext('2d');
+ctx.canvas.height = 380;
+Chart.defaults.global.defaultFontSize = 20;
+
+var beanChart = new Chart(ctx,{
+	type: 'radar',
+	data: {
+		labels:[I18n.t('js.sour'),I18n.t('js.bitter'),I18n.t('js.sweet')],
+		datasets: [{
+			data: [<%= bean.impression.i_sour %>, <%= bean.impression.i_bitter %>, <%= bean.impression.i_sweet %>],
+			backgroundColor: 'rgba(235,9,212,0.2)',
+			borderColor: "Brown",
+			pointStyle: "circle"
+		}]
+	},
+	options: {
+		responsive: true,
+		maintainAspectRatio: false,
+		tooltips: {
+			enabled: true,
+			callbacks: {
+					label: function(tooltipItem, data) {
+							return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					}
+			}
+		},
+		legend: {
+			display: false
+				 },
+		scale: {
+			ticks: {
+				suggestedMin: 0,
+				uggestedMax: 5,
+				stepSize: 1
+			},
+			pointLabels: {
+            fontSize: 18
+			},
+			gridLines: {
+				display: true,
+			},
+			angleLines: {
+				display: true
+			}
+		}
+	}
+});
+</script>

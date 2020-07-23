@@ -12,45 +12,112 @@
 
 <body>
 	<header>
-		<nav>
+
+	<ul id="slide-out" class="sidenav">
+		<% if user_signed_in? %>
+    <li>
+			<div class="user-view" style="margin: 0;">
+				<div class="background">
+					<%= image_tag "toppage_image", id:"backgroud_image" %>
+				</div>
+			<% if current_user.avatar?%>
+				<%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%>
+			<% else %>
+				<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+			<% end %>
+      <span class="white-text"><%= current_user.username %></span>
+      <span class="white-text"><%= current_user.email %></span>
+			<span class="right">
+				<%= link_to edit_user_registration_path do %>
+					<%= content_tag :i, "edit", class: "material-icons white-text" %>
+				<% end %>
+			</span>
+   	 </div>
+		</li>
+		<li class="teal"><%= link_to shops_path, class:"white-text" do %><i class="material-icons white-text">store</i><%= t('.shop') %><% end %></li>
+		<li class="teal"><%= link_to beans_path, class:"white-text" do %><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
+		<li class="teal"><%= link_to recipes_path, class:"white-text" do %><i class="material-icons white-text">import_contacts</i><%= t('.recipe') %><% end %></li>
+		<% end %>
+		<div>
+			<% unless user_signed_in? %>
+				<li><%= link_to t('.create_account'), new_user_registration_path %></li>
+				<li><%= link_to t('.log_in'), new_user_session_path %></li>
+			<% else %>
+				<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
+				<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
+				<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
+				<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
+			<% end %>
+				<li><div class="divider"></div></li>
+			<% if I18n.locale.to_s == "en" %>
+				<li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
+			<% else %>
+				<li><%= link_to('EN Ver.', :locale => 'en')%></li>
+			<% end %>
+			</div>
+  	</ul>
+
+		<nav class="col">
 			<div class='nav-wrapper red accent-3'>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
-					<% if user_signed_in? %>
-						<li><%= link_to t('.bean'), beans_path%></li>
-						<li><%= link_to t('.shop'), shops_path%></li>
-						<li><%= link_to t('.recipe'), recipes_path%></li>
-					<% end %>
-				</ul>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<span><a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only left"><i class="material-icons">menu</i></a></span>
+				<% if user_signed_in? %>
+					<ul class="left hide-on-med-and-down">
+						<li><%= link_to shops_path, class:"white-text" do%><i class="material-icons prefix">store</i>          <%= t('.shop') %><% end %></li>
+						<li><%= link_to beans_path, class:"white-text" do%><i class="material-icons prefix" style="height: 21px;"><%= image_tag 'white-bean.png', class: "material-icons", style:"font-size: 21px;" %></i>           <%= t('.bean') %><% end %></li>
+						<li><%= link_to recipes_path, class:"white-text" do%><i class="material-icons prefix">import_contacts</i>          <%= t('.recipe') %><% end %></li>
+					</ul>
+				<% end %>
+
+					<ul class="brand-logo center">
+						<li><%= link_to "C0FEE",root_url ,id:"logo"%></li>
+					</ul>
+
+				<ul class="right hide-on-med-and-down">
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
 					<% else %>
 						<% if current_user.avatar?%>
-							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'}%></li>
+							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%></li>
 						<% else %>
-							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image'), "#", class: 'dropdown-trigger', data:{target:'dropdown_nav'} %></li>
+							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %></li>
 						<% end %>
-				</ul>
-					<ul id='dropdown_nav' class='dropdown-content'>
-						<li><%= link_to t('.my_page'),my_pages_show_path(current_user)%></li>
-						<li><%= link_to_unless_current t('.edit_profile'), edit_user_registration_path %></li>
-						<li><%= link_to_unless_current t('.log_out'), destroy_user_session_path, method: :delete %></li>
-					</ul>
+
+						<ul id='dropdown_nav' class='dropdown-content'>
+							<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
+							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
+							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
+							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
+						</ul>
 					<% end %>
+
+					<% if I18n.locale.to_s == "en" %>
+						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
+						</ul>
+					<% else %>
+						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('EN Ver.', :locale => 'en')%></li>
+						</ul>
+					<% end %>
+				</ul>
 			</div>
 		</nav>
 	</header>
 
-  <div class="notice card light-blue lighten-4 blue-text col s12 m6">
-    <p><%= notice %></p>
-  </div>
-  <div class="alert card red accent-3 white-text col s12 m6">
-    <p><%= alert %></p>
-  </div>
-
   <%= yield %>
-</body>
 
+	<% unless flash.empty? %>
+		<script type="text/javascript">
+			<% flash.each do |key, value| %>
+			<% next if key == 'timedout' %>
+				M.toast({html: '<%= value %>', classes: 'teal lighten-2'})
+			<% end %>
+		</script>
+	<% end %>
+</body>
 </html>
+
+

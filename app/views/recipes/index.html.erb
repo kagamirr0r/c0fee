@@ -1,6 +1,14 @@
 <div class="recipes">
- <h4><%= t('.title')%></h4>
-	<%= render 'search_form'%>
-	<%= render 'recipes/recipes', recipes: @recipes%>
-	<%= link_to t('.make_recipe'), beans_path %>
+	<div id="search_form"><%= render 'search_form'%></div>
+		<div class="row">
+			<div class="container">
+				<%= render 'recipes/recipes', recipes: @recipes%>
+			</div>
+		</div>
+	<%= paginate @recipes %>
+	<div class="fixed-action-btn">
+		<%= link_to beans_path,class: "btn-floating btn-large red waves-effect waves-light tooltipped",data:{position:"left", tooltip: t('.make_recipe')} do %>
+			<%= content_tag :i, "edit", class: "material-icons" %>
+		<% end %>
+	</div>
 </div>
