@@ -175,7 +175,7 @@ data "aws_iam_policy_document" "kinesis_data_firehose" {
 
 #___ECS Log Bucket___________________________________________________________________________________________
 resource "aws_s3_bucket" "ecs_logs" {
-  bucket = "ecs-logs-c0fee"
+  bucket = "c0fee-ecs-logs-bucket"
 
   lifecycle_rule {
     enabled = true
