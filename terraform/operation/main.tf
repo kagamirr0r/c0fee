@@ -47,7 +47,7 @@ resource "aws_iam_instance_profile" "operation" {
 }
 
 resource "aws_instance" "operation" {
-  ami                  = "ami-052652af12b58691f"
+  ami                  = "ami-06ad9296e6cf1e3cf"
   instance_type        = "t2.micro"
   iam_instance_profile = aws_iam_instance_profile.operation.name
   subnet_id            = data.terraform_remote_state.c0fee.outputs.subnet_private_1_id
