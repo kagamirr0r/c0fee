@@ -86,6 +86,8 @@ workflows:
               only:
                 - deploy
       - aws-ecs/run-task:
+          requires:
+            - aws-ecs/deploy-service-update
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
@@ -97,7 +99,7 @@ workflows:
                 - deploy
       - aws-ecs/run-task:
           requires:
-            - aws-ecs/run-task-1
+            - aws-ecs/run-task
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
