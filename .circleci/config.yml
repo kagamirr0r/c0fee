@@ -97,7 +97,7 @@ workflows:
                 - deploy
       - aws-ecs/run-task:
           requires:
-            - aws-ecs/run-task
+            - aws-ecs/run-task-1
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
