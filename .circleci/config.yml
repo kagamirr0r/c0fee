@@ -74,7 +74,7 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/run-task-1:
+      - aws-ecs/run-task:
           requires:
             - aws-ecr/build-and-push-image
           cluster: "c0fee"
@@ -86,9 +86,9 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/run-task-2:
+      - aws-ecs/run-task:
           requires:
-            - aws-ecs/run-task-1
+            - aws-ecs/run-task
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
@@ -100,7 +100,7 @@ workflows:
                 - deploy
       - aws-ecs/deploy-service-update:
           requires:
-            - aws-ecs/run-task-2
+            - aws-ecs/run-task
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"
