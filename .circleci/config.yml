@@ -97,15 +97,15 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/run-task:
-          requires:
-            - aws-ecs/run-task
-          cluster: "c0fee"
-          task-definition: "c0fee"
-          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
-          security-group-ids: $SECURITY_GROUP_IDS
-          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"rails\\\", \\\"db:seed\\\", \\\"RAILS_ENV=production\\\"]}]}"
-          filters:
-            branches:
-              only:
-                - deploy
+      # - aws-ecs/run-task:
+      #     requires:
+      #       - aws-ecs/run-task
+      #     cluster: "c0fee"
+      #     task-definition: "c0fee"
+      #     subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
+      #     security-group-ids: $SECURITY_GROUP_IDS
+      #     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"rails\\\", \\\"db:seed\\\", \\\"RAILS_ENV=production\\\"]}]}"
+      #     filters:
+      #       branches:
+      #         only:
+      #           - deploy
