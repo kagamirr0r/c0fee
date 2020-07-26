@@ -74,20 +74,9 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/deploy-service-update:
+      - aws-ecs/run-task-1:
           requires:
             - aws-ecr/build-and-push-image
-          family: "c0fee"
-          cluster-name: "c0fee"
-          service-name: "c0fee"
-          container-image-name-updates: "container=c0fee,tag=latest"
-          filters:
-            branches:
-              only:
-                - deploy
-      - aws-ecs/run-task:
-          requires:
-            - aws-ecs/deploy-service-update
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
@@ -97,15 +86,26 @@ workflows:
             branches:
               only:
                 - deploy
-      # - aws-ecs/run-task:
-      #     requires:
-      #       - aws-ecs/run-task
-      #     cluster: "c0fee"
-      #     task-definition: "c0fee"
-      #     subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
-      #     security-group-ids: $SECURITY_GROUP_IDS
-      #     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"rails\\\", \\\"db:seed\\\", \\\"RAILS_ENV=production\\\"]}]}"
-      #     filters:
-      #       branches:
-      #         only:
-      #           - deploy
+      - aws-ecs/run-task-2:
+          requires:
+            - aws-ecs/run-task-1
+          cluster: "c0fee"
+          task-definition: "c0fee"
+          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
+          security-group-ids: $SECURITY_GROUP_IDS
+          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bin/rails\\\", \\\"db:seed\\\"]}]}"
+          filters:
+            branches:
+              only:
+                - deploy
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecs/run-task-2
+          family: "c0fee"
+          cluster-name: "c0fee"
+          service-name: "c0fee"
+          container-image-name-updates: "container=c0fee,tag=latest"
+          filters:
+            branches:
+              only:
+                - deploy
