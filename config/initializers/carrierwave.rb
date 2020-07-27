@@ -7,7 +7,7 @@ unless Rails.env.development? || Rails.env.test?
 			region: "ap-northeast-1"
 		}
 		config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
-		config.fog_directory = "c0fee-private"
+		config.fog_directory = "c0fee-private-bucket"
 		# config.cache_storage = :fog
 	end
 end

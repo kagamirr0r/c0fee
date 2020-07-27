@@ -77,7 +77,6 @@ workflows:
       - aws-ecs/run-task:
           requires:
             - aws-ecr/build-and-push-image
-          name: run-task-1
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
@@ -87,22 +86,9 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/run-task:
-          requires:
-            - run-task-1
-          name: run-task-2
-          cluster: "c0fee"
-          task-definition: "c0fee"
-          subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
-          security-group-ids: $SECURITY_GROUP_IDS
-          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bin/rails\\\", \\\"db:seed\\\"]}]}"
-          filters:
-            branches:
-              only:
-                - deploy
       - aws-ecs/deploy-service-update:
           requires:
-            - run-task-2
+            - aws-ecs/run-task
           family: "c0fee"
           cluster-name: "c0fee"
           service-name: "c0fee"
