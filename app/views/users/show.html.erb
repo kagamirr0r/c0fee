@@ -3,7 +3,7 @@
 		<% if @user.avatar?%>
 			<%= image_tag @user.avatar.to_s, :size => '400x400' %>
 		<% else %>
-			<%= image_tag 'no_avatar.png', :size => '400x400' %>
+			<%= image_tag 'no_avatar.jpg', :size => '400x400' %>
 		<% end %>
   <h4><div><%= @user.username %></div></h4>
 	</div>

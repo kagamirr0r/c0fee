@@ -7,7 +7,7 @@ FactoryBot.define do
     process { Faker::Number.within(range: 0..7) }
     roast { Faker::Number.within(range: 0..7) }
     price { Faker::Number.within(range: 100..10_000) }
-    bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
+    bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.jpg')) }
     association :user
     association :shop
   end
@@ -21,7 +21,7 @@ FactoryBot.define do
     roast { Faker::Number.within(range: 0..7) }
     roast_date { Faker::Date.between(from: 7.days.ago, to: Date.today) }
     price { Faker::Number.within(range: 100..10_000) }
-    bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.png')) }
+    bean_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/bean.jpg')) }
     association :shop
   end
 end

@@ -3,7 +3,7 @@
 
 	<div class="input-field col s12 l2">
 		<i class="material-icons prefix">public</i>
-		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.png"} }] }), {include_blank: true}, {class: 'icons'} %>
+		<%= b.select :country, options_for_select(Bean.countries.keys.map {|k| [I18n.t("enums.bean.country.#{k}"), "#{k}",{data:{ icon: "/assets/#{k}.jpg"} }] }), {include_blank: true}, {class: 'icons'} %>
 		<%= b.label(:country,Bean.human_attribute_name(:country)) %>
 	</div>
 

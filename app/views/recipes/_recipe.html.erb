@@ -5,7 +5,7 @@
 			<% if recipe.recipe_image? %>
 			<%= image_tag recipe.recipe_image.to_s, size: '630x470'%>
 			<% else %>
-			<%= image_tag 'C0FEE.png', size: '630x550' %>
+			<%= image_tag 'C0FEE.jpg', size: '630x550' %>
 			<% end %>
 
 			<div id="chartContainer">
@@ -32,7 +32,7 @@
 							<% if recipe.user.avatar?%>
 								<%= link_to image_tag(recipe.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: recipe.user.id)%>
 							<% else %>
-								<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+								<%= image_tag 'no_avatar.jpg', id: 'thumbnail' %>
 							<% end %>
 						<%= link_to recipe.user.username, user_path(id: recipe.user.id) %>
 						</td>
@@ -44,7 +44,7 @@
 					</tr>
 
 					<tr>
-						<th><%= image_tag 'bean.png',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
+						<th><%= image_tag 'bean.jpg',size: '50x50', class: "tooltipped", data:{position: "right",tooltip: Recipe.human_attribute_name(:bean) } %></th>
 						<td><%= link_to recipe.bean.country_i18n, bean_path(id: recipe.bean.id) %></td>
 					</tr>
 

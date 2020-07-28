@@ -6,7 +6,7 @@
 			<% if bean.bean_image? %>
 			<%= image_tag bean.bean_image.to_s %>
 			<% else %>
-			<%= image_tag 'C0FEE.png' %>
+			<%= image_tag 'C0FEE.jpg' %>
 			<% end %>
 
 			<div id="chartContainer">
@@ -34,7 +34,7 @@
 							<% if bean.user.avatar?%>
 								<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
 							<% else %>
-								<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+								<%= image_tag 'no_avatar.jpg', id: 'thumbnail' %>
 							<% end %>
 							<%= link_to bean.user.username, user_path(id: bean.user.id)%>
 						</td>

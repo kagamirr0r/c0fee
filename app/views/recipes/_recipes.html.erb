@@ -7,7 +7,7 @@
 						<% if recipe.recipe_image? %>
 							<%=link_to image_tag(recipe.recipe_image.to_s), recipe_path(recipe) %>
 						<% else%>
-							<%=link_to image_tag('C0FEE.png'), recipe_path(recipe) %>
+							<%=link_to image_tag('C0FEE.jpg'), recipe_path(recipe) %>
 						<% end %>
 					</div>
 				</div>
@@ -33,12 +33,12 @@
 						<% if recipe.user.avatar?%>
 							<%= link_to image_tag(recipe.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(recipe.user)%>
 						<% else %>
-							<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
+							<%= image_tag 'no_avatar.jpg', id: 'thumbnail' %>
 						<% end %>
 						<%= link_to "@#{recipe.user.username}", user_path(id: recipe.user.id) %>
 					</p>
 
-					<p><%= link_to image_tag("#{recipe.bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(recipe.bean)%></p>
+					<p><%= link_to image_tag("#{recipe.bean.country}.jpg" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(recipe.bean)%></p>
 					<p class=""><%= recipe.hot_ice_i18n %></p>
 					<p><%= Taste.human_attribute_name(:t_sour)%>：<%= recipe.taste.t_sour %></p>
 					<p><%= Taste.human_attribute_name(:t_bitter)%>：<%= recipe.taste.t_bitter %></p>

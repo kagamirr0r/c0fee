@@ -18,12 +18,12 @@
     <li>
 			<div class="user-view" style="margin: 0;">
 				<div class="background">
-					<%= image_tag "toppage_image.png", id:"backgroud_image" %>
+					<%= image_tag "toppage_image.jpg", id:"backgroud_image" %>
 				</div>
 			<% if current_user.avatar?%>
 				<%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'),"#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
 			<% else %>
-				<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'),"#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+				<%= link_to image_tag('no_avatar.jpg', size:'38x38', id:'no_avatar_image',class:'circle'),"#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
 			<% end %>
       <span class="white-text"><%= current_user.username %></span>
       <span class="white-text"><%= current_user.email %></span>
@@ -35,7 +35,7 @@
    	 </div>
 		</li>
 		<li class="teal"><%= link_to shops_path, class:"white-text" do %><i class="material-icons white-text">store</i><%= t('.shop') %><% end %></li>
-		<li class="teal"><%= link_to beans_path, class:"white-text" do %><i><%= image_tag 'white-bean.png', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
+		<li class="teal"><%= link_to beans_path, class:"white-text" do %><i><%= image_tag 'white-bean.jpg', class: "material-icons" %></i><%= t('.bean') %><% end %></li>
 		<li class="teal"><%= link_to recipes_path, class:"white-text" do %><i class="material-icons white-text">import_contacts</i><%= t('.recipe') %><% end %></li>
 		<% end %>
 		<div>
@@ -63,7 +63,7 @@
 				<% if user_signed_in? %>
 					<ul class="left hide-on-med-and-down">
 						<li><%= link_to shops_path, class:"white-text" do%><i class="material-icons prefix">store</i>          <%= t('.shop') %><% end %></li>
-						<li><%= link_to beans_path, class:"white-text" do%><i class="material-icons prefix" style="height: 21px;"><%= image_tag 'white-bean.png', class: "material-icons", style:"font-size: 21px;" %></i>           <%= t('.bean') %><% end %></li>
+						<li><%= link_to beans_path, class:"white-text" do%><i class="material-icons prefix" style="height: 21px;"><%= image_tag 'white-bean.jpg', class: "material-icons", style:"font-size: 21px;" %></i>           <%= t('.bean') %><% end %></li>
 						<li><%= link_to recipes_path, class:"white-text" do%><i class="material-icons prefix">import_contacts</i>          <%= t('.recipe') %><% end %></li>
 					</ul>
 				<% end %>
@@ -83,7 +83,7 @@
 							</li>
 						<% else %>
 							<li>
-								<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+								<%= link_to image_tag('no_avatar.jpg', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
 							</li>
 						<% end %>
 
