@@ -47,8 +47,23 @@
 					<p><%= Taste.human_attribute_name(:t_fullbody)%>：<%= recipe.taste.t_fullbody %></p>
 					<span>
 						<% if current_user == recipe.user %>
-						<%= render 'recipes/edit_recipe_link', recipe: recipe %>
-						<%= render 'recipes/delete_recipe_link', recipe: recipe %>
+
+						<%= link_to edit_recipe_path(recipe),class: "tooltipped red-text",data:{position:"top", tooltip: t('.edit')} do %>
+							<%= content_tag :i, "edit", class: "material-icons" %>
+						<% end %>
+
+						<a class="modal-trigger tooltipped" href="#recipe_delete_confirmation" data-position="top" data-tooltip="削除" ><i class="material-icons red-text">delete</i></a>
+
+							<div id="recipe_delete_confirmation" class="modal">
+								<div class="modal-content red-text" >
+									<h4><%= t('.are_you_sure?')%></h4>
+								</div>
+								<div class="modal-footer">
+									<%= link_to t('.cancel'),"#", class: "modal-close btn-flat blue-text" %>
+									<%= link_to t('.delete'),recipe, method: :delete,class: "waves-effect waves-red btn-flat red-text" %>
+								</div>
+							</div>
+
 						<% end %>
 					</span>
 				</div>

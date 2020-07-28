@@ -23,7 +23,11 @@
 					<% else %>
 						<span class="red-text"><i class="material-icons">favorite</i><%= shop_liked_counts(shop) %></span>
 					<% end %>
-					<span class="register_bean"><%= render 'beans/register_bean_button', shop: shop %></span>
+					<span class="register_bean">
+						<%= link_to new_bean_path(id: shop.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.register_bean')} do %>
+							<%= content_tag :i, "add", class: "material-icons" %>
+						<% end %>
+					</span>
 					<i class="card-title material-icons right activator">more_vert</i>
 				</div>
 
@@ -32,8 +36,12 @@
 					<h5><%= link_to shop.name, shop.url, target: :_blank %></h5>
 					<p><%= link_to shop.address, "https://www.google.com/maps/search/?api=1&query=#{shop.latitude},#{shop.longitude}", target: :_blank, class: "black-text" %></p>
 					<span>
-						<%= render 'beans/register_bean_button', shop: shop %>
-						<%= render 'shops/edit_shop_link', shop: shop %>
+						<%= link_to new_bean_path(id: shop.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.register_bean')} do %>
+							<%= content_tag :i, "add", class: "material-icons" %>
+						<% end %>
+						<%= link_to edit_shop_path(shop),class: "tooltipped red-text",data:{position:"top", tooltip: t('.edit')} do %>
+							<%= content_tag :i, "edit", class: "material-icons" %>
+						<% end %>
 					</span>
 				</div>
 			</div>
