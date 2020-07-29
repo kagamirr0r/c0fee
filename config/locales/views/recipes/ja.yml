@@ -21,6 +21,7 @@ ja:
       return: 戻る
       from_roast_date: 焙煎から
       day: 日後
+      delete: 削除
     recipes:
       <<: *recipe
     search_form:
