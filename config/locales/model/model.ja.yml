@@ -41,7 +41,7 @@ ja:
         hot_ice: ホット/アイス
         grind: 挽き方
         temperature: 湯温
-        amount: 豆量
+        amount: 豆量 / 抽出量
         extraction: 抽出
         extracted_amount: 抽出量
         recipe_image: レシピ画像

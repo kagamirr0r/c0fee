@@ -39,7 +39,7 @@
 					</p>
 
 					<p><%= link_to image_tag("#{recipe.bean.country}.jpg" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: recipe.bean.country_i18n }), bean_path(recipe.bean)%></p>
-					<p class=""><%= recipe.hot_ice_i18n %></p>
+					<p><%= recipe.hot_ice_i18n %></p>
 					<p><%= Taste.human_attribute_name(:t_sour)%>：<%= recipe.taste.t_sour %></p>
 					<p><%= Taste.human_attribute_name(:t_bitter)%>：<%= recipe.taste.t_bitter %></p>
 					<p><%= Taste.human_attribute_name(:t_sweet)%>：<%= recipe.taste.t_sweet %></p>
@@ -52,17 +52,9 @@
 							<%= content_tag :i, "edit", class: "material-icons" %>
 						<% end %>
 
-						<a class="modal-trigger tooltipped" href="#recipe_delete_confirmation" data-position="top" data-tooltip="削除" ><i class="material-icons red-text">delete</i></a>
-
-							<div id="recipe_delete_confirmation" class="modal">
-								<div class="modal-content red-text" >
-									<h4><%= t('.are_you_sure?')%></h4>
-								</div>
-								<div class="modal-footer">
-									<%= link_to t('.cancel'),"#", class: "modal-close btn-flat blue-text" %>
-									<%= link_to t('.delete'),recipe, method: :delete,class: "waves-effect waves-red btn-flat red-text" %>
-								</div>
-							</div>
+						<%= link_to recipe, method: :delete,class: "tooltipped red-text",data:{position:"top", tooltip: t('.delete'), confirm: "削除しますか？"} do%>
+							<%= content_tag :i, "delete", class: "material-icons" %>
+						<% end %>
 
 						<% end %>
 					</span>
