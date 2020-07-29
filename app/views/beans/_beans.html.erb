@@ -7,9 +7,9 @@
 						<% if bean.bean_image? %>
 							<%=link_to image_tag(bean.bean_image.to_s), bean_path(bean)%>
 						<% else%>
-							<%=link_to image_tag('C0FEE.jpg'), bean_path(bean)%>
+							<%=link_to image_tag('C0FEE.png'), bean_path(bean)%>
 						<% end %>
-						<%= image_tag "#{bean.country}.jpg" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n }%>
+						<%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag",data:{position:"right",tooltip: bean.country_i18n }%>
 					</div>
 				</div>
 
@@ -35,11 +35,11 @@
 						<% if bean.user.avatar?%>
 							<%= link_to image_tag(bean.user.avatar_url(:thumb).to_s, id: 'thumbnail'), user_path(id: bean.user.id)%>
 						<% else %>
-							<%= image_tag 'no_avatar.jpg', id: 'thumbnail' %>
+							<%= image_tag 'no_avatar.png', id: 'thumbnail' %>
 						<% end %>
 						<%= link_to "@#{bean.user.username}", user_path(id: bean.user.id) %>
 					</p>
-					<p><%= image_tag "#{bean.country}.jpg" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: bean.country_i18n }%></p>
+					<p><%= image_tag "#{bean.country}.png" ,class: "tooltipped",id: "country_flag_in_card_reveal",data:{position:"right",tooltip: bean.country_i18n }%></p>
 					<p><%= Impression.human_attribute_name(:i_sour)%>：<%= bean.impression.i_sour %></p>
 					<p><%= Impression.human_attribute_name(:i_bitter)%>：<%= bean.impression.i_bitter %></p>
 					<p><%= Impression.human_attribute_name(:i_sweet)%>：<%= bean.impression.i_sweet %></p>

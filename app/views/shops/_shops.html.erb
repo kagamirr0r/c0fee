@@ -7,7 +7,7 @@
 						<% if shop.shop_image? %>
 							<%=link_to image_tag(shop.shop_image.to_s, :id => 'shops_image'), shop_path(shop) %>
 						<% else%>
-							<%=link_to image_tag('C0FEE.jpg', :id => 'no_shops_image'), shop_path(shop) %>
+							<%=link_to image_tag('C0FEE.png', :id => 'no_shops_image'), shop_path(shop) %>
 						<% end %>
 					</div>
 				</div>
