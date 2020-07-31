@@ -76,6 +76,19 @@
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
+
+					<% if I18n.locale.to_s == "en" %>
+						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
+						</ul>
+					<% else %>
+						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
+            <ul id='dropdown_lang' class='dropdown-content'>
+            <li><%= link_to('EN Ver.', :locale => 'en')%></li>
+						</ul>
+					<% end %>
+
 					<% else %>
 						<% if current_user.avatar?%>
 							<li>
@@ -92,18 +105,6 @@
 							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
 							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
 							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
-						</ul>
-					<% end %>
-
-					<% if I18n.locale.to_s == "en" %>
-						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
-            <ul id='dropdown_lang' class='dropdown-content'>
-            <li><%= link_to('JPN Ver.', :locale => 'ja')%></li>
-						</ul>
-					<% else %>
-						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
-            <ul id='dropdown_lang' class='dropdown-content'>
-            <li><%= link_to('EN Ver.', :locale => 'en')%></li>
 						</ul>
 					<% end %>
 				</ul>

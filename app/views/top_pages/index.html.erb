@@ -1,5 +1,9 @@
 <div id="toppage_image">
-	<%= image_tag 'toppage_image.jpg' unless user_signed_in?%>
+	<% if I18n.locale == :ja %>
+		<%= image_tag 'toppage_image.jpg' unless user_signed_in? %>
+	<% else %>
+		<%= image_tag 'toppage_image_en.jpg' unless user_signed_in? %>
+	<% end %>
 </div>
 
 <div class="row">
