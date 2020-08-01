@@ -13,17 +13,14 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_url unless user_signed_in?
   end
 
-  def set_locale
-    I18n.locale = locale
-  end
+	def set_locale
+		I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+		session[:locale] = I18n.locale
+	end
 
-  def locale
-    @locale ||= params[:locale] || I18n.default_locale
-  end
-
-  def default_url_options(options = {})
-    options.merge(locale: locale)
-  end
+	def default_url_options(options = {})
+		{ locale: I18n.locale }.merge options
+	end
 
   protected
     def configure_permitted_parameters
