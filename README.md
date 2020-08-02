@@ -48,18 +48,19 @@ https://c0fee.com
 * イメージ: ruby2.6.3, postgres11.0-alpine
 
 # テスト
-Ci上で自動化
+Ci上で自動化<br/>
+テスト結果をSlackに通知
 * Rspec,Capybara,Faker,FactoryBot
 * 単体テスト
 * 統合テスト（featurespec）
 
 # 本番
-テスト完了後AWS ECS(Fargate)に自動デプロイ（deployブランチのみ）
-ログをCloudWatchLogsからKinesisfirehoseでS3に定期保管
+テスト後ECSに自動デプロイ（deployブランチのみ）<br/>
+ログはCloudWatchLogsからKinesisfirehoseでS3に定期保管
 
 # Terraform
-version: 0.12.20
-provider: aws 2.44.0
-IAM Role,Security Groupはmodule化
-tfstateは、S3に保存。
-Fargateコンテナに入れないため別途dockerインストール済みのEC2を用意
+* version: 0.12.20
+* provider: aws 2.44.0
+IAM Role,Security Groupはmodule化<br/>
+tfstateは、S3に保存。<br/>
+Fargateコンテナに入れないため別途dockerインストール済みのEC2を用意<br/>
