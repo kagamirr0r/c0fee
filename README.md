@@ -35,16 +35,16 @@
 
 ---
 ### 機能一覧( gem等 )
-* ユーザー登録、ログイン(device, omniauth, omniauth-google-oauth2 ）
-* CRUD✖️4( ユーザー, 店, 豆, レシピ )
-* 画像アップロード（ carrierwave, minimagick, piet, fog-aws ）
-* お気に入り✖️3( ajax )
-* ページネーション( kaminari )
+* ユーザー登録、ログイン ( device, omniauth, omniauth-google-oauth2 ）
+* CRUD✖️4 ( ユーザー, 店, 豆, レシピ )
+* 画像アップロード （ carrierwave, minimagick, piet, fog-aws ）
+* お気に入り✖️3 ( ajax )
+* ページネーション ( kaminari )
 * 検索
-* お問い合わせ（ Action Mailer ）
-* 2か国語（日、英）対応（ I18n, I18n-js, globalize ）
-* チャート、グラフ（ chart-js-rails ）
-* 地図表示( Google Map API, geocoder )
+* お問い合わせ （ Action Mailer ）
+* 2か国語 （日、 英） 対応（ I18n, I18n-js, globalize ）
+* チャート、グラフ （ chart-js-rails ）
+* 地図表示 ( Google Map API, geocoder )
 * レスポンシブデザイン
 
 ---
@@ -57,9 +57,9 @@
 ### テスト
 Ci上で自動化<br/>
 テスト結果をSlackに通知
-* Rspec,Capybara,Faker,FactoryBot
+* Rspec, Capybara, Faker, FactoryBot
 * 単体テスト
-* 統合テスト（featurespec）
+* 統合テスト （ featurespec ）
 
 ---
 ### 本番
@@ -68,7 +68,7 @@ Ci上で自動化<br/>
 
 ---
 ### Terraform
-IAM Role,Security Groupはmodule化<br/>
+IAM Role, Security Groupはmodule化<br/>
 tfstateはS3に保存。<br/>
 Fargateコンテナに入れないため別途dockerインストール済みのEC2を用意<br/>
 * version: 0.12.20
