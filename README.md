@@ -2,21 +2,19 @@
 
 コーヒーのロースター/豆/淹れ方を記録、共有できるアプリです。
 転職活動のポートフォリオとして作成しました。
-
-# C0FEE
 https://c0fee.com
 
 # 機能一覧(gemなど)
-*ユーザー登録、ログイン（device,omniauth,omniauth-google-oauth2）
-*CRUD✖️4(ユーザー,店,豆,レシピ)
-*画像アップロード（carrierwave, minimagick, piet,fog-aws）
-*お気に入り(ajax)
-*ページネーション(kaminari)
-*検索
-*2か国語（日、英）対応（I18,I18n-js,globalize）
-*チャート、グラフ（chart-js-rails）
-*地図表示(Google Map API,geocoder)
-*レスポンシブデザイン
+* ユーザー登録、ログイン（device,omniauth,omniauth-google-oauth2）
+* CRUD✖️4(ユーザー,店,豆,レシピ)
+* 画像アップロード（carrierwave, minimagick, piet,fog-aws）
+* お気に入り(ajax)
+* ページネーション(kaminari)
+* 検索
+* 2か国語（日、英）対応（I18,I18n-js,globalize）
+* チャート、グラフ（chart-js-rails）
+* 地図表示(Google Map API,geocoder)
+* レスポンシブデザイン
 
 # 使用技術
 Ruby 2.6.3
