@@ -5,19 +5,6 @@
 #### https://c0fee.com
 
 ---
-### 機能一覧(gemなど)
-* ユーザー登録、ログイン（device,omniauth,omniauth-google-oauth2）
-* CRUD✖️4(ユーザー,店,豆,レシピ)
-* 画像アップロード（carrierwave, minimagick, piet,fog-aws）
-* お気に入り(ajax)
-* ページネーション(kaminari)
-* 検索
-* 2か国語（日、英）対応（I18n,I18n-js,globalize）
-* チャート、グラフ（chart-js-rails）
-* 地図表示(Google Map API,geocoder)
-* レスポンシブデザイン
-
----
 ### 使用技術
 * Ruby 2.6.3
 * Ruby on Rails 5.2.3
@@ -45,6 +32,19 @@
 * Circleci, Orbs
 
 ---
+### 機能一覧(gemなど)
+* ユーザー登録、ログイン（device,omniauth,omniauth-google-oauth2）
+* CRUD✖️4(ユーザー,店,豆,レシピ)
+* 画像アップロード（carrierwave, minimagick, piet,fog-aws）
+* お気に入り(ajax)
+* ページネーション(kaminari)
+* 検索
+* 2か国語（日、英）対応（I18n,I18n-js,globalize）
+* チャート、グラフ（chart-js-rails）
+* 地図表示(Google Map API,geocoder)
+* レスポンシブデザイン
+
+---
 ### 開発
 * Docker Desktop for Mac
 * docker-compose
@@ -65,8 +65,9 @@ Ci上で自動化<br/>
 
 ---
 ### Terraform
-* version: 0.12.20
-* provider: aws 2.44.0
 IAM Role,Security Groupはmodule化<br/>
 tfstateはS3に保存。<br/>
 Fargateコンテナに入れないため別途dockerインストール済みのEC2を用意<br/>
+* version: 0.12.20
+* provider: aws 2.44.0
+
