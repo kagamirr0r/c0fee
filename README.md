@@ -17,28 +17,41 @@ https://c0fee.com
 * レスポンシブデザイン
 
 # 使用技術
-Ruby 2.6.3
-Ruby on Rails 5.2.3
-PostgreSQL 11.0
-Docker,docker-compose
-Ridgepole
-Materialize.css
-Rspec
-AWS(VPC EC2 ECS(Fargate) ECR RDS ALB ACM Route53 KMS SSM KinesisFireHose CloudWatchLogs S3)
-Terraform
-Git,GitHub
-Circleci, Orbs
+* Ruby 2.6.3
+* Ruby on Rails 5.2.3
+* PostgreSQL 11.0
+* Docker,docker-compose
+* Ridgepole
+* Materialize.css
+* Rspec
+* AWS
+	* VPC
+	* EC2
+	* ECS(Fargate)
+	* ECR
+	* RDS
+	* ALB
+	* ACM
+	* Route53
+	* KMS
+	* SSM
+	* Kinesis Fire Hose
+	* Cloud Watch Logs
+	* S3
+* Terraform
+* Git,GitHub
+* Circleci, Orbs
 
 # 開発
-Docker Desktop for Mac
-docker-compose
-イメージ: ruby2.6.3, postgres11.0-alpine
+* Docker Desktop for Mac
+* docker-compose
+* イメージ: ruby2.6.3, postgres11.0-alpine
 
 # テスト
 Ci上で自動化
-Rspec,Capybara,Faker,FactoryBot
-単体テスト
-統合テスト（featurespec）
+* Rspec,Capybara,Faker,FactoryBot
+* 単体テスト
+* 統合テスト（featurespec）
 
 # 本番
 テスト完了後AWS ECS(Fargate)に自動デプロイ（deployブランチのみ）
