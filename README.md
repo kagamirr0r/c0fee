@@ -74,3 +74,5 @@ Fargateコンテナに入れないため別途dockerインストール済みのE
 * version: 0.12.20
 * provider: aws 2.44.0
 
+![AWS構成図](https://user-images.githubusercontent.com/45422771/89140909-f5d18a00-d57d-11ea-8574-3b9555dda393.png)
+
