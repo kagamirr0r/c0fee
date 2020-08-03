@@ -13,6 +13,7 @@
 * PostgreSQL 11.0
 * Docker,docker-compose
 * Ridgepole
+* Enum
 * Materialize.css
 * Rspec
 * AWS
