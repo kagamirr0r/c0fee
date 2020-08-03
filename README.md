@@ -1,6 +1,6 @@
 # README
 
-#### C0FEE
+### C0FEE
 #### https://c0fee.com
 
 コーヒーのロースター/豆/淹れ方を記録、共有できるアプリです。
@@ -71,7 +71,7 @@ Ci上で自動化<br/>
 ### Terraform
 IAM Role, Security Groupはmodule化<br/>
 tfstateはS3に保存。<br/>
-Fargateコンテナに入れないため別途dockerインストール済みのEC2を用意<br/>
+Fargateコンテナに入れないためdockerインストール済みのEC2を別途用意<br/>
 * version: 0.12.20
 * provider: aws 2.44.0
 
