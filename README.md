@@ -79,3 +79,6 @@ Fargateコンテナに入れないためdockerインストール済みのEC2を�
 ### クラウドアーキテクチャ
 ![AWS構成図](https://user-images.githubusercontent.com/45422771/89140909-f5d18a00-d57d-11ea-8574-3b9555dda393.png)
 
+---
+### ER図
+![ER図](https://user-images.githubusercontent.com/45422771/89189924-aae65f80-d5db-11ea-8079-4cadc9be4b27.png)
