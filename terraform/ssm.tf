@@ -97,3 +97,14 @@ resource "aws_ssm_parameter" "rds_password" {
   }
 }
 
+resource "aws_ssm_parameter" "rails_log_to_stdout" {
+  name        = "/rails/rails_log_to_stdout"
+  value       = "1"
+  type        = "SecureString"
+  description = "RAILS_LOG_TO_STDOUT"
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
