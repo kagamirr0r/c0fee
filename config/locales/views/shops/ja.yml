@@ -20,7 +20,7 @@ ja:
     index:
       title: 店一覧
       register_shop: 店を登録
-      Did_you_buy_a_coffee_beans_following_shops?: 以下の店で豆を買いましたか？
+      Did_you_buy_a_coffee_beans_following_shops?: どのお店で購入しましたか？
       If_you_click_cup_button_you_can_register_a_bean!: ＋をクリックすると豆を登録できます!
     new:
       <<: *form

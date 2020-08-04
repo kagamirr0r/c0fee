@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     @recipes = if recipe_search_params.present?
                  Recipe.search_recipe(@recipe_search_params).page(params[:page])
                else
-                 Recipe.joins(bean: { shop: :translations }).where(shop_translations: { locale: I18n.locale }).page(params[:page])
+                 Recipe.joins(bean: :translations).where(bean_translations: { locale: I18n.locale }).page(params[:page])
                end
   end
 

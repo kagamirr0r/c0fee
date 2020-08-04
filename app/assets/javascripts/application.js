@@ -19,6 +19,9 @@
 //= require Chart.min
 //= require_tree .
 
+$(document).ready(function () {
+	$('.fixed-action-btn').floatingActionButton();
+});
 
 $(document).on("click", "#avatar_select_file_button", function () {
 	$("#user_avatar").click();
