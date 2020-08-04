@@ -13,7 +13,7 @@
 ].each do |name, mail, pass, confirmed_at|
 	#I18n.locale = :ja
   User.create!(
-    username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar1.png"), confirmed_at: confirmed_at
+    username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar1.jpg"), confirmed_at: confirmed_at
   )
 end
 
@@ -24,22 +24,22 @@ end
 	password = Faker::Internet.password
 	confirmed_at = Time.now
 	User.create!(
-		username: username, email: email, password: password, avatar: open("db/fixtures/avatar#{n}.png"), confirmed_at: confirmed_at
+		username: username, email: email, password: password, avatar: open("db/fixtures/avatar#{n}.jpg"), confirmed_at: confirmed_at
 	)
 end
 
 [
-	['スターバックスコーヒー 銀座松屋通り店', '東京都中央区銀座３丁目７−１４ ESKビル 1F', 'https://store.starbucks.co.jp/detail-1/',File.open('db/fixtures/shop1.png'),35.671700, 139.766601],
-	['カルディコーヒーファーム 下高井戸店', '東京都世田谷区松原3-29-20 稲川ビル1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&adr=13&bpref=13112&bid=004&pgret=2',File.open('db/fixtures/shop2.png'),35.666357, 139.641513],
-	['やなか珈琲店 谷中店', '東京都台東区谷中3-8-6', 'https://www.yanaka-coffeeten.com/', File.open('db/fixtures/shop3.png'),35.726894, 139.764729],
-	['サザコーヒー本店', '茨城県ひたちなか市共栄町', 'https://www.saza.co.jp/', File.open('db/fixtures/shop4.png'),36.398315, 140.527000],
-	['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/', File.open('db/fixtures/shop5.png'),35.8663161,139.9699134],
-	['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/', File.open('db/fixtures/shop6.png'),35.7277996,139.7132372],
-	['LIGHT UP COFFEE', '東京都武蔵野市吉祥寺本町4-13-15', 'https://lightupcoffee.com/', File.open('db/fixtures/shop7.png'),35.705462, 139.572519],
-	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/',  File.open('db/fixtures/shop8.png'),34.674107, 135.498055],
-	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/', File.open('db/fixtures/shop9.png'),35.636246, 139.709597],
-	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.png'),35.747845, 139.801818],
-	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.png'),35.006792, 135.764502]
+	['スターバックスコーヒー 銀座松屋通り店', '東京都中央区銀座３丁目７−１４ ESKビル 1F', 'https://store.starbucks.co.jp/detail-1/',File.open('db/fixtures/shop1.jpg'),35.671700, 139.766601],
+	['カルディコーヒーファーム 下高井戸店', '東京都世田谷区松原3-29-20 稲川ビル1F', 'https://map.kaldi.co.jp/kaldi/detailMap?account=kaldi&accmd=0&adr=13&bpref=13112&bid=004&pgret=2',File.open('db/fixtures/shop2.jpg'),35.666357, 139.641513],
+	['やなか珈琲店 谷中店', '東京都台東区谷中3-8-6', 'https://www.yanaka-coffeeten.com/', File.open('db/fixtures/shop3.jpg'),35.726894, 139.764729],
+	['サザコーヒー本店', '茨城県ひたちなか市共栄町', 'https://www.saza.co.jp/', File.open('db/fixtures/shop4.jpg'),36.398315, 140.527000],
+	['雨の日の珈琲', '千葉県柏市あけぼの4-4-2 ライネスハイム柏107', 'https://www.amenohi-coffee.jp/', File.open('db/fixtures/shop5.jpg'),35.8663161,139.9699134],
+	['COFFEE VALLEY', '東京都豊島区南池袋２丁目２６−３', 'https://coffeevalley.jp/', File.open('db/fixtures/shop6.jpg'),35.7277996,139.7132372],
+	['LIGHT UP COFFEE', '東京都武蔵野市吉祥寺本町4-13-15', 'https://lightupcoffee.com/', File.open('db/fixtures/shop7.jpg'),35.705462, 139.572519],
+	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/',  File.open('db/fixtures/shop8.jpg'),34.674107, 135.498055],
+	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/', File.open('db/fixtures/shop9.jpg'),35.636246, 139.709597],
+	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.jpg'),35.747845, 139.801818],
+	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.jpg'),35.006792, 135.764502]
 ].each do |name, address, url, shop_image, latitude, longitude|
 	I18n.locale = :ja
   Shop.create!(
@@ -48,16 +48,16 @@ end
 end
 
 [
- [1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.png')],
- [2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.png')],
-	[3, 3, 2, 'トラジャ', 0, 'スロトコ', 0, 5, 800,File.open('db/fixtures/bean3.png')],
-	[4, 4, 25, 'クスコ', 1, '', 1, 4, 600,File.open('db/fixtures/bean4.png')],
-	[5, 5, 27, 'ラ・フロリダ', 0, 'ラ　フロレンシア', 0, 4, 750,File.open('db/fixtures/bean5.png')],
-	[6, 6, 22, 'カルモデミナス', 1, 'モンテアレグレ', 1, 5, 600,File.open('db/fixtures/bean6.png')],
-	[7, 7, 4, 'グジ シャキソ', 10, 'シャキソ',0,2,870,File.open('db/fixtures/bean7.png')],
-	[8, 8, 29, 'ソコヌスコ', 14, 'Finca Guadelupe Zaju',0,4,950,File.open('db/fixtures/bean8.png')],
-	[9, 9, 5, 'アパネカ', 1, '',2,3,900,File.open('db/fixtures/bean9.png')],
-	[10, 10, 23, 'ムインガ', 1, '', 0,4,410 ,File.open('db/fixtures/bean10.png')],
+ [1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.jpg')],
+ [2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.jpg')],
+	[3, 3, 2, 'トラジャ', 0, 'スロトコ', 0, 5, 800,File.open('db/fixtures/bean3.jpg')],
+	[4, 4, 25, 'クスコ', 1, '', 1, 4, 600,File.open('db/fixtures/bean4.jpg')],
+	[5, 5, 27, 'ラ・フロリダ', 0, 'ラ　フロレンシア', 0, 4, 750,File.open('db/fixtures/bean5.jpg')],
+	[6, 6, 22, 'カルモデミナス', 1, 'モンテアレグレ', 1, 5, 600,File.open('db/fixtures/bean6.jpg')],
+	[7, 7, 4, 'グジ シャキソ', 10, 'シャキソ',0,2,870,File.open('db/fixtures/bean7.jpg')],
+	[8, 8, 29, 'ソコヌスコ', 14, 'Finca Guadelupe Zaju',0,4,950,File.open('db/fixtures/bean8.jpg')],
+	[9, 9, 5, 'アパネカ', 1, '',2,3,900,File.open('db/fixtures/bean9.jpg')],
+	[10, 10, 23, 'ムインガ', 1, '', 0,4,410 ,File.open('db/fixtures/bean10.jpg')],
 	[11, 11, 30, 'ドゥクンデカワ ミビリマ', 1, '', 0,2,750,'']
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
 	I18n.locale = :ja
@@ -132,7 +132,7 @@ end
 ].each do |name, mail, pass, confirmed_at|
 	#I18n.locale = :en
 	User.create!(
-	  username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar1.png"), confirmed_at: confirmed_at
+	  username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar1.jpg"), confirmed_at: confirmed_at
 	)
 end
 
@@ -143,22 +143,22 @@ end
 	password = Faker::Internet.password
 	confirmed_at = Time.now
 	User.create!(
-		username: username, email: email, password: password, avatar: open("db/fixtures/avatar#{n}.png"), confirmed_at: confirmed_at
+		username: username, email: email, password: password, avatar: open("db/fixtures/avatar#{n}.jpg"), confirmed_at: confirmed_at
 	)
 end
 
 [
-	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',File.open('db/fixtures/shop12.png'),47.609966,-122.342323],
- 	['The Coffee Bean & Tea leaf Pico & Smithwood', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',File.open('db/fixtures/shop13.png'),34.055595, -118.396758],
-	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',File.open('db/fixtures/shop14.png'),21.290679, -157.835092],
-	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division',File.open('db/fixtures/shop15.png'),45.505504, -122.615562],
-	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/',File.open('db/fixtures/shop16.png'),32.814479, -117.269759],
-	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', File.open('db/fixtures/shop17.png'),40.716057, -73.964690],
-	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/',File.open('db/fixtures/shop18.png'),42.362057, -71.057043],
-	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/',File.open('db/fixtures/shop19.png'),34.075583, -118.323485],
-	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/',File.open('db/fixtures/shop20.png'),43.051040, -89.278895],
-	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/',File.open('db/fixtures/shop21.png'),32.983281, -117.075453],
-	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/',File.open('db/fixtures/shop22.png'),40.038126, -76.306330]
+	['Starbucks Coffee Pike Place', '1912 Pike Place Seattle, WA 98101', 'https://www.starbucks.com/store-locator/store/11676/pike-place-1912-pike-place-seattle-wa-981011013-us',File.open('db/fixtures/shop12.jpg'),47.609966,-122.342323],
+ 	['The Coffee Bean & Tea leaf Pico & Smithwood', '9541 W. Pico Blvd. Los Angeles CA 90035 USA', 'https://www.coffeebean.com/store/usa/los-angeles/pico-and-smithwood',File.open('db/fixtures/shop13.jpg'),34.055595, -118.396758],
+	['Honolulu Coffee Experience Center', '1800 Kalakaua Ave Honolulu, HI 96815', 'https://www.honolulucoffee.com/pages/honolulu-coffee-experience-center',File.open('db/fixtures/shop14.jpg'),21.290679, -157.835092],
+	['Stumptown Coffee Roasters Divisions', '4525 SE Division Street Portland, OR 97206', 'https://www.stumptowncoffee.com/locations/portland/division',File.open('db/fixtures/shop15.jpg'),45.505504, -122.615562],
+	['Bird Rock La Jolla','5627 La Jolla Blvd, La Jolla, CA 92037','https://www.birdrockcoffee.com/',File.open('db/fixtures/shop16.jpg'),32.814479, -117.269759],
+	['Devoción', '69 Grand St, Brooklyn, NY 11249','https://www.devocion.com/', File.open('db/fixtures/shop17.jpg'),40.716057, -73.964690],
+	['George Howell Coffee', '505 Washington St, Boston, MA 02111','https://www.georgehowellcoffee.com/',File.open('db/fixtures/shop18.jpg'),42.362057, -71.057043],
+	['Go Get Em Tiger', '230 N Larchmont Blvd, Los Angeles, CA 90004','https://gget.com/',File.open('db/fixtures/shop19.jpg'),34.075583, -118.323485],
+	['JBC Coffee Roasters','5821 Femrite Dr # H, Madison, WI 53718','http://www.jbccoffeeroasters.com/',File.open('db/fixtures/shop20.jpg'),43.051040, -89.278895],
+	['Mostra Coffee', '12045 Carmel Mountain Rd Ste 302, San Diego, CA 92128','http://www.mostracoffee.com/',File.open('db/fixtures/shop21.jpg'),32.983281, -117.075453],
+	['Passenger Coffee & Tea Showroom','7 W King St, Lancaster, PA 17602','http://passengercoffee.com/',File.open('db/fixtures/shop22.jpg'),40.038126, -76.306330]
 ].each do |name, address, url, shop_image, latitude, longitude|
 	I18n.locale = :en
   Shop.create!(
@@ -167,17 +167,17 @@ end
 end
 
 [
-	[12, 12, 17, '', '', '', 3, 4, 2.5, File.open('db/fixtures/bean12.png')],
-  [13, 13, 9, '', '', '', 1, 3, 0.6, File.open('db/fixtures/bean13.png')],
-	[14, 14, 20, '', '', '', 3, 4, 5.8, File.open('db/fixtures/bean14.png')],
-	[15, 15, 7, 'Huehuetenango', 1, 'El Injerto', '', 4, 3.66, File.open('db/fixtures/bean15.png')],
-	[16, 16, 10, 'Huila', 1, '', '', 5, 1.66, File.open('db/fixtures/bean16.png')],
-	[17, 17, 10, 'Tolima', 15, '', '', 5, 1.9, File.open('db/fixtures/bean17.png')],
+	[12, 12, 17, '', '', '', 3, 4, 2.5, File.open('db/fixtures/bean12.jpg')],
+  [13, 13, 9, '', '', '', 1, 3, 0.6, File.open('db/fixtures/bean13.jpg')],
+	[14, 14, 20, '', '', '', 3, 4, 5.8, File.open('db/fixtures/bean14.jpg')],
+	[15, 15, 7, 'Huehuetenango', 1, 'El Injerto', '', 4, 3.66, File.open('db/fixtures/bean15.jpg')],
+	[16, 16, 10, 'Huila', 1, '', '', 5, 1.66, File.open('db/fixtures/bean16.jpg')],
+	[17, 17, 10, 'Tolima', 15, '', '', 5, 1.9, File.open('db/fixtures/bean17.jpg')],
 	[18, 18, 18, 'Boquete', 9, 'La Esmeralda', 0, 2, 16.9, ''],
-	[19, 19, 3, 'Habitat Forest', 2, '', '', 4, 1.9, File.open('db/fixtures/bean19.png')],
-	[20, 20, 8, 'KIRINYAGA', 12, '', 0, 5, 1.75, File.open('db/fixtures/bean20.png')],
-	[21, 21, 24, 'Cau Dat', '', '', 0, 4, 1.5, File.open('db/fixtures/bean21.png')],
-	[22, 22, 22, 'Kayanza', 1, '', 0, 4, 1.5, File.open('db/fixtures/bean22.png')]
+	[19, 19, 3, 'Habitat Forest', 2, '', '', 4, 1.9, File.open('db/fixtures/bean19.jpg')],
+	[20, 20, 8, 'KIRINYAGA', 12, '', 0, 5, 1.75, File.open('db/fixtures/bean20.jpg')],
+	[21, 21, 24, 'Cau Dat', '', '', 0, 4, 1.5, File.open('db/fixtures/bean21.jpg')],
+	[22, 22, 22, 'Kayanza', 1, '', 0, 4, 1.5, File.open('db/fixtures/bean22.jpg')]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
 	I18n.locale = :en
   Bean.create!(

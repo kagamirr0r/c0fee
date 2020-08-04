@@ -21,6 +21,7 @@ en:
       return: Back
       from_roast_date: From roast date
       day: days
+      delete: Delete
     recipes:
       <<: *recipe
     search_form:

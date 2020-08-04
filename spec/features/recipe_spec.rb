@@ -74,7 +74,8 @@ RSpec.feature 'Recipes', type: :feature do
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
-    # delete
+		# delete
+		visit "/ja/recipes/#{recipe.id}"
     click_on 'delete'
     expect(page).to have_content I18n.t('recipes.delete_recipe_link.are_you_sure?')
 

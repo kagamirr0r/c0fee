@@ -19,7 +19,11 @@
 					<% else %>
 						<span class="red-text"><i class="material-icons">favorite</i><%= bean_liked_counts(bean) %></span>
 					<% end %>
-					<span class="make_recipe"><%= render 'recipes/make_recipe_button', bean: bean %></span>
+					<span class="make_recipe">
+						<%= link_to new_recipe_path(id: bean.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.make_recipe')} do %>
+							<%= content_tag :i, "add", class: "material-icons" %>
+						<% end %>
+					</span>
 					<i class="card-title material-icons right activator">more_vert</i>
 				</div>
 
@@ -40,10 +44,21 @@
 					<p><%= Impression.human_attribute_name(:i_bitter)%>：<%= bean.impression.i_bitter %></p>
 					<p><%= Impression.human_attribute_name(:i_sweet)%>：<%= bean.impression.i_sweet %></p>
 					<span>
-						<%= render 'recipes/make_recipe_button', bean: bean %>
+
+						<%= link_to new_recipe_path(id: bean.id),class: "tooltipped red-text",data:{position:"top", tooltip: t('.make_recipe')} do %>
+							<%= content_tag :i, "add", class: "material-icons" %>
+						<% end %>
+
 						<% if current_user == bean.user %>
-						<%= render 'beans/edit_bean_link', bean: bean %>
-						<%= render 'beans/delete_bean_link', bean: bean %>
+
+						<%= link_to edit_bean_path(bean),class: "tooltipped red-text",data:{position:"top", tooltip: t('.edit')} do %>
+							<%= content_tag :i, "edit", class: "material-icons" %>
+						<% end %>
+
+						<%= link_to bean, method: :delete,class: "tooltipped red-text",data:{position:"top", tooltip: t('.delete'), confirm: "削除しますか？"} do%>
+							<%= content_tag :i, "delete", class: "material-icons" %>
+						<% end %>
+
 						<% end %>
 					</span>
 				</div>

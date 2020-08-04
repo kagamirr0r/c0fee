@@ -1,4 +1,4 @@
-<h3><%=t('.change_my_password')%></h3>
+<h3 class="center-align"><%=t('.change_my_password')%></h3>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

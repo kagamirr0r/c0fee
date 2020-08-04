@@ -15,15 +15,15 @@ RSpec.feature 'Beans', type: :feature do
     within ".nav-wrapper" do
       click_on I18n.t('layouts.application.bean')
     end
-    
+
     expect(page).to have_content I18n.t('beans.index.Did_you_brew_the_following_beans?')
-    
+
     within ".fixed-action-btn" do
       click_on "edit"
     end
-    
+
     expect(page).to have_content I18n.t('shops.index.Did_you_buy_a_coffee_beans_following_shops?')
-    
+
     within ".card-action" do
       click_on "add"
     end
@@ -78,7 +78,8 @@ RSpec.feature 'Beans', type: :feature do
     click_button I18n.t('beans.form.register')
     expect(page).to have_content I18n.t('beans.flash.edited_bean')
 
-    # delete
+		# delete
+		visit "/ja/beans/#{bean.id}"
     click_on 'delete'
     expect(page).to have_content I18n.t('beans.delete_bean_link.are_you_sure?')
 

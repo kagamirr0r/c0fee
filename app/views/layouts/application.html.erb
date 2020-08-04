@@ -18,12 +18,12 @@
     <li>
 			<div class="user-view" style="margin: 0;">
 				<div class="background">
-					<%= image_tag "toppage_image", id:"backgroud_image" %>
+					<%= image_tag "toppage_image.jpg", id:"backgroud_image" %>
 				</div>
 			<% if current_user.avatar?%>
-				<%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%>
+				<%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'),"#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
 			<% else %>
-				<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+				<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'),"#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
 			<% end %>
       <span class="white-text"><%= current_user.username %></span>
       <span class="white-text"><%= current_user.email %></span>
@@ -76,20 +76,6 @@
 					<% unless user_signed_in? %>
 						<li><%= link_to_unless_current t('.create_account'), new_user_registration_path %></li>
 						<li><%= link_to_unless_current t('.log_in'), new_user_session_path %></li>
-					<% else %>
-						<% if current_user.avatar?%>
-							<li><%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'}%></li>
-						<% else %>
-							<li><%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %></li>
-						<% end %>
-
-						<ul id='dropdown_nav' class='dropdown-content'>
-							<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
-							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
-							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
-							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
-						</ul>
-					<% end %>
 
 					<% if I18n.locale.to_s == "en" %>
 						<li><%= link_to "EN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
@@ -100,6 +86,25 @@
 						<li><%= link_to "JPN", "#", class: 'dropdown-trigger', data:{target:'dropdown_lang'} %></li>
             <ul id='dropdown_lang' class='dropdown-content'>
             <li><%= link_to('EN Ver.', :locale => 'en')%></li>
+						</ul>
+					<% end %>
+
+					<% else %>
+						<% if current_user.avatar?%>
+							<li>
+								<%= link_to image_tag(current_user.avatar_url(:thumb).to_s, size: '38x38', id:'avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+							</li>
+						<% else %>
+							<li>
+								<%= link_to image_tag('no_avatar.png', size:'38x38', id:'no_avatar_image',class:'circle'), "#", class: 'dropdown-trigger',id: 'nav_avatar', data:{target:'dropdown_nav'} %>
+							</li>
+						<% end %>
+
+						<ul id='dropdown_nav' class='dropdown-content'>
+							<li><%= link_to t('.my_page'),my_page_path(current_user)%></li>
+							<li><%= link_to t('.edit_profile'), edit_user_registration_path %></li>
+							<li><%= link_to t('.inquiry'),new_inquiry_path %></li>
+							<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete %></li>
 						</ul>
 					<% end %>
 				</ul>

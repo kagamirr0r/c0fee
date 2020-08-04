@@ -1,4 +1,4 @@
-<h3><%=t('.resend_unlock_instructions')%></h3>
+<h3 class="center-align"><%=t('.resend_unlock_instructions')%></h3>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

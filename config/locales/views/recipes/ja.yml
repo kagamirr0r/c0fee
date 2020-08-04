@@ -15,12 +15,13 @@ ja:
       temperature: 湯温(°C)
       extracted_amount: 抽出量(g)
     make_recipe_button:
-      make_recipe: レシピを作成
+      make_recipe: レシピを登録
     recipe: &recipe
       <<: *edit_recipe_link
       return: 戻る
       from_roast_date: 焙煎から
       day: 日後
+      delete: 削除
     recipes:
       <<: *recipe
     search_form:
@@ -31,13 +32,13 @@ ja:
       title: レシピ編集
     index:
       title: レシピ一覧
-      make_recipe: レシピを作成
+      make_recipe: レシピを登録
     new:
       <<: *delete_recipe_link
-      title: レシピ作成
+      title: レシピ登録
     show:
       <<: *delete_recipe_link
     flash:
-      made_recipe: レシピを作成しました!
+      made_recipe: レシピを登録しました!
       edited_recipe: レシピを編集しました！
       deleted_recipe: レシピを削除しました！

@@ -72,6 +72,12 @@ gem 'chart-js-rails'
 
 gem 'font-awesome-sass'
 
+gem 'faker'
+
+gem 'piet'
+
+gem 'piet-binary'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'i18n-tasks'
@@ -90,7 +96,6 @@ group :development, :test do
   gem 'rb-readline'
   gem 'hirb'
   gem 'hirb-unicode-steakknife'
-  gem 'faker'
   gem 'rubocop-faker'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

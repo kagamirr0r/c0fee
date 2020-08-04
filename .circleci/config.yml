@@ -74,25 +74,25 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: "c0fee"
-          cluster-name: "c0fee"
-          service-name: "c0fee"
-          container-image-name-updates: "container=c0fee,tag=latest"
-          filters:
-            branches:
-              only:
-                - deploy
       - aws-ecs/run-task:
           requires:
-            - aws-ecs/deploy-service-update
+            - aws-ecr/build-and-push-image
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: "$SUBNET_ONE,$SUBNET_TWO"
           security-group-ids: $SECURITY_GROUP_IDS
           overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"ridgepole\\\", \\\"--apply\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\", \\\"-E\\\", \\\"production\\\"]}]}"
+          filters:
+            branches:
+              only:
+                - deploy
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecs/run-task
+          family: "c0fee"
+          cluster-name: "c0fee"
+          service-name: "c0fee"
+          container-image-name-updates: "container=c0fee,tag=latest"
           filters:
             branches:
               only:

@@ -1,7 +1,7 @@
 ja:
   beans:
     bean: &bean
-      make_recipe: レシピを作成
+      make_recipe: レシピを登録
       edit: 編集
       delete: 削除
       currency_unit: 円
@@ -33,8 +33,8 @@ ja:
     index:
       title: 豆一覧
       register_bean: 豆を登録
-      Did_you_brew_the_following_beans?: 以下の豆で淹れましたか？
-      Click_the_button_on_the_book_to_make_a_recipe!: ＋をクリックするとレシピが作れます!
+      Did_you_brew_the_following_beans?: どの豆で淹れましたか？
+      Click_the_button_on_the_book_to_make_a_recipe!: ＋をクリックするとレシピを登録できます!
     new:
       <<: *form
       title: 豆の登録
