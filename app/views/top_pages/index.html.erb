@@ -18,3 +18,14 @@
   <div id="recent_beans" class="col s12"><%= render 'beans/beans', beans: @beans %><%= link_to t('.bean_index') ,beans_url%></div>
   <div id="recent_recipes" class="col s12"><%= render 'recipes/recipes', recipes: @recipes%><%= link_to t('.recipe_index'),recipes_path%></div>
 </div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><%= link_to shops_path, class:"btn-floating red accent-3" do %><i class="material-icons white-text">store</i><% end %></li>
+    <li><%= link_to shops_path, class:"btn-floating red accent-3" do %><i><%= image_tag 'white-bean.png', class: "material-icons", style:"margin-top: 8px"%></i><% end %></li>
+    <li><%= link_to beans_path, class:"btn-floating red accent-3" do %><i class="material-icons white-text">import_contacts</i><% end %></li>
+  </ul>
+</div>
