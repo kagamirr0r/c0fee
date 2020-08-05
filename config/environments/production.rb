@@ -88,15 +88,36 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # config.log_formatter = ::Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+	# config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+
+	config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.custom_payload do |controller|
+    {
+      host: controller.request.host,
+      remote_ip: controller.request.remote_ip,
+    }
+  end
+  config.lograge.custom_options = lambda do |event|
+    exceptions = %w(controller action format id)
+    {
+      time: event.time,
+      host: event.payload[:host],
+      remote_ip: event.payload[:remote_ip],
+      params: event.payload[:params].except(*exceptions),
+      exception_object: event.payload[:exception_object],
+      exception: event.payload[:exception],
+      backtrace: event.payload[:exception_object].try(:backtrace),
+    }
+  end
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
 		logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
+    #logger.formatter = config.log_formatter
     config.logger = Logger.new(STDOUT)
   end
 
