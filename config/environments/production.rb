@@ -63,15 +63,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "app_#{Rails.env}"
 
-	config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :user_name => Rails.application.credentials.gmail[:address],
-    :password => Rails.application.credentials.gmail[:password],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: "smtp.gmail.com",
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:address],
+    password: Rails.application.credentials.gmail[:password],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
   config.action_mailer.perform_caching = false
@@ -92,18 +92,18 @@ Rails.application.configure do
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
-	# config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-	config.lograge.enabled = true
+  config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.lograge.custom_payload do |controller|
     {
       host: controller.request.host,
-      remote_ip: controller.request.remote_ip,
+      remote_ip: controller.request.remote_ip
     }
   end
   config.lograge.custom_options = lambda do |event|
-    exceptions = %w(controller action format id)
+    exceptions = %w[controller action format id]
     {
       time: event.time,
       host: event.payload[:host],
@@ -111,13 +111,13 @@ Rails.application.configure do
       params: event.payload[:params].except(*exceptions),
       exception_object: event.payload[:exception_object],
       exception: event.payload[:exception],
-      backtrace: event.payload[:exception_object].try(:backtrace),
+      backtrace: event.payload[:exception_object].try(:backtrace)
     }
   end
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-		logger           = ActiveSupport::Logger.new(STDOUT)
-    #logger.formatter = config.log_formatter
+    # logger = ActiveSupport::Logger.new(STDOUT)
+    # logger.formatter = config.log_formatter
     config.logger = Logger.new(STDOUT)
   end
 

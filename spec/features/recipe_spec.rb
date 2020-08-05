@@ -16,9 +16,9 @@ RSpec.feature 'Recipes', type: :feature do
       click_on 'import_contacts'
     end
 
-		within ".fixed-action-btn" do
-			click_on 'edit'
-		end
+    within '.fixed-action-btn' do
+      click_on 'edit'
+    end
 
     within '.card-action' do
       click_on 'add'
@@ -55,10 +55,10 @@ RSpec.feature 'Recipes', type: :feature do
     expect(page).to have_content recipe.taste.t_fullbody
     expect(page).to have_content recipe.taste.t_comment
 
-		# edit
-		within '.card-action' do
-			click_on 'edit'
-		end
+    # edit
+    within '.card-action' do
+      click_on 'edit'
+    end
     select another_taste.recipe.hot_ice_i18n, from: 'recipe_hot_ice'
     select another_taste.recipe.grind_i18n, from: 'recipe_grind'
     fill_in 'recipe_amount', with: another_taste.recipe.amount
@@ -74,8 +74,8 @@ RSpec.feature 'Recipes', type: :feature do
     click_button I18n.t('recipes.form.register')
     expect(page).to have_content I18n.t('recipes.flash.edited_recipe')
 
-		# delete
-		visit "/ja/recipes/#{recipe.id}"
+    # delete
+    visit "/ja/recipes/#{recipe.id}"
     click_on 'delete'
     expect(page).to have_content I18n.t('recipes.delete_recipe_link.are_you_sure?')
 
