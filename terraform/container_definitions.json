@@ -52,6 +52,10 @@
 		{
 			"name": "RDS_PASSWORD",
 			"valueFrom": "/rails/rds_password"
+		},
+		{
+			"name": "RAILS_LOG_TO_STDOUT",
+			"valueFrom": "/rails/rails_log_to_stdout"
 		}
 	]
 }]
