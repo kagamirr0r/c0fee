@@ -61,16 +61,17 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "app_#{Rails.env}"
-	config.action_mailer.default_url_options = { host: 'c0fee.com'}
-  config.action_mailer.raise_delivery_errors = true
+	# config.active_job.queue_name_prefix = "app_#{Rails.env}"
+	config.action_mailer.raise_delivery_errors = true
+	config.action_mailer.default_url_options = { :host => 'c0fee.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+		address: "smtp.gmail.com",
+		domain: 'gmail.com',
     port: 587,
     user_name: Rails.application.credentials.gmail[:address],
     password: Rails.application.credentials.gmail[:password],
-    authentication: :plain,
+    authentication: :login,
     enable_starttls_auto: true
   }
 
