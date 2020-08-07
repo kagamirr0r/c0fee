@@ -58,7 +58,7 @@
 					<%# <% if recipe.amount.present? %>
 					<tr>
 						<th><i class="fas fa-weight fa-4x tooltipped" data-position="right" data-tooltip=<%= Recipe.human_attribute_name(:amount)%> ></i></th>
-						<td><%= recipe.amount %><% if I18n.locale == :ja && recipe.amount.present? %>g<% elsif i18n.locale == :en %>oz<%end%> / <%= recipe.extracted_amount %><% if I18n.locale == :ja && recipe.amount.present?%>g<% elsif i18n.locale == :en %>oz<%end%></td>
+						<td><%= recipe.amount %><% if I18n.locale == :ja && recipe.amount.present? %>g<% elsif I18n.locale == :en %>oz<%end%> / <%= recipe.extracted_amount %><% if I18n.locale == :ja && recipe.amount.present?%>g<% elsif I18n.locale == :en %>oz<%end%></td>
 					</tr>
 					<%# <% end %>
 
