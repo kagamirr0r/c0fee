@@ -38,7 +38,7 @@ ja:
         change_my_password: パスワードを変更する
         change_your_password: パスワードを変更
         confirm_new_password: 新しいパスワード(確認用)
-        new_password: 新しいパスワード
+        new_password: 新しいパスワード(6字以上)
       new:
         forgot_your_password: パスワードを忘れましたか?
         send_me_reset_password_instructions: パスワードの再設定方法を送信する
