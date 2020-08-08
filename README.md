@@ -1,6 +1,8 @@
 # README
 
 ### C0FEE
+<img width="1436" alt="スクリーンショット 2020-08-08 22 20 48" src="https://user-images.githubusercontent.com/45422771/89711569-fd51c280-d9c5-11ea-86e7-e276df3c4338.png">
+
 #### https://c0fee.com
 
 コーヒーのロースター/豆/淹れ方を記録、共有できるアプリです。
