@@ -42,17 +42,17 @@
 			<% unless user_signed_in? %>
 				<li><%= link_to t('.create_account'), new_user_registration_path, class:"white-text" %></li>
 				<li><%= link_to t('.log_in'), new_user_session_path, class:"white-text" %></li>
+				<li><div class="divider"></div></li>
+				<% if I18n.locale.to_s == "en" %>
+					<li class="white"><%= link_to('JPN Ver.', :locale => 'ja')%></li>
+				<% else %>
+					<li class="white"><%= link_to('EN Ver.', :locale => 'en')%></li>
+				<% end %>
 			<% else %>
 				<li><%= link_to t('.my_page'),my_page_path(current_user), class:"white-text"%></li>
 				<li><%= link_to t('.edit_profile'), edit_user_registration_path, class:"white-text" %></li>
 				<li><%= link_to t('.inquiry'),new_inquiry_path, class:"white-text" %></li>
 				<li><%= link_to t('.log_out'), destroy_user_session_path, method: :delete, class:"white-text" %></li>
-			<% end %>
-				<li><div class="divider"></div></li>
-			<% if I18n.locale.to_s == "en" %>
-				<li class="white"><%= link_to('JPN Ver.', :locale => 'ja')%></li>
-			<% else %>
-				<li class="white"><%= link_to('EN Ver.', :locale => 'en')%></li>
 			<% end %>
 			</div>
   	</ul>

@@ -23,7 +23,7 @@ ja:
         roast_date: 焙煎日
         price: 価格
         shop: 店
-        bean_image: 豆の画像
+        bean_image: ""
         updated_at: 最終更新
       impression:
         i_sour: 酸味
@@ -44,7 +44,7 @@ ja:
         amount: 豆量 / 抽出量
         extraction: 抽出
         extracted_amount: 抽出量
-        recipe_image: レシピ画像
+        recipe_image: ""
         updated_at: 最終更新
       taste:
         t_sour: 酸味
@@ -57,4 +57,4 @@ ja:
         name: 名前
         address: 住所
         url: URL
-        shop_image: 店のイメージ
+        shop_image: ""

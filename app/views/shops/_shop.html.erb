@@ -2,7 +2,7 @@
 <div class="row">
 		<h3 class="center-align"><%= link_to @shop.name, @shop.url, target: :_blank, rel: :noopener %></h3>
 
-		<div id="shop_image" class="col l6 left">
+		<div id="shop_image" class="col l6 s12 left">
 			<% if shop.shop_image? %>
 			<%= image_tag shop.shop_image.to_s %>
 			<% else %>
@@ -10,7 +10,7 @@
 			<% end %>
 		</div>
 
-		<div id="shop_info" class="col l6 right">
+		<div id="shop_info" class="col l6 s12 right" id="card_option">
 			<h6 class="center-align"><%= shop.address %></h6><br/>
 			<div id="map" style="width100%; height: 380px;"></div><br/>
 				<div class="center-align">

@@ -40,7 +40,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # process convert: 'jpg'
-  process optimize: [quality: 30, level: 4]
+  process optimize: [quality: 50, level: 2]
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist

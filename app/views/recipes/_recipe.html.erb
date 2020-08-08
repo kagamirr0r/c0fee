@@ -1,7 +1,7 @@
 <% if recipe.present? %>
 
 	<div class="row">
-		<div id="recipe_image" class="card col l6  right">
+		<div id="recipe_image" class="card col l6 s12 right" id="card_option">
 			<% if recipe.recipe_image? %>
 			<%= image_tag recipe.recipe_image.to_s, size: '630x470'%>
 			<% else %>
@@ -12,7 +12,7 @@
 				<canvas id="recipeChart"></canvas>
 			</div>
 
-			<div class="card-action center-align">
+			<div class="card-action center-align" id="card_option">
 				<span id="recipe_like_button_<%= recipe.id %>" style="text-align: center"><%= render 'recipe_likes/like_recipe_button', recipe: recipe %></span>
 				<span>
 				<% if current_user == recipe.user %>
@@ -109,10 +109,8 @@
 
 <script>
 $(window).on('load', function() {
-    $('.material-icons').removeClass('small');
-		$('.material-icons').addClass('medium');
-		$('.waves-light').removeClass('btn-small');
-		$('.waves-light').addClass('btn-large');
+    $('.card-action .material-icons').removeClass('small');
+		$('.card-action .material-icons').addClass('medium');
 });
 </script>
 
