@@ -7,9 +7,6 @@
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
     <%= f.label :password, t('.new_password') %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
     <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
 

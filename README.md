@@ -12,8 +12,9 @@
 * Ruby on Rails 5.2.3
 * PostgreSQL 11.0
 * Docker,docker-compose
-* Ridgepole
-* Enum
+* Ridgepole ( マイグレーション )
+* Enum ( 列挙型 )
+* Lograge ( ログフォーマット )
 * Materialize.css
 * Rspec
 * AWS

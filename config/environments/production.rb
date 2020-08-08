@@ -23,7 +23,7 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -62,16 +62,17 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "app_#{Rails.env}"
-
-	config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'c0fee.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :user_name => Rails.application.credentials.gmail[:address],
-    :password => Rails.application.credentials.gmail[:password],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: "smtp.gmail.com",
+    domain: 'gmail.com',
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:address],
+    password: Rails.application.credentials.gmail[:password],
+    authentication: :login,
+    enable_starttls_auto: true
   }
 
   config.action_mailer.perform_caching = false
@@ -88,15 +89,36 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # config.log_formatter = ::Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.custom_payload do |controller|
+    {
+      host: controller.request.host,
+      remote_ip: controller.request.remote_ip
+    }
+  end
+  config.lograge.custom_options = lambda do |event|
+    exceptions = %w[controller action format id]
+    {
+      time: event.time,
+      host: event.payload[:host],
+      remote_ip: event.payload[:remote_ip],
+      params: event.payload[:params].except(*exceptions),
+      exception_object: event.payload[:exception_object],
+      exception: event.payload[:exception],
+      backtrace: event.payload[:exception_object].try(:backtrace)
+    }
+  end
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    #logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
+    # logger = ActiveSupport::Logger.new(STDOUT)
+    # logger.formatter = config.log_formatter
     config.logger = Logger.new(STDOUT)
   end
 

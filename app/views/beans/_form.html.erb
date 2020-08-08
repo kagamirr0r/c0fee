@@ -3,6 +3,13 @@
 
 		<%= b.hidden_field :user_id, value: current_user.id %>
 		<%= b.hidden_field :shop_id, value: shop.id %>
+<!--
+	<% if bean.bean_image? %>
+		<div class="center-align">
+			<%= image_tag bean.bean_image.url, size: '300' %>
+		</div>
+	<% end %>
+-->
 
 	<div class="file-field input-field col s12">
 		<button type="button" id="bean_select_file_button" class="waves-effect waves-light btn-small">

@@ -13,12 +13,12 @@
 		<%= s.text_field :address,value: @shop_search_params[:address] %>
 	</div>
 
-	<div class="actions col s1 l1">
+	<div class="actions col s12 l1">
 		<%= s.submit t('.submit_search'),class:"btn waves-effect waves-light white"%>
 	</div>
 
 	<% if @shop_search_params.present? %>
-		<div class="actions col s1 l1">
+		<div class="actions col s12 l1">
 			<%= link_to t('.return'), shops_path, class:"btn waves-effect waves-light"%>
 		</div>
 	<% end %>

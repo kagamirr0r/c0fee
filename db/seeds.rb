@@ -17,7 +17,7 @@
   )
 end
 
-2.upto(11) do |n|
+2.upto(12) do |n|
 	#I18n.locale = :ja
 	username = Faker::Internet.username
 	email = Faker::Internet.free_email
@@ -39,7 +39,8 @@ end
 	['LiLo Coffee Roasters', '大阪府大阪市中央区西心斎橋１丁目１−10-28 心斎橋Mビル', 'https://coffee.liloinveve.com/',  File.open('db/fixtures/shop8.jpg'),34.674107, 135.498055],
 	['SWITCH COFFEE TOKYO', '東京都目黒区目黒１丁目１７−２３', 'http://www.switchcoffeetokyo.com/', File.open('db/fixtures/shop9.jpg'),35.636246, 139.709597],
 	['マメココロ', '東京都足立区千住1-27-1', 'https://ja-jp.facebook.com/mamecocoro/', File.open('db/fixtures/shop10.jpg'),35.747845, 139.801818],
-	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.jpg'),35.006792, 135.764502]
+	['WEEKENDERS COFFEE 富小路', '京都市中京区富小路通六角下ル西側骨屋之町560離れ', 'https://weekenderscoffee.com/', File.open('db/fixtures/shop11.jpg'),35.006792, 135.764502],
+	['SOLITO MAGO COFEE LAB 柏の葉　珈琲研究所', '千葉県柏市若柴226番地42 中央144街区2 C棟', 'https://m.facebook.com/Solito-MAGO-Coffee-LABO-113815916659981/', File.open('db/fixtures/shop23.jpg'),35.896506, 139.953813]
 ].each do |name, address, url, shop_image, latitude, longitude|
 	I18n.locale = :ja
   Shop.create!(
@@ -48,8 +49,8 @@ end
 end
 
 [
- [1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.jpg')],
- [2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.jpg')],
+	[1, 1, 7, 'ニューオリエンテ', '', '', 0, 5, 1040, File.open('db/fixtures/bean1.jpg')],
+	[2, 2, 0, 'モカマタリ','', '','' , 5, 800, File.open('db/fixtures/bean2.jpg')],
 	[3, 3, 2, 'トラジャ', 0, 'スロトコ', 0, 5, 800,File.open('db/fixtures/bean3.jpg')],
 	[4, 4, 25, 'クスコ', 1, '', 1, 4, 600,File.open('db/fixtures/bean4.jpg')],
 	[5, 5, 27, 'ラ・フロリダ', 0, 'ラ　フロレンシア', 0, 4, 750,File.open('db/fixtures/bean5.jpg')],
@@ -58,7 +59,8 @@ end
 	[8, 8, 29, 'ソコヌスコ', 14, 'Finca Guadelupe Zaju',0,4,950,File.open('db/fixtures/bean8.jpg')],
 	[9, 9, 5, 'アパネカ', 1, '',2,3,900,File.open('db/fixtures/bean9.jpg')],
 	[10, 10, 23, 'ムインガ', 1, '', 0,4,410 ,File.open('db/fixtures/bean10.jpg')],
-	[11, 11, 30, 'ドゥクンデカワ ミビリマ', 1, '', 0,2,750,'']
+	[11, 11, 30, 'ドゥクンデカワ ミビリマ', 1, '', 0,2,750,''],
+	[12, 12, 4, 'グジ', 9, '', '', 3, 880, File.open('db/fixtures/bean12.jpg')],
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
 	I18n.locale = :ja
   Bean.create!(
@@ -78,7 +80,8 @@ end
 	[8, 5, 3, 3, '独特の酸味！さっぱりとしたお菓子に合う！'],
 	[9, 5, 2, 2, '酸味が強くて美味しい。アイスにしてもうまい'],
 	[10, 2, 4, 4, 'バランスが良くてうまい。'],
-	[11, 3, 4, 4, 'すっきりした苦味。夏の定番になるかも']
+	[11, 3, 4, 4, 'すっきりした苦味。夏の定番になるかも'],
+	[12, 5, 3, 3, 'ゲイシャがこの価格！めちゃ安い']
 ].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
 	I18n.locale = :ja
   Impression.create!(
@@ -97,7 +100,8 @@ end
 	[8, 8, 0, 4, 90, 20, 200, 1, File.open('db/fixtures/recipe8.jpg')],
 	[9, 9, 1, 4, 93, 30, 250, 10, File.open('db/fixtures/recipe9.jpg')],
 	[10, 10, 0, 3, 93, 30, 250, 5, File.open('db/fixtures/recipe10.jpg')],
-	[11, 11, 0, 3, 88, 20, 200, 0, File.open('db/fixtures/recipe10.jpg')]
+	[11, 11, 0, 3, 88, 20, 200, 0, File.open('db/fixtures/recipe11.jpg')],
+	[12, 12, 0, 5, 93, 15, 150, 1, File.open('db/fixtures/recipe12.jpg')]
 ].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extracted_amount, extraction, recipe_image|
 	I18n.locale = :ja
   Recipe.create!(
@@ -117,7 +121,8 @@ end
 	[8, 5, 3, 3, 4, 5, '美味しい。ミルク入れても美味しい'],
 	[9, 5, 3, 3, 4, 5, '夏はこれよ'],
 	[10, 2, 4, 4, 4, 3, 'サイフォンで淹れるとすっきり'],
-	[11, 3, 4, 4, 4, 3, '甘いパンにめっちゃ合う']
+	[11, 3, 4, 4, 4, 3, '甘いパンにめっちゃ合う'],
+	[12, 5, 3, 2, 4, 3, '冷めてからの酸味が美味しい〜']
 ].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
 	I18n.locale = :ja
   Taste.create!(
@@ -132,11 +137,11 @@ end
 ].each do |name, mail, pass, confirmed_at|
 	#I18n.locale = :en
 	User.create!(
-	  username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar1.jpg"), confirmed_at: confirmed_at
+	  username: name, email: mail, password: pass, avatar: open("db/fixtures/avatar12.jpg"), confirmed_at: confirmed_at
 	)
 end
 
-2.upto(11) do |n|
+14.upto(23) do |n|
 	#I18n.locale = :en
 	username = Faker::Internet.username
 	email = Faker::Internet.free_email
@@ -167,17 +172,17 @@ end
 end
 
 [
-	[12, 12, 17, '', '', '', 3, 4, 2.5, File.open('db/fixtures/bean12.jpg')],
-  [13, 13, 9, '', '', '', 1, 3, 0.6, File.open('db/fixtures/bean13.jpg')],
-	[14, 14, 20, '', '', '', 3, 4, 5.8, File.open('db/fixtures/bean14.jpg')],
-	[15, 15, 7, 'Huehuetenango', 1, 'El Injerto', '', 4, 3.66, File.open('db/fixtures/bean15.jpg')],
-	[16, 16, 10, 'Huila', 1, '', '', 5, 1.66, File.open('db/fixtures/bean16.jpg')],
-	[17, 17, 10, 'Tolima', 15, '', '', 5, 1.9, File.open('db/fixtures/bean17.jpg')],
-	[18, 18, 18, 'Boquete', 9, 'La Esmeralda', 0, 2, 16.9, ''],
-	[19, 19, 3, 'Habitat Forest', 2, '', '', 4, 1.9, File.open('db/fixtures/bean19.jpg')],
-	[20, 20, 8, 'KIRINYAGA', 12, '', 0, 5, 1.75, File.open('db/fixtures/bean20.jpg')],
-	[21, 21, 24, 'Cau Dat', '', '', 0, 4, 1.5, File.open('db/fixtures/bean21.jpg')],
-	[22, 22, 22, 'Kayanza', 1, '', 0, 4, 1.5, File.open('db/fixtures/bean22.jpg')]
+	[13, 13, 17, '', '', '', 3, 4, 2.5, File.open('db/fixtures/bean13.jpg')],
+  [14, 14, 9, '', '', '', 1, 3, 0.6, File.open('db/fixtures/bean14.jpg')],
+	[15, 15, 20, '', '', '', 3, 4, 5.8, File.open('db/fixtures/bean15.jpg')],
+	[16, 16, 7, 'Huehuetenango', 1, 'El Injerto', '', 4, 3.66, File.open('db/fixtures/bean16.jpg')],
+	[17, 17, 10, 'Huila', 1, '', '', 5, 1.66, File.open('db/fixtures/bean17.jpg')],
+	[18, 18, 10, 'Tolima', 15, '', '', 5, 1.9, File.open('db/fixtures/bean18.jpg')],
+	[19, 19, 18, 'Boquete', 9, 'La Esmeralda', 0, 2, 16.9, ''],
+	[20, 20, 3, 'Habitat Forest', 2, '', '', 4, 1.9, File.open('db/fixtures/bean20.jpg')],
+	[21, 21, 8, 'KIRINYAGA', 12, '', 0, 5, 1.75, File.open('db/fixtures/bean21.jpg')],
+	[22, 22, 24, 'Cau Dat', '', '', 0, 4, 1.5, File.open('db/fixtures/bean22.jpg')],
+	[23, 23, 22, 'Kayanza', 1, '', 0, 4, 1.5, File.open('db/fixtures/bean23.jpg')]
 ].each do |user_id, shop_id, country, area, variety, farm, process, roast, price, bean_image|
 	I18n.locale = :en
   Bean.create!(
@@ -187,17 +192,17 @@ end
 end
 
 [
-  [12, 3, 3, 3, 'Delicious! But little bit expensive.'],
-  [13, 5, 3, 3, 'Bring Back Costa Rica from coffee beans!'],
-	[14, 3, 5, 3, 'The smell is very gorgeous！'],
-	[15, 3, 5, 5, 'I wanna say thank you to a farm directly!'],
-	[16, 4, 2, 1, 'Its strong sour. I recommend brew with high hot water'],
-	[17, 2, 3, 4, 'LA PRIMAVERA WOMEN IN COFFEE'],
-	[18, 5, 4, 2, 'NO NEED WORD!'],
-	[19, 3, 3, 4, 'Bulanced'],
-	[20, 4, 4, 4, 'Bitter and sweet and beautiful!'],
-	[21, 2, 4, 5, 'Bitter. its so match with milk.'],
-	[22, 3, 3, 3, 'This is my first time buy beans of Burunji. it was awesome.']
+  [13, 3, 3, 3, 'Delicious! But little bit expensive.'],
+  [14, 5, 3, 3, 'Bring Back Costa Rica from coffee beans!'],
+	[15, 3, 5, 3, 'The smell is very gorgeous！'],
+	[16, 3, 5, 5, 'I wanna say thank you to a farm directly!'],
+	[17, 4, 2, 1, 'Its strong sour. I recommend brew with high hot water'],
+	[18, 2, 3, 4, 'LA PRIMAVERA WOMEN IN COFFEE'],
+	[19, 5, 4, 2, 'NO NEED WORD!'],
+	[20, 3, 3, 4, 'Bulanced'],
+	[21, 4, 4, 4, 'Bitter and sweet and beautiful!'],
+	[22, 2, 4, 5, 'Bitter. its so match with milk.'],
+	[23, 3, 3, 3, 'This is my first time buy beans of Burunji. it was awesome.']
 ].each do |bean_id, i_sour, i_sweet, i_bitter, i_comment|
 	I18n.locale = :en
   Impression.create!(
@@ -206,17 +211,17 @@ end
 end
 
 [
-  [12, 12, 0, 2, 90, 15, 150, 6, File.open('db/fixtures/recipe12.jpg')],
-  [13, 13, 0, 4, 95, 10, 100, 0, File.open('db/fixtures/recipe13.jpg')],
-	[14, 14, 0, 4, 88, 20, 200, 0, File.open('db/fixtures/recipe14.jpg')],
-	[15, 15, 1, 4, 93, 25, 200, 2, File.open('db/fixtures/recipe15.jpg')],
-	[16, 16, 0, 4, 95, 25, 200, 0, File.open('db/fixtures/recipe16.jpg')],
-	[17, 17, 0, 3, 90, 20, 200, 1, File.open('db/fixtures/recipe17.jpg')],
-	[18, 18, 0, 4, 92, 20, 200, 3, File.open('db/fixtures/recipe18.jpg')],
-	[19, 19, 0, 4, 93, 25, 220, 0, File.open('db/fixtures/recipe19.jpg')],
-	[20, 20, 1, 4, 92, 30, 250, 1, File.open('db/fixtures/recipe20.jpg')],
-	[21, 21, 0, 4, 90, 30, 300, 1, File.open('db/fixtures/recipe21.jpg')],
-	[22, 22, 0, 3, 92, 30, 300, 0, File.open('db/fixtures/recipe22.jpg')]
+  [13, 13, 0, 2, 90, 15, 150, 6, File.open('db/fixtures/recipe13.jpg')],
+  [14, 14, 0, 4, 95, 10, 100, 0, File.open('db/fixtures/recipe14.jpg')],
+	[15, 15, 0, 4, 88, 20, 200, 0, File.open('db/fixtures/recipe15.jpg')],
+	[16, 16, 1, 4, 93, 25, 200, 2, File.open('db/fixtures/recipe16.jpg')],
+	[17, 17, 0, 4, 95, 25, 200, 0, File.open('db/fixtures/recipe17.jpg')],
+	[18, 18, 0, 3, 90, 20, 200, 1, File.open('db/fixtures/recipe18.jpg')],
+	[19, 19, 0, 4, 92, 20, 200, 3, File.open('db/fixtures/recipe19.jpg')],
+	[20, 20, 0, 4, 93, 25, 220, 0, File.open('db/fixtures/recipe20.jpg')],
+	[21, 21, 1, 4, 92, 30, 250, 1, File.open('db/fixtures/recipe21.jpg')],
+	[22, 22, 0, 4, 90, 30, 300, 1, File.open('db/fixtures/recipe22.jpg')],
+	[23, 23, 0, 3, 92, 30, 300, 0, File.open('db/fixtures/recipe23.jpg')]
 
 ].each do |user_id, bean_id, hot_ice, grind, temperature, amount, extracted_amount, extraction, recipe_image|
 	I18n.locale = :en
@@ -227,17 +232,17 @@ end
 end
 
 [
-  [12, 3, 3, 3, 4, 5, 'I wanna go Papua new guinia!!'],
-  [13, 5, 3, 3, 4, 3, 'I recommend make coffee with high tempreture hot water'],
-	[14, 3, 5, 3, 4, 5, 'GOOOD！'],
-	[15, 3, 5, 5, 3, 4, 'Its good match with milk!'],
-	[16, 4, 2, 1, 5, 4, 'Its falvor like a lime'],
-	[17, 2, 3, 4, 4, 4, 'Its balanced'],
-	[18, 5, 4, 2, 5, 5, 'NO NEED WORD!'],
-	[19, 3, 3, 4, 3, 3, 'AWESOME with Bread'],
-	[20, 2, 3, 4, 4, 2, 'Best summer iced coffee'],
-	[21, 2, 4, 5, 4, 2, 'So Bitter'],
-	[22, 3, 3, 3, 4, 2, 'BURUJI!!']
+  [13, 3, 3, 3, 4, 5, 'I wanna go Papua new guinia!!'],
+  [14, 5, 3, 3, 4, 3, 'I recommend make coffee with high tempreture hot water'],
+	[15, 3, 5, 3, 4, 5, 'GOOOD！'],
+	[16, 3, 5, 5, 3, 4, 'Its good match with milk!'],
+	[17, 4, 2, 1, 5, 4, 'Its falvor like a lime'],
+	[18, 2, 3, 4, 4, 4, 'Its balanced'],
+	[19, 5, 4, 2, 5, 5, 'NO NEED WORD!'],
+	[20, 3, 3, 4, 3, 3, 'AWESOME with Bread'],
+	[21, 2, 3, 4, 4, 2, 'Best summer iced coffee'],
+	[22, 2, 4, 5, 4, 2, 'So Bitter'],
+	[23, 3, 3, 3, 4, 2, 'BURUNJI!!']
 
 ].each do |recipe_id, t_sour, t_sweet, t_bitter, t_aroma, t_fullbody, t_comment|
 	I18n.locale = :en
@@ -259,7 +264,8 @@ end
 	[8, 9],
 	[9, 10],
 	[10, 11],
-	[11, 1]
+	[11, 12],
+	[12, 1]
 ].each do |user_id, bean_id|
 	I18n.locale = :ja
   BeanLike.create!(
@@ -268,7 +274,6 @@ end
 end
 
 [
-  [12, 13],
   [13, 14],
 	[14, 15],
 	[16, 17],
@@ -277,8 +282,8 @@ end
 	[19, 20],
 	[20, 21],
 	[21, 22],
-	[22, 12]
-
+	[22, 23],
+	[23, 1]
 ].each do |user_id, bean_id|
 	I18n.locale = :en
   BeanLike.create!(
@@ -297,7 +302,8 @@ end
 	[8, 9],
 	[9, 10],
 	[10, 11],
-	[11, 1]
+	[11, 12],
+	[12, 1]
 ].each do |user_id, recipe_id|
 	I18n.locale = :ja
   RecipeLike.create!(
@@ -306,7 +312,6 @@ end
 end
 
 [
-  [12, 13],
   [13, 14],
 	[14, 15],
 	[16, 17],
@@ -315,7 +320,8 @@ end
 	[19, 20],
 	[20, 21],
 	[21, 22],
-	[22, 12]
+	[22, 23],
+	[23, 1]
 ].each do |user_id, recipe_id|
 	I18n.locale = :en
   RecipeLike.create!(
@@ -336,7 +342,8 @@ end
 	[8, 9],
 	[9, 10],
 	[10, 11],
-	[11, 1]
+	[11, 12],
+	[12, 1]
 ].each do |user_id, shop_id|
 	I18n.locale = :ja
   ShopLike.create!(
@@ -354,7 +361,8 @@ end
 	[19, 20],
 	[20, 21],
 	[21, 22],
-	[22, 12]
+	[22, 23],
+	[23, 1]
 ].each do |user_id, shop_id|
 	I18n.locale = :en
   ShopLike.create!(

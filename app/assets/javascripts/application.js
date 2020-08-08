@@ -17,6 +17,7 @@
 //= require materialize
 //= require materialize-sprockets
 //= require Chart.min
+//= require select
 //= require_tree .
 
 $(document).ready(function () {
