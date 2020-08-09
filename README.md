@@ -10,18 +10,23 @@
 <a href="https://c0fee.com/">
 <img width="1436" alt="スクリーンショット 2020-08-08 22 20 48" src="https://user-images.githubusercontent.com/45422771/89711569-fd51c280-d9c5-11ea-86e7-e276df3c4338.png">
 </a>
-	
+
 ---
-### 使用技術
-* Ruby 2.6.3
-* Ruby on Rails 5.2.3
-* PostgreSQL 11.0
-* Docker,docker-compose
-* Ridgepole ( マイグレーション )
-* Enum ( 列挙型 )
-* Lograge ( ログフォーマット )
-* Materialize.css
-* Rspec
+### 機能一覧
+* ユーザー登録、ログイン  ( devise等 )
+* CRUD✖︎4 
+* 画像アップロード ( carrierwave, minimagick, piet, fog-aws ）
+* お気に入り✖︎3 ( ajax )
+* 検索
+* 2か国語 (日/英) 対応（ I18n, I18n-js, globalize ）
+* チャート （ chart-js-rails ）
+* 地図表示 ( Google Map API, geocoder )
+* お問い合わせ （ Action Mailer ）
+* ページネーション ( kaminari )
+* レスポンシブデザイン
+
+---
+### インフラ
 * AWS
 	* VPC
 	* EC2
@@ -37,50 +42,60 @@
 	* Cloud Watch Logs
 	* S3
 * Terraform
-* Git,GitHub
-* Circleci, Orbs
+* CircleCI ( CI / CD )
 
 ---
-### 機能一覧( gem等 )
-* ユーザー登録、ログイン ( device, omniauth, omniauth-google-oauth2 ）
-* CRUD✖️4 ( ユーザー, 店, 豆, レシピ )
-* 画像アップロード （ carrierwave, minimagick, piet, fog-aws ）
-* お気に入り✖️3 ( ajax )
-* ページネーション ( kaminari )
-* 検索
-* お問い合わせ （ Action Mailer ）
-* 2か国語 （日、 英） 対応（ I18n, I18n-js, globalize ）
-* チャート、グラフ （ chart-js-rails ）
-* 地図表示 ( Google Map API, geocoder )
-* レスポンシブデザイン
+### バックエンド
+Ruby 2.6.3<br/>
+Rails 5.2.3<br/>
+PostgreSQL 11.0<br/>
+
+---
+### フロントエンド
+Materialize.css
 
 ---
 ### 開発
-* Docker Desktop for Mac
-* docker-compose
-* イメージ: ruby2.6.3, postgres11.0-alpine
+VSCode<br/>
+Docker Desktop for Mac<br/>
+docker-compose<br/>
+
+使用Image:<br/>
+* ruby2.6.3
+* postgres11.0-alpine
+
+効率化Gems:<br/>
+* Rubocop ( リンター )
+* Hirb  ( オブジェクト表示 ) 
+* Ridgepole ( マイグレーション )
+* Enum ( 列挙型 ) 
+* Lograge ( ログフォーマット )  など
+
+バージョン管理:<br/>
+* Git
+* GitHub
 
 ---
 ### テスト
 Ci上で自動化<br/>
-テスト結果をSlackに通知
+結果をSlackに通知<br/>
 * Rspec, Capybara, Faker, FactoryBot
 * 単体テスト
-* 統合テスト （ featurespec ）
-
+* 統合テスト （ FeatureSpec ）
+ 
 ---
-### 本番
+### デプロイ
 テスト後ECSに自動デプロイ（deployブランチのみ）<br/>
-ログはCloud Watch LogsからKinesis Fire HoseでS3に定期保管
-
+ログはCloud Watch LogsからKinesis Data FirehoseでS3に定期保管<br/>
+	
 ---
 ### Terraform
-IAM Role, Security Groupはmodule化<br/>
-tfstateはS3に保存。<br/>
+  * version: 0.12.20
+  * provider: aws 2.44.0<br/>
+IAM Role, Security Groupをmodule化<br/>
+tfstateはS3に保存<br/>
 Fargateコンテナに入れないためdockerインストール済みのEC2を別途用意<br/>
-* version: 0.12.20
-* provider: aws 2.44.0
-
+	
 ---
 ### ER図
 ![ER図](https://user-images.githubusercontent.com/45422771/89233939-bc545980-d625-11ea-8ea7-bec7a10d638b.png)
