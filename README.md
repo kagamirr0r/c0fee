@@ -90,12 +90,12 @@ Ci上で自動化<br/>
 	
 ---
 ### Terraform
-  * version: 0.12.20
-  * provider: aws 2.44.0<br/>
 IAM Role, Security Groupをmodule化<br/>
 tfstateはS3に保存<br/>
 Fargateコンテナに入れないためdockerインストール済みのEC2を別途用意<br/>
-	
+  * version: 0.12.20
+  * provider: aws 2.44.0
+
 ---
 ### ER図
 ![ER図](https://user-images.githubusercontent.com/45422771/89233939-bc545980-d625-11ea-8ea7-bec7a10d638b.png)
