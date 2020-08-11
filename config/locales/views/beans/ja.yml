@@ -6,11 +6,11 @@ ja:
       delete: 削除
       currency_unit: 円
       return: 戻る
+      are_you_sure?: 削除してよろしいですか？
     beans:
       <<: *bean
     delete_bean_link:
       <<: *bean
-      are_you_sure?: 削除してよろしいですか？
       cancel: キャンセル
     edit_bean_link:
       <<: *bean
