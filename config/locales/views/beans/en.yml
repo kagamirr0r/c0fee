@@ -6,11 +6,11 @@ en:
       delete: Delete
       currency_unit: $
       return: Back
+      are_you_sure?: Are you sure?
     beans:
       <<: *bean
     delete_bean_link:
       <<: *bean
-      are_you_sure?: Are you sure?
       cancel: Cancel
     edit_bean_link:
       <<: *bean
