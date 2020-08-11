@@ -13,7 +13,7 @@
 				</div>
 
 				<div class="card-shop-info">
-					<p class="shop-name"><%= link_to shop.name, shop.url, target: :_blank if shop.name.present? %></p>
+					<p class="shop-name"><%= link_to shop.name, shop_path(shop) if shop.name.present? %></p>
 					<p><%= link_to shop.address.truncate(17), "https://www.google.com/maps/search/?api=1&query=#{shop.name}", target: :_blank, class: "black-text" if shop.address.present? %></p>
 				</div>
 

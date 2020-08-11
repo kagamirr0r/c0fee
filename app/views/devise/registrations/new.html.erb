@@ -17,14 +17,14 @@
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
-    <%= f.password_field :password, autocomplete: "new-password"  %>
-		<%= f.label t('.password', password_length: @minimum_password_length) %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+		<%= f.label :password,t('.password', password_length: @minimum_password_length) %>
   </div>
 
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
 		<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    <%= f.label t('.confirm_new_password') %><br />
+    <%= f.label :password_confirmation %><br />
   </div><br />
 
   <div class="actions">

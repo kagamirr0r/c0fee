@@ -10,7 +10,7 @@
   <div class="input-field col s12">
 		<i class="material-icons prefix">lock_outline</i>
 		<%= f.password_field :password, autocomplete: "new-password" %>
-    <%= f.label t('.password', password_length: @minimum_password_length) %><br />
+    <%= f.label :password %><br />
   </div><br />
 
 	<%= render "devise/shared/links" %>
