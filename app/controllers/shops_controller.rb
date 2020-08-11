@@ -24,7 +24,7 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     @shop.save!
-    redirect_to my_page_path(current_user), notice: t('shops.flash.registered_shop')
+    redirect_to shops_path, notice: t('shops.flash.registered_shop')
   rescue StandardError
     render :new
   end

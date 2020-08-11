@@ -28,21 +28,21 @@ class RecipesController < ApplicationController
     @bean = Bean.find(params[:recipe][:bean_id])
     @recipe = @bean.recipes.build(recipe_params)
     @recipe.save!
-    redirect_to my_page_path(current_user), notice: t('recipes.flash.made_recipe')
+    redirect_to "/my_pages/#{current_user.id}#made_recipes", notice: t('recipes.flash.made_recipe')
   rescue StandardError
     render :new
   end
 
   def update
     @recipe.update!(recipe_params)
-    redirect_to my_page_path(current_user), notice: t('recipes.flash.edited_recipe')
+    redirect_to "/my_pages/#{current_user.id}#made_recipes", notice: t('recipes.flash.edited_recipe')
   rescue StandardError
     render action: 'edit'
   end
 
   def destroy
     @recipe.destroy
-    redirect_to my_page_path(current_user), notice: t('recipes.flash.deleted_recipe')
+    redirect_to "/my_pages/#{current_user.id}#made_recipes", notice: t('recipes.flash.deleted_recipe')
   end
 
   private
