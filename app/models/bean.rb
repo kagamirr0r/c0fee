@@ -2,7 +2,10 @@ class Bean < ApplicationRecord
   include StringNormalize
   default_scope -> { order(created_at: :desc) }
 
-  validates :country, presence: true
+	validates :country, presence: true
+	validates :area, length: { maximum: 30 }
+	validates :farm, length: { maximum: 30 }
+	validates :price, numericality: {less_than: 10000,allow_nil: true}
 
   translates :area, :farm
 
