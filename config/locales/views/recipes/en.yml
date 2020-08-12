@@ -23,6 +23,7 @@ en:
       day: days
       delete: Delete
     recipes:
+      <<: *delete_recipe_link
       <<: *recipe
     search_form:
       <<: *delete_recipe_link

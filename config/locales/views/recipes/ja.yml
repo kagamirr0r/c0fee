@@ -23,6 +23,7 @@ ja:
       day: 日後
       delete: 削除
     recipes:
+      <<: *delete_recipe_link
       <<: *recipe
     search_form:
       <<: *delete_recipe_link

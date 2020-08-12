@@ -4,7 +4,8 @@ class Recipe < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   validates :hot_ice, presence: true
-  validates :amount, length: { minimum: 1, maximum: 3 }
+	validates :amount, numericality: {less_than: 999}
+	validates :extracted_amount, numericality: { less_than: 999,allow_nil: true }
 
   belongs_to :bean
   belongs_to :user

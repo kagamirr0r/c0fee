@@ -55,7 +55,7 @@
 							<%= content_tag :i, "edit", class: "material-icons" %>
 						<% end %>
 
-						<%= link_to bean, method: :delete,class: "tooltipped red-text",data:{position:"top", tooltip: t('.delete'), confirm: "削除しますか？"} do%>
+						<%= link_to bean, method: :delete,class: "tooltipped red-text",data:{position:"top", tooltip: t('.delete'), confirm: t('.are_you_sure?')} do%>
 							<%= content_tag :i, "delete", class: "material-icons" %>
 						<% end %>
 
