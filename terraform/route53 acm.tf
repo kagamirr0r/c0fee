@@ -16,11 +16,20 @@ resource "aws_route53_record" "c0fee" {
 }
 
 resource "aws_route53_record" "c0fee_certificate" {
+	for_each = {
+    for dvo in aws_acm_certificate.c0fee.domain_validation_options : dvo.domain_name => {
+      name    = dvo.resource_record_name
+      record  = dvo.resource_record_value
+      type    = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
   zone_id = aws_route53_zone.c0fee.id
-  name    = aws_acm_certificate.c0fee.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.c0fee.domain_validation_options[0].resource_record_type
-  records = [aws_acm_certificate.c0fee.domain_validation_options[0].resource_record_value]
-  ttl     = 60
 }
 
 
@@ -37,5 +46,5 @@ resource "aws_acm_certificate" "c0fee" {
 
 resource "aws_acm_certificate_validation" "c0fee" {
   certificate_arn         = aws_acm_certificate.c0fee.arn
-  validation_record_fqdns = [aws_route53_record.c0fee_certificate.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.c0fee_certificate : record.fqdn]
 }

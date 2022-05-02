@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "tfstate" {
-  bucket = "c0fee-tfstate-bucket"
+  bucket = "c0fee-tfstate"
 
   versioning {
     enabled = true
@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "tfstate" {
 }
 
 resource "aws_s3_bucket" "private" {
-  bucket = "c0fee-private-bucket"
+  bucket = "c0fee-private"
 
   versioning {
     enabled = true
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_public_access_block" "private" {
 }
 
 resource "aws_s3_bucket" "alb_log" {
-  bucket = "c0fee-alb-log-bucket"
+  bucket = "c0fee-alb-log"
 
   lifecycle_rule {
     enabled = true
