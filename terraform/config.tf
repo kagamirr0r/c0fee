@@ -7,17 +7,16 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket = "c0fee-tfstate"
-  #   key    = "terraform/.terraform/terraform.tfstate"
-  #   region = "ap-northeast-1"
-  # }
+  backend "s3" {
+    bucket = "c0fee-tfstate"
+    key    = "terraform/.terraform/terraform.tfstate"
+    region = "ap-northeast-1"
+
+    profile = "c0fee_owner"
+  }
 }
 
 provider "aws" {
-  # version = "= 2.44.0"
   region  = "ap-northeast-1"
-# shared_config_files      = ["/Users/ryohei-kagami/.aws/config"]
-  # shared_credentials_files = ["/Users/ryohei-kagami/.aws/credentials"]
   profile = "c0fee_owner"
 }
