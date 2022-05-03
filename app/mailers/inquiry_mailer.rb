@@ -3,7 +3,7 @@ class InquiryMailer < ApplicationMailer
     @inquiry = inquiry
     mail(
       from: 'c0fee@system.com',
-      to: Rails.application.credentials.gmail[:address],
+      to: Rails.application.credentials.dig(:gmail, :address),
       subject: Inquiry.model_name.human
     )
   end

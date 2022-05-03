@@ -1,7 +1,7 @@
 version: "3"
 services:
   db:
-    image: postgres:11.0-alpine
+    image: postgres:14.2
     volumes:
       - datavol:/var/lib/postgresql/data
     environment:
