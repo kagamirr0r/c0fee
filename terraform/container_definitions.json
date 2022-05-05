@@ -30,14 +30,6 @@
 			"valueFrom": "/rails/postgres_password"
 		},
 		{
-			"name": "DB_USERNAME",
-			"valueFrom": "/rails/db_username"
-		},
-		{
-			"name": "DB_PASSWORD",
-			"valueFrom": "/rails/db_password"
-		},
-		{
 			"name": "RDS_HOST",
 			"valueFrom": "/rails/rds_host"
 		},

@@ -1,12 +1,10 @@
 version: "3"
 services:
   db:
-    image: postgres:11.0-alpine
+    image: postgres:14.2
     volumes:
       - datavol:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file: .env.test
   web:
     build:
       context: .

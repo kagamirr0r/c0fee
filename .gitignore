@@ -93,3 +93,5 @@ yarn-debug.log*
 
 .devcontainer
 .vscode
+
+.env*

@@ -31,28 +31,6 @@ resource "aws_ssm_parameter" "postgres_password" {
   }
 }
 
-resource "aws_ssm_parameter" "db_username" {
-  name        = "/rails/db_username"
-  value       = "hoge"
-  type        = "SecureString"
-  description = "DB_USERNAME"
-
-  lifecycle {
-    ignore_changes = [value]
-  }
-}
-
-resource "aws_ssm_parameter" "db_password" {
-  name        = "/rails/db_password"
-  value       = "hoge"
-  type        = "SecureString"
-  description = "DB_PASSWORD"
-
-  lifecycle {
-    ignore_changes = [value]
-  }
-}
-
 resource "aws_ssm_parameter" "rds_host" {
   name        = "/rails/rds_host"
   value       = "hoge"
