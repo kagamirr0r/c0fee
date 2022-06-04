@@ -2,7 +2,7 @@ data "terraform_remote_state" "c0fee" {
   backend = "s3"
 
   config = {
-    bucket = "c0fee-tfstate-bucket"
+    bucket = "c0fee-tfstate"
     key    = "terraform/.terraform/terraform.tfstate"
     region = "ap-northeast-1"
   }
@@ -59,7 +59,7 @@ output "operation_instance_id" {
 }
 
 resource "aws_s3_bucket" "operation" {
-  bucket = "operation-c0fee-bucket"
+  bucket = "operation-c0fee"
 
   lifecycle_rule {
     enabled = true

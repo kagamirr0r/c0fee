@@ -7,22 +7,21 @@ RSpec.describe Bean, type: :model do
     it 'is invalid without a country' do
       bean.country = ''
       expect(bean.valid?).to eq(false)
-		end
+    end
 
-		it 'is invalid over 30characters of area' do
+    it 'is invalid over 30characters of area' do
       bean.area = 'a' * 31
       expect(bean.valid?).to eq(false)
-		end
+    end
 
-		it 'is invalid over 30characters of farm' do
+    it 'is invalid over 30characters of farm' do
       bean.farm = 'a' * 31
       expect(bean.valid?).to eq(false)
-		end
+    end
 
-		it 'is invalid over 10000 of price' do
-      bean.price = 10001
+    it 'is invalid over 10000 of price' do
+      bean.price = 10_001
       expect(bean.valid?).to eq(false)
-		end
-
+    end
   end
 end

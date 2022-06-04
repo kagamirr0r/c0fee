@@ -9,14 +9,14 @@ RSpec.describe Recipe, type: :model do
       expect(recipe.valid?).to eq(false)
     end
 
-		it 'is invalid over 999 of amount' do
+    it 'is invalid over 999 of amount' do
       recipe.amount = 1000
       expect(recipe.valid?).to eq(false)
-		end
+    end
 
-		it 'is invalid over 999 of extracted_amount' do
+    it 'is invalid over 999 of extracted_amount' do
       recipe.extracted_amount = 1000
       expect(recipe.valid?).to eq(false)
-		end
+    end
   end
 end
