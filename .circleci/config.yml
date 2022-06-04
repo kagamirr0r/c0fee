@@ -77,9 +77,9 @@ workflows:
             - aws-ecr/build-and-push-image
           cluster: "c0fee"
           task-definition: "c0fee"
-          subnet-ids: $SUBNET_ONE, $SUBNET_TWO
+          subnet-ids: $SUBNET_ONE,$SUBNET_TWO
           security-group-ids: $SECURITY_GROUP_IDS
-          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\":\\\"c0fee\\\",\\\"command\\\":[\\\"bundle\\\", \\\"exec\\\", \\\"ridgepole\\\", \\\"--apply\\\", \\\"-c\\\", \\\"config/database.yml\\\", \\\"-f\\\", \\\"db/Schemafile\\\", \\\"-E\\\", \\\"production\\\"]}]}"
+          overrides: "{\\"containerOverrides\\":[{\\"name\\":\\"c0fee\\",\\"command\\":[\\"bundle\\", \\"exec\\", \\"ridgepole\\", \\"--apply\\", \\"-c\\", \\"config/database.yml\\", \\"-f\\", \\"db/Schemafile\\", \\"-E\\", \\"production\\"]}]}"
           filters:
             branches:
               only:
