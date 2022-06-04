@@ -69,8 +69,8 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     domain: 'gmail.com',
     port: 587,
-    user_name: Rails.application.credentials.gmail[:address],
-    password: Rails.application.credentials.gmail[:password],
+    user_name: Rails.application.credentials.dig(:gmail, :address),
+    password: Rails.application.credentials.dig(:gmail, :password),
     authentication: :login,
     enable_starttls_auto: true
   }
@@ -119,7 +119,7 @@ Rails.application.configure do
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     # logger = ActiveSupport::Logger.new(STDOUT)
     # logger.formatter = config.log_formatter
-    config.logger = Logger.new(STDOUT)
+    config.logger = Logger.new($stdout)
   end
 
   # Do not dump schema after migrations.

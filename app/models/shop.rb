@@ -3,10 +3,9 @@ class Shop < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
 
-	validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
-	validates :address, presence: true, uniqueness: true, length: { maximum: 100 }
-	validates :url, presence: true, format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, length: { maximum: 1000 }
-
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
+  validates :address, presence: true, uniqueness: true, length: { maximum: 100 }
+  validates :url, presence: true, format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, length: { maximum: 1000 }
 
   translates :name, :address
 

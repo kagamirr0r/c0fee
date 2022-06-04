@@ -101,3 +101,7 @@ Fargateコンテナに入れないためdockerインストール済みのEC2を�
 ---
 ### クラウドアーキテクチャ
 ![AWS図](https://user-images.githubusercontent.com/45422771/89865679-21d9b480-dbe9-11ea-9ae1-925f04375e82.png)
+
+
+### マイグレーション方法
+`bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply`

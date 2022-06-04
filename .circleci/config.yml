@@ -21,8 +21,6 @@ jobs:
             echo RAILS_MASTER_KEY=${RAILS_MASTER_KEY} >> ~/project/.env.test
             echo POSTGRES_USER=${POSTGRES_USER} >> ~/project/.env.test
             echo POSTGRES_PASSWORD=${POSTGRES_PASSWORD} >> ~/project/.env.test
-            echo DB_USERNAME=${DB_USERNAME} >> ~/project/.env.test
-            echo DB_PASSWORD=${DB_PASSWORD} >> ~/project/.env.test
             echo RDS_HOST=${RDS_HOST} >> ~/project/.env.test
             echo RDS_DATABASE=${RDS_DATABASE} >> ~/project/.env.test
             echo RDS_USERNAME=${RDS_USERNAME} >> ~/project/.env.test

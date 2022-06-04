@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.7.6
 
 ARG RAILS_ENV
 ARG RAILS_MASTER_KEY
@@ -11,8 +11,8 @@ RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 
 RUN echo "deb http://security.debian.org jessie/updates main" >> /etc/apt/sources.list &&\
-	curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update -qq \
-	&& apt-get install -y build-essential libpq-dev nodejs postgresql-client
+	apt-get update -qq &&\
+	apt-get install -y build-essential libpq-dev nodejs postgresql-client
 
 COPY Gemfile $APP_ROOT/Gemfile
 COPY Gemfile.lock $APP_ROOT/Gemfile.lock
