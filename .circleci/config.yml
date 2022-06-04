@@ -72,9 +72,18 @@ workflows:
             branches:
               only:
                 - deploy
-      - aws-ecs/run-task:
+      - aws-ecs/update-task-definition:
           requires:
             - aws-ecr/build-and-push-image
+          family: "c0fee"
+          container-image-name-updates: "container=c0fee,tag=latest"
+          filters:
+            branches:
+              only:
+                - deploy
+      - aws-ecs/run-task:
+          requires:
+            - aws-ecs/update-task-definition
           cluster: "c0fee"
           task-definition: "c0fee"
           subnet-ids: $SUBNET_ONE,$SUBNET_TWO
