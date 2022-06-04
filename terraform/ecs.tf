@@ -7,7 +7,7 @@ resource "aws_ecs_service" "c0fee" {
   name                              = "c0fee"
   cluster                           = aws_ecs_cluster.c0fee.arn
   task_definition                   = aws_ecs_task_definition.c0fee.arn
-  desired_count                     = 2
+  desired_count                     = 1
   launch_type                       = "FARGATE"
   platform_version                  = "1.3.0"
   health_check_grace_period_seconds = 60

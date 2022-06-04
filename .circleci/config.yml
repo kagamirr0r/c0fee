@@ -1,12 +1,12 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@6.8.1
-  aws-ecs: circleci/aws-ecs@1.1.0
-  slack: circleci/slack@3.4.2
+  aws-ecr: circleci/aws-ecr@8.1.2
+  aws-ecs: circleci/aws-ecs@2.2.1
+  slack: circleci/slack@4.10.1
 jobs:
   test:
     machine:
-      image: circleci/classic:edge
+      image: ubuntu-2204:2022.04.1
     environment:
       RAILS_ENV: test
     steps:
