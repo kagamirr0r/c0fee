@@ -1,11 +1,11 @@
 resource "aws_ecr_repository" "c0fee" {
-  name = "c0fee"
+	name = "c0fee"
 }
 
 resource "aws_ecr_lifecycle_policy" "c0fee" {
-  repository = aws_ecr_repository.c0fee.name
+	repository = aws_ecr_repository.c0fee.name
 
-  policy = <<EOF
+    policy = <<EOF
 	{
 		"rules":[
 			{

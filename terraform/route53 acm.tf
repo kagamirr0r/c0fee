@@ -1,11 +1,15 @@
 #___Route 53___________________________________________________________________________________________________
-resource "aws_route53_zone" "c0fee"{
-	name = "c0fee.com"
+# resource "aws_route53_zone" "c0fee"{
+# 	name = "c0ffea.com"
+# }
+
+data "aws_route53_zone" "c0fee" {
+  name = "c0ffea.com"
 }
 
 resource "aws_route53_record" "c0fee" {
-  zone_id = aws_route53_zone.c0fee.zone_id
-  name    = aws_route53_zone.c0fee.name
+  zone_id = data.aws_route53_zone.c0fee.zone_id
+  name    = data.aws_route53_zone.c0fee.name
   type    = "A"
 
   alias {
@@ -29,13 +33,13 @@ resource "aws_route53_record" "c0fee_certificate" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id = aws_route53_zone.c0fee.id
+  zone_id = data.aws_route53_zone.c0fee.id
 }
 
 
 #___ACM_______________________________________________________________________________________________________
 resource "aws_acm_certificate" "c0fee" {
-  domain_name               = aws_route53_zone.c0fee.name
+  domain_name               = data.aws_route53_zone.c0fee.name
   subject_alternative_names = []
   validation_method         = "DNS"
 
