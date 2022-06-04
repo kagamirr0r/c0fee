@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     machine:
-      image: circleci/classic:edge
+      image: ubuntu-2204:2022.04.1
     environment:
       RAILS_ENV: test
     steps:

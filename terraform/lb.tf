@@ -107,7 +107,7 @@ resource "aws_lb_listener" "https" {
 #   }
 
 #   condition {
-#     path-pattern{
+#     path_pattern{
 #     values = ["/*"]
 #			}
 #   }
